@@ -1,0 +1,132 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* --------------------------
+        E L E M E N T S
+*/
+
+* {
+}
+
+footer {
+    color: darkgrey;
+    padding: 2em;
+    text-align: center;
+    padding: 10px;
+    border: solid 1px grey;
+}
+
+header {
+    background-color: green;
+    border-radius: 20px;
+    box-shadow: 2px 2px 4px grey;
+    margin: 2em;
+    padding: 2em;
+}
+
+header h1 {
+    color: yellow;
+    box-shadow: none;
+    text-align: left;
+    padding: 0px;
+}
+
+header h2 {
+    color: white;
+    box-shadow: none;
+    border: none;
+    margin: inherit;
+    text-align: left;
+    padding: 0px;
+}
+
+hr {
+    border: 3px solid green;
+    box-shadow: 2px 2px 4px grey;
+}
+
+h1 {
+    color: green;
+    text-align: center;
+    text-shadow: 2px 2px 3px grey;
+}
+
+h2 {
+    border: 1px solid green;
+    border-radius: 20px;
+    box-shadow: 2px 2px 4px grey;
+    color: green;
+    margin: 1em;
+    text-align: center;
+    padding: 1em;
+}
+
+h3 {
+    color: #444444;
+    /*text-size: 120%;*/
+}
+
+main {
+    padding: 2em;
+}
+
+pre {
+    border: 1px solid green;
+    border-left: 3px solid green;
+    border-right: 3px solid green;
+    background-color: #f0f0f0;
+    margin-left: 3em;
+    margin-right: 3em;
+    padding: 10px 20px;
+}
+
+
+/* --------------------------
+        C L A S S E S
+*/
+
+
+.card {
+    margin: 1em;
+    box-shadow: 2px 2px 5px grey;
+}
+
+.card-header {
+    background-color: dodgerblue;
+}
+
+.content {
+    background-color: #eee;
+    box-shadow: 2px 2px 6px black;
+    padding: 2em;
+}
+
+.logo {
+    text-align: right;
+}
+
+.logo img {
+    border-radius: 20px;
+    box-shadow: -2px -2px 6px black;
+}
+
+.nav-brand {
+    color: yellow;
+}
+
+.page {
+    border: 1px solid black;
+    box-shadow: 2px 2px 5px grey;
+    padding: 2em;
+}
+
+.panel {
+    background-color: #eeeeee;
+    box-shadow: 2px 2px 5px grey;
+    padding: 2em;
+}
+
+.profile img {
+    width: 200px;
+    border-radius: 100px;
+}
+

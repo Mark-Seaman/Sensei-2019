@@ -1,0 +1,27 @@
+#!/bin/bash
+# Linux Shell Contexts
+
+if [ `hostname` == 'sensei-server' ]
+then
+    figlet 'Production Sensei Server'
+    . sensei/env/bin/activate
+    export p=$HOME
+    
+    which python
+    python --version
+    pip list
+else
+    export p=$HOME/S2
+    figlet 'S2'
+fi
+
+echo "p = $p"
+
+. bin/bash-alias
+. bin/bash-prompt
+
+export PATH=$PATH:$p:$p/bin
+echo "PATH = $PATH"
+
+ls -l
+

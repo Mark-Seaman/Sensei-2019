@@ -1,0 +1,13 @@
+{% extends 'brain_theme.html' %}
+
+{% block content %}
+
+    <a href="./">Folder</a>
+
+{#    <h1>Document - {{ title }}</h1>#}
+
+    {% autoescape off %}
+        <p>{{ text }}</p>
+    {% endautoescape %}
+
+{% endblock %}
