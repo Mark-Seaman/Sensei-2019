@@ -1,9 +1,22 @@
-#!/usr/bin/env python
-
+from django.core.management.base import BaseCommand
 from os import environ, system
 from os.path import  abspath, exists, join
 from platform import node
 from sys import argv
+
+
+class Command(BaseCommand):
+
+    def add_arguments(self, parser):
+        parser.add_argument('pages', nargs='+', type=str)
+
+    def handle(self, *args, **options):
+        try:
+            web_command(options['pages'])
+        except:
+            log_exception()
+            self.stdout.write('** tst Exception (%s) **' % ' '.join(options['script']))
+            self.stdout.write(traceback.format_exc())
 
 
 def web_command(args):
@@ -12,13 +25,6 @@ def web_command(args):
         web(args[0])
     else:
         web('https://markseaman.info')
-
-
-def web_help():
-    '''Show all the web webs and their usage.'''
-    print('''
-    usage:  web page
-            ''')
 
 
 def web(page):
@@ -35,20 +41,5 @@ def web(page):
         # system('open -a "Google Chrome" '+url)
         system('open -a "Firefox" '+url)
     else:
-        system('start chrome '+url)
-
-
-def web_path(topic=None):
-    path = environ['pb']
-    if topic:
-        path = join(path,topic)
-    return path
-
-
-
-'''
-Create a script that can be run from the shell
-'''
-if __name__=='__main__':
-    web_command(argv[1:])
+        system('start firefox '+url)
 

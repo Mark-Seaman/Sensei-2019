@@ -51,7 +51,7 @@ alias s2='cd ~/S2/hammer; pipenv shell'
 
 alias tlike='tst like'
 alias tlist='tst list'
-alias todo='p bin/todo.py'
+alias todo='dj todo'
 alias tout='tst output'
 alias tres='tst results|less'
 alias trun='tst run'
@@ -61,7 +61,7 @@ alias u='cd ..; l'
 
 alias vc='dj vc'
 
-alias web='p bin/web.py'
+alias web='dj web'
 
 
 # ------------------------------
