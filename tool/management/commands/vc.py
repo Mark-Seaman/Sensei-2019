@@ -104,7 +104,7 @@ def vc_commit(args):
         comment = ' '.join(args)
         cmd = 'echo commit %s && cd %s && git add -A . && git commit -m "%s"'
         git_cmd(cmd % (d, d, comment))
-    vc_push(args)
+    vc_push()
 
 
 def vc_diff(args):
