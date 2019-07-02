@@ -1,6 +1,8 @@
 # Sensei Files
 
 Documents/
+.*
+!.gitignore
 
 
 # Byte-compiled / optimized / DLL files
