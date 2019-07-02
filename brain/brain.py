@@ -3,6 +3,7 @@ from os import listdir
 from os.path import exists, isdir, isfile, join
 from subprocess import Popen, PIPE
 from sys import version_info
+from tool.shell import shell_pipe
 
 
 # Read document as HTML
@@ -24,16 +25,16 @@ def doc_path(doc):
     return join('Documents', doc)
 
 
-# Redirect to an Index for any directory
+# Redirect to an x for any directory
 def doc_redirect(doc):
     while doc.endswith('/'):
         doc = doc[:-1]
     path = doc_path(doc)
     if isdir(path):
-        if exists(join(path, 'Index')):
-            return '/%s/Index' % doc
-        if exists(join(path, 'Index.md')):
-            return '/%s/Index' % doc
+        if exists(join(path, 'x')):
+            return '/%s/x' % doc
+        if exists(join(path, 'x.md')):
+            return '/%s/x' % doc
         return '/%s/Files' % doc
     if not exists(path) and not exists(path + '.md'):
         return '/%s/Missing' % doc
@@ -60,7 +61,12 @@ def list_files(path):
 
 
 # Convert markdown text to HTML
-def markdown_to_html(markdown):
+def markdown_to_html(markdown, image_path='/static/images'):
+
+    def fix_images(text, image_path):
+        return text.replace('](img/', '](%s/' % image_path)
+
+    markdown = fix_images(markdown, image_path)
     return shell_pipe('pandoc', markdown)
 
 
@@ -75,7 +81,10 @@ def page_settings(**kwargs):
 def read_markdown(doc):
     path = doc_path(doc)
     if exists(path) and isfile(path):
-        return open(path).read()
+        try:
+            return open(path).read()
+        except:
+            return 'Document is corrupted (doc=%s)' % path
     else:
         return 'No DOCUMENT Found, %s' % doc
 
@@ -87,17 +96,3 @@ def render_doc(doc):
         doc = doc + '.md'
     return document_html(doc)
 
-
-# Run an application and connect with input and output
-def shell_pipe(command, stdin=''):
-    p = Popen(command, stdin=PIPE, stdout=PIPE)
-    if version_info.major == 3:
-        (out, error) = p.communicate(input=stdin.encode('utf-8'))
-        if error:
-            return error.decode('utf-8') + out.decode('utf-8')
-        return out.decode('utf-8')
-    else:
-        (out, error) = p.communicate(input=stdin)
-        if error:
-            return "**stderr**\n" + error + out
-        return out

@@ -23,7 +23,7 @@ def home(request):
     <ul>
         <li><a href="/">Home</a></li>
         <li><a href="/brain/">Brain</a></li>
-        <li><a href="/brain/index">Index</a></li>
+        <li><a href="/brain/index">x</a></li>
     </ul>
 
     '''

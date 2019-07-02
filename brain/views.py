@@ -61,7 +61,7 @@ class MissingView(TemplateView):
         return page_settings(title=title, doc=doc, path=path)
 
 
-# Forward from / to /seamanfamily/brain/Index
+# Forward from / to /seamanfamily/brain/x
 class RedirectRoot(RedirectView):
     url = '/seamanfamily/brain/'
 
