@@ -14,5 +14,9 @@ def tst_find_test():
     return tst_find()
 
 
+def tst_files_test():
+    return shell('ls -l test')
+
+
 def tst_run_time_test():
     return shell('date')

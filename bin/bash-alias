@@ -4,7 +4,7 @@
 alias app='dj app'
 
 alias b='brackets'
-alias br='cd ~/Brain/hammer; pipenv shell'
+alias br='cd ~/Brain/hammer; pipenv shell; echo closing pipenv shell'
 
 alias co='vc commit'
 alias console='ssh sensei@seamanfamily.org'
@@ -46,8 +46,8 @@ alias r=reset
 
 alias s='app search'
 alias serve='web localhost:8000; dj runserver'
-alias s1='cd ~/Sensei/hammer; pipenv shell'
-alias s2='cd ~/S2/hammer; pipenv shell'
+alias s1='cd ~/Sensei/hammer; pipenv shell; echo closing pipenv shell'
+alias s2='cd ~/S2/hammer; pipenv shell; echo closing pipenv shell'
 
 alias tlike='tst like'
 alias tlist='tst list'

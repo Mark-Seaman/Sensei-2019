@@ -1,0 +1,11 @@
+#!/bin/bash
+# List the brain files
+
+echo S2 $1
+ls -l $1 | tee /tmp/s2
+
+echo Brain $1
+ls -l ~/Brain/$1 | tee /tmp/brain
+
+echo Diff
+diff /tmp/s2 /tmp/brain

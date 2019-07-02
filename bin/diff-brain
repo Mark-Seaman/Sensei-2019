@@ -1,0 +1,13 @@
+#!/bin/bash
+# List the brain files
+
+echo S2 $1
+ls -l $1 
+e $1
+
+echo Brain $1
+ls -l ~/Brain/$1 
+e ~/Brain/$1 
+
+echo Diff $1
+diff $1 ~/Brain/$1
