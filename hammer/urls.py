@@ -16,18 +16,18 @@ Including another URLconf
 
 from django.conf.urls import url, include
 
-import mybook.urls
+# import mybook.urls
 
 
 # URL Route
 urlpatterns = [
     # url(r'^admin/', admin.site.urls),
-    url(r'^', include('brain.urls')),
 
     # Brain
-    url(r'^brain/', include('brain.urls')),
+    url(r'^', include('brain.urls')),
+    # url(r'^brain/', include('brain.urls')),
 
     # MyBook
-    url(r'^',           include(mybook.urls)),
+    # url(r'^',           include(mybook.urls)),
 ]
 
