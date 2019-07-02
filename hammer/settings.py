@@ -88,9 +88,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 
 LANGUAGE_CODE = 'en-us'
-TIME_ZONE = 'UTC'
-USE_I18N = True
-USE_L10N = True
+TIME_ZONE = 'US/Mountain'
+USE_I18N = False
+USE_L10N = False
 USE_TZ = True
 
 
