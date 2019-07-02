@@ -40,7 +40,7 @@ alias o='dj ocean'
 alias p='python'
 alias pull='vc pull'
 alias push='vc push'
-alias py='figlet Brain&&which python&&python --version&&pip list&&echo directory is `pwd`'
+alias py='figlet S2&&which python&&python --version&&pip list&&echo directory is `pwd`'
 
 alias r=reset
 
