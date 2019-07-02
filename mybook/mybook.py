@@ -3,7 +3,7 @@ from os import listdir
 from os.path import join
 from random import choice
 
-from bin.shell import read_file
+from tool.shell import read_file
 from hammer.settings import BASE_DIR
 from tool.document import doc_title, text_to_html, domain_doc, doc_html_text
 from tool.log import log

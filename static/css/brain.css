@@ -91,7 +91,9 @@ pre {
 }
 
 .card-header {
-    background-color: dodgerblue;
+    background-color: green;
+    color: white;
+    font-weight: bold;
 }
 
 .content {

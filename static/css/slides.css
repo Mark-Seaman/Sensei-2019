@@ -1,0 +1,70 @@
+/* ------------------------------
+    Elements
+------------------------------*/
+
+p {
+    color: #F6B018;
+}
+
+/* ------------------------------
+    Class
+------------------------------*/
+
+.reveal h1 {
+    text-transform: none;
+    font-size: 150%;
+    color: #0E3D65;
+    background-color: #F6B018;
+    border: 2px solid #0E3D65;
+}
+
+.reveal h2 {
+    color: green;
+    background-color: #F6B018;
+    border: 2px solid #0E3D65;
+    text-align: center;
+    font-size: 200%;
+    margin: 10px 20px;
+    padding: 10px 20px;
+    box-shadow: 2px 2px 5px gray;
+}
+
+.reveal h3,
+.reveal h4 {
+    text-transform: none;
+    font-size: 120%;
+    color: #0E3D65;
+}
+
+.reveal section img {
+    border: none;
+    max-width: 600px;
+    box-shadow: none;
+    text-align: center;
+    max-width: 80%;
+    max-height: 80%;
+}
+
+.reveal li {
+    color: #0E3D65;
+    font-size: 90%;
+}
+
+.reveal li li {
+    color: #F6B018;
+}
+
+.reveal p {
+    color: green;
+}
+
+.reveal pre {
+    background-color: #eee;
+    color: #444;
+    margin: 10px 100px;
+}
+
+.right {
+    float: right;
+}
+

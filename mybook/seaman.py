@@ -4,8 +4,8 @@ from django.views.generic import TemplateView
 from tool.document import doc_file_index, doc_list
 from tool.log import log_page
 
-from .mybook import *
-from .views import DocDisplay
+from mybook.mybook import *
+from mybook.views import DocDisplay
 
 
 class BookNotes(DocDisplay):

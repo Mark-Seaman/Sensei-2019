@@ -1,0 +1,49 @@
+a {
+    color: purple;
+}
+
+h1, h2, h3 {
+    color: purple;
+    box-shadow: none;
+}
+
+header {
+    background-color: purple;
+}
+
+header h1 {
+    color: yellow;
+    box-shadow: none;
+    text-align: left;
+    padding: 0px;
+}
+
+header h2 {
+    color: white;
+    box-shadow: none;
+    border: none;
+    margin: inherit;
+    text-align: left;
+    padding: 0px;
+}
+
+hr {
+    border: 3px solid purple;
+}
+
+h2 {
+    border: 2px solid purple;
+    box-shadow: 2px 2px 5px gray;
+}
+
+pre {
+    border: 1px solid purple;
+    border-left: 3px solid purple;
+    border-right: 3px solid purple;
+}
+
+.card-header {
+    background-color: purple;
+    color: white;
+    font-weight: bold;
+}

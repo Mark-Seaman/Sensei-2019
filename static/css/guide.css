@@ -1,0 +1,204 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* --------------------------
+        E L E M E N T S
+*/
+
+* {
+}
+
+button {
+    margin: 20px 2em;
+    padding: 0.5em 2em;
+    /*border: 1px solid green;*/
+    background-color: dodgerblue;
+    border-radius: 20px;
+    box-shadow: 2px 2px 5px grey;
+    color: white;
+    font-weight: bold;
+}
+
+footer {
+    color: darkgrey;
+    padding: 2em;
+    text-align: center;
+    padding: 10px;
+    border: solid 1px grey;
+}
+
+footer img {
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    box-shadow: none;
+    border: none;
+}
+
+header {
+    background-color: dodgerblue;
+    border-radius: 20px;
+    box-shadow: 2px 2px 5px grey;
+    margin: 2em;
+    padding: 2em;
+}
+
+header h1 {
+    color: yellow;
+    box-shadow: none;
+    text-align: left;
+    padding: 0px;
+}
+
+header h2 {
+    color: white;
+    box-shadow: none;
+    border: none;
+    margin: inherit;
+    text-align: left;
+    padding: 0px;
+}
+
+hr {
+    border: 3px solid dodgerblue;
+}
+
+h1 {
+    color: dodgerblue;
+    text-align: center;
+    text-shadow: 2px 2px 4px grey;
+}
+
+h2 {
+    border: 1px solid dodgerblue;
+    border-radius: 20px;
+    box-shadow: 2px 2px 4px grey;
+    color: dodgerblue;
+    margin: 1em;
+    text-align: center;
+    padding: .2em 1em;
+}
+
+h3 {
+    color: dodgerblue;
+}
+
+h4 {
+    /*color: #444444;*/
+    color: green;
+}
+
+img {
+    border: 1px solid black;
+    box-shadow: 2px 2px 4px grey;
+    border-radius: 20px;
+    padding: 3em;
+    margin: 3em;
+    max-width: 80%;
+}
+
+main {
+    margin: 1em;
+}
+
+pre {
+    border: 1px solid dodgerblue;
+    border-left: 3px solid dodgerblue;
+    border-right: 3px solid dodgerblue;
+    background-color: #f0f0f0;
+    margin-left: 3em;
+    padding: 10px 20px;
+}
+
+/* --------------------------
+        C L A S S E S
+*/
+
+.button-bar {
+    /*background-color: gray;*/
+    /*padding: 10px;*/
+    text-align: center;
+    box-shadow: 2px 2px 5px grey;
+}
+
+.caption {
+    font-weight: bold;
+    font-style: italic;
+}
+
+.card {
+    margin: 1em;
+    box-shadow: 2px 2px 5px grey;
+}
+
+.card-header {
+    background-color: dodgerblue;
+    color: white;
+}
+
+.content {
+    background-color: #eee;
+    box-shadow: 2px 2px 6px black;
+    padding: 2em;
+}
+
+.form-error {
+    color: red;
+}
+
+.fg-line {
+    margin: 2em 20%;
+}
+
+.login-form {
+    border: 1px solid black;
+    box-shadow: 2px 2px 5px grey;
+    padding: 2em;
+    margin: auto;
+    max-width: 600px;
+}
+
+.logo {
+    text-align: right;
+}
+
+.logo img {
+    border-radius: 20px;
+    box-shadow: -2px -2px 5px grey;
+    max-width: 50%;
+    border: 1px solid grey;
+    padding: 0px;
+    margin: 0;
+}
+
+.navbar-dark .navbar-brand {
+    color: yellow;
+}
+
+.nav-tabs .nav-link.active {
+    background-color: #eeeeee;
+}
+
+.page {
+    border: 1px solid black;
+    box-shadow: 2px 2px 5px grey;
+    padding: 3em;
+    margin: auto;
+    max-width: 80%;
+}
+
+.panel {
+    background-color: #eeeeee;
+    box-shadow: 2px 2px 5px grey;
+    padding: 2em;
+}
+
+.profile img {
+    width: 200px;
+    border-radius: 100px;
+}
+
+.tab-pane {
+    padding: 2em;
+    background-color: #eeeeee;
+    border-radius: 5px;
+}

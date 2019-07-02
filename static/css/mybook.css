@@ -1,0 +1,237 @@
+/*  ------------------------------
+    Colors
+------------------------------
+
+Blue            -- #2196F3
+Green           -- #4caf50
+Light Green     -- #f0fff0
+
+*/
+
+/* ------------------------
+    Elements
+ */
+
+a {
+    color: green;
+    font-weight: bold;
+}
+
+a:hover {
+    font-weight: bolder;
+    text-decoration: underline;
+}
+
+body {
+    font-size: 18px;
+    color: black;
+}
+
+h1, h2, h3 {
+    margin: 20px 0px;
+    padding: 10px 0px;
+}
+
+h1 {
+    font-size: 32px;
+    color: #2196F3;
+}
+
+h2 {
+    color: green;
+    background-color: white;
+    border: 2px solid green;
+    text-align: center;
+    font-size: 130%;
+    margin-bottom: 20px;
+}
+
+h3 {
+    color: blue;
+    font-size: 20px;
+}
+
+header {
+    color: white;
+    background-color: #0a0a0a;
+    padding: 0px;
+    margin: 0px;
+}
+
+header a {
+    color: white;
+}
+
+header a:hover {
+    font-weight: 900;
+}
+
+header h1 {
+    color: yellow;
+    border: none;
+    font-size: 300%;
+    text-shadow: 2px 2px 5px black;
+    padding: 0px;
+    margin: 0px;
+}
+
+header h2 {
+    color: white;
+    background-color: inherit;
+    border: none;
+    font-size: 150%;
+    text-align: left;
+    width: 100%;
+    text-shadow: 2px 2px 5px grey;
+}
+
+hr {
+    border: solid 1px green;
+}
+
+i {
+    padding: 0px;
+    margin: 10px;
+}
+
+img {
+    max-width: 800px;
+    box-shadow: 2px 2px 5px gray;
+    border: 1px solid white;
+    margin: 2em;
+    padding: 2em;
+}
+
+pre {
+    background-color: #f0fff0;
+    color: #444;
+}
+
+textarea {
+    min-width: 80%;
+    width: 100%;
+    margin: 0em;
+    height: 20em;
+}
+
+td {
+    min-width: 8em;
+    margin: 10px;
+}
+
+ul {
+    margin-bottom: 1em;
+}
+
+ul ul {
+    margin-bottom: 1em;
+}
+
+/* -----------------------------
+    Class
+*/
+
+.btn {
+    background-color: green;
+    /*border: 2px solid white;*/
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px gray;
+    color: white;
+    font-size: 18px;
+    font-weight: bolder;
+    margin: 5px;
+    padding: 5px;
+    text-align: center;
+    width: 150px;
+}
+
+.card {
+    border-radius: 10px;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    /*max-width: 1000px;*/
+}
+
+.card-header h2 {
+    margin-bottom: 20px;
+}
+
+.footer {
+    margin: auto;
+    /*width: 50%;*/
+}
+
+.inset {
+    background-color: white;
+    box-shadow: -2px -2px 5px grey;
+    padding: 1em;
+    margin: 1em;
+}
+
+
+.logo {
+    float: right;
+}
+
+.logo img {
+    border-radius: 20px;
+    box-shadow: -2px -2px 6px black;
+    border: none;
+    padding: 0;
+}
+
+
+.main-menu {
+    margin-top: 50px;
+}
+
+.page {
+    border: 1px solid black;
+    box-shadow: 2px 2px 5px grey;
+    padding: 2em;
+}
+
+.panel {
+    background-color: #eeeeee;
+    box-shadow: 2px 2px 5px grey;
+    padding: 2em;
+}
+
+.show {
+    border: solid 1px yellow;
+    padding: 5px;
+}
+
+.task-notes {
+    background-color: #eeeeee;
+    box-shadow: 2px 2px 5px gray;
+}
+
+.user-btn {
+    background-color: inherit;
+    border: 2px solid white;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px gray;
+    color: white;
+    /*margin: 5px;*/
+    /*padding: 5px;*/
+    text-align: center;
+    width: 150px;
+}
+
+.user-text * {
+    color: white;
+    padding: 5px;
+    margin: 5px;
+    font-size: 12px;
+}
+
+.user-text a {
+    color: white;
+    font-size: 18px;
+}
+
+.user-text a:hover {
+    color: yellow;
+    font-weight: bolder;
+}

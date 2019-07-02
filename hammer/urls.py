@@ -13,28 +13,21 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
+
 from django.conf.urls import url, include
-# from django.contrib import admin
-from django.http import HttpResponse
 
-def home(request):
-    title = "Root Page"
-    text = '''
-    <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/brain/">Brain</a></li>
-        <li><a href="/brain/index">x</a></li>
-    </ul>
+import mybook.urls
 
-    '''
-    return HttpResponse("<h1>%s</h1><p>%s</p>" % (title,text))
 
 # URL Route
 urlpatterns = [
     # url(r'^admin/', admin.site.urls),
-#    url(r'^$', home),
-    # url(r'^index$', index),
-    url(r'^', include('brain.urls')),
+    # url(r'^', include('brain.urls')),
+
+    # Brain
     url(r'^brain/', include('brain.urls')),
+
+    # MyBook
+    url(r'^',           include(mybook.urls)),
 ]
 
