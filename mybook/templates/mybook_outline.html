@@ -1,0 +1,55 @@
+{% extends "mybook_theme.html" %}
+
+
+{% block content %}
+    <div class="card" brd-20>
+        <div class="card-header">
+            <h1>{{ title }}</h1>
+        </div>
+        <div class="card-body card-padding">
+            <ul>
+                <li><a href="/{{ doc }}">{{ doc }}</a></li>
+                <li><a href="/card/{{ doc }}">card view</a></li>
+                <li><a href="/container/{{ doc }}">container view</a></li>
+                <li><a href="/outline/{{ doc }}">outline view</a></li>
+                <li><a href="/tabs/{{ doc }}">tabs view</a></li>
+            </ul>
+        </div>
+    </div>
+
+
+    {% for d1 in cards %}
+        <div class="card" brd-20>
+            <div class="card-header">
+                <h2>{{ d1.0 }}</h2>
+            </div>
+            <div class="card-body card-padding">
+
+                <p>{% autoescape off %} {{ d1.2 }} {% endautoescape %}</p>
+
+                {% for d2 in d1.1 %}
+                    <h2>{{ d2.0 }}</h2>
+                    <p>{% autoescape off %} {{ d2.2 }} {% endautoescape %}</p>
+
+                    {% for d3 in d2.1 %}
+                        <h3>{{ d3.0 }}</h3>
+                        <p>{% autoescape off %} {{ d3.2 }} {% endautoescape %}</p>
+
+                        {% for d4 in d3.1 %}
+                            <h4>{{ d4.0 }}</h4>
+                            <p>{% autoescape off %} {{ d4.2 }} {% endautoescape %}</p>
+
+                        {% endfor %}
+
+                    {% endfor %}
+
+                {% endfor %}
+
+            </div>
+        </div>
+
+
+
+    {% endfor %}
+
+{% endblock %}

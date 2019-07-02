@@ -1,0 +1,62 @@
+{% extends "mybook_theme.html" %}
+
+
+{% block content %}
+
+    <div class="card" brd-20>
+        <div class="card-header">
+            <h1>{{ title }}</h1>
+        </div>
+        <div class="card-body card-padding">
+            <ul>
+                <li><a href="/{{ doc }}">{{ doc }}</a></li>
+                <li><a href="/card/{{ doc }}">card view</a></li>
+                <li><a href="/container/{{ doc }}">container view</a></li>
+                <li><a href="/outline/{{ doc }}">outline view</a></li>
+                <li><a href="/tabs/{{ doc }}">tabs view</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="card">
+
+        <div class="card-header ch-alt">
+            <h1>{{ title }}</h1>
+        </div>
+
+        <div class="card-body card-padding">
+
+            <div role="tabpanel">
+
+                <ul class="tab-nav" role="tablist">
+                    {% for t in tabs %}
+                        <li class="{{ t.3 }}">
+                            <a href="#{{ t.0 }}" aria-controls="{{ t.0 }}" role="tab"
+                               data-toggle="tab">{{ t.1 }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+
+                <div class="tab-content">
+
+                    {% for t in tabs %}
+
+                        <div role="tabpanel" class="tab-pane {{ t.3 }}" id="{{ t.0 }}">
+
+                            <h2>{{ t.1 }}</h2>
+
+                            {% autoescape off %}
+                                {{ t.2 }}
+                            {% endautoescape %}
+
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

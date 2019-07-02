@@ -1,0 +1,21 @@
+{% extends "seaman_theme.html" %}
+
+
+{% block card %}
+
+    <div class="card">
+        <div class="card-header ch-alt">
+            <h1>Missing Document</h1>
+        </div>
+        <div class="card-body card-padding">
+            <p>
+                We are sorry, but we cannot find the page you requested.  If you believe that this is an error please
+                report it to admin@shrinking-world.com.
+            </p>
+            <p>Requested document: </p>
+            <h3> {{ title }}</h3>
+        </div>
+    </div>
+
+{% endblock %}
+

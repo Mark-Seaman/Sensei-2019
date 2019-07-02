@@ -1,0 +1,54 @@
+{% extends "mybook_theme.html" %}
+
+
+{% block menu %}
+{% endblock %}
+
+
+{% block header %}
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="login-form">
+
+        <h1>Log In</h1>
+
+        {% if form.errors %}
+            <p style="color: red">
+                <i class="hm-icon zmdi zmdi-alert-triangle"></i>
+                &nbsp; Your username and password didn't match.
+                Please try again.</p>
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="form-group">
+
+                <div class="fg-line">
+                    <span class="fg-label">{{ form.username.label_tag }}</span>
+                    <span class="fg-input"><input type="text" class="form-control input" name="username"></span>
+                </div>
+
+                <div class="fg-line">
+                    <span class="fg-label">{{ form.password.label_tag }}</span>
+                    <span class="fg-input"><input type="password" class="form-control input" name="password"></span>
+                    {#{{ form.password }}#}
+                </div>
+
+                <div class="fg-line">
+                    <button class="btn btn-primary fg-button">Log In</button>
+                    <button class="btn btn-primary fg-button" href="/register">Sign Up</button>
+                </div>
+
+                <input type="hidden" name="next" value="{{ next }}"/>
+
+            </div>
+
+        </form>
+    </div>
+
+{% endblock %}
+

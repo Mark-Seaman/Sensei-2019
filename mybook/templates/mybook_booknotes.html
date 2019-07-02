@@ -1,0 +1,29 @@
+{% extends "mybook_theme.html" %}
+
+
+{% block content %}
+
+    <div class="card" brd-20>
+
+        <div class="card-header ch-alt">
+            <h2>Book Note Excerpt</h2>
+        </div>
+
+        <div class="card-body card-padding">
+
+            {% if text %}
+                {% autoescape off %}
+                    <p>{{ text }}</p>
+                {% endautoescape %}
+            {% else %}
+                <h2>No document found. {{ doc }}</h2>
+            {% endif %}
+
+            <p>
+                Read more at
+                <a href="{{ url }}">{{ url }}</a>
+            </p>
+        </div>
+    </div>
+
+{% endblock %}

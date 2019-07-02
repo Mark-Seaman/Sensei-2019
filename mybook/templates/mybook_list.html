@@ -1,0 +1,23 @@
+{% extends "seaman_theme.html" %}
+
+
+{% block content %}
+
+    <div class="card">
+
+        <div class="card-header ch-alt">
+            Docs in {{ title }}
+        </div>
+
+        <div class="card-body card-padding">
+
+            {% for item in list %}
+                <p>
+                    <a href="/{{ item.0 }}">{{ item.1 }}</a>
+                </p>
+            {% endfor %}
+
+        </div>
+    </div>
+
+{% endblock %}

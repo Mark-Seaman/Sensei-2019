@@ -1,0 +1,51 @@
+{% extends "mybook_theme.html" %}
+
+
+{% block content %}
+    <section id="content">
+        <div class="container">
+
+            {#            {% block columns %}#}
+
+            <!-- Column 1 -->
+
+            <div class="col-sm-6">
+
+                {% block column1 %}
+
+                    <div class="card">
+                        <div class="card-header ch-alt">
+                            <h2>Column 1</h2>
+                        </div>
+                        <div class="card-body card-padding">
+                            <a href="/mybook">Home</a>
+                        </div>
+                    </div>
+
+                {% endblock %}
+
+            </div>
+
+
+            <!-- Column 2 -->
+
+            <div class="col-sm-6">
+                {% block column2 %}
+                    <div class="card">
+                        <div class="card-header ch-alt">
+                            <h2>Column 2</h2>
+                        </div>
+                        <div class="card-body card-padding">
+                            <a href="/mybook">Home</a>
+                        </div>
+                    </div>
+
+                {% endblock %}
+
+            </div>
+
+            {#            {% endblock %}#}
+
+        </div>
+    </section>
+{% endblock %}

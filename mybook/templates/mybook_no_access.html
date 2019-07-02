@@ -1,0 +1,22 @@
+{% extends "mybook_theme.html" %}
+
+{% block card %}
+
+    <div class="card">
+        <div class="card-header ch-alt">
+            <h2>{{ title }}</h2>
+        </div>
+        <div class="card-body card-padding">
+            <p>
+                You do not have access to this page.  <a href="/mybook/login">Login</a> with a user ID that has permissions to view this page.
+            </p>
+
+            <p>
+                <a href="signup">Sign Up</a>  for an account if you are not yet registered.
+            </p>
+        </div>
+    </div>
+
+
+{% endblock %}
+

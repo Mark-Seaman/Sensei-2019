@@ -1,0 +1,34 @@
+{% extends "mybook_theme.html" %}
+
+
+{% block content %}
+
+    <div class="card" brd-20>
+
+{#        <div class="card-header ch-alt">#}
+{#            <h1>Page: {{ title }}</h1>#}
+{#        </div>#}
+
+        <div class="card-body card-padding">
+
+            {% if photo %}
+                <p><img src="/static/images/{{ photo }}"></p>
+                <p>by Mark Seaman </p>
+            {% endif %}
+
+            {% if text %}
+                {% autoescape off %}
+                    <p>{{ text }}</p>
+                {% endautoescape %}
+            {% else %}
+                <h2>No document found. {{ doc }}</h2>
+            {% endif %}
+
+            {% if readmore %}
+                <p>Read more <a href="{{ readmore.1 }}">{{ readmore.0 }}</a></p>
+            {% endif %}
+
+        </div>
+    </div>
+
+{% endblock %}

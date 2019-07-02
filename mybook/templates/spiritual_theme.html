@@ -1,0 +1,63 @@
+{% extends "seaman_theme.html" %}
+
+{% block css %}
+
+    <link rel="stylesheet" href="/static/css/guide.css?time={{ time }}">
+    <link rel="stylesheet" href="/static/css/spiritual.css?time={{ time }}">
+
+{% endblock %}
+
+
+
+{% block header %}
+
+    <header>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1>{{ header.title }}</h1>
+                    <h2>{{ header.subtitle }}</h2>
+                </div>
+            </div>
+        </div>
+    </header>
+
+{% endblock %}
+
+
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+
+                <div class="card">
+                    <div class="card-header">
+                        {{ text.doc }}
+                    </div>
+                    <div class="card-body">
+                        {% if text.text %}
+                            {% autoescape off %}
+                                <p>{{ text.text }}</p>
+                            {% endautoescape %}
+                        {% else %}
+                            <h2>No document found. {{ doc }}</h2>
+                        {% endif %}
+
+                        {% if url %}
+                            <hr>
+                            <p>
+                                * <a href="{{ text.url }}">Read More</a> *
+                                <a href="Random">Next Selection</a> *
+                            </p>
+
+                        {% endif %}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
