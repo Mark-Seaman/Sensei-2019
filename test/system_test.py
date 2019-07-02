@@ -7,5 +7,5 @@ def system_files_test():
 
 
 def system_python_files_test():
-    files = [f for f in recursive_list('.') if f.endswith('.py')]
+    files = [f for f in recursive_list('.') if f.endswith('.py') and not f.startswith('sensei/env/')]
     return '\n'.join(files)
