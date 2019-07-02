@@ -115,12 +115,8 @@ def vc_diff(args):
 
 def vc_dirs():
     home   = environ['p']
-    angular = join(environ['HOME'], 'Angular')
     doc    = join(environ['p'], 'Documents')
-    rest   = join(environ['HOME'], 'Rest')
-    unc    = join(environ['HOME'], 'UNC')
-    dirs   = [home, doc, unc]
-    dirs   = [d for d in dirs if exists(d)]
+    dirs   = [d for d in [home, doc] if exists(d)]
     return dirs
 
 
