@@ -6,7 +6,7 @@ alias app='dj app'
 alias b='brackets'
 alias br='cd ~/Brain/hammer; pipenv shell'
 
-alias co='~/commit'
+alias co='vc commit'
 alias console='ssh sensei@seamanfamily.org'
 
 alias doc='dj doc'
