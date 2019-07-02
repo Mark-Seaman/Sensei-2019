@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9fc7f399-371e-4844-9f31-99aaab6f2503" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/S2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/S2.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Documents/info/Test/Index" beforeDir="false" afterPath="$PROJECT_DIR$/Documents/info/Test/Index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hammer/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/hammer/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hammer/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/hammer/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybook/mybook.py" beforeDir="false" afterPath="$PROJECT_DIR$/mybook/mybook.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybook/seaman.py" beforeDir="false" afterPath="$PROJECT_DIR$/mybook/seaman.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybook/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mybook/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,7 +25,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/hammer/urls.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="550">
@@ -44,7 +37,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hammer/settings.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="594">
@@ -95,8 +88,8 @@
         <option value="$PROJECT_DIR$/mybook/views.py" />
         <option value="$PROJECT_DIR$/brain/urls.py" />
         <option value="$PROJECT_DIR$/Documents/info/Test/Index" />
-        <option value="$PROJECT_DIR$/hammer/urls.py" />
         <option value="$PROJECT_DIR$/hammer/settings.py" />
+        <option value="$PROJECT_DIR$/hammer/urls.py" />
       </list>
     </option>
   </component>
@@ -123,6 +116,17 @@
               <item name="S2" type="b2602c69:ProjectViewProjectNode" />
               <item name="S2" type="462c0819:PsiDirectoryNode" />
               <item name="hammer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="S2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="S2" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="S2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="S2" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -198,23 +202,23 @@
       <updated>1562027166264</updated>
       <workItem from="1562027168151" duration="8780000" />
       <workItem from="1562093392556" duration="4239000" />
-      <workItem from="1562103752994" duration="1677000" />
+      <workItem from="1562103752994" duration="1873000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14696000" />
+    <option name="totallyTimeSpent" value="14892000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="2560" height="1440" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24622716" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24622716" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.329927" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.329927" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.329927" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -463,22 +467,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hammer/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
-          <folding>
-            <element signature="e#641#682#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/hammer/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="594">
           <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
           <folding>
             <element signature="e#58#94#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hammer/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="550">
+          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+          <folding>
+            <element signature="e#641#682#0" expanded="true" />
           </folding>
         </state>
       </provider>

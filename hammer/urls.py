@@ -22,7 +22,7 @@ import mybook.urls
 # URL Route
 urlpatterns = [
     # url(r'^admin/', admin.site.urls),
-    # url(r'^', include('brain.urls')),
+    url(r'^', include('brain.urls')),
 
     # Brain
     url(r'^brain/', include('brain.urls')),
