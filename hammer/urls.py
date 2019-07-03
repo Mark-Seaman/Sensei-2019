@@ -15,19 +15,19 @@ Including another URLconf
 """
 
 from django.conf.urls import url, include
-
-# import mybook.urls
+from django.contrib.admin import site
 
 
 # URL Route
 urlpatterns = [
-    # url(r'^admin/', admin.site.urls),
+
+    # Admin
+    url(r'^admin/', site.urls),
 
     # Brain
-    url(r'^', include('brain.urls')),
-    # url(r'^brain/', include('brain.urls')),
+    url(r'^brain/', include('brain.urls')),
 
     # MyBook
-    # url(r'^',           include(mybook.urls)),
+    url(r'^', include('mybook.urls')),
 ]
 
