@@ -9,6 +9,10 @@ def django_settings_test():
     return shell('cat hammer/settings.py')
 
 
+def django_webserver_test():
+    return shell('cat hammer/wsgi.py /etc/systemd/system/gunicorn.service /etc/nginx/sites-available/sensei')
+
+
 def django_python_version_test():
     return shell('python --version')
 
