@@ -41,6 +41,8 @@ def ocean_command(self, options):
             deploy(args)
         elif cmd == 'restart':
             restart()
+        elif cmd == 'root':
+            root()
         elif cmd == 'serve':
             runserver()
         elif cmd == 'status':
@@ -99,8 +101,13 @@ def deploy(args):
 
 
 def restart():
-    # console(['sudo systemctl restart gunicorn'])
-    print('console -- sudo systemctl restart gunicorn')
+    print('Sensei Server Restart:  systemctl restart gunicorn')
+    # system('ssh root@%s %s' % (host, 'systemctl restart gunicorn'))
+    system('ssh root@%s %s' % (host, 'systemctl daemon-reload'))
+
+
+def root():
+    system('ssh root@%s' % host)
 
 
 def runserver():
