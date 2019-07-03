@@ -4,7 +4,7 @@
 if [ `hostname` == 'sensei-server' ]
 then
     figlet 'Production Sensei Server'
-    . sensei/env/bin/activate
+    . env/bin/activate
     export p=$HOME
     
     which python
