@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9fc7f399-371e-4844-9f31-99aaab6f2503" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/test/brain_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hammer/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/hammer/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hammer/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/hammer/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pipfile" beforeDir="false" afterPath="$PROJECT_DIR$/Pipfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hammer/Pipfile" beforeDir="false" afterPath="$PROJECT_DIR$/hammer/Pipfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hammer/Pipfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/hammer/Pipfile.lock" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -93,11 +92,6 @@
               <item name="S2" type="b2602c69:ProjectViewProjectNode" />
               <item name="S2" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="S2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="S2" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -173,18 +167,17 @@
       <workItem from="1562027168151" duration="8780000" />
       <workItem from="1562093392556" duration="4239000" />
       <workItem from="1562103752994" duration="5031000" />
-      <workItem from="1562185545194" duration="3852000" />
+      <workItem from="1562185545194" duration="4208000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21902000" />
+    <option name="totallyTimeSpent" value="22258000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="2560" height="1440" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24027005" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24027005" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -198,7 +191,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.47737226" />
+      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.47737226" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
