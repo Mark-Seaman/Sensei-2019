@@ -102,8 +102,8 @@ def deploy(args):
 
 def restart():
     print('Sensei Server Restart:  systemctl restart gunicorn')
-    # system('ssh root@%s %s' % (host, 'systemctl restart gunicorn'))
-    system('ssh root@%s %s' % (host, 'systemctl daemon-reload'))
+    system('ssh root@%s %s' % (host, 'systemctl restart gunicorn'))
+    # system('ssh root@%s %s' % (host, 'systemctl daemon-reload'))
 
 
 def root():

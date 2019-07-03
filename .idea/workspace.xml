@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9fc7f399-371e-4844-9f31-99aaab6f2503" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Pipfile" beforeDir="false" afterPath="$PROJECT_DIR$/Pipfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hammer/Pipfile" beforeDir="false" afterPath="$PROJECT_DIR$/hammer/Pipfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hammer/Pipfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/hammer/Pipfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hammer/config/gunicorn.conf" beforeDir="false" afterPath="$PROJECT_DIR$/hammer/config/gunicorn.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tool/management/commands/ocean.py" beforeDir="false" afterPath="$PROJECT_DIR$/tool/management/commands/ocean.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,11 +16,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/brain_test.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="814">
               <caret line="37" column="23" selection-start-line="37" selection-start-column="23" selection-end-line="37" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bin/bashrc">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hammer/config/gunicorn.conf">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="352">
+              <caret line="16" column="16" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tool/management/commands/ocean.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="394">
+              <caret line="106" lean-forward="true" selection-start-line="106" selection-end-line="106" />
+              <folding>
+                <element signature="e#0#51#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -64,12 +89,12 @@
         <option value="$PROJECT_DIR$/brain/urls.py" />
         <option value="$PROJECT_DIR$/Documents/info/Test/Index" />
         <option value="$PROJECT_DIR$/brain/views.py" />
-        <option value="$PROJECT_DIR$/tool/management/commands/ocean.py" />
-        <option value="$PROJECT_DIR$/hammer/config/gunicorn.conf" />
         <option value="$PROJECT_DIR$/hammer/settings.py" />
         <option value="$PROJECT_DIR$/hammer/urls.py" />
         <option value="$PROJECT_DIR$/tool/shell.py" />
         <option value="$PROJECT_DIR$/test/brain_test.py" />
+        <option value="$PROJECT_DIR$/hammer/config/gunicorn.conf" />
+        <option value="$PROJECT_DIR$/tool/management/commands/ocean.py" />
       </list>
     </option>
   </component>
@@ -91,6 +116,40 @@
             <path>
               <item name="S2" type="b2602c69:ProjectViewProjectNode" />
               <item name="S2" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="S2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="S2" type="462c0819:PsiDirectoryNode" />
+              <item name="bin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="S2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="S2" type="462c0819:PsiDirectoryNode" />
+              <item name="hammer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="S2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="S2" type="462c0819:PsiDirectoryNode" />
+              <item name="hammer" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="S2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="S2" type="462c0819:PsiDirectoryNode" />
+              <item name="tool" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="S2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="S2" type="462c0819:PsiDirectoryNode" />
+              <item name="tool" type="462c0819:PsiDirectoryNode" />
+              <item name="management" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="S2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="S2" type="462c0819:PsiDirectoryNode" />
+              <item name="tool" type="462c0819:PsiDirectoryNode" />
+              <item name="management" type="462c0819:PsiDirectoryNode" />
+              <item name="commands" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -167,15 +226,16 @@
       <workItem from="1562027168151" duration="8780000" />
       <workItem from="1562093392556" duration="4239000" />
       <workItem from="1562103752994" duration="5031000" />
-      <workItem from="1562185545194" duration="4208000" />
+      <workItem from="1562185545194" duration="4600000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22258000" />
+    <option name="totallyTimeSpent" value="22650000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="2560" height="1440" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24027005" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -355,25 +415,8 @@
     <entry file="file://$PROJECT_DIR$/hammer/config/nginx.conf">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/hammer/config/gunicorn.conf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/hammer/wsgi.py">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tool/management/commands/ocean.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-486">
-          <caret line="44" column="18" selection-start-line="44" selection-start-column="18" selection-end-line="44" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/brain/views.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -485,6 +528,26 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="814">
           <caret line="37" column="23" selection-start-line="37" selection-start-column="23" selection-end-line="37" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/bashrc">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hammer/config/gunicorn.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="16" column="16" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tool/management/commands/ocean.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="394">
+          <caret line="106" lean-forward="true" selection-start-line="106" selection-end-line="106" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
