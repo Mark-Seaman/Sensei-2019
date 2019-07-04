@@ -7,7 +7,7 @@ if 'seaman-' in node() or 'sws-' in node() or 'iMac' in node():
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3', 
-            'NAME': 'db.sqlite3',  # Database file
+            'NAME': 'hammer/sensei.db',  # Database file
             'USER': '',            # Not used with sqlite3.
             'PASSWORD': '',        # Not used with sqlite3.
             'HOST': '',            # Set to empty string for localhost. 

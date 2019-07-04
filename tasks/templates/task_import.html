@@ -1,0 +1,18 @@
+{% extends "task_theme.html" %}
+
+
+{% block page %}
+
+    <a class="btn btn-primary" href="export">Export Tasks</a>
+    <a class="btn btn-primary" href="summary">Summary</a>
+    <br>
+    <br>
+
+    <h2>Files Imported</h2>
+
+    {% for day in days %}
+        <h2>{{ day.0 }}</h2>
+        <pre>{{ day.1 }}</pre>
+    {% endfor %}
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "task_theme.html" %}
+
+
+{% block page %}
+
+    <h1 class="task_page_title">Edit Task</h1>
+
+    <div class="task_page">
+
+        <form action="" method="post">{% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Save Task"/>
+        </form>
+
+    </div>
+{% endblock %}

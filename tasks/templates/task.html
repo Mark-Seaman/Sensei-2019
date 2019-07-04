@@ -1,0 +1,30 @@
+{% extends "seaman_theme.html" %}
+
+
+{% block page %}
+
+
+    <p>
+        Task Master records and summarizes the time invested in different tasks. It is an accounting application for
+        time.
+    </p>
+
+    <ul>
+        <li>
+            <a class="btn btn-primary" href="/task/">Task List</a>
+        </li>
+        <li>
+            <a class="btn btn-primary" href="/task/month">Monthly Summary</a>
+        </li>
+        <li>
+            <a class="btn btn-primary" href="/task/week">Weekly Summary</a>
+        </li>
+        <li>
+            <a class="btn btn-primary" href="/task/add">Add task</a>
+        </li>
+    <li>
+            <a class="btn btn-primary" href="/task/import">Import task file</a>
+        </li>
+    </ul>
+
+{% endblock %}

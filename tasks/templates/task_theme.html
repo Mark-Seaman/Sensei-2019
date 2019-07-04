@@ -1,0 +1,29 @@
+{% extends "seaman_theme.html" %}
+
+
+{% block css %}
+
+    <link rel="stylesheet" href="/static/css/guide.css?time={{ time }}">
+    <link rel="stylesheet" href="/static/css/aspire.css?time={{ time }}">
+
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="page">
+
+        {% if text %}
+            {% autoescape off %}
+                <p>{{ text }}</p>
+            {% endautoescape %}
+        {% else %}
+            <h2>No document found. {{ doc }}</h2>
+        {% endif %}
+
+        {% block page %}
+        {% endblock %}
+
+    </div>
+
+{% endblock %}

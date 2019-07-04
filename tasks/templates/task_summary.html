@@ -1,0 +1,95 @@
+{% extends "task_theme.html" %}
+
+{% block page %}
+
+
+    <a class="btn btn-primary" href="time">Time</a>
+    <a class="btn btn-primary" href="import">Import</a>
+    <a class="btn btn-primary" href="export">Export</a>
+    {% if bad_days %}
+        <a class="btn-primary" href="bad">Missing</a>
+    {% endif %}
+    <br>
+    <br>
+
+
+    <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <a class="nav-item nav-link active" id="tab-1" href="#nav-1" aria-controls="nav-1" aria-selected="true"
+               role="tab" data-toggle="tab">
+                Hours
+            </a>
+            <a class="nav-item nav-link" id="tab-2" href="#nav-2" aria-controls="nav-2" aria-selected="false"
+               role="tab" data-toggle="tab">
+                Percentages
+            </a>
+            <a class="nav-item nav-link" id="tab-3" href="#nav-3" aria-controls="nav-3" aria-selected="false"
+               role="tab" data-toggle="tab">
+                Ideal
+            </a>
+        </div>
+    </nav>
+
+    <div class="tab-content" id="nav-tabContent">
+
+        <div class="tab-pane fade show active" id="nav-1" aria-labelledby="tab-1" role="tabpanel">
+            <h3>Hours</h3>
+            <table class="table table-hover">
+                <tr>
+                    {% for t in time_data.times %}
+                        <th>{{ t }}</th>
+                    {% endfor %}
+                </tr>
+                {% for row in time_data.hours %}
+                    <tr>
+                        {% for hours in row %}
+                            <td>{{ hours }} hours</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
+
+        </div>
+        <div class="tab-pane fade" id="nav-2" aria-labelledby="tab-2" role="tabpanel">
+
+            <h3>Percentages</h3>
+            <table class="table table-hover">
+                <tr>
+                    {% for t in time_data.times %}
+                        <th>{{ t }}</th>
+                    {% endfor %}
+                </tr>
+                {% for row in time_data.task_totals %}
+                    <tr>
+                        {% for hours in row %}
+                            <td>{{ hours }} %</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
+
+        </div>
+        <div class="tab-pane fade" id="nav-3" aria-labelledby="tab-3" role="tabpanel">
+
+            <h3>Compared to Ideal</h3>
+            <table class="table table-hover">
+
+                <tr>
+                    {% for t in time_data.times %}
+                        <th>{{ t }}</th>
+                    {% endfor %}
+                </tr>
+                {% for row in time_data.review %}
+                    <tr>
+                        {% for hours in row %}
+                            <td>{{ hours }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
+
+        </div>
+    </div>
+
+{% endblock %}
+

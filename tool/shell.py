@@ -5,6 +5,8 @@ from re import split
 from subprocess import Popen, PIPE
 from sys import version_info
 
+from tool.text import text_replace
+
 
 def banner(name):
     '''Show a banner for this file in the output'''
@@ -61,7 +63,10 @@ def check_shell_lines(cmd, min=0, max=10):
 
 
 def curl_get(url):
-    return shell('curl -s %s' % url)
+    html = shell('curl -s %s' % url)
+    match = '\.css\?.*\n'
+    replacement = '.css">\n'
+    return text_replace(html, match, replacement)
 
 
 def differences(answer, correct):

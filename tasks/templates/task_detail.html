@@ -1,0 +1,19 @@
+{% extends "task_theme.html" %}
+
+
+{% block page %}
+
+    <a class="btn btn-primary" href="/task/">Task List</a>
+    <hr>
+    <div class="task_page">
+
+        <ul>
+            <li class="task_attribute">ID: {{ task.id }}</li>
+            <li class="task_attribute">Name: {{ task.name }}</li>
+            <li class="task_attribute">{{ task.date }}</li>
+            <li class="task_attribute"><a href="/task/{{ task.id }}/edit">Edit</a></li>
+            <li class="task_attribute"><a href="/task/{{ task.id }}/delete">Delete</a></li>
+        </ul>
+
+    </div>
+{% endblock %}

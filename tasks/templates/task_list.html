@@ -1,0 +1,66 @@
+{% extends "task_theme.html" %}
+
+
+{% block page %}
+    <a class="btn btn-primary" href="import">Import</a>
+    <a class="btn btn-primary" href="summary">Summary</a>
+    {% if bad_days %}
+        <a class="btn btn-primary" href="bad">Missing</a>
+    {% endif %}
+    <br>
+    <br>
+    <h2>{{ title }}</h2>
+
+    <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            {% for tab in tabs %}
+                <a class="nav-item nav-link {{ tab.2 }}" id="tab-{{ tab.0 }}" href="#nav-{{ tab.0 }}"
+                   aria-controls="nav-{{ tab.0 }}"
+                   aria-selected="true"
+                   role="tab" data-toggle="tab">
+                    {{ tab.0 }}
+                </a>
+            {% endfor %}
+        </div>
+    </nav>
+
+    <div class="tab-content" id="nav-tabContent">
+        {% for tab in tabs %}
+
+            <div class="tab-pane fade show {{ tab.2 }}" id="nav-{{ tab.0 }}" aria-labelledby="tab-{{ tab.0 }}"
+                 role="tabpanel">
+
+                <h3>{{ tab.0 }}</h3>
+
+                <table class="table table-hover p-20">
+
+                    <tr>
+                        {% for label in labels %}
+                            <th>{{ label }}</th>
+                        {% endfor %}
+                    </tr>
+
+                    {% for task in tab.1 %}
+
+                        <tr>
+                            <td>{{ task.2 }}</td>
+                            <td>{{ task.3 }}</td>
+                            <td>
+                                <ul>
+                                    {% for note in task.4 %}
+                                        <li>{{ note }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </td>
+
+                        </tr>
+
+                    {% endfor %}
+                </table>
+
+            </div>
+        {% endfor %}
+
+    </div>
+
+{% endblock %}

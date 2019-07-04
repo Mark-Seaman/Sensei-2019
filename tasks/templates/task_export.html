@@ -1,0 +1,25 @@
+{% extends "task_theme.html" %}
+
+
+{% block page %}
+
+    <a class="btn btn-primary" href="import">Import Tasks</a>
+    <a class="btn btn-primary" href="summary">Summary</a>
+    <br>
+    <br>
+
+    <h2>Exported Files</h2>
+    <p>Directory: Documents/info/days</p>
+    <ul>
+        {% for day in days %}
+
+            <li>{{ day.0 }}</li>
+            {#        <pre class="task-notes">{{ day.1 }}</pre>#}
+        {% endfor %}
+    </ul>
+
+    <h2>Monthly Export</h2>
+    <p>Documents/info/months</p>
+    <pre>{{ report }}</pre>
+
+{% endblock %}

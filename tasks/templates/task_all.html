@@ -1,0 +1,49 @@
+{% extends "task_theme.html" %}
+
+
+{% block page %}
+
+    <a class="btn btn-primary" href="/task">Task Master</a>
+    <a class="btn btn-primary" href="/task">Task Master</a> *
+    <a class="btn btn-primary" href="/task/week">Weekly Summary</a> *
+    <a class="btn btn-primary" href="/task/">All Tasks</a> *
+    <a class="btn btn-primary" href="/task/import">Import Tasks</a>
+
+    <br>
+    <br>
+
+    <p>
+        <b>Show All</b>
+    </p>
+
+
+    <table class="table">
+
+        <tr>
+            <th>Task Type</th>
+            <th>Hours Invested</th>
+        </tr>
+
+        {% for x in hours %}
+            <tr>
+                <td>
+                    {{ x.name }}
+                </td>
+                <td>
+                    {% autoescape off %}
+                        {{ x.hours }} hours
+                    {% endautoescape %}
+                </td>
+
+            </tr>
+        {% empty %}
+            <tr>
+                <td>
+                    <b>No Task Types this month</b>
+                </td>
+            </tr>
+        {% endfor %}
+
+    </table>
+
+{% endblock %}
