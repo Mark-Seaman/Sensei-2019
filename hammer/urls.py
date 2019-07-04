@@ -27,6 +27,9 @@ urlpatterns = [
     # Brain
     url(r'^brain/', include('brain.urls')),
 
+    # Task
+    url(r'^task/', include('tasks.urls')),
+
     # MyBook
     url(r'^', include('mybook.urls')),
 ]

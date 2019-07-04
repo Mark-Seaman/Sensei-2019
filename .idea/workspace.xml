@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9fc7f399-371e-4844-9f31-99aaab6f2503" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/hammer/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/hammer/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hammer/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/hammer/urls.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,14 +27,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hammer/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="761">
+            <state relative-caret-position="1850">
               <caret line="105" column="13" selection-start-line="105" selection-start-column="13" selection-end-line="105" selection-end-column="13" />
               <folding>
                 <element signature="e#58#94#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hammer/secret_settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="727">
+              <caret line="36" column="74" lean-forward="true" selection-start-line="36" selection-start-column="2" selection-end-line="36" selection-end-column="74" />
             </state>
           </provider>
         </entry>
@@ -69,7 +78,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tasks/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
+            <state relative-caret-position="-1579">
               <folding>
                 <element signature="e#0#57#0" expanded="true" />
               </folding>
@@ -78,12 +87,23 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/system_test.py">
+        <entry file="file://$PROJECT_DIR$/tasks/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="6" selection-end-line="6" />
+            <state>
               <folding>
-                <element signature="e#0#28#0" expanded="true" />
+                <element signature="e#0#32#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/hammer/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="660">
+              <caret line="30" column="41" selection-start-line="30" selection-start-column="41" selection-end-line="30" selection-end-column="41" />
+              <folding>
+                <element signature="e#641#682#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -94,15 +114,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="640">
               <caret line="188" column="60" selection-start-line="188" selection-start-column="60" selection-end-line="188" selection-end-column="60" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/text_test.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="12" selection-start-line="8" selection-start-column="4" selection-end-line="12" />
             </state>
           </provider>
         </entry>
@@ -144,7 +155,6 @@
         <option value="$PROJECT_DIR$/brain/urls.py" />
         <option value="$PROJECT_DIR$/Documents/info/Test/Index" />
         <option value="$PROJECT_DIR$/brain/views.py" />
-        <option value="$PROJECT_DIR$/hammer/urls.py" />
         <option value="$PROJECT_DIR$/test/brain_test.py" />
         <option value="$PROJECT_DIR$/hammer/config/gunicorn.conf" />
         <option value="$PROJECT_DIR$/tool/management/commands/ocean.py" />
@@ -154,6 +164,7 @@
         <option value="$PROJECT_DIR$/test/text_test.py" />
         <option value="$PROJECT_DIR$/tool/shell.py" />
         <option value="$PROJECT_DIR$/hammer/settings.py" />
+        <option value="$PROJECT_DIR$/hammer/urls.py" />
       </list>
     </option>
   </component>
@@ -181,6 +192,16 @@
               <item name="S2" type="b2602c69:ProjectViewProjectNode" />
               <item name="S2" type="462c0819:PsiDirectoryNode" />
               <item name="hammer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="S2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="S2" type="462c0819:PsiDirectoryNode" />
+              <item name="mybook" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="S2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="S2" type="462c0819:PsiDirectoryNode" />
+              <item name="tasks" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -217,7 +238,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Run Tests">
+  <component name="RunManager" selected="Django server.Tasks">
     <configuration name="Find Tests" type="PythonConfigurationType" factoryName="Python">
       <module name="S2" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -313,6 +334,7 @@
     </configuration>
     <list>
       <item itemvalue="Django server.S2" />
+      <item itemvalue="Django server.Tasks" />
       <item itemvalue="Python.Run Tests" />
       <item itemvalue="Python.Find Tests" />
       <item itemvalue="Python.Like Tests" />
@@ -333,12 +355,12 @@
       <workItem from="1562103752994" duration="5031000" />
       <workItem from="1562185545194" duration="5270000" />
       <workItem from="1562250630421" duration="125000" />
-      <workItem from="1562250946957" duration="4445000" />
+      <workItem from="1562250946957" duration="4749000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27890000" />
+    <option name="totallyTimeSpent" value="28194000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="2560" height="1440" extended-state="0" />
@@ -547,16 +569,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hammer/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
-          <folding>
-            <element signature="e#641#682#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/brain/brain.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="761">
@@ -664,28 +676,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hammer/secret_settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="9" column="37" selection-start-line="9" selection-start-column="37" selection-end-line="9" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tool/shell.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="607">
           <caret line="71" column="33" selection-start-line="71" selection-start-column="33" selection-end-line="71" selection-end-column="33" />
           <folding>
             <element signature="e#0#52#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tasks/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#57#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -713,10 +709,45 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/hammer/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="761">
+        <state relative-caret-position="1850">
           <caret line="105" column="13" selection-start-line="105" selection-start-column="13" selection-end-line="105" selection-end-column="13" />
           <folding>
             <element signature="e#58#94#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hammer/secret_settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="727">
+          <caret line="36" column="74" lean-forward="true" selection-start-line="36" selection-start-column="2" selection-end-line="36" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tasks/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1579">
+          <folding>
+            <element signature="e#0#57#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tasks/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hammer/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="30" column="41" selection-start-line="30" selection-start-column="41" selection-end-line="30" selection-end-column="41" />
+          <folding>
+            <element signature="e#641#682#0" expanded="true" />
           </folding>
         </state>
       </provider>
