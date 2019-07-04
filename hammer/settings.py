@@ -102,3 +102,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (BASE_DIR + '/static',)
 # STATIC_ROOT = join(BASE_DIR, 'static/')
 
+
+# Login Pages
+
+LOGIN_URL='/admin/login/'
+LOGIN_REDIRECT_URL = '/'
