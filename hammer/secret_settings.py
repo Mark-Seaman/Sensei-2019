@@ -31,3 +31,8 @@ else:
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '$itxljw#m_u#=)av=e4s-yrl^yc%z39m$whh%hej54z_n8^@q4'
 
+'''
+Create a super user
+
+$ dj createsuperuser --username MarkSeaman --email mark.b.seaman@gmail.com
+'''
