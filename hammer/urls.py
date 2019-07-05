@@ -17,12 +17,17 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib.admin import site
 
+from mybook.views import SeamanFamily
+
 
 # URL Route
 urlpatterns = [
 
     # Admin
     url(r'^admin/', site.urls),
+
+    # SeamanFamily
+    # url(r'^', SeamanFamily.as_view()),
 
     # Brain
     url(r'^brain/', include('brain.urls')),

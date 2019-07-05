@@ -11,6 +11,13 @@ from mybook.mybook import shrinking_world_menu
 from mybook.mybook import document_text, page_settings
 
 
+class SeamanFamily(RedirectView):
+    permanent = False
+
+    def get_redirect_url(self, *args, **kwargs):
+        return 'https://seamanfamily.org/%s' % self.kwargs.get('title')
+
+
 class DocDisplay(TemplateView):
     template_name = 'seaman_theme.html'
     site_title = "Shrinking World", 'Software Development Training'
