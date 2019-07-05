@@ -84,7 +84,9 @@ def ocean_help():
 
 def commit(args):
     comment = ' '.join(args)
-    system('cd $p; git add .; git commit -m "%s"; git pull; git push' % comment)
+    git_command = 'git add .; git commit -m "%s"; git pull; git push' % comment
+    system('cd $p;' + git_command)
+    system('cd $p/Documents;' + git_command)
 
 
 def console(args):
@@ -103,7 +105,6 @@ def deploy(args):
 def restart():
     print('Sensei Server Restart:  systemctl restart gunicorn')
     system('ssh root@%s %s' % (host, 'systemctl restart gunicorn'))
-    # system('ssh root@%s %s' % (host, 'systemctl daemon-reload'))
 
 
 def root():

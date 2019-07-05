@@ -73,7 +73,7 @@ function deploy {
 }
 
 function ce {
-    cd $p && e */$1.py
+    cd $p && e `find . | grep $1.py`
 }
 
 function commit {
