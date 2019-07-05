@@ -1,0 +1,10 @@
+# Request a certificate for all domains
+
+    sudo certbot --nginx \
+        -d seamanfamily.org \
+        -d shrinking-world.com \
+        -d markseaman.info \
+        -d markseaman.org \
+        -d seamansguide.com \
+        -d seamanslog.com \
+        -d spiritual-things.org
