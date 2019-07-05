@@ -1,14 +1,16 @@
 from django.core.management.base import BaseCommand
-from os import environ, system
-from os.path import  abspath, exists, join
+from os import system
+from os.path import  abspath, exists
 from platform import node
-from sys import argv
+from traceback import format_exc
+
+from tool.log import log_exception
 
 
 class Command(BaseCommand):
 
     def add_arguments(self, parser):
-        parser.add_argument('pages', nargs='+', type=str)
+        parser.add_argument('pages', nargs='*', type=str)
 
     def handle(self, *args, **options):
         try:
@@ -16,7 +18,7 @@ class Command(BaseCommand):
         except:
             log_exception()
             self.stdout.write('** tst Exception (%s) **' % ' '.join(options['script']))
-            self.stdout.write(traceback.format_exc())
+            self.stdout.write(format_exc())
 
 
 def web_command(args):

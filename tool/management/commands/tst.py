@@ -2,10 +2,10 @@ from django.core.management.base import BaseCommand
 from inspect import getmembers, isfunction
 from os import listdir, system
 
-import traceback
+from traceback import format_exc
 
 from hammer.settings import TEST_DIR
-from tool.log import log, log_exception
+from tool.log import log_exception
 from tool.models import Test
 from tool.shell import differences, banner
 from tool.tst import tst_command
@@ -23,7 +23,7 @@ class Command(BaseCommand):
         except:
             log_exception()
             self.stdout.write('** tst Exception (%s) **' % ' '.join(options['command']))
-            self.stdout.write(traceback.format_exc())
+            self.stdout.write(format_exc())
 
 
 def tst_command(self, args):
@@ -31,22 +31,22 @@ def tst_command(self, args):
         # log('tst %s' % args)
         cmd = args[0]
         args = args[1:]
-        if cmd=='edit':
+        if cmd == 'edit':
             tst_edit(self,args)
-        elif cmd=='find':
+        elif cmd == 'find':
             print(tst_find())
-        elif cmd=='list':
+        elif cmd == 'list':
             print(tst_list())
-        elif cmd=='output':
+        elif cmd == 'output':
             tst_output(self,args)
-        elif cmd=='run':
+        elif cmd == 'run':
             tst_run()
             self.stdout.write(tst_results())
-        elif cmd=='like':
+        elif cmd == 'like':
             tst_like(self,args)
-        elif cmd=='reset':
+        elif cmd == 'reset':
              Test.objects.all().delete()
-        elif cmd=='results':
+        elif cmd == 'results':
             self.stdout.write(tst_results())
         else:
             tst_help(self)

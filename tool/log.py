@@ -1,8 +1,8 @@
-import traceback
 from datetime import datetime
 from logging import getLogger
 from os.path import join
 from json import dumps
+from traceback import format_exc
 
 from .files import read_text
 from hammer.settings import LOG_DIR
@@ -11,12 +11,12 @@ from hammer.settings import LOG_DIR
 def log(text, value=None):
     logger = getLogger(__name__)
     if value:
-        text = "%s: %s" % (text,value)
+        text = "%s: %s" % (text, value)
     logger.warning(str(datetime.now())+',  '+text)
 
 
 def log_exception():
-    log('EXCEPTION', traceback.format_exc())
+    log('EXCEPTION', format_exc())
 
 
 def log_json(text, data):

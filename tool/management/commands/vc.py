@@ -1,10 +1,9 @@
 from django.core.management.base import BaseCommand
 from os import chdir, environ, system
 from os.path import exists, join
-# from sys import argv
-import traceback
+from traceback import format_exc
 
-from tool.log import log, log_exception
+from tool.log import log_exception
 from tool.shell import shell_script
 
 
@@ -18,13 +17,14 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         try:
-            vc_command(self, options['script'])
+            vc_command(options['script'])
         except:
             log_exception()
             self.stdout.write('** tst Exception (%s) **' % ' '.join(options['script']))
-            self.stdout.write(traceback.format_exc())
+            self.stdout.write(format_exc())
 
-def vc_command(self, options):
+
+def vc_command(options):
     if options:
         cmd = options[0]
         args = options[1:]
@@ -42,12 +42,12 @@ def vc_command(self, options):
         elif cmd == 'status':
             vc_status()
         else:
-            vc_help(args)
+            vc_help()
     else:
-        vc_help(options)
+        vc_help()
 
 
-def vc_help(args=None):
+def vc_help():
     print('''
         vc Command
 
