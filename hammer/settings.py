@@ -17,7 +17,15 @@ TEST_DIR = join(BASE_DIR, 'test')
 DEBUG = True
 
 # How hosts access the server
-ALLOWED_HOSTS = ['seamanfamily.org', 'localhost', '127.0.0.1',]
+ALLOWED_HOSTS = ['seamanfamily.org',
+                 'shrinking-world.com',
+                 'markseaman.info',
+                 'markseaman.org',
+                 'seamansguide.com',
+                 'seamanslog.com',
+                 'spiritual-things.org',
+                 'localhost',
+                 '127.0.0.1',]
 
 
 # Application definition
