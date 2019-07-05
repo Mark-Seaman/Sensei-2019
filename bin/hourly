@@ -1,0 +1,34 @@
+#!/bin/bash
+# Run the hourly task as seaman
+
+if [ `hostname` == 'sensei-server' ]
+then
+    export p=$HOME
+else
+    export p=$HOME/Sensei
+fi
+
+
+# Path variable
+export PATH=$p:$p/bin:/bin:/sbin:/usr/local/sbin:/usr/local/bin:/opt/local/bin:/usr/bin:/usr/local/mysql/bin
+
+
+echo '--------------------------------' >> $p/hammer/log/cron-hourly.log
+echo `date` `id` " - $0 Started"        >> $p/hammer/log/cron-hourly.log
+
+
+if [ `hostname` == 'sensei-server' ]
+then
+    # Use the system python
+    cd $p
+    python manage.py tst 2>&1 > $p/hammer/log/cron-errors.log
+else
+    # Use the pipenv python
+    cd $p
+    manage.py tst 2>&1 > $p/hammer/log/cron-errors.log
+fi
+
+
+echo `date` `id` " - $0 Done"           >> $p/hammer/log/cron-hourly.log
+echo '--------------------------------' >> $p/hammer/log/cron-hourly.log
+

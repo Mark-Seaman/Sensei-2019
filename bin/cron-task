@@ -1,0 +1,3 @@
+#!/bin/sh
+
+pipenv run /Users/seaman/Sensei/bin/hourly
