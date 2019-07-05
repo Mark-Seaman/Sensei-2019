@@ -11,14 +11,14 @@ then
     python --version
     pip list
 else
-    export p=$HOME/S2
+    export p=$HOME/Sensei
     figlet 'S2'
 fi
 
 echo "p = $p"
 
-. bin/bash-alias
-. bin/bash-prompt
+. $p/bin/bash-alias
+. $p/bin/bash-prompt
 
 export PATH=$PATH:$p:$p/bin
 echo "PATH = $PATH"
