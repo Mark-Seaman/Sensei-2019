@@ -1,102 +1,105 @@
 <!doctype html>
 <html lang="en">
 
-    <head>
-        <meta charset="utf-8">
-        <title>{{ title }}</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<head>
+    <meta charset="utf-8">
+    <title>{{ title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
-        {% block css %}
-            <link rel="stylesheet" href="/static/css/guide.css?time={{ time }}">
-        {% endblock %}
+    {% block css %}
+        <link rel="stylesheet" href="/static/css/guide.css?time={{ time }}">
+    {% endblock %}
 
-    </head>
+</head>
 
-    <body>
+<body>
 
-        {% block menu %}
-            <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+{% block menu %}
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
 
-                <a class="navbar-brand" href="{{ menu.0.1 }}">
-                    {{ menu.0.0 }}
-                </a>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <ul class="navbar-nav mr-auto">
-                        {% for m in menu.1 %}
-                            <li class="nav-item{{ m.active }}"><a class="nav-link" href="{{ m.url }}">{{ m.label }}</a>
-                            </li>
-                        {% endfor %}
-                    </ul>
+        <a class="navbar-brand" href="{{ menu.0.1 }}">
+            {{ menu.0.0 }}
+        </a>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                {% for m in menu.1 %}
+                    <li class="nav-item{{ m.active }}"><a class="nav-link" href="{{ m.url }}">{{ m.label }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+    </nav>
+{% endblock %}
+
+
+{% block header %}
+
+    <header>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-8">
+                    <h1>{{ header.title }}</h1>
+                    <h2>{{ header.subtitle }}</h2>
                 </div>
-
-            </nav>
-        {% endblock %}
-
-
-        {% block header %}
-
-            <header>
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-sm-8">
-                            <h1>{{ header.title }}</h1>
-                            <h2>{{ header.subtitle }}</h2>
-                        </div>
-                        <div class="logo col-sm-4">
-                            <div class="pull-right">
-                                <img class="img-rounded img-responsive" src="{{ header.logo }}"
-                                     alt="{{ header.logo_text }}" width="150px">
-                            </div>
-                        </div>
+                <div class="logo col-sm-4">
+                    <div class="pull-right">
+                        <img class="img-rounded img-responsive" src="{{ header.logo }}"
+                             alt="{{ header.logo_text }}" width="150px">
                     </div>
                 </div>
-            </header>
+            </div>
+        </div>
+    </header>
 
-        {% endblock %}
+{% endblock %}
 
 
-        <main>
-            {% block content %}
+<main>
+    {% block content %}
 
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            {% if text %}
-                                {% autoescape off %}
-                                    <p>{{ text }}</p>
-                                {% endautoescape %}
-                            {% else %}
-                                <h2>No document found. {{ doc }}</h2>
-                            {% endif %}
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="content">
+                        {% if text %}
+                            {% autoescape off %}
+                                <p>{{ text }}</p>
+                            {% endautoescape %}
+                        {% else %}
+                            <h2>No document found. {{ doc }}</h2>
+                        {% endif %}
 
-                            {% if url %}
-                                <hr>
-                                <p><a href="{{ url }}">Read More</a></p>
-                            {% endif %}
-                        </div>
+                        {% if url %}
+                            <hr>
+                            <p><a href="{{ url }}">Read More</a></p>
+                        {% endif %}
                     </div>
+
                 </div>
+            </div>
+        </div>
 
-            {% endblock %}
-        </main>
-
-
-        <footer>
-            <a href="http://shrinking-world.com">
-                <div class="logo-text">Copyright &copy; 2019 Shrinking World</div>
-{#                <img src="/static/images/SWS_Globe_small.jpg" alt="Shrinking World Solutions">#}
-                <img class="img-rounded img-responsive" src="/static/images/SWS_Globe_small.jpg"
-                                     alt="Shrinking World Solutions" width="150px">
-            </a>
-        </footer>
+    {% endblock %}
+</main>
 
 
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<footer>
+    <a href="http://shrinking-world.com">
+        <div class="logo-text">Copyright &copy; 2019 Shrinking World</div>
+        {#                <img src="/static/images/SWS_Globe_small.jpg" alt="Shrinking World Solutions">#}
+        <img class="img-rounded img-responsive" src="/static/images/SWS_Globe_small.jpg"
+             alt="Shrinking World Solutions" width="150px">
+    </a>
+</footer>
 
-    </body>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
 
 </html>
