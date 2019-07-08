@@ -11,7 +11,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         try:
-            for d in recent_dates(1):
+            for d in recent_dates():
                 edit_task_file(d)
         except:
             log_exception()
