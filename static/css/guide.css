@@ -114,8 +114,8 @@ pre {
 */
 
 .button-bar {
-    /*background-color: gray;*/
-    /*padding: 10px;*/
+    background-color: gray;
+    padding: 10px;
     text-align: center;
     box-shadow: 2px 2px 5px grey;
 }
