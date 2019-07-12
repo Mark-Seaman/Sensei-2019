@@ -147,6 +147,10 @@ def hostname():
     return node()
 
 
+def is_server():
+    return hostname() == 'sensei-server'
+
+
 def line_match(word, text):
     '''Find lines that contain text pattern'''
     return '\n'.join([x for x in text.split('\n') if word in x])
