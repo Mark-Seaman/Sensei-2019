@@ -18,8 +18,17 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/bin/hourly">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="506">
-              <caret line="23" column="22" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
+            <state relative-caret-position="476">
+              <caret line="22" column="33" selection-start-line="22" selection-start-column="33" selection-end-line="22" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bin/bash-alias">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="41" column="86" lean-forward="true" selection-start-line="41" selection-start-column="10" selection-end-line="41" selection-end-column="86" />
             </state>
           </provider>
         </entry>
@@ -255,12 +264,12 @@
       <workItem from="1562250630421" duration="125000" />
       <workItem from="1562250946957" duration="10030000" />
       <workItem from="1562620850115" duration="593000" />
-      <workItem from="1562941841198" duration="2917000" />
+      <workItem from="1562941841198" duration="3454000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38510000" />
+    <option name="totallyTimeSpent" value="39047000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="2560" height="1440" extended-state="0" />
@@ -298,7 +307,6 @@
     <SUITE FILE_PATH="coverage/S2$Run_Tests.coverage" NAME="Run Tests Coverage Results" MODIFIED="1562261151600" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/hammer/settings22.py" />
     <entry file="file://$PROJECT_DIR$/bin/ls-s1" />
     <entry file="file://$PROJECT_DIR$/bin/diff-brain" />
     <entry file="file://$PROJECT_DIR$/test/ocean_test.py" />
@@ -558,13 +566,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/bin/bash-alias">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="41" column="86" lean-forward="true" selection-start-line="41" selection-start-column="10" selection-end-line="41" selection-end-column="86" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/bin/bashrc">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/bin/hourly">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="23" column="22" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
+        <state relative-caret-position="476">
+          <caret line="22" column="33" selection-start-line="22" selection-start-column="33" selection-end-line="22" selection-end-column="33" />
         </state>
       </provider>
     </entry>
