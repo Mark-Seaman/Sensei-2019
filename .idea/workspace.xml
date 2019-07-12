@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8b1c7c23-5c5a-4bc1-bbb1-8cdeb8f69710" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Documents/guide/PythonApps/CommonApps" beforeDir="false" afterPath="$PROJECT_DIR$/Documents/guide/PythonApps/CommonApps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Documents/info/Future.md" beforeDir="false" afterPath="$PROJECT_DIR$/Documents/info/Future.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Documents/info/Index.md" beforeDir="false" afterPath="$PROJECT_DIR$/Documents/info/Index.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Documents/info/Past.md" beforeDir="false" afterPath="$PROJECT_DIR$/Documents/info/Past.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Documents/info/days/2019-07-05" beforeDir="false" afterPath="$PROJECT_DIR$/Documents/info/days/2019-07-05" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Documents/info/days/2019-07-12" beforeDir="false" afterPath="$PROJECT_DIR$/Documents/info/days/2019-07-12" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/css/guide.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/guide.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -25,8 +21,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/css/guide.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="314">
-              <caret line="118" column="18" lean-forward="true" selection-start-line="118" selection-start-column="18" selection-end-line="118" selection-end-column="18" />
+            <state relative-caret-position="270">
+              <caret line="116" column="29" selection-start-line="116" selection-start-column="29" selection-end-line="116" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -261,12 +257,12 @@
       <workItem from="1562250630421" duration="125000" />
       <workItem from="1562250946957" duration="10030000" />
       <workItem from="1562620850115" duration="593000" />
-      <workItem from="1562941841198" duration="66000" />
+      <workItem from="1562941841198" duration="181000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35659000" />
+    <option name="totallyTimeSpent" value="35774000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="2560" height="1440" extended-state="0" />
@@ -553,8 +549,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/css/guide.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="118" column="18" lean-forward="true" selection-start-line="118" selection-start-column="18" selection-end-line="118" selection-end-column="18" />
+        <state relative-caret-position="270">
+          <caret line="116" column="29" selection-start-line="116" selection-start-column="29" selection-end-line="116" selection-end-column="29" />
         </state>
       </provider>
     </entry>
