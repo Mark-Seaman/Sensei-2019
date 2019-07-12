@@ -1,0 +1,14 @@
+# If not running interactively, return
+[ -z "$PS1" ] && return
+
+echo Select Python Context
+echo '   s1'
+echo '   s2'
+echo '   br'
+
+alias s1='cd ~/S1;      pipenv shell; echo closing pipenv shell'
+alias s2='cd ~/Sensei;  pipenv shell; echo closing pipenv shell'
+alias br='cd ~/Brain;   pipenv shell; echo closing pipenv shell'
+
+# Load the project profile
+[ -f bin/bashrc ] && . bin/bashrc
