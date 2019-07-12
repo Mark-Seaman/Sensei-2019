@@ -44,7 +44,7 @@ def edit_task_file(date):
     f = 'Documents/info/days/%s' % date
     if not exists(f):
         open(f, 'w').write(task_default % datetime.now().strftime("%A"))
-    system('e %s' % f)
+    system('e %s Documents/info/Index.md' % f)
 
 
 if __name__ == '__main__':
