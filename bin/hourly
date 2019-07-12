@@ -25,7 +25,7 @@ then
 else
     # Use the pipenv python
     cd $p
-    manage.py tst 2>&1 > $p/hammer/log/cron-errors.log
+    pipenv run manage.py tst 2>&1 > $p/hammer/log/cron-errors.log
 fi
 
 
