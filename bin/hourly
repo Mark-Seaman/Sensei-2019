@@ -15,18 +15,17 @@ export PATH=$p:$p/bin:/bin:/sbin:/usr/local/sbin:/usr/local/bin:/opt/local/bin:/
 
 echo '--------------------------------' >> $p/hammer/log/cron-hourly.log
 echo `date` `id` " - $0 Started"        >> $p/hammer/log/cron-hourly.log
+echo Running Tests in  `pwd` at `date`  > $p/hammer/log/cron-log.log
 
 
 if [ `hostname` == 'sensei-server' ]
 then
     # Use the system python
-    echo Running Tests in  `pwd` > $p/hammer/log/cron-log.log
-    # . bin/bashrc && pip list             2>>$p/hammer/log/cron-errors.log >> $p/hammer/log/cron-log.log
     . bin/bashrc && python manage.py tst 2>>$p/hammer/log/cron-errors.log >> $p/hammer/log/cron-log.log
 else
     # Use the pipenv python
     cd $p
-    pipenv run manage.py tst 2>&1 > $p/hammer/log/cron-errors.log
+    pipenv run manage.py tst 2>>$p/hammer/log/cron-errors.log >> $p/hammer/log/cron-log.log
 fi
 
 
