@@ -21,8 +21,8 @@ if [ `hostname` == 'sensei-server' ]
 then
     # Use the system python
     pwd >> $p/hammer/log/cron-errors.log
-    . .bashrc && pip list >> $p/hammer/log/cron-errors.log
-    . .bashrc && python manage.py tst 2>&1 >> $p/hammer/log/cron-errors.log
+    . bin/bashrc && py >> $p/hammer/log/cron-errors.log
+    . bin/bashrc && python manage.py tst 2>&1 >> $p/hammer/log/cron-errors.log
 else
     # Use the pipenv python
     cd $p
