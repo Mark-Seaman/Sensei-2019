@@ -88,6 +88,7 @@ class MyTime(TaskBase, TemplateView):
     template_name = 'task_time.html'
 
     def get_context_data(self, **kwargs):
+        task_import_files()
         kwargs = super(MyTime, self).get_context_data(**kwargs)
         kwargs.update({
             'title': 'Time Invested',
