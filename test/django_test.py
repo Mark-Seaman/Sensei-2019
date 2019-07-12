@@ -1,4 +1,4 @@
-from tool.shell import shell
+from tool.shell import hostname, is_server, shell
 
 
 def django_hammer_test():
@@ -10,7 +10,11 @@ def django_settings_test():
 
 
 def django_webserver_test():
-    return shell('cat hammer/wsgi.py /etc/systemd/system/gunicorn.service /etc/nginx/sites-available/sensei')
+    if is_server():
+        return shell('cat hammer/wsgi.py /etc/systemd/system/gunicorn.service /etc/nginx/sites-available/sensei')
+    else:
+        config = shell('cat hammer/wsgi.py hammer/config/gunicorn.conf hammer/config/nginx.conf')
+        return '%s is not the Server. Configuration is not active. \n\n%s' % (hostname(), config)
 
 
 def django_python_version_test():
