@@ -11,6 +11,21 @@
 
 {% block content %}
 
+    {% if data.card %}
+        <div class="card" brd-20>
+            <div class="card-header">
+                {{ data.card.title }}
+            </div>
+            <div class="card-body card-padding">
+
+                {% autoescape off %}
+                    <p>{{ data.card.text }}</p>
+                {% endautoescape %}
+
+            </div>
+        </div>
+    {% endif %}
+
     <div class="page">
 
         {% if text %}

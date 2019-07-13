@@ -46,13 +46,13 @@ def document_text(title):
     return doc_html_text(title, '/static/images')
 
 
-def page_settings(title, site_title, logo=None, menu=None, text=None, url=None):
+def page_settings(title, site_title, logo=None, menu=None, text=None, data=None):
     if logo:
         header = dict(title=site_title[0], subtitle=site_title[1], logo=logo[0], logo_text=logo[1])
     else:
         header = dict(title=site_title[0], subtitle=site_title[1])
     time = now()
-    return dict(title=title, menu=menu, header=header, text=text, url=url, time=time)
+    return dict(title=title, menu=menu, header=header, text=text, data=data, time=time)
 
 
 def page_hyperlink(domain, title):

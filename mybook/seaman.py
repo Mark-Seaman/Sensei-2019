@@ -40,15 +40,16 @@ class MarkSeaman(DocDisplay):
 
 
 class PrivateDoc(LoginRequiredMixin, DocDisplay):
-    template_name = 'task_theme.html'
-    site_title = "My Brain", 'Top Secret Notes'
-    logo = "/static/images/SWS_Logo_200.jpg", 'Shrinking World Solutions'
 
     def get_content_data(self):
         self.domain = self.request.get_host()
         self.title = self.kwargs.get('title', 'Index')
         self.menu = info_menu(self.title)
         self.text = document_text(domain_doc(self.domain, self.request.path[1:]))
+        self.data = dict(card=dict(title='Plug-in Card', text='Hey yada yada'))
+        self.site_title = "My Brain", 'Top Secret Notes'
+        self.logo = "/static/images/SWS_Logo_200.jpg", 'Shrinking World Solutions'
+        self.template_name = 'task_theme.html'
 
 
 def seamans_log_menu(title):
@@ -72,7 +73,7 @@ class SeamansLog(DocDisplay):
         site_title = "Seaman's Log", 'Big Ideas & Deep Thoughts'
         text = page_text(domain, self.request.path[1:])
         menu = seamans_log_menu(title)
-        return page_settings(title, site_title, logo(), menu, text['text'], text['url'])
+        return page_settings(title, site_title, logo(), menu, text['text'], dict(url=text['url']))
 
 
 class DocFileIndex(TemplateView):

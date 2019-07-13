@@ -22,6 +22,7 @@ class DocDisplay(TemplateView):
     template_name = 'seaman_theme.html'
     site_title = "Shrinking World", 'Software Development Training'
     logo = "/static/images/SWS_Logo_200.jpg", 'Shrinking World Solutions'
+    data = {}
 
     def get_content_data(self):
         self.text = document_text(domain_doc(self.domain, self.title))
@@ -32,7 +33,7 @@ class DocDisplay(TemplateView):
         self.domain = self.request.get_host()
         self.title = self.request.path[1:]
         self.get_content_data()
-        return page_settings(self.title, self.site_title, self.logo, self.menu, self.text)
+        return page_settings(self.title, self.site_title, self.logo, self.menu, self.text, self.data)
 
     def get(self, request, *args, **kwargs):
         title = self.kwargs.get('title', 'Index')
