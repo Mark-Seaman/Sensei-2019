@@ -43,22 +43,13 @@ class PrivateDoc(LoginRequiredMixin, DocDisplay):
 
     def get_content_data(self):
         self.domain = self.request.get_host()
+        self.text = document_text(domain_doc(self.domain, self.request.path[1:]))
+        self.data = get_extra_data(self.title, self.text)
         self.title = self.kwargs.get('title', 'Index')
         self.menu = info_menu(self.title)
-        self.text = document_text(domain_doc(self.domain, self.request.path[1:]))
-        self.data = dict(card=dict(title='Plug-in Card', text='Hey yada yada'))
         self.site_title = "My Brain", 'Top Secret Notes'
         self.logo = "/static/images/SWS_Logo_200.jpg", 'Shrinking World Solutions'
         self.template_name = 'task_theme.html'
-
-
-def seamans_log_menu(title):
-    def menu_items(title):
-        return [('List', 'Articles', title == 'Index'),
-                ('Random', 'Read', title != 'List' and title != 'Index'),
-                ('https://markseaman.org', 'Mark Seaman')]
-
-    return topic_menu(menu_items(title), '/seamanslog/', "Seaman's Log")
 
 
 class SeamansLog(DocDisplay):

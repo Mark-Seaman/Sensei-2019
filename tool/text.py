@@ -73,6 +73,13 @@ def find_links(text):
     return str(results)
 
 
+def find_markdown_links(text):
+    # Look for links in markdown text
+    match_pattern = r'\[(.*)\]\((.*)\)'
+    results = [match[1] for match in findall(match_pattern, text)]
+    return '\n'.join(results)
+
+
 def find_quotes(text):
     return findall('<div class=\'noteText\'>(.*?)</div>', text)
 
