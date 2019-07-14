@@ -63,7 +63,6 @@ def get_link_summary(title):
 
 def get_task_summary(title):
     text = read_markdown(doc_path(title))
-    # return find_markdown_links(text)
     match_pattern = r'\[.*\]\(.*\) *\- (\w*) \- '
     tasks = {}
     for match in findall(match_pattern, text):
