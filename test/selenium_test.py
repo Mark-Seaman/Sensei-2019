@@ -1,5 +1,7 @@
 from selenium import webdriver
 
+from tool.shell import is_server
+
 
 def start_browser():
     options = webdriver.ChromeOptions()
@@ -27,28 +29,37 @@ def find_xpath(browser, xpath):
 
 
 def selenium_startup_test():
-    browser = start_browser()
-    browser.get('http://localhost:8000')
-    title = browser.title
-    end_browser(browser)
-    return title
+    if not is_server():
+        browser = start_browser()
+        browser.get('http://localhost:8000')
+        title = browser.title
+        end_browser(browser)
+        return title
+    else:
+        return 'Test is disabled on the Sensei-Server'
 
 
 def selenium_content_test():
-    browser = start_browser()
-    browser.get('http://localhost:8000')
-    source = browser.page_source
-    end_browser(browser)
-    return source
+    if not is_server():
+        browser = start_browser()
+        browser.get('http://localhost:8000')
+        source = browser.page_source
+        end_browser(browser)
+        return source
+    else:
+        return 'Test is disabled on the Sensei-Server'
 
 
 def selenium_features_test():
-    browser = start_browser()
-    browser.get('http://localhost:8000')
-    tags = ['header', 'main', 'footer', 'p', 'nav', 'h1', 'h2', 'ul/li']
-    results = [find_xpath(browser, '//'+t) for t in tags]
-    end_browser(browser)
-    return '\n'.join(results)
+    if not is_server():
+        browser = start_browser()
+        browser.get('http://localhost:8000')
+        tags = ['header', 'main', 'footer', 'p', 'nav', 'h1', 'h2', 'ul/li']
+        results = [find_xpath(browser, '//'+t) for t in tags]
+        end_browser(browser)
+        return '\n'.join(results)
+    else:
+        return 'Test is disabled on the Sensei-Server'
 
 
 if __name__ == '__main__':
