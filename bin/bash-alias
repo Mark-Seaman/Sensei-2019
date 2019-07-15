@@ -28,6 +28,7 @@ alias gs='vc status'
 alias h='history 40'
 alias host='hostname'
 
+alias i='dj todo idea'
 alias ip='ifconfig|grep "inet "'
 
 alias l='ls -al'

@@ -1,7 +1,6 @@
 from django.core.management.base import BaseCommand
 from inspect import getmembers, isfunction
 from os import listdir, system
-
 from traceback import format_exc
 
 from hammer.settings import TEST_DIR
