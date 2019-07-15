@@ -2,21 +2,29 @@ from django.core.management.base import BaseCommand
 from datetime import datetime
 from os.path import exists
 from os import system
-from sys import argv
+from traceback import format_exc
 
 from tool.days import days_ago
+from tool.log import log_exception
 
 
 class Command(BaseCommand):
 
+    def add_arguments(self, parser):
+        parser.add_argument('command', nargs='*', type=str)
+
     def handle(self, *args, **options):
         try:
+            if options['command'] and options['command'][0] == 'idea':
+                f = 'Documents/info/Index.md'
+                with open(f, 'a') as x:
+                    x.write('* ' +  ' '.join(options['command'][1:]) + '\n\n')
             for d in recent_dates():
                 edit_task_file(d)
         except:
             log_exception()
-            self.stdout.write('** tst Exception (%s) **' % ' '.join(options['script']))
-            self.stdout.write(traceback.format_exc())
+            self.stdout.write('** tst Exception (%s) **' % ' '.join(options['command']))
+            self.stdout.write(format_exc())
 
 
 def recent_dates(days=3):
@@ -28,7 +36,7 @@ task_default = '''%s
 
 Grow 0
 
-    3, 3, 1, 1
+    1, 1, 1, 1
     weight: 20    
 
 People 0
@@ -46,6 +54,3 @@ def edit_task_file(date):
         open(f, 'w').write(task_default % datetime.now().strftime("%A"))
     system('e %s Documents/info/Index.md' % f)
 
-
-if __name__ == '__main__':
-    print(todo_command())
