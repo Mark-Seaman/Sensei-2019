@@ -1,5 +1,5 @@
-from test.text import redact_css, code_files, code_search
-from tool.text import count_lines, delete_lines, text_replace
+from test.text import redact_css, code_files, code_search, doc_search, html_search
+from tool.text import text_replace
 
 
 def text_replace_test():
@@ -19,7 +19,10 @@ def text_css_filter_test():
     return redact_css(text)
 
 
-def text_search_test():
-    text = code_search(['Seaman'])
-    return count_lines(delete_lines(delete_lines(delete_lines(text, '.git'), 'info'), 'unc'))
+def text_html_search_test():
+    return html_search(['h1'])
 
+
+def text_doc_search_test():
+    text = doc_search(['Seaman','shrinkingworld'])
+    return text

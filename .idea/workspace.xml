@@ -3,13 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="8b1c7c23-5c5a-4bc1-bbb1-8cdeb8f69710" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/bash-alias" beforeDir="false" afterPath="$PROJECT_DIR$/bin/bash-alias" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hammer/sensei.db" beforeDir="false" afterPath="$PROJECT_DIR$/hammer/sensei.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/text.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/text.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/text_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/text_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/tst_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/tst_test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tool/management/commands/tst.py" beforeDir="false" afterPath="$PROJECT_DIR$/tool/management/commands/tst.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tool/text.py" beforeDir="false" afterPath="$PROJECT_DIR$/tool/text.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tool/tst.py" beforeDir="false" afterPath="$PROJECT_DIR$/tool/tst.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,22 +20,13 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/selenium_test.py">
+        <entry file="file://$PROJECT_DIR$/tool/management/commands/tst.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
+            <state relative-caret-position="462">
+              <caret line="48" column="44" lean-forward="true" selection-start-line="48" selection-start-column="44" selection-end-line="48" selection-end-column="44" />
               <folding>
-                <element signature="e#0#30#0" expanded="true" />
+                <element signature="e#0#51#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/app_test.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="18" column="52" selection-start-line="18" selection-start-column="39" selection-end-line="18" selection-end-column="52" />
             </state>
           </provider>
         </entry>
@@ -46,7 +34,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tool/text.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1011">
+            <state relative-caret-position="1209">
               <caret line="129" selection-start-line="129" selection-end-line="129" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
@@ -56,12 +44,12 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tool/files.py">
+        <entry file="file://$PROJECT_DIR$/test/text.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="137" column="4" selection-start-line="137" selection-start-column="4" selection-end-line="137" selection-end-column="4" />
+            <state relative-caret-position="537">
+              <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
               <folding>
-                <element signature="e#0#32#0" expanded="true" />
+                <element signature="e#0#21#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -70,10 +58,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/text_test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="478">
-              <caret line="25" column="27" lean-forward="true" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
+            <state relative-caret-position="572">
+              <caret line="26" column="47" selection-start-line="26" selection-start-column="47" selection-end-line="26" selection-end-column="47" />
               <folding>
-                <element signature="e#0#4#0" expanded="true" />
+                <element signature="e#0#69#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -142,8 +130,9 @@
         <option value="$PROJECT_DIR$/test/app_test.py" />
         <option value="$PROJECT_DIR$/tool/tst.py" />
         <option value="$PROJECT_DIR$/test/tst_test.py" />
-        <option value="$PROJECT_DIR$/tool/management/commands/tst.py" />
         <option value="$PROJECT_DIR$/tool/text.py" />
+        <option value="$PROJECT_DIR$/tool/management/commands/tst.py" />
+        <option value="$PROJECT_DIR$/test/text.py" />
         <option value="$PROJECT_DIR$/test/text_test.py" />
       </list>
     </option>
@@ -194,7 +183,15 @@
               <item name="Sensei" type="b2602c69:ProjectViewProjectNode" />
               <item name="Sensei" type="462c0819:PsiDirectoryNode" />
               <item name="tool" type="462c0819:PsiDirectoryNode" />
-              <item name="files.py" type="8704e2dd:PyFileNode" />
+              <item name="management" type="462c0819:PsiDirectoryNode" />
+              <item name="commands" type="462c0819:PsiDirectoryNode" />
+              <item name="tst.py" type="8704e2dd:PyFileNode" />
+            </path>
+            <path>
+              <item name="Sensei" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Sensei" type="462c0819:PsiDirectoryNode" />
+              <item name="tool" type="462c0819:PsiDirectoryNode" />
+              <item name="text.py" type="8704e2dd:PyFileNode" />
             </path>
           </expand>
           <select />
@@ -388,12 +385,12 @@
       <workItem from="1562250946957" duration="10030000" />
       <workItem from="1562620850115" duration="593000" />
       <workItem from="1562941841198" duration="37633000" />
-      <workItem from="1563667432851" duration="3833000" />
+      <workItem from="1563667432851" duration="6941000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="77059000" />
+    <option name="totallyTimeSpent" value="80167000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="2560" height="1440" extended-state="0" />
@@ -468,7 +465,6 @@
     <SUITE FILE_PATH="coverage/Sensei$Run_Tests.coverage" NAME="Run Tests Coverage Results" MODIFIED="1563573865736" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Pipfile" />
     <entry file="file://$PROJECT_DIR$/Pipfile.lock" />
     <entry file="file://$PROJECT_DIR$/hammer/Pipfile.lock" />
     <entry file="file://$PROJECT_DIR$/hammer/Pipfile" />
@@ -749,16 +745,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tool/management/commands/tst.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="820">
-          <caret line="46" column="60" selection-start-line="46" selection-start-column="60" selection-end-line="46" selection-end-column="60" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/tst_test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="22">
@@ -792,7 +778,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tool/files.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
+        <state relative-caret-position="399">
           <caret line="137" column="4" selection-start-line="137" selection-start-column="4" selection-end-line="137" selection-end-column="4" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
@@ -802,7 +788,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tool/text.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1011">
+        <state relative-caret-position="1209">
           <caret line="129" selection-start-line="129" selection-end-line="129" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
@@ -810,12 +796,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/tool/management/commands/tst.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="48" column="44" lean-forward="true" selection-start-line="48" selection-start-column="44" selection-end-line="48" selection-end-column="44" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/text.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="537">
+          <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/test/text_test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="478">
-          <caret line="25" column="27" lean-forward="true" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
+        <state relative-caret-position="572">
+          <caret line="26" column="47" selection-start-line="26" selection-start-column="47" selection-end-line="26" selection-end-column="47" />
           <folding>
-            <element signature="e#0#4#0" expanded="true" />
+            <element signature="e#0#69#0" expanded="true" />
           </folding>
         </state>
       </provider>

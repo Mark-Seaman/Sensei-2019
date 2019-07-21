@@ -2,7 +2,7 @@ from re import search
 
 from tool.files import read_text
 from tool.shell import shell_script
-from tool.text import text_replace, text_lines, text_join
+from tool.text import delete_lines, text_replace, text_lines, text_join
 
 
 def redact_css(text):
@@ -16,33 +16,40 @@ def code_files():
     return text_lines(text)
 
 
+def code_search(words):
+    return file_search(code_files(), words)
+
+
 def file_search(files, words):
     matches = []
     for f in files:
         text = text_lines(read_text(f))
         for pattern in words:
-            text = [line for line in text if search(pattern, line)]
+            text = [('%s: %s' % (f, line)) for line in text if search(pattern, line)]
         if text:
             matches += text
     return text_join(matches)
 
 
-def code_search(words):
-    return file_search(code_files(), words)
+def html_files():
+    text = shell_script('find . -name "*.html"') + '\n' + shell_script('find . -name "*.css"')
+    return text_lines(delete_lines(text, 'min.css'))
 
 
 def html_search(words):
-    word = words[0]
-    files = 'Documents'
-    text = shell_script('grep %s -r  %s' % (word, files))
-    return text
+    files = html_files()
+    return file_search(files, words)
+
+
+def doc_files():
+    text = shell_script('find Documents -type f|grep -v /.git' )
+    return text_lines(delete_lines(delete_lines(text, 'info'), '.DS_Store'))
 
 
 def doc_search(words):
-    word = words[0]
-    files = 'Documents'
-    text = shell_script('grep %s -r  %s' % (word, files))
-    return text
+    files = doc_files()
+    # return '\n'.join(files)
+    return file_search(files, words)
 
 
 def text_search(text, words):

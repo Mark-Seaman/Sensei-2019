@@ -44,8 +44,10 @@ def tst_command(self, args):
         elif cmd == 'like':
             tst_like(self,args)
         elif cmd == 'quick':
-            from test.text_test import text_code_search_test
-            print(text_code_search_test())
+            # from test.text_test import text_html_search_test
+            # print(text_html_search_test())
+            from test.text_test import text_doc_search_test
+            print(text_doc_search_test())
         elif cmd == 'reset':
              Test.objects.all().delete()
         elif cmd == 'results':
