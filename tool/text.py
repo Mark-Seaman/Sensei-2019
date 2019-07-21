@@ -1,7 +1,5 @@
 from re import compile, findall, search
-
-
-# from .shell import read_file
+from os.path import exists
 
 
 # ------------------------------
@@ -42,6 +40,21 @@ def text_help(args=None):
 
 # ------------------------------
 # Functions
+
+def count_lines(text):
+    return len(text_lines(text))
+
+
+def delete_lines(text, match_pattern):
+    text = text.split('\n')
+    text = [t for t in text if match_pattern not in t]
+    return '\n'.join(text)
+
+
+def doc_filter(doc, match_pattern, replace_pattern):
+    text = open(doc).read()
+    return text_replace(text, match_pattern, replace_pattern)
+
 
 def find_agents(text):
     pattern = r'(.{15}) +(.{15}) +([\w\d_\-\.]+\@[\w\d_\-\.]+)'
@@ -101,6 +114,19 @@ def markdown_list_string(mylist):
     return '* ' + '\n* '.join(mylist)
 
 
+def match_lines(text, pattern):
+    text = text.split('\n')
+    text = [line for line in text if search(pattern, line)]
+    return '\n'.join(text)
+
+
+def match_pattern(text, pattern):
+    text = text.split('\n')
+    text = [search(pattern, line) for line in text]
+    text = [x.string for x in text if x]
+    return '\n'.join(text)
+
+
 def text_join(text):
     return '\n'.join(text)
 
@@ -109,14 +135,39 @@ def text_lines(text):
     return text.split('\n')
 
 
+def text_markdown(outline, depth=1):
+    def text_body(lines):
+        if lines and len(lines[0].strip()) == 0:
+            return text_body(lines[1:])
+        elif lines and len(lines[-1].strip()) == 0:
+            return text_body(lines[:-1])
+        else:
+            return lines
+
+    results = []
+    for n in outline:
+        results.append('#' * depth + ' ' + n[0] + '\n')
+        t = text_body(n[2])
+        if t:
+            for t in text_body(n[2]):
+                results.append(t)
+            results.append('')
+        children = text_markdown(n[1], depth + 1)
+        if children:
+            results.append(children)
+    return '\n'.join(results)
+
+
 def text_match(match_pattern, doc):
     matches = []
-    text = open(doc).read()
-    for line in text.split('\n'):
-        match = search(r'^(%s)$' % match_pattern, line)
-        if match:
-            matches.append(match.string)
-    return matches
+    if doc and exists(doc):
+        text = open(doc).read()
+        if text:
+            for line in text.split('\n'):
+                match = search(r'^.*(%s).*$' % match_pattern, line)
+                if match:
+                    matches.append(match.string)
+            return '\n'.join([('%s: %s' % (doc, m)) for m in matches])
 
 
 def text_no_match(match_pattern, doc):
@@ -164,34 +215,6 @@ def text_outline_string(outline, depth=0):
     return '\n'.join(results)
 
 
-def text_markdown(outline, depth=1):
-    def text_body(lines):
-        if lines and len(lines[0].strip()) == 0:
-            return text_body(lines[1:])
-        elif lines and len(lines[-1].strip()) == 0:
-            return text_body(lines[:-1])
-        else:
-            return lines
-
-    results = []
-    for n in outline:
-        results.append('#' * depth + ' ' + n[0] + '\n')
-        t = text_body(n[2])
-        if t:
-            for t in text_body(n[2]):
-                results.append(t)
-            results.append('')
-        children = text_markdown(n[1], depth + 1)
-        if children:
-            results.append(children)
-    return '\n'.join(results)
-
-
-def doc_filter(doc, match_pattern, replace_pattern):
-    text = open(doc).read()
-    return text_replace(text, match_pattern, replace_pattern)
-
-
 def text_replace(text, match_pattern, replace_pattern):
     return compile(match_pattern).sub(replace_pattern, text)
 
@@ -202,19 +225,6 @@ def text_title(text):
 
 def text_body(text):
     return '\n'.join(text.split('\n')[1:])
-
-
-def match_lines(text, pattern):
-    text = text.split('\n')
-    text = [line for line in text if search(pattern, line)]
-    return '\n'.join(text)
-
-
-def match_pattern(text, pattern):
-    text = text.split('\n')
-    text = [search(pattern, line) for line in text]
-    text = [x.string for x in text if x]
-    return '\n'.join(text)
 
 
 def transform_matches(text, match_pattern, select_pattern):

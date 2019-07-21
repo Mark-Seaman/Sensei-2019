@@ -7,7 +7,7 @@ from hammer.settings import TEST_DIR
 from tool.log import log_exception
 from tool.models import Test
 from tool.shell import differences, banner
-from tool.tst import tst_command
+# from tool.tst import tst_command
 
 
 class Command(BaseCommand):
@@ -43,6 +43,9 @@ def tst_command(self, args):
             self.stdout.write(tst_results())
         elif cmd == 'like':
             tst_like(self,args)
+        elif cmd == 'quick':
+            from test.text_test import text_code_search_test
+            print(text_code_search_test())
         elif cmd == 'reset':
              Test.objects.all().delete()
         elif cmd == 'results':

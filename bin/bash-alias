@@ -42,6 +42,7 @@ alias pull='vc pull'
 alias push='vc push'
 alias py='figlet S2&&which python&&python --version&&pip list&&echo directory is `pwd`'
 
+alias qt='tst quick'
 alias r=reset
 
 alias s='app search'
