@@ -12,7 +12,7 @@ def redact_css(text):
 
 
 def code_files():
-    text = shell_script('find . -name "*.py"')
+    text = shell_script('find . -name "*.py"|grep -v /.env')
     return text_lines(text)
 
 
