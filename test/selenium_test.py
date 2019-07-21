@@ -1,6 +1,6 @@
 from selenium import webdriver
 
-from tool.shell import is_server
+from tool.shell import is_server, redact_css
 
 
 def start_browser():
@@ -43,7 +43,7 @@ def selenium_content_test():
     if not is_server():
         browser = start_browser()
         browser.get('http://localhost:8000')
-        source = browser.page_source
+        source = redact_css(browser.page_source)
         end_browser(browser)
         return source
     else:

@@ -1,5 +1,5 @@
-from test.text import code_files, code_search, doc_files, doc_search, html_files, html_search, redact_css,  text_search
-from tool.text import text_join, text_replace
+from tool.text import text_join, text_replace, code_files, code_search, html_files, html_search, doc_files, doc_search, text_search
+from tool.shell import redact_css
 
 
 def text_code_files_test():
@@ -11,7 +11,7 @@ def text_code_search_test():
 
 
 def text_css_filter_test():
-    text = 'href="/static/css/guide.css?time=July 4, 2019, 8:42 a.m."/nOutput this'
+    text = '<link href="/static/css/guide.css?time=July 4, 2019, 8:42 a.m.">\nOutput this'
     return redact_css(text)
 
 
