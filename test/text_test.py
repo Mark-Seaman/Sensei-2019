@@ -1,4 +1,4 @@
-from test.text import code_files, code_search, doc_files, doc_search, html_files, html_search, redact_css
+from test.text import code_files, code_search, doc_files, doc_search, html_files, html_search, redact_css,  text_search
 from tool.text import text_join, text_replace
 
 
@@ -20,6 +20,8 @@ def text_doc_files_test():
 
 
 def text_doc_search_test():
+    # return text_search(['h1'])
+
     text = doc_search(['Seaman','shrinkingworld'])
     return text
 
@@ -36,3 +38,5 @@ def text_replace_test():
     return text_replace('Four score and seven years', 'score', 'generations')
 
 
+def text_search_test():
+    return text_search(['h1'])

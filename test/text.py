@@ -12,7 +12,7 @@ def redact_css(text):
 
 
 def code_files():
-    text = shell_script('find . -name "*.py"|grep -v /.env')
+    text = shell_script('find . -name "*.py"|grep -v /env')
     return text_lines(text)
 
 
@@ -48,9 +48,9 @@ def doc_files():
 
 def doc_search(words):
     files = doc_files()
-    # return '\n'.join(files)
     return file_search(files, words)
 
 
-def text_search(text, words):
-    return text
+def text_search(words):
+    files = code_files() + html_files() + doc_files()
+    return file_search(files, words)
