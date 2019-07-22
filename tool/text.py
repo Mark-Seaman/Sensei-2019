@@ -68,16 +68,6 @@ def find_anchors(text):
     return findall('<a href="(https?://(?:[-\w.]|(?:%[\da-fA-F]{2}))+)">(.*)</a>', text)
 
 
-def find_classes(text):
-    pattern = r'class (.*)\(.*\)'
-    return match_pattern(text, pattern).split('\n')
-
-
-def find_functions(text):
-    pattern = r'\ndef (.*)\(.*\)'
-    return findall(pattern, text)
-
-
 def find_links(text):
     def link(anchor):
         return findall('(https?://(?:[-\w.]|(?:%[\da-fA-F]{2}))+)">(.*)</a>', anchor)[0]
@@ -98,11 +88,6 @@ def find_markdown_links(text):
 
 def find_quotes(text):
     return findall('<div class=\'noteText\'>(.*?)</div>', text)
-
-
-def find_signatures(text):
-    pattern = r'def(.*\(.*\)):'
-    return transform_matches(text, pattern, r'\1').split('\n')
 
 
 def find_urls(text):
@@ -239,15 +224,6 @@ def transform_matches(text, match_pattern, select_pattern):
     return '\n'.join(results)
 
 
-def code_files():
-    files = shell_script('find . -name "*.py"|grep -v /env/|grep -v .venv/')
-    return text_lines(files)
-
-
-def code_search(words):
-    return file_search(code_files(), words)
-
-
 def file_search(files, words):
     matches = []
     for f in files:
@@ -257,18 +233,6 @@ def file_search(files, words):
         if text:
             matches += text
     return text_join(matches)
-
-
-def html_files():
-    html_files = shell_script('find . -name "*.html"|grep -v /env/| grep -v .venv/')
-    css_files = shell_script('find . -name "*.css"|grep -v /env/| grep -v .venv/|grep -v min.css')
-    files = html_files + css_files
-    return text_lines(files)
-
-
-def html_search(words):
-    files = html_files()
-    return file_search(files, words)
 
 
 def doc_files():
@@ -282,6 +246,3 @@ def doc_search(words):
 
 
 
-def text_search(words):
-    files = code_files() + html_files() + doc_files()
-    return file_search(files, words)
