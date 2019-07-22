@@ -64,17 +64,12 @@ def curl_get(url):
     html = shell('curl -s %s' % url)
     return redact_css(html)
 
-    # match = '\.css\?.*\n'
-    # replacement = '.css">\n'
-    # return text_replace(html, match, replacement)
-
 
 def redact_css(text):
     from tool.text import text_replace
-    match = r'\.css\?.*>\n*'
-    replacement = r'.css>\n'
+    match = r'\.css\?.*">\n*'
+    replacement = r'.css">\n'
     return text_replace(text, match, replacement)
-
 
 
 def differences(answer, correct):

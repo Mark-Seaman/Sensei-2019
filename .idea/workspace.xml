@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8b1c7c23-5c5a-4bc1-bbb1-8cdeb8f69710" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/hammer/sensei.db" beforeDir="false" afterPath="$PROJECT_DIR$/hammer/sensei.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/selenium_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/selenium_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/text.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/text.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/text_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/text_test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tool/shell.py" beforeDir="false" afterPath="$PROJECT_DIR$/tool/shell.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tool/text.py" beforeDir="false" afterPath="$PROJECT_DIR$/tool/text.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,11 +16,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/selenium_test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="97">
-              <caret line="45" column="48" selection-start-line="45" selection-start-column="48" selection-end-line="45" selection-end-column="48" />
+            <state relative-caret-position="251">
+              <caret line="52" column="29" selection-start-line="52" selection-start-column="29" selection-end-line="52" selection-end-column="29" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
               </folding>
@@ -56,11 +52,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tool/shell.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="74" column="20" selection-start-line="74" selection-start-column="20" selection-end-line="74" selection-end-column="20" />
+            <state relative-caret-position="1628">
+              <caret line="74" column="33" lean-forward="true" selection-start-line="74" selection-start-column="33" selection-end-line="74" selection-end-column="33" />
               <folding>
                 <element signature="e#0#52#0" expanded="true" />
               </folding>
@@ -150,8 +146,8 @@
         <option value="$PROJECT_DIR$/test/text.py" />
         <option value="$PROJECT_DIR$/tool/text.py" />
         <option value="$PROJECT_DIR$/test/text_test.py" />
-        <option value="$PROJECT_DIR$/tool/shell.py" />
         <option value="$PROJECT_DIR$/test/selenium_test.py" />
+        <option value="$PROJECT_DIR$/tool/shell.py" />
       </list>
     </option>
   </component>
@@ -371,18 +367,18 @@
       <workItem from="1562250946957" duration="10030000" />
       <workItem from="1562620850115" duration="593000" />
       <workItem from="1562941841198" duration="37633000" />
-      <workItem from="1563667432851" duration="9706000" />
+      <workItem from="1563667432851" duration="10010000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="82932000" />
+    <option name="totallyTimeSpent" value="83236000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="2560" height="1440" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13343924" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13343924" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -396,7 +392,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.47737226" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.47737226" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -766,16 +762,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tool/text.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1648">
-          <caret line="281" selection-start-line="281" selection-end-line="281" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/brain_test.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -789,22 +775,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tool/shell.py">
+    <entry file="file://$PROJECT_DIR$/test/selenium_test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="74" column="20" selection-start-line="74" selection-start-column="20" selection-end-line="74" selection-end-column="20" />
+        <state relative-caret-position="251">
+          <caret line="52" column="29" selection-start-line="52" selection-start-column="29" selection-end-line="52" selection-end-column="29" />
           <folding>
-            <element signature="e#0#52#0" expanded="true" />
+            <element signature="e#0#30#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/selenium_test.py">
+    <entry file="file://$PROJECT_DIR$/tool/text.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="97">
-          <caret line="45" column="48" selection-start-line="45" selection-start-column="48" selection-end-line="45" selection-end-column="48" />
+        <state relative-caret-position="1648">
+          <caret line="281" selection-start-line="281" selection-end-line="281" />
           <folding>
-            <element signature="e#0#30#0" expanded="true" />
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tool/shell.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1628">
+          <caret line="74" column="33" lean-forward="true" selection-start-line="74" selection-start-column="33" selection-end-line="74" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#52#0" expanded="true" />
           </folding>
         </state>
       </provider>
