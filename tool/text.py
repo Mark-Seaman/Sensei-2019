@@ -240,8 +240,8 @@ def transform_matches(text, match_pattern, select_pattern):
 
 
 def code_files():
-    text = shell_script('find . -name "*.py"|grep -v /env')
-    return text_lines(text)
+    files = shell_script('find . -name "*.py"|grep -v /env/|grep -v .venv/')
+    return text_lines(files)
 
 
 def code_search(words):
@@ -260,8 +260,10 @@ def file_search(files, words):
 
 
 def html_files():
-    text = shell_script('find . -name "*.html"|grep -v /env') + '\n' + shell_script('find . -name "*.css"|grep -v /env')
-    return text_lines(delete_lines(text, 'min.css'))
+    html_files = shell_script('find . -name "*.html"|grep -v /env/| grep -v .venv/')
+    css_files = shell_script('find . -name "*.css"|grep -v /env/| grep -v .venv/|grep -v min.css')
+    files = html_files + css_files
+    return text_lines(files)
 
 
 def html_search(words):

@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # If not running interactively, return
 [ -z "$PS1" ] && return
 
@@ -12,3 +14,26 @@ alias br='cd ~/Brain;   pipenv shell; echo closing pipenv shell'
 
 # Load the project profile
 [ -f bin/bashrc ] && . bin/bashrc
+
+
+# export PIPENV_IGNORE_VIRTUALENVS=1
+# export PIPENV_VENV_IN_PROJECT=1
+
+# # Path variable
+# export PATH=$p:\
+# $p/bin:\
+# /bin:\
+# /sbin:\
+# /usr/local/sbin:\
+# /usr/local/bin:\
+# /opt/local/bin:\
+# /usr/bin:\
+# /usr/local/mysql/bin
+
+# Setup Python Context
+cd $p
+[ "$p" != "$HOME" ] &&
+[ "$PIPENV_ACTIVE" != '1' ] && 
+figlet pipenv shell &&
+pipenv shell 
+
