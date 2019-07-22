@@ -1,4 +1,4 @@
-from tool.shell import hostname, is_server, shell
+from tool.shell import hostname, is_server, shell, shell_script
 
 
 def django_hammer_test():
@@ -27,4 +27,9 @@ def django_python_path_test():
 
 def django_pipenv_test():
     return shell('pip list')
+
+
+def django_shell_script_test():
+    command_string = 'cat tool/shell.py|grep def; rm xxx'
+    return shell_script(command_string)
 

@@ -1,5 +1,5 @@
-from tool.text import text_join
-from tool.code import code_files, code_search, text_search, html_files, html_search, list_functions
+from tool.text import text_join, text_lines
+from tool.code import code_files, code_search, list_functions, source_code, text_search, html_files, html_search, list_functions
 from tool.shell import redact_css
 
 
@@ -34,5 +34,12 @@ def code_search_test():
 
 def code_search2_test():
     return text_search(['def ', 'module'])
+
+
+def code_source_test():
+    files = len(code_files())
+    source = len(text_lines(source_code()))
+    functions = len(text_lines(list_functions()))
+    return '%s files, %s functions, %s lines of source code' % (files, functions, source)
 
 

@@ -197,20 +197,13 @@ def read_file(path):
         return '**error**: Bad file read, %s' % path
 
 
-def shell(cmd):
+def shell(command):
     '''Execute a shell command and return stdout'''
 
-    def command_line(cmd):
-        cmd = cmd.strip()
-        if cmd:
-            if cmd.startswith('x '):
-                cmd = 'python bin/x.py ' + cmd[2:]
-                chdir(environ['p'])
-        return cmd
-
-    cmd = command_line(cmd)
-    text = Popen(cmd.split(), stdout=PIPE).stdout.read()
-    return text.decode(encoding='UTF-8')
+    # cmd = cmd.strip()
+    # text = Popen(cmd.split(), stdout=PIPE).stdout.read()
+    # return text.decode(encoding='UTF-8')
+    return shell_script(command)
 
 
 def shell_file_list(path='.'):
@@ -223,26 +216,29 @@ def shell_file_list(path='.'):
 
 def shell_pipe(command, stdin=''):
     p = Popen(command, stdin=PIPE, stdout=PIPE)
-    if version_info.major == 3:
-        (out, error) = p.communicate(input=stdin.encode('utf-8'))
-        if error:
-            return error.decode('utf-8') + out.decode('utf-8')
-        return out.decode('utf-8')
-    else:
-        (out, error) = p.communicate(input=stdin)
-        if error:
-            return "**stderr**\n" + error + out
-        return out
+    (out, error) = p.communicate(input=stdin.encode('utf-8'))
+    if error:
+        return error.decode('utf-8') + out.decode('utf-8')
+    return out.decode('utf-8')
 
 
-def shell_script(command):
-    from os import chmod
-    from stat import S_IRWXU
-    script = '/tmp/shell_script'
-    with open(script, 'w') as f:
-        f.write("#!/bin/bash\n\n" + command)
-    chmod(script, S_IRWXU)
-    return shell_pipe(script)
+# def shell_script(command):
+    # from os import chmod
+    # from stat import S_IRWXU
+    # script = '/tmp/shell_script'
+    # with open(script, 'w') as f:
+    #     f.write("#!/bin/bash\n\n" + command)
+    # chmod(script, S_IRWXU)
+    # return shell_pipe(script)
+    # return shell('sh "%s"' % command)
+
+def shell_script(command_string):
+    p = Popen('bash', stdin=PIPE, stdout=PIPE)
+    (out, error) = p.communicate(input=command_string.encode('utf-8'))
+    if error:
+        return error.decode('utf-8') + out.decode('utf-8')
+    return out.decode('utf-8')
+
 
 
 def word_count(text):

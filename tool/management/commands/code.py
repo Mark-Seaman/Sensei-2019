@@ -34,7 +34,6 @@ def code_command(self, options):
         elif cmd == 'functions':
             functions()
         elif cmd == 'files':
-            print('files')
             files(args)
         elif cmd == 'source':
             source()
@@ -59,9 +58,11 @@ def code_help():
         ''')
 
 
-def files(args):
-    print("code files %s:" % args)
-    print(text_join(code_files(args[0])))
+def files(path):
+    if not path:
+         path = ['.']
+    print("code files %s:" % path[0])
+    print(text_join(code_files(path[0])))
 
 
 def search(args):

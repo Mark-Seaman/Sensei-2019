@@ -7,13 +7,15 @@ from hammer.settings import TEST_DIR
 from tool.log import log_exception
 from tool.models import Test
 from tool.shell import differences, banner
+from test.django_test import django_shell_script_test
 
 
 def quick_test():
-     system('cd $p && python manage.py code functions')
-     # system('cd $p && python manage.py code functions')
+    print(django_shell_script_test())
+
 
     # Other Quick Tests
+    # system('cd $p && python manage.py code source')
     # from test.text_test import text_html_search_test
     # print(text_html_search_test())
     # from test.text_test import text_doc_search_test
