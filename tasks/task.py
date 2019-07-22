@@ -361,6 +361,7 @@ def task_week(args):
         yesterday = datetime.now()-timedelta(days=1)
         year, month, day = yesterday.strftime('%Y-%m-%d').split('-')
     summary = weekly_totals(year, month, day)
+    # TODO: simplify date calculation
     print_summary(summary, datetime.now()-timedelta(days=7), datetime.now()-timedelta(days=1))
 
 
