@@ -42,7 +42,7 @@
             <div class="row">
                 <div class="col-sm-8">
                     <h1>{{ header.title }}</h1>
-                    <h2>{{ header.subtitle }} - Day {{ data.day }}</h2>
+                    <h2>{{ header.subtitle }}{% if data.day %}  - Day {{ data.day }}{% endif %}</h2>
                 </div>
                 <div class="logo col-sm-4">
                     <div class="pull-right">
