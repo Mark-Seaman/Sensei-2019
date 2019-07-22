@@ -51,7 +51,6 @@ class PrivateDoc(LoginRequiredMixin, DocDisplay):
         self.site_title = "My Brain", 'Top Secret Notes'
         self.logo = "/static/images/SWS_Logo_200.jpg", 'Shrinking World Solutions'
         self.template_name = 'task_theme.html'
-        self.data['day'] = my_age_in_days()
 
 
 class SeamansLog(DocDisplay):

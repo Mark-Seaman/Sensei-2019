@@ -6,6 +6,7 @@ from re import findall
 
 from tool.shell import read_file
 from hammer.settings import BASE_DIR
+from tool.days import my_age_in_days
 from tool.document import doc_title, text_to_html, domain_doc, doc_html_text, read_markdown, doc_path
 from tool.log import log
 from tool.text import find_markdown_links
@@ -54,6 +55,9 @@ def get_extra_data(title, text):
         # return dict(card=dict(title='Hyperlinks', text=summary))
         summary = get_task_summary(title)
         return dict(card=dict(title='Task Types', text=summary))
+    if title.startswith('info'):
+        return dict(day=my_age_in_days())
+
 
 
 def get_link_summary(title):
