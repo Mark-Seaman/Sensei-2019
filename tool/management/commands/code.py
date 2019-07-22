@@ -2,7 +2,7 @@ from django.core.management.base import BaseCommand
 from os import system
 import traceback
 
-from tool.code import code_files, code_search
+from tool.code import code_files, code_search, text_search
 from tool.log import log_exception
 from tool.text import text_join
 
@@ -30,6 +30,9 @@ def code_command(self, options):
         if cmd == 'search':
             print('search')
             search(args)
+        elif cmd == 'code':
+            print('code')
+            search_code(args)
         elif cmd == 'files':
             print('files')
             files(args)
@@ -43,13 +46,13 @@ def code_command(self, options):
 
 def code_help():
     print('''
-        usage:  brain cmd [args]
+        usage:  dj code cmd [args]
 
         cmd:
-            search [type] [word]    - Find words in files
-            
+            code  [words]           - Search the code for these words
             files  [component]      - List code files
-
+            search [type] [words]   - Find words in files
+            
         ''')
 
 
@@ -59,5 +62,10 @@ def files(args):
 
 
 def search(args):
+    print("search %s:" % args)
+    print(text_search(args))
+
+
+def search_code(args):
     print("code_search %s:" % args)
     print(code_search(args[0], args[1:]))

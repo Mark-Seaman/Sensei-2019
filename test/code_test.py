@@ -9,7 +9,7 @@ def code_css_filter_test():
 
 
 def code_files_test():
-    return text_join(code_files('tool'))
+    return text_join(code_files('tool') + code_files('mybook'))
 
 
 def code_html_files_test():
@@ -25,6 +25,10 @@ def code_search_test():
 
 
 def code_search_test():
-    return code_search('tool', ['def ', 'module'])
+    return code_search('tool', ['def '])
+
+
+def code_search2_test():
+    return text_search(['def ', 'module'])
 
 

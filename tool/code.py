@@ -13,11 +13,6 @@ def code_search(path, words):
     return file_search(code_files(path), words)
 
 
-def text_search(words):
-    files = code_files() + html_files() + doc_files()
-    return file_search(files, words)
-
-
 def find_classes(text):
     pattern = r'class (.*)\(.*\)'
     return match_pattern(text, pattern).split('\n')
@@ -43,3 +38,10 @@ def html_files():
 def html_search(words):
     files = html_files()
     return file_search(files, words)
+
+
+def text_search(words):
+    files = code_files() + html_files() + doc_files()
+    return file_search(files, words)
+
+

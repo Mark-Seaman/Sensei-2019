@@ -45,7 +45,7 @@ alias py='figlet S2 Python&&which python&&python --version&&pip list&&echo direc
 alias qt='tst quick'
 alias r=reset
 
-alias s='app search'
+alias s='code search .'
 alias serve='web localhost:8000; dj runserver'
 
 alias tlike='tst like'
