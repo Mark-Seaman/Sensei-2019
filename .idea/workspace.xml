@@ -4,8 +4,13 @@
     <list default="true" id="8b1c7c23-5c5a-4bc1-bbb1-8cdeb8f69710" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/Documents/info/Index.md" beforeDir="false" afterPath="$PROJECT_DIR$/Documents/info/Index.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hammer/sensei.db" beforeDir="false" afterPath="$PROJECT_DIR$/hammer/sensei.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybook/seaman.py" beforeDir="false" afterPath="$PROJECT_DIR$/mybook/seaman.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybook/templates/seaman_theme.html" beforeDir="false" afterPath="$PROJECT_DIR$/mybook/templates/seaman_theme.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybook/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mybook/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tasks/summary.py" beforeDir="false" afterPath="$PROJECT_DIR$/tasks/summary.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tasks/task.py" beforeDir="false" afterPath="$PROJECT_DIR$/tasks/task.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/task_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/task_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tool/days.py" beforeDir="false" afterPath="$PROJECT_DIR$/tool/days.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tool/management/commands/tst.py" beforeDir="false" afterPath="$PROJECT_DIR$/tool/management/commands/tst.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,10 +24,58 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tasks/views.py">
+        <entry file="file://$PROJECT_DIR$/mybook/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="464">
-              <caret line="95" column="33" selection-start-line="95" selection-start-column="33" selection-end-line="95" selection-end-column="33" />
+            <state relative-caret-position="672">
+              <caret line="36" column="35" selection-start-line="36" selection-start-column="35" selection-end-line="36" selection-end-column="35" />
+              <folding>
+                <element signature="e#0#44#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tool/days.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="965">
+              <caret line="138" column="49" lean-forward="true" selection-start-line="138" selection-start-column="4" selection-end-line="138" selection-end-column="49" />
+              <folding>
+                <element signature="e#0#30#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tool/management/commands/tst.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="387">
+              <caret line="18" column="28" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
+              <folding>
+                <element signature="e#0#51#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/test/task_test.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="264">
+              <caret line="12" selection-start-line="12" selection-end-line="12" />
+              <folding>
+                <element signature="e#0#29#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mybook/seaman.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="418">
+              <caret line="53" column="43" selection-start-line="53" selection-start-column="43" selection-end-line="53" selection-end-column="43" />
               <folding>
                 <element signature="e#0#57#0" expanded="true" />
               </folding>
@@ -30,22 +83,12 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/tasks/summary.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="277">
-              <caret line="189" column="42" selection-start-line="189" selection-start-column="42" selection-end-line="189" selection-end-column="42" />
-              <folding>
-                <element signature="e#0#32#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tasks/templates/task_time.html">
+        <entry file="file://$PROJECT_DIR$/mybook/templates/seaman_theme.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-645" />
+            <state relative-caret-position="193">
+              <caret line="44" column="60" selection-start-line="44" selection-start-column="60" selection-end-line="44" selection-end-column="60" />
+            </state>
           </provider>
         </entry>
       </file>
@@ -61,6 +104,8 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>node</find>
+      <find>task_hours</find>
+      <find>now</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -70,7 +115,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/bin/todo.py" />
-        <option value="$PROJECT_DIR$/tool/days.py" />
         <option value="$PROJECT_DIR$/bin/web.py" />
         <option value="$PROJECT_DIR$/bin/bash-alias" />
         <option value="$PROJECT_DIR$/test/ocean_test.py" />
@@ -86,7 +130,6 @@
         <option value="$PROJECT_DIR$/tool/management/commands/ocean.py" />
         <option value="$PROJECT_DIR$/hammer/secret_settings.py" />
         <option value="$PROJECT_DIR$/tasks/models.py" />
-        <option value="$PROJECT_DIR$/test/task_test.py" />
         <option value="$PROJECT_DIR$/hammer/urls.py" />
         <option value="$PROJECT_DIR$/hammer/config/nginx.conf" />
         <option value="$PROJECT_DIR$/hammer/settings.py" />
@@ -100,17 +143,13 @@
         <option value="$PROJECT_DIR$/test/system_test.py" />
         <option value="$PROJECT_DIR$/test/django_test.py" />
         <option value="$PROJECT_DIR$/bin/hourly" />
-        <option value="$PROJECT_DIR$/mybook/templates/seaman_theme.html" />
-        <option value="$PROJECT_DIR$/mybook/views.py" />
         <option value="$PROJECT_DIR$/Documents/info/Write/Index.md" />
         <option value="$PROJECT_DIR$/tasks/templates/task_theme.html" />
-        <option value="$PROJECT_DIR$/mybook/seaman.py" />
         <option value="$PROJECT_DIR$/mybook/mybook.py" />
         <option value="$PROJECT_DIR$/tool/management/commands/todo.py" />
         <option value="$PROJECT_DIR$/test/app_test.py" />
         <option value="$PROJECT_DIR$/tool/tst.py" />
         <option value="$PROJECT_DIR$/test/tst_test.py" />
-        <option value="$PROJECT_DIR$/tool/management/commands/tst.py" />
         <option value="$PROJECT_DIR$/test/text.py" />
         <option value="$PROJECT_DIR$/tool/text.py" />
         <option value="$PROJECT_DIR$/test/text_test.py" />
@@ -118,6 +157,12 @@
         <option value="$PROJECT_DIR$/tool/shell.py" />
         <option value="$PROJECT_DIR$/tasks/task.py" />
         <option value="$PROJECT_DIR$/tasks/summary.py" />
+        <option value="$PROJECT_DIR$/mybook/templates/seaman_theme.html" />
+        <option value="$PROJECT_DIR$/mybook/views.py" />
+        <option value="$PROJECT_DIR$/tool/management/commands/tst.py" />
+        <option value="$PROJECT_DIR$/mybook/seaman.py" />
+        <option value="$PROJECT_DIR$/tool/days.py" />
+        <option value="$PROJECT_DIR$/test/task_test.py" />
       </list>
     </option>
   </component>
@@ -143,13 +188,17 @@
             <path>
               <item name="Sensei" type="b2602c69:ProjectViewProjectNode" />
               <item name="Sensei" type="462c0819:PsiDirectoryNode" />
-              <item name="tasks" type="462c0819:PsiDirectoryNode" />
+              <item name="mybook" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Sensei" type="b2602c69:ProjectViewProjectNode" />
               <item name="Sensei" type="462c0819:PsiDirectoryNode" />
-              <item name="tasks" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Sensei" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Sensei" type="462c0819:PsiDirectoryNode" />
+              <item name="tool" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -343,23 +392,23 @@
       <workItem from="1562250946957" duration="10030000" />
       <workItem from="1562620850115" duration="593000" />
       <workItem from="1562941841198" duration="37633000" />
-      <workItem from="1563667432851" duration="12170000" />
+      <workItem from="1563667432851" duration="14802000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="85396000" />
+    <option name="totallyTimeSpent" value="88028000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="2560" height="1440" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13343924" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13343924" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.329927" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32919708" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32919708" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -442,7 +491,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/task_test.py" />
     <entry file="file://$PROJECT_DIR$/tasks/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -532,13 +580,6 @@
     <entry file="file://$PROJECT_DIR$/bin/bashrc">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/mybook/templates/seaman_theme.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="897">
-          <caret line="76" column="48" selection-start-line="76" selection-start-column="48" selection-end-line="76" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mybook/templates/mybook_public.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -565,26 +606,6 @@
           <caret line="65" selection-start-line="65" selection-end-line="65" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mybook/seaman.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="41" selection-start-line="41" selection-end-line="41" />
-          <folding>
-            <element signature="e#0#57#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mybook/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="424">
-          <caret line="33" column="42" lean-forward="true" selection-start-line="33" selection-start-column="42" selection-end-line="33" selection-end-column="42" />
-          <folding>
-            <element signature="e#0#44#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -621,16 +642,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="242">
           <caret line="12" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tool/days.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1171">
-          <caret line="138" column="24" lean-forward="true" selection-start-line="134" selection-end-line="138" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#30#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -719,16 +730,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tool/management/commands/tst.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="48" column="44" selection-start-line="48" selection-start-column="44" selection-end-line="48" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/selenium_test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="905">
@@ -764,7 +765,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tasks/templates/task_time.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-645" />
+        <state relative-caret-position="-1070" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tasks/summary.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="557">
+          <caret line="77" column="16" selection-start-line="77" selection-start-column="16" selection-end-line="77" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tasks/views.py">
@@ -777,12 +788,59 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tasks/summary.py">
+    <entry file="file://$PROJECT_DIR$/mybook/templates/seaman_theme.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="189" column="42" selection-start-line="189" selection-start-column="42" selection-end-line="189" selection-end-column="42" />
+        <state relative-caret-position="193">
+          <caret line="44" column="60" selection-start-line="44" selection-start-column="60" selection-end-line="44" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mybook/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="672">
+          <caret line="36" column="35" selection-start-line="36" selection-start-column="35" selection-end-line="36" selection-end-column="35" />
           <folding>
-            <element signature="e#0#32#0" expanded="true" />
+            <element signature="e#0#44#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tool/management/commands/tst.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="387">
+          <caret line="18" column="28" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mybook/seaman.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="53" column="43" selection-start-line="53" selection-start-column="43" selection-end-line="53" selection-end-column="43" />
+          <folding>
+            <element signature="e#0#57#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tool/days.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="965">
+          <caret line="138" column="49" lean-forward="true" selection-start-line="138" selection-start-column="4" selection-end-line="138" selection-end-column="49" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/task_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
           </folding>
         </state>
       </provider>

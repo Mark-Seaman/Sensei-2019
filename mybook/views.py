@@ -33,6 +33,7 @@ class DocDisplay(TemplateView):
         self.domain = self.request.get_host()
         self.title = self.request.path[1:]
         self.get_content_data()
+        # self.data['days'] = 10000
         return page_settings(self.title, self.site_title, self.logo, self.menu, self.text, self.data)
 
     def get(self, request, *args, **kwargs):

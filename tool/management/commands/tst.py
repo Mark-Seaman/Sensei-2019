@@ -10,6 +10,14 @@ from tool.shell import differences, banner
 # from tool.tst import tst_command
 
 
+def quick_test():
+    # from test.text_test import text_html_search_test
+    # print(text_html_search_test())
+    # from test.text_test import text_doc_search_test
+    # print(text_doc_search_test())
+    from test.task_test import task_days_age_test
+    print(task_days_age_test())
+
 class Command(BaseCommand):
 
     def add_arguments(self, parser):
@@ -44,10 +52,7 @@ def tst_command(self, args):
         elif cmd == 'like':
             tst_like(self,args)
         elif cmd == 'quick':
-            # from test.text_test import text_html_search_test
-            # print(text_html_search_test())
-            from test.text_test import text_doc_search_test
-            print(text_doc_search_test())
+            quick_test()
         elif cmd == 'reset':
              Test.objects.all().delete()
         elif cmd == 'results':

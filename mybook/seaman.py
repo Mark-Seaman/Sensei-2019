@@ -1,11 +1,12 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import TemplateView
 
+from mybook.mybook import *
+from mybook.views import DocDisplay
+from tool.days import my_age_in_days
 from tool.document import doc_file_index, doc_list
 from tool.log import log_page
 
-from mybook.mybook import *
-from mybook.views import DocDisplay
 
 
 class BookNotes(DocDisplay):
@@ -50,6 +51,7 @@ class PrivateDoc(LoginRequiredMixin, DocDisplay):
         self.site_title = "My Brain", 'Top Secret Notes'
         self.logo = "/static/images/SWS_Logo_200.jpg", 'Shrinking World Solutions'
         self.template_name = 'task_theme.html'
+        self.data['day'] = my_age_in_days()
 
 
 class SeamansLog(DocDisplay):

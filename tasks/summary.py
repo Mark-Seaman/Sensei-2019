@@ -75,7 +75,7 @@ def percent(actual, total):
 
 
 def percent_display(amount, total):
-    return '%4.1f' % percent(amount, total)
+    return '%4.0f' % percent(amount, total)
 
 
 def percent_totals(totals, subtotals):

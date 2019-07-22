@@ -59,6 +59,14 @@ def days_ago(date,days):
     return  date_str(date-timedelta(days=days))
 
 
+# Calculate the days I've lived
+def my_age_in_days():
+    birth_date = to_date('1959-09-01')
+    today = datetime.now()
+    days = today - birth_date
+    return days.days
+
+
 # Enumerate days for the previous week
 def days_list(args):
     if args:
