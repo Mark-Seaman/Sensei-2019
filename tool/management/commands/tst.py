@@ -10,8 +10,8 @@ from tool.shell import differences, banner
 
 
 def quick_test():
-     system('cd $p && python manage.py code code . "def "')
-     # system('cd $p && python manage.py code files tool')
+     system('cd $p && python manage.py code functions')
+     # system('cd $p && python manage.py code functions')
 
     # Other Quick Tests
     # from test.text_test import text_html_search_test

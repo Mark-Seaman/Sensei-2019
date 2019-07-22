@@ -1,12 +1,13 @@
 from re import findall
 
 from tool.shell import shell_script
-from tool.text import text_lines, file_search, doc_files, match_pattern, transform_matches
+from tool.text import doc_files, file_search, match_pattern, text_lines, text_join, transform_matches
 
 
 def code_files(path='.'):
     files = shell_script('find %s -name "*.py"|grep -v /env/|grep -v .venv/' % path)
-    return text_lines(files)
+    files = text_lines(files)
+    return [f for f in files if f]
 
 
 def code_search(path, words):
@@ -38,6 +39,20 @@ def html_files():
 def html_search(words):
     files = html_files()
     return file_search(files, words)
+
+
+def list_functions():
+    functions = []
+    files = code_files()
+    for code in files:
+        text = open(code).read()
+        functions.append(code + ':')
+        functions.append('    ' + '\n    '.join(find_functions(text)))
+    return text_join(functions)
+
+
+def source_code():
+    return '\n'.join([open(code).read() for code in code_files()])
 
 
 def text_search(words):

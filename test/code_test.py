@@ -1,5 +1,5 @@
 from tool.text import text_join
-from tool.code import code_files, code_search, text_search, html_files, html_search
+from tool.code import code_files, code_search, text_search, html_files, html_search, list_functions
 from tool.shell import redact_css
 
 
@@ -10,6 +10,10 @@ def code_css_filter_test():
 
 def code_files_test():
     return text_join(code_files('tool') + code_files('mybook'))
+
+
+def code_functions_test():
+    return list_functions()
 
 
 def code_html_files_test():
