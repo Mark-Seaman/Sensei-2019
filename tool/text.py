@@ -5,7 +5,7 @@ from os.path import exists
 # ------------------------------
 # Command Interpreter
 from tool.files import read_text
-from tool.shell import shell_script
+# from tool.shell import shell_script
 
 
 def text_command(options):
@@ -233,16 +233,6 @@ def file_search(files, words):
         if text:
             matches += text
     return text_join(matches)
-
-
-def doc_files():
-    text = shell_script('find Documents -type f|grep -v /.git' )
-    return text_lines(delete_lines(delete_lines(text, 'info'), '.DS_Store'))
-
-
-def doc_search(words):
-    files = doc_files()
-    return file_search(files, words)
 
 
 

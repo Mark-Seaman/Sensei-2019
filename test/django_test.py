@@ -30,6 +30,6 @@ def django_pipenv_test():
 
 
 def django_shell_script_test():
-    command_string = 'cat tool/shell.py|grep def; rm xxx'
+    command_string = 'cat tool/shell.py|grep def'
     return shell_script(command_string)
 

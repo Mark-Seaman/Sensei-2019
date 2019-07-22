@@ -5,6 +5,8 @@ from re import split
 from subprocess import Popen, PIPE
 from sys import version_info
 
+from tool.text import text_join
+
 
 def banner(name):
     '''Show a banner for this file in the output'''
@@ -206,12 +208,9 @@ def shell(command):
     return shell_script(command)
 
 
-def shell_file_list(path='.'):
-    files = shell_script('find %s'%(path)).split('\n')
-    # Filter the big directories
-    return [f for f in files \
-            if not '/.git/' in f \
-            and not '/node_modules/' in f]
+def shell_file_list(path='.', exclude_directories=[]):
+    exclude_dirs = ' '.join([("-not -path '*/%s/*'" % d) for d in exclude_directories])
+    return shell_script('find %s %s -type f' % (path, exclude_dirs))
 
 
 def shell_pipe(command, stdin=''):

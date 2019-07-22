@@ -1,7 +1,7 @@
 from re import findall
 
-from tool.shell import shell_script
-from tool.text import doc_files, file_search, match_pattern, text_lines, text_join, transform_matches
+from tool.shell import shell_script, shell_file_list
+from tool.text import delete_lines, file_search, match_pattern, text_lines, text_join, transform_matches
 
 
 def code_files(path='.'):
@@ -12,6 +12,18 @@ def code_files(path='.'):
 
 def code_search(path, words):
     return file_search(code_files(path), words)
+
+
+def doc_files():
+    exclude = ['.git', 'info', 'spiritual']
+    files = shell_file_list('Documents', exclude)
+    files = delete_lines(files, '.DS_Store')
+    return files.split('\n')
+
+
+def doc_search(words):
+    files = doc_files()
+    return file_search(files, words)
 
 
 def find_classes(text):
@@ -32,7 +44,7 @@ def find_signatures(text):
 def html_files():
     html_files = shell_script('find . -name "*.html"|grep -v /env/| grep -v .venv/')
     css_files = shell_script('find . -name "*.css"|grep -v /env/| grep -v .venv/|grep -v min.css')
-    files = html_files + css_files
+    files = html_files + '\n' + css_files
     return text_lines(files)
 
 

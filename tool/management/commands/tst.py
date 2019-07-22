@@ -7,11 +7,11 @@ from hammer.settings import TEST_DIR
 from tool.log import log_exception
 from tool.models import Test
 from tool.shell import differences, banner
-from test.django_test import django_shell_script_test
+from test.code_test import code_doc_files_test
 
 
 def quick_test():
-    print(django_shell_script_test())
+    print(code_doc_files_test())
 
 
     # Other Quick Tests
