@@ -7,16 +7,20 @@ from hammer.settings import TEST_DIR
 from tool.log import log_exception
 from tool.models import Test
 from tool.shell import differences, banner
-# from tool.tst import tst_command
 
 
 def quick_test():
+     system('cd $p && python manage.py code search tool def')
+     # system('cd $p && python manage.py code files tool')
+
+    # Other Quick Tests
     # from test.text_test import text_html_search_test
     # print(text_html_search_test())
     # from test.text_test import text_doc_search_test
     # print(text_doc_search_test())
-    from test.task_test import task_days_age_test
-    print(task_days_age_test())
+    # from test.task_test import task_days_age_test
+    # print(task_days_age_test())
+
 
 class Command(BaseCommand):
 

@@ -4,13 +4,13 @@ from tool.shell import shell_script
 from tool.text import text_lines, file_search, doc_files, match_pattern, transform_matches
 
 
-def code_files():
-    files = shell_script('find . -name "*.py"|grep -v /env/|grep -v .venv/')
+def code_files(path='.'):
+    files = shell_script('find %s -name "*.py"|grep -v /env/|grep -v .venv/' % path)
     return text_lines(files)
 
 
-def code_search(words):
-    return file_search(code_files(), words)
+def code_search(path, words):
+    return file_search(code_files(path), words)
 
 
 def text_search(words):
