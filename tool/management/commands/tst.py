@@ -7,11 +7,7 @@ from hammer.settings import TEST_DIR
 from tool.log import log_exception
 from tool.models import Test
 from tool.shell import differences, banner
-from test.code_test import code_doc_files_test
-
-
-def quick_test():
-    print(code_doc_files_test())
+from tool.quick_test import quick_test
 
 
 class Command(BaseCommand):

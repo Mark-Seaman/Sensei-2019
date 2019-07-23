@@ -2,12 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8b1c7c23-5c5a-4bc1-bbb1-8cdeb8f69710" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/tool/quick_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Documents/info/Future.md" beforeDir="false" afterPath="$PROJECT_DIR$/Documents/info/Future.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Documents/info/Test/BadCharEncoding-utf16" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Documents/info/Tools/Sensei/Index.md" beforeDir="false" afterPath="$PROJECT_DIR$/Documents/info/Tools/Sensei/Index.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hammer/sensei.db" beforeDir="false" afterPath="$PROJECT_DIR$/hammer/sensei.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/code_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/code_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/text_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/text_test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tool/code.py" beforeDir="false" afterPath="$PROJECT_DIR$/tool/code.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tool/files.py" beforeDir="false" afterPath="$PROJECT_DIR$/tool/files.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tool/management/commands/code.py" beforeDir="false" afterPath="$PROJECT_DIR$/tool/management/commands/code.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tool/management/commands/tst.py" beforeDir="false" afterPath="$PROJECT_DIR$/tool/management/commands/tst.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tool/shell.py" beforeDir="false" afterPath="$PROJECT_DIR$/tool/shell.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tool/text.py" beforeDir="false" afterPath="$PROJECT_DIR$/tool/text.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,8 +29,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tool/management/commands/tst.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="14" selection-start-line="14" selection-end-line="14" />
+            <state relative-caret-position="418">
+              <caret line="19" column="54" selection-start-line="19" selection-start-column="54" selection-end-line="19" selection-end-column="54" />
               <folding>
                 <element signature="e#0#51#0" expanded="true" />
               </folding>
@@ -33,12 +39,45 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/code_test.py">
+        <entry file="file://$PROJECT_DIR$/tool/quick_test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="223">
-              <caret line="24" selection-start-line="24" selection-end-line="24" />
+            <state relative-caret-position="88">
+              <caret line="4" column="45" selection-start-line="4" selection-start-column="45" selection-end-line="4" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tool/text.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="317">
+              <caret line="229" column="29" selection-start-line="229" selection-start-column="29" selection-end-line="229" selection-end-column="29" />
               <folding>
-                <element signature="e#0#43#0" expanded="true" />
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tool/files.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="383">
+              <caret line="174" selection-start-line="174" selection-end-line="174" />
+              <folding>
+                <element signature="e#0#32#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tool/management/commands/code.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="929">
+              <caret line="58" column="4" selection-start-line="58" selection-start-column="4" selection-end-line="58" selection-end-column="4" />
+              <folding>
+                <element signature="e#0#51#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -47,10 +86,22 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tool/code.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-302">
-              <caret line="9" column="44" lean-forward="true" selection-start-line="9" selection-start-column="44" selection-end-line="9" selection-end-column="44" />
+            <state relative-caret-position="493">
+              <caret line="78" column="33" lean-forward="true" selection-start-line="78" selection-start-column="33" selection-end-line="78" selection-end-column="33" />
               <folding>
                 <element signature="e#0#22#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/code_test.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="66">
+              <caret line="3" selection-start-line="3" selection-end-line="3" />
+              <folding>
+                <element signature="e#0#43#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -80,8 +131,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/bin/web.py" />
-        <option value="$PROJECT_DIR$/test/ocean_test.py" />
         <option value="$PROJECT_DIR$/test/static_test.py" />
         <option value="$PROJECT_DIR$/bin/ls-brain" />
         <option value="$PROJECT_DIR$/bin/ls-s1" />
@@ -123,13 +172,15 @@
         <option value="$PROJECT_DIR$/test/system_test.py" />
         <option value="$PROJECT_DIR$/mybook/templates/seaman_theme.html" />
         <option value="$PROJECT_DIR$/bin/bash-alias" />
-        <option value="$PROJECT_DIR$/tool/management/commands/code.py" />
-        <option value="$PROJECT_DIR$/tool/text.py" />
         <option value="$PROJECT_DIR$/test/django_test.py" />
-        <option value="$PROJECT_DIR$/tool/management/commands/tst.py" />
-        <option value="$PROJECT_DIR$/test/code_test.py" />
         <option value="$PROJECT_DIR$/tool/shell.py" />
         <option value="$PROJECT_DIR$/test/text_test.py" />
+        <option value="$PROJECT_DIR$/tool/management/commands/tst.py" />
+        <option value="$PROJECT_DIR$/tool/text.py" />
+        <option value="$PROJECT_DIR$/tool/files.py" />
+        <option value="$PROJECT_DIR$/tool/management/commands/code.py" />
+        <option value="$PROJECT_DIR$/tool/quick_test.py" />
+        <option value="$PROJECT_DIR$/test/code_test.py" />
         <option value="$PROJECT_DIR$/tool/code.py" />
       </list>
     </option>
@@ -152,11 +203,6 @@
             <path>
               <item name="Sensei" type="b2602c69:ProjectViewProjectNode" />
               <item name="Sensei" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Sensei" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Sensei" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Sensei" type="b2602c69:ProjectViewProjectNode" />
@@ -355,12 +401,12 @@
       <workItem from="1562250946957" duration="10030000" />
       <workItem from="1562620850115" duration="593000" />
       <workItem from="1562941841198" duration="37633000" />
-      <workItem from="1563667432851" duration="36528000" />
+      <workItem from="1563667432851" duration="43881000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="109754000" />
+    <option name="totallyTimeSpent" value="117107000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="2560" height="1440" extended-state="0" />
@@ -435,14 +481,6 @@
     <SUITE FILE_PATH="coverage/Sensei$Run_Tests.coverage" NAME="Run Tests Coverage Results" MODIFIED="1563573865736" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/tasks/tests.py" />
-    <entry file="file://$PROJECT_DIR$/hammer/secret_settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="727">
-          <caret line="36" column="74" lean-forward="true" selection-start-line="36" selection-start-column="2" selection-end-line="36" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tasks/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -726,32 +764,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tool/management/commands/code.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="641">
-          <caret line="62" column="21" selection-start-line="62" selection-start-column="21" selection-end-line="62" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tool/document.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="267">
           <caret line="161" column="39" selection-start-line="161" selection-start-column="39" selection-end-line="161" selection-end-column="39" />
           <folding>
             <element signature="e#0#29#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tool/files.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="443">
-          <caret line="139" selection-start-line="139" selection-end-line="139" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -770,36 +788,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="704">
           <caret line="32" column="48" selection-start-line="32" selection-start-column="48" selection-end-line="32" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tool/management/commands/tst.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tool/text.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1100">
-          <caret line="50" column="4" selection-start-line="50" selection-start-column="4" selection-end-line="50" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/code_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -823,10 +811,70 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/tool/tests.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tool/management/commands/tst.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="19" column="54" selection-start-line="19" selection-start-column="54" selection-end-line="19" selection-end-column="54" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tool/text.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="229" column="29" selection-start-line="229" selection-start-column="29" selection-end-line="229" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tool/files.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="174" selection-start-line="174" selection-end-line="174" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tool/management/commands/code.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="929">
+          <caret line="58" column="4" selection-start-line="58" selection-start-column="4" selection-end-line="58" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tool/quick_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" column="45" selection-start-line="4" selection-start-column="45" selection-end-line="4" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/code_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/tool/code.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-302">
-          <caret line="9" column="44" lean-forward="true" selection-start-line="9" selection-start-column="44" selection-end-line="9" selection-end-column="44" />
+        <state relative-caret-position="493">
+          <caret line="78" column="33" lean-forward="true" selection-start-line="78" selection-start-column="33" selection-end-line="78" selection-end-column="33" />
           <folding>
             <element signature="e#0#22#0" expanded="true" />
           </folding>

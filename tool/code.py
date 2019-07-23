@@ -11,20 +11,16 @@ def code_files(path='.'):
     return text_lines(files)
 
 
-def code_search(path, words):
-    return file_search(code_files(path), words)
-
-
 def doc_files():
-    exclude = ['.git', 'info', 'spiritual']
+    exclude = ['.git', 'env', '.venv']
     files = shell_file_list('Documents', '', exclude)
     files = delete_lines(files, '.DS_Store')
     return text_lines(files)
 
 
-def doc_search(words):
-    files = doc_files()
-    return file_search(files, words)
+# def doc_search(words):
+#     files = doc_files()
+#     return file_search(files, words)
 
 
 def find_classes(text):
@@ -48,16 +44,11 @@ def html_files():
     files += text_lines(shell_file_list('.', 'css', exclude))
     return files
 
-    # html_files = shell_script('find . -name "*.html"|grep -v /env/| grep -v .venv/')
-    # css_files = shell_script('find . -name "*.css"|grep -v /env/| grep -v .venv/|grep -v min.css')
-    # files = html_files + '\n' + css_files
-    # return text_lines(files)
 
-
-def html_search(words):
-    files = html_files()
-    return file_search(files, words)
-
+# def html_search(words):
+#     files = html_files()
+#     return file_search(files, words)
+#
 
 def list_functions():
     functions = []
@@ -73,8 +64,17 @@ def source_code():
     return '\n'.join([open(code).read() for code in code_files()])
 
 
-def text_search(words):
-    files = code_files() + html_files() + doc_files()
+def text_search(args):
+    selector = args[0]
+    words = args[1:]
+    if selector == 'code':
+        files = code_files()
+    elif selector == 'doc':
+        files = doc_files()
+    elif selector == 'html':
+        files = html_files()
+    else:
+        files = code_files() + html_files() + doc_files()
+    # print(selector + 'search:')
     return file_search(files, words)
-
 

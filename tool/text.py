@@ -228,8 +228,9 @@ def file_search(files, words):
     matches = []
     for f in files:
         text = text_lines(read_text(f))
+        text = [('%s: %s' % (f, line)) for line in text]
         for pattern in words:
-            text = [('%s: %s' % (f, line)) for line in text if search(pattern, line)]
+            text = [line for line in text if search(pattern, line)]
         if text:
             matches += text
     return text_join(matches)

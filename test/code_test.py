@@ -1,6 +1,10 @@
 from tool.text import text_join, text_lines
-from tool.code import code_files, code_search, doc_files, doc_search, source_code, text_search, html_files, html_search, list_functions
+from tool.code import code_files, doc_files, source_code, text_search, html_files, list_functions
 from tool.shell import redact_css
+
+
+def code_command_test():
+    return 'Code Command Test'
 
 
 def code_css_filter_test():
@@ -13,7 +17,7 @@ def code_doc_files_test():
 
 
 def code_doc_search_test():
-    text = doc_search(['Seaman','shrinkingworld'])
+    text = text_search(['doc', 'Seaman', 'shrinkingworld'])
     return text
 
 
@@ -30,7 +34,7 @@ def code_html_files_test():
 
 
 def code_html_search_test():
-    return html_search(['h1'])
+    return text_search(['html', 'h1'])
 
 
 def code_search_test():
@@ -38,7 +42,7 @@ def code_search_test():
 
 
 def code_search_test():
-    return code_search('tool', ['def '])
+    return text_search(['code', 'tool', 'def '])
 
 
 def code_search2_test():
