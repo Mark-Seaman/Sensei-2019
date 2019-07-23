@@ -41,8 +41,8 @@ def code_search_test():
     return code_search('tool', ['def '])
 
 
-# def code_search2_test():
-#     return text_search(['def ', 'module'])
+def code_search2_test():
+    return text_search(['def ', 'module'])
 
 
 def code_source_test():

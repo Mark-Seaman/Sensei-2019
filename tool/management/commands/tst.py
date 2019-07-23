@@ -14,16 +14,6 @@ def quick_test():
     print(code_doc_files_test())
 
 
-    # Other Quick Tests
-    # system('cd $p && python manage.py code source')
-    # from test.text_test import text_html_search_test
-    # print(text_html_search_test())
-    # from test.text_test import text_doc_search_test
-    # print(text_doc_search_test())
-    # from test.task_test import task_days_age_test
-    # print(task_days_age_test())
-
-
 class Command(BaseCommand):
 
     def add_arguments(self, parser):
