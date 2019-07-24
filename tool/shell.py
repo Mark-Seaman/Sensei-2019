@@ -152,6 +152,14 @@ def hostname():
     return node()
 
 
+def is_imac():
+    return 'imac' in hostname() 
+
+    
+def is_macbook():
+    return 'macbook' in hostname() 
+
+
 def is_server():
     return hostname() == 'sensei-server'
 
