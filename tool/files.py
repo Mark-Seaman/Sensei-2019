@@ -1,24 +1,24 @@
 from genericpath import getmtime
 from glob import glob
 from os import remove, getcwd, listdir, mkdir, access, W_OK, walk
-from os.path    import isfile, isdir, join, dirname, exists
-from sys        import stdin
+from os.path import isfile, isdir, join, dirname, exists
+from sys import stdin
 from subprocess import Popen,PIPE
-from json       import loads
+from json import loads
 
 
-# Gather new lines
-def accumulate_new_lines(accumulator, f2):
-    d = dirname(accumulator)
-    if not exists(d):
-        print ('Make directory', d)
-        mkdir(d)
-    a1 = read_file(accumulator)
-    a2 = read_file(f2)
-    new_items = [a for a in a2 if not a in a1]
-    if new_items != []:
-        write_file(accumulator, new_items, True)
-
+# # Gather new lines
+# def accumulate_new_lines(accumulator, f2):
+#     d = dirname(accumulator)
+#     if not exists(d):
+#         print ('Make directory', d)
+#         mkdir(d)
+#     a1 = read_file(accumulator)
+#     a2 = read_file(f2)
+#     new_items = [a for a in a2 if not a in a1]
+#     if new_items != []:
+#         write_file(accumulator, new_items, True)
+#
 
 # Print the count and directory name
 def count_files(directory):
@@ -125,20 +125,24 @@ def read_json(filename):
     return {}
 
 
-# Read lines from a file and strip off the tailing newline
-def read_file(filename):
-    if not exists(filename): return [ ]
-    f=open(filename)
-    results = f.read().split('\n')
-    f.close()
-    return results
+# # Read lines from a file and strip off the tailing newline
+# def read_file(filename):
+#     if not exists(filename): return [ ]
+#     f=open(filename)
+#     results = f.read().split('\n')
+#     f.close()
+#     return results
 
 
 # Return the text from the file
 def read_text(f):
-    if exists(f):
-        return open(f).read()
-    return 'No file found, '+f
+    try:
+        if exists(f):
+            return open(f).read()
+        return 'No file found, '+f
+    except:
+        print('**CORRUPT FILE, %s**' % f)
+        return '**CORRUPT FILE, %s**' % f
 
 
 # Recursive list
@@ -160,14 +164,18 @@ def time_sort_file(d):
 
 # Return the text from the file
 def write_text(filename, text, append=None):
-    create_directory(dirname(filename))
-    f=open(filename, 'a' if append else 'w')
-    f.write(text)
-    f.close()
+    try:
+        create_directory(dirname(filename))
+        f = open(filename, 'a' if append else 'w')
+        f.write(text)
+        f.close()
+    except:
+        print('**CORRUPT FILE, %s**' % f)
+        return '**CORRUPT FILE, %s**' % f
 
 
-# Write lines of text to a file
-def write_file(filename, lines, append=None):
-    write_text(filename, "\n".join(lines)+"\n", append)
+# # Write lines of text to a file
+# def write_file(filename, lines, append=None):
+#     write_text(filename, "\n".join(lines)+"\n", append)
 
 

@@ -4,7 +4,7 @@ from os.path import exists
 from os import system
 from traceback import format_exc
 
-from tool.days import days_ago
+from tool.days import days_ago, print_recent_dates
 from tool.log import log_exception
 
 
@@ -19,6 +19,8 @@ class Command(BaseCommand):
                 f = 'Documents/info/Index.md'
                 with open(f, 'a') as x:
                     x.write('* ' +  ' '.join(options['command'][1:]) + '\n\n')
+            elif options['command'] and options['command'][0] == 'days':
+                print_recent_dates()
             for d in recent_dates():
                 edit_task_file(d)
         except:
@@ -51,6 +53,7 @@ Fun 0
 def edit_task_file(date):
     f = 'Documents/info/days/%s' % date
     if not exists(f):
-        open(f, 'w').write(task_default % datetime.now().strftime("%A"))
+        day = datetime.now().strftime("%A")
+        open(f, 'w').write(task_default % day)
     system('e %s Documents/info/Index.md' % f)
 

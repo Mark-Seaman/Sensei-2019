@@ -1,5 +1,5 @@
 from tool.shell import shell
-from tool.tst import *
+from tool.management.commands.tst import tst_find, tst_list
 
 
 def tst_code_test():

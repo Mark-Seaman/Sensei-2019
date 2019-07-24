@@ -1,12 +1,34 @@
-from tool.text import text_replace
+from tool.text import delete_lines, text_join, text_replace
+from tool.code import doc_files
+from tool.shell import no_blank_lines
 
 
-def text_files_test():
+def text_doc_files_test():
+    return text_join(doc_files())
+
+
+def text_replace_test():
     return text_replace('Four score and seven years', 'score', 'generations')
 
 
-def text_css_filter_test():
-    text = 'href="/static/css/guide.css?time=July 4, 2019, 8:42 a.m."/nOutput this'
-    match = '\.css\?.*/n'
-    replacement = 'css/n'
-    return text_replace(text, match, replacement)
+def text_blank_lines_test():
+    text = '''
+    Apples
+    
+    Bananas
+    
+    Carrots
+    '''
+    return no_blank_lines(text)
+
+
+def text_delete_lines_test():
+    text = '''
+        Apples
+
+        Bananas
+
+        Carrots
+        '''
+    return delete_lines(text, 'Bananas')
+

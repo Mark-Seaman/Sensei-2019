@@ -63,8 +63,23 @@ def combine_work_tasks(table, total):
         else:
             results.append(row)
     if total != 0:
-        results = [('Work', work, work * 100 / total)] + results
+        results = [('Work', work, '%4.1f' % (work * 100 / total))] + results
         return results
+
+
+def percent(actual, total):
+    if total == 0:
+        return 0
+    else:
+        return int((int(actual) * 100 + 5) / total)
+
+
+def percent_display(amount, total):
+    return '%4.0f' % percent(amount, total)
+
+
+def percent_totals(totals, subtotals):
+    return [[task[0]] + [percent_display(hours, subtotals[i]) for i, hours in enumerate(task[1:])] for task in totals]
 
 
 def tasks_activity(activity):
@@ -121,17 +136,6 @@ def time_totals(totals):
     return [time_total(totals, time) for time in [1, 2, 3]]
 
 
-def percent(actual, total):
-    if total == 0:
-        return 0
-    else:
-        return int((int(actual) * 100 + 5) / total)
-
-
-def percent_totals(totals, subtotals):
-    return [[task[0]] + [percent(hours, subtotals[i]) for i, hours in enumerate(task[1:])] for task in totals]
-
-
 def review_totals(totals, subtotals):
     def percent_difference(actual, total, ideal):
         diff = percent(actual, total) - ideal
@@ -183,7 +187,7 @@ def time_summary(days):
     totals = tasks.values('name').annotate(task_hours=Sum('hours')).order_by('-task_hours')
     total = sum([t['task_hours'] for t in totals])
     labels = ['Task Name', 'Invested Time', 'Percentage']
-    table = [(t['name'], t['task_hours'], percent(t['task_hours'], total)) for t in totals]
+    table = [(t['name'], t['task_hours'], percent_display(t['task_hours'], total)) for t in totals]
     table = combine_work_tasks(table, total)
     return {
         'total': total,

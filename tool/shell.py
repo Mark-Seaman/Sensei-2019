@@ -5,7 +5,7 @@ from re import split
 from subprocess import Popen, PIPE
 from sys import version_info
 
-from tool.text import text_replace
+from tool.text import text_join, text_lines
 
 
 def banner(name):
@@ -64,9 +64,14 @@ def check_shell_lines(cmd, min=0, max=10):
 
 def curl_get(url):
     html = shell('curl -s %s' % url)
-    match = '\.css\?.*\n'
-    replacement = '.css">\n'
-    return text_replace(html, match, replacement)
+    return redact_css(html)
+
+
+def redact_css(text):
+    from tool.text import text_replace
+    match = r'\.css\?.*">\n*'
+    replacement = r'.css">\n'
+    return text_replace(text, match, replacement)
 
 
 def differences(answer, correct):
@@ -194,52 +199,41 @@ def read_file(path):
         return '**error**: Bad file read, %s' % path
 
 
-def shell(cmd):
+def shell(command):
     '''Execute a shell command and return stdout'''
-
-    def command_line(cmd):
-        cmd = cmd.strip()
-        if cmd:
-            if cmd.startswith('x '):
-                cmd = 'python bin/x.py ' + cmd[2:]
-                chdir(environ['p'])
-        return cmd
-
-    cmd = command_line(cmd)
-    text = Popen(cmd.split(), stdout=PIPE).stdout.read()
-    return text.decode(encoding='UTF-8')
+    return shell_script(command)
 
 
-def shell_file_list(path='.'):
-    files = shell_script('find %s'%(path)).split('\n')
-    # Filter the big directories
-    return [f for f in files \
-            if not '/.git/' in f \
-            and not '/node_modules/' in f]
+def no_blank_lines(text):
+    text = text_lines(text)
+    text = [x for x in text if x.strip() != '']
+    text = text_join(text)
+    return text
+
+
+def shell_file_list(path='.', filetype='', exclude_directories=[]):
+    if filetype != '':
+        filetype = '-name "*.%s"' % filetype
+    exclude_dirs = ' '.join([("-not -path '*/%s/*'" % d) for d in exclude_directories])
+    shell_command = 'find %s %s -type f %s' % (path, exclude_dirs, filetype)
+    files = shell_script(shell_command)
+    return no_blank_lines(files)
 
 
 def shell_pipe(command, stdin=''):
     p = Popen(command, stdin=PIPE, stdout=PIPE)
-    if version_info.major == 3:
-        (out, error) = p.communicate(input=stdin.encode('utf-8'))
-        if error:
-            return error.decode('utf-8') + out.decode('utf-8')
-        return out.decode('utf-8')
-    else:
-        (out, error) = p.communicate(input=stdin)
-        if error:
-            return "**stderr**\n" + error + out
-        return out
+    (out, error) = p.communicate(input=stdin.encode('utf-8'))
+    if error:
+        return error.decode('utf-8') + out.decode('utf-8')
+    return out.decode('utf-8')
 
 
-def shell_script(command):
-    from os import chmod
-    from stat import S_IRWXU
-    script = '/tmp/shell_script'
-    with open(script, 'w') as f:
-        f.write("#!/bin/bash\n\n" + command)
-    chmod(script, S_IRWXU)
-    return shell_pipe(script)
+def shell_script(command_string):
+    p = Popen('bash', stdin=PIPE, stdout=PIPE)
+    (out, error) = p.communicate(input=command_string.encode('utf-8'))
+    if error:
+        return error.decode('utf-8') + out.decode('utf-8')
+    return out.decode('utf-8')
 
 
 def word_count(text):

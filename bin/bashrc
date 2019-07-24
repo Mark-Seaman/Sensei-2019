@@ -3,7 +3,7 @@
 
 if [ `hostname` == 'sensei-server' ]
 then
-    figlet 'Production Sensei Server'
+    figlet 'Sensei Production Server'
     . env/bin/activate
     export p=$HOME
     
@@ -12,7 +12,7 @@ then
     pip list
 else
     export p=$HOME/Sensei
-    figlet 'S2'
+    figlet 'Sensei Dev'
 fi
 
 echo "p = $p"
