@@ -89,3 +89,7 @@ function d {
     echo $d && cd $d && ls -al
 }
 
+# List the path in readable form
+function path {
+    echo $PATH | perl -pe s/:/\\n/g
+}
