@@ -6,7 +6,7 @@ def brain_curl_test():
 
 
 def brain_page_test():
-    return curl_get('localhost:8000/brain/Index.md')
+    return curl_get('localhost:8000/brain/Index')
 
 
 def brain_sws_page_test():
@@ -23,9 +23,9 @@ def brain_missing_page_test():
 
 def brain_localhost_pages_test():
     pages = '''
-brain/Index.md
-MarkSeaman/Index.md
-info/Index.md
+brain/Index
+MarkSeaman/Index
+info/Index
     '''.split('\n')[1:-1]
     output = [curl_get('localhost:8000/%s' % p) for p in pages]
     return '\n'.join(output)

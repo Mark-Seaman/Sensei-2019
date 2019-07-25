@@ -16,7 +16,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         try:
             if options['command'] and options['command'][0] == 'idea':
-                f = 'Documents/info/Index.md.md'
+                f = 'Documents/info/Index.md'
                 with open(f, 'a') as x:
                     x.write('* ' +  ' '.join(options['command'][1:]) + '\n\n')
             elif options['command'] and options['command'][0] == 'days':
@@ -55,5 +55,5 @@ def edit_task_file(date):
     if not exists(f):
         day = datetime.now().strftime("%A")
         open(f, 'w').write(task_default % day)
-    system('e %s Documents/info/Index.md.md' % f)
+    system('e %s Documents/info/Index.md' % f)
 

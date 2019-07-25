@@ -17,7 +17,7 @@ class TaskBase(LoginRequiredMixin, DocDisplay):
     text = '<h1>Time Accounting</h1><p>Measuring My Life</p>'
 
     def get_content_data(self):
-        self.title = self.kwargs.get('title', 'Index.md')
+        self.title = self.kwargs.get('title', 'Index')
         self.menu = info_menu(self.title)
 
 

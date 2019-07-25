@@ -40,10 +40,10 @@ def doc_exists(title):
         return path
     elif exists(path + '.md'):
         return path + '.md'
+    elif isdir(path) and exists(join(path, 'Index')):
+        return join(path, 'Index')
     elif isdir(path) and exists(join(path, 'Index.md')):
         return join(path, 'Index.md')
-    elif isdir(path) and exists(join(path, 'Index.md.md')):
-        return join(path, 'Index.md.md')
 
 
 def doc_html_text(page, image_path=None):
@@ -78,12 +78,12 @@ def doc_page(title):
     elif exists(path + '.md'):
         log('MD redirect')
         return title + '.md'
+    elif isdir(path) and exists(join(path, 'Index')):
+        log('Index redirect')
+        return join(title, 'Index')
     elif isdir(path) and exists(join(path, 'Index.md')):
         log('Index.md redirect')
         return join(title, 'Index.md')
-    elif isdir(path) and exists(join(path, 'Index.md.md')):
-        log('Index.md.md redirect')
-        return join(title, 'Index.md.md')
     else:
         log('Missing document '+title)
         return None

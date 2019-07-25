@@ -36,7 +36,7 @@ class DocDisplay(TemplateView):
         return page_settings(self.title, self.site_title, self.logo, self.menu, self.text, self.data)
 
     def get(self, request, *args, **kwargs):
-        title = self.kwargs.get('title', 'Index.md')
+        title = self.kwargs.get('title', 'Index')
         url = doc_page(self.request.path[1:])
         if url:
             log('REDIRECT: %s --> %s' % (title, url))
@@ -68,5 +68,5 @@ class DocRandom(RedirectView):
 
 class DocRoot(RedirectView):
     def get_redirect_url(self, *args, **kwargs):
-        log_page(self.request, 'Redirect Index.md')
-        return '/%s' % domain_doc(self.request.get_host(),'Index.md')
+        log_page(self.request, 'Redirect Index')
+        return '/%s' % domain_doc(self.request.get_host(),'Index')
