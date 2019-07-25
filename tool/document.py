@@ -60,12 +60,12 @@ def doc_link(title):
 
 
 def doc_list(docdir):
-    files = listdir(doc_path(docdir))
+    files = sorted(listdir(doc_path(docdir)))
     return [(('%s/%s' % (docdir,f)), (title(doc_path('%s/%s') % (docdir,f)))) for f in files]
 
 
 def doc_file_index(docdir):
-    files = listdir(doc_path(docdir))
+    files = sorted(listdir(doc_path(docdir)))
     return [(('%s/%s' % (docdir,f)), '%s' % f) for f in files]
 
 
