@@ -37,7 +37,7 @@ urlpatterns = [
     url(r'shrinkingworld/Leverage/(?P<title>[\w/\-.]*)$', Leverage.as_view()),
 
     # Spiritual
-    url(r'^spiritual/Index$',                   SpiritualDoc.as_view()),
+    url(r'^spiritual/Index.md$',                   SpiritualDoc.as_view()),
     url(r'^spiritual/(?P<title>[\w\-_.]*)$',    SpiritualSelect.as_view()),
     url(r'^spiritual/(?P<title>[\w/\-_.]*)$',   SpiritualDoc.as_view()),
 

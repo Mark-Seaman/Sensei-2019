@@ -26,7 +26,7 @@ class Leverage(DocDisplay):
 
     def get_content_data(self):
         self.text = document_text(domain_doc(self.domain, self.title))
-        self.menu = leverage_menu(self.kwargs.get('title', 'Index'))
+        self.menu = leverage_menu(self.kwargs.get('title', 'Index.md'))
 
 
 class MarkSeaman(DocDisplay):
@@ -46,7 +46,7 @@ class PrivateDoc(LoginRequiredMixin, DocDisplay):
         self.domain = self.request.get_host()
         self.text = document_text(domain_doc(self.domain, self.request.path[1:]))
         self.data = get_extra_data(self.title, self.text)
-        self.title = self.kwargs.get('title', 'Index')
+        self.title = self.kwargs.get('title', 'Index.md')
         self.menu = info_menu(self.title)
         self.site_title = "My Brain", 'Top Secret Notes'
         self.logo = "/static/images/SWS_Logo_200.jpg", 'Shrinking World Solutions'
@@ -61,7 +61,7 @@ class SeamansLog(DocDisplay):
             return "/static/images/MarkSeaman.100.png", 'Mark Seaman'
 
         domain = self.request.get_host()
-        title = self.kwargs.get('title', 'Index')
+        title = self.kwargs.get('title', 'Index.md')
         site_title = "Seaman's Log", 'Big Ideas & Deep Thoughts'
         text = page_text(domain, self.request.path[1:])
         menu = seamans_log_menu(title)

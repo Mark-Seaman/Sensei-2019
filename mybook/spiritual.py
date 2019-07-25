@@ -9,7 +9,7 @@ from .mybook import topic_menu, page_text
 
 def spiritual_menu(title):
     def spiritual_topics():
-        return [('Index', 'Home', title.startswith('Index')),
+        return [('Index.md', 'Home', title.startswith('Index.md')),
                 ('reflect', 'Reflect', title.startswith('reflect')),
                 ('bible', 'Meditate', title.startswith('bible')),
                 ('teaching', 'Learn', title.startswith('teaching')),
@@ -34,7 +34,7 @@ class SpiritualDoc(DocDisplay):
 
     def get_content_data(self):
         self.text = page_text(self.domain, self.title)
-        self.menu = spiritual_menu(self.kwargs.get('title','Index'))
+        self.menu = spiritual_menu(self.kwargs.get('title','Index.md'))
 
 
 class SpiritualSelect(RedirectView):

@@ -22,7 +22,7 @@ def booknotes_excerpt(doc):
 
     def booknotes(doc):
         if not doc:
-            not_these = ['Index', 'Menu', 'SiteTitle']
+            not_these = ['Index.md', 'Menu', 'SiteTitle']
             notes = [b for b in listdir(booknotes_doc_path()) if b not in not_these]
             doc = choice(notes)
         return doc
@@ -125,14 +125,14 @@ def leverage_menu(title):
                 ('Part3', 'Operations', title == 'Part3'),
                 ('Part4', 'Teams', title == 'Part4')]
 
-    return topic_menu(menu_items(title), '/shrinkingworld/Leverage/', "Leverage Principle", 'Index')
+    return topic_menu(menu_items(title), '/shrinkingworld/Leverage/', "Leverage Principle", 'Index.md')
 
 
 def info_menu(title):
 
     def menu_items(title):
         return [('Past', 'Past', title == 'Past.md'),
-                ('Index', 'Present', title == 'Index.md'),
+                ('Index.md', 'Present', title == 'Index.md.md'),
                 ('Future', 'Future', title == 'Future.md'),
                 ('https://shrinking-world.com', 'Shrinking World'),
                 ('https://markseaman.org', 'Mark Seaman')]
@@ -150,8 +150,8 @@ def mark_seaman_menu(title):
 
 def seamans_log_menu(title):
     def menu_items(title):
-        return [('List', 'Articles', title == 'Index'),
-                ('Random', 'Read', title != 'List' and title != 'Index'),
+        return [('List', 'Articles', title == 'Index.md'),
+                ('Random', 'Read', title != 'List' and title != 'Index.md'),
                 ('https://markseaman.org', 'Mark Seaman')]
 
     return topic_menu(menu_items(title), '/seamanslog/', "Seaman's Log")
@@ -159,7 +159,7 @@ def seamans_log_menu(title):
 
 def shrinking_world_menu(title):
     def menu_items(title):
-        return [('https://shrinking-world.com', 'Shrinking World', title == 'Index'),
+        return [('https://shrinking-world.com', 'Shrinking World', title == 'Index.md'),
                 ('https://shrinking-world.com/shrinkingworld/Leverage/', 'Leverage'),
                 ('https://seamansguide.com', 'Guides'),
                 ('https://seamanslog.com', 'Blog'),
