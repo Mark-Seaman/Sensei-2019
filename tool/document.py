@@ -84,6 +84,8 @@ def doc_page(title):
     elif isdir(path) and exists(join(path, 'Index.md')):
         log('Index.md redirect')
         return join(title, 'Index.md')
+    elif isdir(path):
+        return join(title, 'Files')
     else:
         log('Missing document '+title)
         return None
