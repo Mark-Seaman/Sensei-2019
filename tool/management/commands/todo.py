@@ -39,13 +39,17 @@ task_default = '''%s
 Grow 0
 
     1, 1, 1, 1
-    weight: 20    
+    weight: 20
+
+Tools 0
+
+Write 0
+
+Teach 0
 
 People 0
 
-
 Fun 0
-
 
 '''
 
