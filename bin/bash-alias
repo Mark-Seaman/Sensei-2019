@@ -1,7 +1,7 @@
 #!/bin/bash
-# S2 Aliases
+# Sensei Aliases
 
-alias app='dj app'
+alias app='dj code search code'
 
 alias b='brackets'
 
@@ -9,7 +9,7 @@ alias co='vc commit'
 alias code='dj code'
 alias console='ssh sensei@seamanfamily.org'
 
-alias doc='dj doc'
+alias docs='dj code search doc'
 alias deploy='o deploy'
 alias dj='./manage.py'
 alias ds='doc search'
@@ -27,6 +27,7 @@ alias gl='git log --name-only'
 alias gs='vc status'
 
 alias h='history 40'
+alias html='dj code search html'
 alias host='hostname'
 
 alias i='dj todo idea'
@@ -67,10 +68,10 @@ alias web='dj web'
 # ------------------------------
 # Functions
 
-function deploy {
-    vc commit $* &&
-    brain deploy $*
-}
+# function deploy {
+#     vc commit $* &&
+#     brain deploy $*
+# }
 
 function ce {
     cd $p && e `find . | grep $1.py`
