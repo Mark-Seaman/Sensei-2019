@@ -1,19 +1,25 @@
-# from tool.management.commands.code import execute_command
-
 from selenium import webdriver
+from os import system
+from pyvirtualdisplay import Display
 
 
 def quick_test():
-    options = webdriver.ChromeOptions()
-    options.add_argument('window-size=800x841')
-    options.add_argument('headless')
-    browser = webdriver.Chrome(options=options)
-    print('Web browser open')
-    # print(verify_page())
 
-# def search_test():
-#     execute_command('search doc info August')
-#     execute_command('search html h1 title')
-#     execute_command('search code info def')
-#
+    system('chromedriver --version')
+    print('open display')
+
+    display = Display(visible=0, size=(800, 600))
+    display.start()
+
+    options = webdriver.ChromeOptions()
+    options.add_argument('--no-sandbox')
+
+    print("open browser")
+    driver = webdriver.Chrome(chrome_options=options)
+    driver.get('http://shrinking-world.com')
+    print('title = ' + driver.title)
+
+
+    driver.quit()
+    print('Web browser open')
 
