@@ -1,10 +1,19 @@
+from os import system
+from platform import node
 from selenium import webdriver
 
 
 def start_browser():
     options = webdriver.ChromeOptions()
-    options.add_argument('window-size=800x841')
-    options.add_argument('headless')
+    options.add_argument('--no-sandbox')
+    if node() == 'sensei-server':
+        print('open display')
+        from pyvirtualdisplay import Display
+        display = Display(visible=0, size=(800, 600))
+        display.start()
+    else:
+        options.add_argument('window-size=800x600')
+        options.add_argument('headless')
     return webdriver.Chrome(options=options)
 
 
@@ -51,6 +60,25 @@ def verify_page(url='http://localhost:8000'):
     end_browser(browser)
     return report
 
+
+def test_selenium_setup():
+
+    # Check the version of Chromedriver
+    system('chromedriver --version')
+
+    # Open the webdriver
+    print("open browser")
+    driver = start_browser()
+    print('Web browser open')
+
+    # Get a page
+    print('get page')
+    driver.get('http://shrinking-world.com')
+    print('title = ' + driver.title)
+
+    # Close the webdriver
+    driver.quit()
+    print('Web browser closed')
 
 # def find_xpath(browser, xpath):
 #     try:
