@@ -1,12 +1,12 @@
-# from selenium import webdriver
-
-from tool.management.commands.code import execute_command
+# from tool.management.commands.code import execute_command
 # from tool.shell import is_server, redact_css
-from tool.page import verify_page
+# from tool.page import verify_page
 
 
 def quick_test():
-    print(verify_page())
+    from selenium import webdriver
+    print('Web driver imported')
+    # print(verify_page())
 
 
 # def start_browser():
