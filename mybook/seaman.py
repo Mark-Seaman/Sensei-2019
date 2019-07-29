@@ -29,6 +29,17 @@ class Leverage(DocDisplay):
         self.menu = leverage_menu(self.kwargs.get('title', 'Index'))
 
 
+class Homework(DocDisplay):
+    template_name = 'mybook_homework.html'
+
+    site_title = 'Homework Master', 'UNC BACS 200'
+    logo = "/static/images/unc/Bear.200.png", 'UNC'
+
+    def get_content_data(self):
+        self.text = document_text('unc/bacs200/Homework')
+        self.menu = homework_menu(self.kwargs.get('title', 'Index'))
+
+
 class MarkSeaman(DocDisplay):
     site_title = 'Mark Seaman', 'Inventor - Teacher - Writer'
     logo = "/static/images/MarkSeaman.100.png", 'Mark Seaman'

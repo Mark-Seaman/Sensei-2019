@@ -19,7 +19,7 @@ class SeamanFamily(RedirectView):
 
 
 class DocDisplay(TemplateView):
-    template_name = 'seaman_theme.html'
+    template_name = 'mybook_theme.html'
     site_title = "Shrinking World", 'Software Development Training'
     logo = "/static/images/SWS_Logo_200.jpg", 'Shrinking World Solutions'
     data = {}

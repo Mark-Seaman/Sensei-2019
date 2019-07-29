@@ -1,12 +1,15 @@
-# from tool.shell import is_server, is_macbook
-from tool.page import verify_page
+from tool.page import end_browser, start_browser, page_features
 
 
 def selenium_features_test():
-    # if not is_server() and not is_macbook():
-        return verify_page('https://shrinking-world.com')
-    # else:
-    #     return 'Test is disabled on the Sensei-Server'
+    driver = start_browser()
+    features = page_features(driver, 'https://shrinking-world.com')
+    features += page_features(driver, 'https://MarkSeaman.org')
+    features += page_features(driver, 'https://SeamansLog.com')
+    features += page_features(driver, 'https://SpiritualThings.org')
+    features += page_features(driver, 'http://unco-bacs.org/bacs200/class/templates/simple.html')
+    end_browser(driver)
+    return features
 
 
 if __name__ == '__main__':

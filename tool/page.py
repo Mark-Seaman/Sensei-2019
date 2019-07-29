@@ -40,7 +40,7 @@ def report_features(url, features):
     def feature_string(features, f):
         return '\n\n## %s\n\n %s' % (f, features[f])
 
-    report = ['# Page Features for %s' % url]
+    report = ['# Page Features for %s:' % url]
     report += [feature_string(features, f) for f in features.keys()]
     return '\n'.join(report)
 
@@ -48,17 +48,18 @@ def report_features(url, features):
 def get_requirements(url):
     if url == 'http://localhost:8000/MarkSeaman':
         return ['header h1', 'header h2', 'main h2#inventor', 'footer', 'p', 'nav', 'h1', 'h2', 'ul>li']
+    elif url == 'http://unco-bacs.org/bacs200/class/templates/simple.html':
+        return ['head', 'body', 'h1']
     else:
         return ['header', 'footer', 'p', 'h1', 'h2']
 
 
-def verify_page(url='http://localhost:8000'):
-    browser = start_browser()
-    browser.get(url)
-    features = extract_features(browser, get_requirements(url))
-    report = report_features(url, features)
-    end_browser(browser)
-    return report
+def page_features(driver, url='http://localhost:8000', requirements=None):
+    driver.get(url)
+    if not requirements:
+        requirements = get_requirements(url)
+    features = extract_features(driver, requirements)
+    return report_features(url, features)
 
 
 def test_selenium_setup():
@@ -74,11 +75,13 @@ def test_selenium_setup():
     # Get a page
     print('get page')
     driver.get('http://shrinking-world.com')
-    print('title = ' + driver.title)
+    print('Page Source:\n' + driver.page_source)
 
     # Close the webdriver
     driver.quit()
     print('Web browser closed')
+
+
 
 # def find_xpath(browser, xpath):
 #     try:

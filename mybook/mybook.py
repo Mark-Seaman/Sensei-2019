@@ -140,6 +140,14 @@ def info_menu(title):
     return topic_menu(menu_items(title), '/info/', "Brain")
 
 
+def homework_menu(title):
+
+    def menu_items(title):
+        return [('Part1', 'HTML', title == 'Part1'),
+                ('Part2', 'CSS', title == 'Part2'),
+                ('Part3', 'Design', title == 'Part3')]
+
+    return topic_menu(menu_items(title), '/homework/', "BACS 200", 'Index')
 def mark_seaman_menu(title):
     def menu_items(title):
         return [('https://seamanslog.com', 'Blog'),
