@@ -46,12 +46,14 @@ def report_features(url, features):
 
 
 def get_requirements(url):
+    default_features = ['head', 'head title', 'header h1', 'header h2', 'div.logo', 'nav',
+                        'main h1', 'main h1', 'main p', 'main li', 'footer']
     if url == 'http://localhost:8000/MarkSeaman':
         return ['header h1', 'header h2', 'main h2#inventor', 'footer', 'p', 'nav', 'h1', 'h2', 'ul>li']
     elif url == 'http://unco-bacs.org/bacs200/class/templates/simple.html':
         return ['head', 'body', 'h1']
     else:
-        return ['header', 'footer', 'p', 'h1', 'h2']
+        return default_features
 
 
 def page_features(driver, url='http://localhost:8000', requirements=None):

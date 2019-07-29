@@ -5,8 +5,8 @@ from tool.page import end_browser, start_browser, page_features
 def quick_test():
     # test_selenium_setup()
     driver = start_browser()
-    driver.get('http://localhost:8000/homework/unc/bacs200/Homework')
-    print(driver.page_source)
-    # print(page_features(driver, 'http://unco-bacs.org/bacs200/class/templates/simple.html',
-    #                     ['head', 'head title', 'body h1', 'p']))
+    url = 'http://localhost:8000/shrinkingworld'
+    # driver.get(url)
+    # print(driver.page_source)
+    print(page_features(driver, url))
     end_browser(driver)

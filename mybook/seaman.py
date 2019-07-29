@@ -3,10 +3,8 @@ from django.views.generic import TemplateView
 
 from mybook.mybook import *
 from mybook.views import DocDisplay
-from tool.days import my_age_in_days
 from tool.document import doc_file_index, doc_list
 from tool.log import log_page
-
 
 
 class BookNotes(DocDisplay):
