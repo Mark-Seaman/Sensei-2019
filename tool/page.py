@@ -7,7 +7,6 @@ def start_browser():
     options = webdriver.ChromeOptions()
     options.add_argument('--no-sandbox')
     if node() == 'sensei-server':
-        print('open display')
         from pyvirtualdisplay import Display
         display = Display(visible=0, size=(800, 600))
         display.start()
