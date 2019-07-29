@@ -1,0 +1,66 @@
+{% extends "mybook_theme.html" %}
+
+
+{% block css %}
+    <link rel="stylesheet" href="/static/css/unc.css?time={{ time }}">
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="card">
+        <div class="card-header ch-alt">
+            <h2>{{ title }}</h2>
+        </div>
+        <div class="card-body card-padding">
+            {% if text %}
+                {% autoescape off %}
+                    {{ text }}
+                {% endautoescape %}
+            {% else %}
+                <h2>No document found.</h2>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header ch-alt">
+            <h2>Test results</h2>
+        </div>
+        <div class="card-body card-padding">
+
+            {% if data.source %}
+                <h3>Source Code</h3>
+                <pre>{{ data.source }}</pre>
+            {% endif %}
+
+            {% if data.requirements %}
+                <h3>Requirements</h3>
+                {{ data.requirements }}
+            {% else %}
+                <h2>No requirements found.</h2>
+            {% endif %}
+
+            {% if data.test_results %}
+                <h3>Test Results</h3>
+                {{ data.test_results }}
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header ch-alt">
+            <h2>Run Test</h2>
+        </div>
+        <div class="card-body card-padding">
+            <p>
+                This server will visit the address for your website. It will request a copy of your web page.
+                Then the page will be analyzed to see if it meets all of the requirements listed in the "Build It"
+                section for
+                this project.
+            </p>
+            <a class="btn btn-primary" href="/unc/bacs200/TestResults/project/01">Test my page</a>
+        </div>
+    </div>
+
+{% endblock %}

@@ -55,6 +55,16 @@ def get_requirements(url):
         return default_features
 
 
+def capture_page_features(url='http://localhost:8000', requirements=None):
+    driver = start_browser()
+    if not requirements:
+        requirements = get_requirements(url)
+    features = extract_features(driver, requirements)
+    source = driver.page_source
+    end_browser(driver)
+    return features, source
+
+
 def page_features(driver, url='http://localhost:8000', requirements=None):
     driver.get(url)
     if not requirements:

@@ -1,0 +1,29 @@
+{% extends "mybook_theme.html" %}
+
+
+{% block css %}
+    <link rel="stylesheet" href="/static/css/unc.css?time={{ time }}">
+{% endblock %}
+
+
+{% block content %}
+
+    <h1>{{ title }}</h1>
+
+    <div class="card">
+
+        <div class="card-header ch-alt">
+            Project {{ title }}
+        </div>
+        <div class="card-body card-padding">
+            {% if text %}
+                {% autoescape off %}
+                    {{ text }}
+                {% endautoescape %}
+            {% else %}
+                <h2>No document found.</h2>
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}
