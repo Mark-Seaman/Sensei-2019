@@ -6,8 +6,8 @@ def selenium_features_test():
     features = page_features(driver, 'https://shrinking-world.com')
     features += page_features(driver, 'https://MarkSeaman.org')
     features += page_features(driver, 'https://SeamansLog.com')
-    # features += page_features(driver, 'https://SpiritualThings.org')
-    # features += page_features(driver, 'http://unco-bacs.org/bacs200/class/templates/simple.html')
+    features += page_features(driver, 'https://SpiritualThings.org')
+    features += page_features(driver, 'http://unco-bacs.org/bacs200/class/templates/simple.html')
     end_browser(driver)
     return features
 
