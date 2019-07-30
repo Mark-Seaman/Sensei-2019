@@ -1,4 +1,4 @@
-from tool.shell import hostname, is_server, shell
+from tool.shell import hostname, is_server, shell, text_lines
 from tool.files import recursive_list
 
 
@@ -13,3 +13,8 @@ def system_python_files_test():
 
 def system_server_test():
     return 'Hostname: %s, IsServer: %s' % (hostname(), is_server())
+
+
+def system_processes_test():
+    return 'There are %s processes running' % len(text_lines(shell('ps -ef')))
+
