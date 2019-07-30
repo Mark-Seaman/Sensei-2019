@@ -2,7 +2,7 @@ from tool.page import capture_page, close_browser_dom, extract_features, open_br
 
 
 def quick_test():
-    page_features_test()
+    close_chrome_processes()
 
 
 def page_features_test():
@@ -23,3 +23,14 @@ def page_source_test():
     capture_page(dom, url)
     print(dom.page_source)
     close_browser_dom(dom)
+
+
+def close_chrome_processes():
+    from tool.shell import shell, text_lines
+    from re import split
+    procs = text_lines(shell('ps -ef|grep chrome'))
+    for p in procs:
+        # print(p)
+        p = split(' ', p)
+        if p[3:]:
+            print('kill %s' % p[3])
