@@ -1,4 +1,4 @@
-from tool.page import end_browser, start_browser, capture_page, extract_features, report_features
+from tool.page import close_browser_dom, open_browser_dom, capture_page, extract_features, report_features
 
 
 def get_requirements(url):
@@ -13,7 +13,7 @@ def get_requirements(url):
 
 
 def selenium_features_test():
-    dom = start_browser()
+    dom = open_browser_dom()
     features = []
     domains = ['https://MarkSeaman.org', 'https://shrinking-world.com', 'https://SeamansLog.com',
                'https://Spiritual-Things.org', 'http://unco-bacs.org/bacs200/class/templates/simple.html']
@@ -21,8 +21,8 @@ def selenium_features_test():
         requirements = get_requirements(url)
         capture_page(dom, url)
         x = extract_features(dom, requirements)
-        features.append(report_features(url, x))
-    end_browser(dom)
+        features.append(report_features(url, x, x))
+    close_browser_dom(dom)
     return '\n\n'.join(features)
 
 

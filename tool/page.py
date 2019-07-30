@@ -12,29 +12,34 @@ def capture_page(driver, url):
         print("**error: capture_page(%s)" % url)
 
 
+def capture_page_features(url='http://localhost:8000', requirements=None):
+    driver = open_browser_dom()
+    driver.get(url)
+    features = extract_features(driver, requirements)
+    source = driver.page_source
+    close_browser_dom(driver)
+    return features, source
+
+
 def capture_page_source(dom, url):
     capture_page(dom, url)
     return dom.page_source
 
 
-def capture_page_features(url='http://localhost:8000', requirements=None):
-    driver = start_browser()
-    driver.get(url)
-    features = extract_features(driver, requirements)
-    source = driver.page_source
-    end_browser(driver)
-    return features, source
-
-
-def page_features(dom, url, requirements):
-    # if not requirements:
-    #     requirements = get_requirements(url)
+def check_page_features(dom, url, requirements):
     features = extract_features(dom, requirements)
-    return report_features(url, features)
+    return report_features(url, features, requirements)
 
 
-def end_browser(browser):
+def close_browser_dom(browser):
     browser.quit()
+
+
+def extract_features(browser, features):
+    results = {}
+    for t in features:
+        results[t] = find_css_selector(browser, t)
+    return results
 
 
 def find_css_selector(browser, selector):
@@ -45,23 +50,32 @@ def find_css_selector(browser, selector):
         return '** No feature found: selector = %s **' % selector
 
 
-def extract_features(browser, features):
-    results = {}
-    for t in features:
-        results[t] = find_css_selector(browser, t)
-    return results
+def check_features(features, requirements):
+
+    def check_feature(feature, actual, correct):
+        if actual == correct:
+            return 'OK %s: ' % feature
+        else:
+            return 'Bad %s: \n   expected:%s\n   actual:%s' % (feature, correct, actual)
+
+    report = []
+    for f in requirements.keys():
+        report.append(check_feature(f, features[f], requirements[f]))
+    return '\n'.join(report)
 
 
 def report_features(url, features):
+
     def feature_string(features, f):
         return redact_css('\n\n## %s\n\n %s' % (f, features[f]))
 
     report = ['# Page Features for %s:' % url]
-    report += [feature_string(features, f) for f in features.keys()]
+    for f in features.keys():
+        report.append(feature_string(features, f))
     return '\n'.join(report)
 
 
-def start_browser():
+def open_browser_dom():
     options = webdriver.ChromeOptions()
     options.add_argument('--no-sandbox')
     if node() == 'sensei-server':
@@ -81,7 +95,7 @@ def test_selenium_setup():
 
     # Open the webdriver
     print("open browser")
-    driver = start_browser()
+    driver = open_browser_dom()
     print('Web browser open')
 
     # Get a page
@@ -118,10 +132,10 @@ def test_selenium_setup():
 #
 # def selenium_startup_test():
 #     if not is_server():
-#         browser = start_browser()
+#         browser = open_browser_dom()
 #         browser.get('http://localhost:8000')
 #         title = browser.title
-#         end_browser(browser)
+#         close_browser_dom(browser)
 #         return title
 #     else:
 #         return 'Test is disabled on the Sensei-Server'
@@ -129,10 +143,10 @@ def test_selenium_setup():
 #
 # def selenium_content_test():
 #     if not is_server():
-#         browser = start_browser()
+#         browser = open_browser_dom()
 #         browser.get('http://localhost:8000')
 #         source = redact_css(browser.page_source)
-#         end_browser(browser)
+#         close_browser_dom(browser)
 #         return source
 #     else:
 #         return 'Test is disabled on the Sensei-Server'
