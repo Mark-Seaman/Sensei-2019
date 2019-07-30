@@ -78,13 +78,15 @@ def report_features(url, features):
 def open_browser_dom():
     options = webdriver.ChromeOptions()
     options.add_argument('--no-sandbox')
-    if node() == 'sensei-server':
-        from pyvirtualdisplay import Display
-        display = Display(visible=0, size=(800, 600))
-        display.start()
-    else:
-        options.add_argument('window-size=800x600')
-        options.add_argument('headless')
+    # if node() == 'sensei-server':
+    #     from pyvirtualdisplay import Display
+    #     display = Display(visible=0, size=(800, 600))
+    #     display.start()
+    # else:
+    #     options.add_argument('window-size=800x600')
+    #     options.add_argument('headless')
+    options.add_argument('window-size=800x600')
+    options.add_argument('headless')
     return webdriver.Chrome(options=options)
 
 
