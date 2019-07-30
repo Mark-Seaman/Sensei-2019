@@ -1,7 +1,7 @@
 
 
 def quick_test():
-    page_source_test()
+    close_chrome_processes()
 
 
 def page_features_test():
@@ -29,6 +29,12 @@ def close_chrome_processes():
     from tool.shell import shell, text_lines
     from re import split
     procs = text_lines(shell('ps -ef|grep chrome'))
+    for p in procs:
+        # print(p)
+        p = split(' ', p)
+        if p[3:]:
+            print('kill %s' % p[3])
+    procs = text_lines(shell('ps -ef|grep Xvfb'))
     for p in procs:
         # print(p)
         p = split(' ', p)

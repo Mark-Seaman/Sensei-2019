@@ -35,7 +35,7 @@ def close_browser_dom(browser):
     browser.quit()
     if is_server():
         global display
-        display.end()
+        display.stop()
 
 
 def extract_features(browser, features):
