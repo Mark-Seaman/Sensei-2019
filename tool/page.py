@@ -1,9 +1,9 @@
 from os import system
-from platform import node
 from selenium import webdriver
 
-from tool.shell import redact_css
+from tool.shell import is_server, redact_css
 
+display = ''
 
 def capture_page(driver, url):
     try:
@@ -33,6 +33,9 @@ def check_page_features(dom, url, requirements):
 
 def close_browser_dom(browser):
     browser.quit()
+    if is_server():
+        global display
+        display.end()
 
 
 def extract_features(browser, features):
@@ -75,18 +78,20 @@ def report_features(url, features):
     return '\n'.join(report)
 
 
+
 def open_browser_dom():
     options = webdriver.ChromeOptions()
     options.add_argument('--no-sandbox')
-    # if node() == 'sensei-server':
-    #     from pyvirtualdisplay import Display
-    #     display = Display(visible=0, size=(800, 600))
-    #     display.start()
-    # else:
-    #     options.add_argument('window-size=800x600')
-    #     options.add_argument('headless')
-    options.add_argument('window-size=800x600')
-    options.add_argument('headless')
+    if is_server():
+        from pyvirtualdisplay import Display
+        global display
+        display = Display(visible=0, size=(800, 600))
+        display.start()
+    else:
+        options.add_argument('window-size=800x600')
+        options.add_argument('headless')
+    # options.add_argument('window-size=800x600')
+    # options.add_argument('headless')
     return webdriver.Chrome(options=options)
 
 
