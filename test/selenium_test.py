@@ -21,7 +21,7 @@ def selenium_features_test():
         requirements = get_requirements(url)
         capture_page(dom, url)
         x = extract_features(dom, requirements)
-        features.append(report_features(url, x, x))
+        features.append(report_features(url, x))
     close_browser_dom(dom)
     return '\n\n'.join(features)
 
