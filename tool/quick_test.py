@@ -1,12 +1,13 @@
-from tool.page import end_browser, start_browser, page_features
-# from tool.page import test_selenium_setup
+from tool.page import end_browser, start_browser, capture_page, extract_features, report_features
 
 
 def quick_test():
-    # test_selenium_setup()
-    driver = start_browser()
-    url = 'https://Spiritual-Things.org'
-    # driver.get(url)
-    # print(driver.page_source)
-    print(page_features(driver, url))
-    end_browser(driver)
+    dom = start_browser()
+    url = 'https://MarkSeaman.org'
+    features = ['head', 'head title', 'header h1', 'header h2', 'div.logo', 'nav',
+                'main h1', 'main h1', 'main p', 'main li', 'footer']
+    capture_page(dom, url)
+    # print(dom.page_source)
+    features = extract_features(dom, features)
+    print(report_features(url, features))
+    end_browser(dom)
