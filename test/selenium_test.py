@@ -1,4 +1,5 @@
 from tool.page import close_browser_dom, open_browser_dom, capture_page, extract_features, report_features
+from tool.shell import is_server
 
 
 def get_requirements(url):
@@ -13,17 +14,20 @@ def get_requirements(url):
 
 
 def selenium_features_test():
-    dom = open_browser_dom()
-    features = []
-    domains = ['https://MarkSeaman.org', 'https://shrinking-world.com', 'https://SeamansLog.com',
-               'https://Spiritual-Things.org', 'http://unco-bacs.org/bacs200/class/templates/simple.html']
-    for url in domains:
-        requirements = get_requirements(url)
-        capture_page(dom, url)
-        x = extract_features(dom, requirements)
-        features.append(report_features(url, x))
-    close_browser_dom(dom)
-    return '\n\n'.join(features)
+    if is_server():
+        return 'No Selenium on Sensei Server'
+    else:
+        dom = open_browser_dom()
+        features = []
+        domains = ['https://MarkSeaman.org', 'https://shrinking-world.com', 'https://SeamansLog.com',
+                   'https://Spiritual-Things.org', 'http://unco-bacs.org/bacs200/class/templates/simple.html']
+        for url in domains:
+            requirements = get_requirements(url)
+            capture_page(dom, url)
+            x = extract_features(dom, requirements)
+            features.append(report_features(url, x))
+        close_browser_dom(dom)
+        return '\n\n'.join(features)
 
 
 if __name__ == '__main__':
