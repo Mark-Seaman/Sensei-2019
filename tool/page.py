@@ -2,6 +2,8 @@ from os import system
 from platform import node
 from selenium import webdriver
 
+from tool.shell import redact_css
+
 
 def start_browser():
     options = webdriver.ChromeOptions()
@@ -37,7 +39,7 @@ def extract_features(browser, features):
 
 def report_features(url, features):
     def feature_string(features, f):
-        return '\n\n## %s\n\n %s' % (f, features[f])
+        return redact_css('\n\n## %s\n\n %s' % (f, features[f]))
 
     report = ['# Page Features for %s:' % url]
     report += [feature_string(features, f) for f in features.keys()]

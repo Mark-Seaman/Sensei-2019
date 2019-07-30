@@ -123,11 +123,11 @@ def vc_dirs():
 def vc_log(args):
     d = environ['p']
     system('figlet Sensei')
-    cmd = 'echo log %s && cd %s && git log --name-only | head -100'
+    cmd = 'echo log %s && cd %s && git log --since="2 day ago"'
     git_cmd(cmd %(d, d))
     d = join(d, 'Documents')
     system('figlet Documents')
-    cmd = 'echo log %s && cd %s && git log --name-only | head -100'
+    cmd = 'echo log %s && cd %s && git log --since="2 day ago"'
     git_cmd(cmd %(d, d))
 
 

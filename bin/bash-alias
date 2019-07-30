@@ -23,7 +23,7 @@ alias ga='git add -A'
 alias gc='git commit -m'
 alias gco='git checkout'
 alias gd='vc diff'
-alias gl='git log --name-only'
+alias gl='vc log'
 alias gs='vc status'
 
 alias h='history 40'
