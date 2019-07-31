@@ -49,6 +49,7 @@ alias r=reset
 
 alias s='code search .'
 alias serve='web localhost:8000; dj runserver'
+alias sys='dj system'
 
 alias tlike='tst like'
 alias tlist='tst list'

@@ -1,5 +1,4 @@
 from os import system
-from selenium import webdriver
 
 from tool.shell import is_server, redact_css
 
@@ -78,8 +77,8 @@ def report_features(url, features):
     return '\n'.join(report)
 
 
-
 def open_browser_dom():
+    from selenium import webdriver
     options = webdriver.ChromeOptions()
     options.add_argument('--no-sandbox')
     if is_server():
