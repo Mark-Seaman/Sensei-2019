@@ -23,5 +23,5 @@ for loop in range(100):
     # print('Stop display')
     display.stop()
 
-    system('dj system procs')
+    system('python manage.py system procs')
 
