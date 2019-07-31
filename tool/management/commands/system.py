@@ -73,6 +73,6 @@ def prune_processes(args=[]):
     procs = []
     for p in text_lines(list_processes(args)):
         p = split(' +', p)
-        if p[8:]:
-            procs.append('%-10s %s' % (p[2], p[8]))
+        if p[7:]:
+            procs.append('%-10s %s' % (p[1], p[7]))
     return '\n'.join(procs)
