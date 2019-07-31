@@ -73,6 +73,8 @@ def ocean_help():
 
         restart - Restart the remote web server
 
+        root - Login to remote server as root
+        
         serve - Run the local web server
 
         status - Show the git status

@@ -1,5 +1,6 @@
-from tool.shell import hostname, is_server, shell, text_lines
+from tool.shell import hostname, is_server, shell
 from tool.files import recursive_list
+from tool.management.commands.system import list_processes, count_processes, prune_processes
 
 
 def system_files_test():
@@ -16,5 +17,10 @@ def system_server_test():
 
 
 def system_processes_test():
-    return 'There are %s processes running' % len(text_lines(shell('ps -ef')))
+    return 'There are %s processes running' % count_processes() + list_processes(['chrome'])
+
+
+def system_prune_process_test():
+    return prune_processes(['chrome']) + prune_processes(['Xvfb'])
+
 
