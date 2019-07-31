@@ -3,7 +3,7 @@ import traceback
 from re import split
 
 from tool.log import log_exception
-from tool.text import count_lines, match_pattern, text_lines
+from tool.text import count_lines, match_pattern, text_lines, text_join
 from tool.shell import shell
 
 
@@ -74,5 +74,5 @@ def prune_processes(args=[]):
     for p in text_lines(list_processes(args)):
         p = split(' +', p)
         if p[7:]:
-            procs.append('%-10s %s' % (p[1], p[7]))
+            procs.append('kill %-10s # %s' % (p[1], ' '.join(p[7:])))
     return '\n'.join(procs)
