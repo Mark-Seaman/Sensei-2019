@@ -27,7 +27,7 @@ class Command(BaseCommand):
 
 def system_command(self, options):
     '''Execute all of the brain specific brains'''
-    self.stdout.write('starting system command ...')
+    # self.stdout.write('starting system command ...')
 
     if options:
         cmd = options[0]
@@ -44,7 +44,7 @@ def system_command(self, options):
             system_help()
     else:
         list_processes()
-    self.stdout.write('... ending  system command')
+    # self.stdout.write('... ending  system command')
 
 
 def system_help():
@@ -53,7 +53,9 @@ def system_help():
 
     cmd:
 
-        list (comment) - Commit all changes and push
+        list [patterns] - Commit all changes and push
+        procs [patterns] - Count the processes that are running
+        prune [patterns] - Delete the running processes that are no longer needed
 
     ''')
 
@@ -74,5 +76,5 @@ def prune_processes(args=[]):
     for p in text_lines(list_processes(args)):
         p = split(' +', p)
         if p[7:]:
-            procs.append('kill %-10s # %s' % (p[1], ' '.join(p[7:])))
+            procs.append('kill -9 %-10s # %s' % (p[1], ' '.join(p[7:])[:20]))
     return '\n'.join(procs)

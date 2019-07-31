@@ -1,0 +1,6 @@
+#!/bin/bash
+# Clean up all extra processes
+
+python manage.py system prune sensei Xvfb | grep -v manage.py
+
+python manage.py system prune sensei chrome | grep -v manage.py
