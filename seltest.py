@@ -1,27 +1,27 @@
 from selenium import webdriver
 from pyvirtualdisplay import Display
+from os import system
 
-print('Selenium Test')
 
-# options = webdriver.ChromeOptions()
-# options.add_argument('--window-size=800x841')
-# options.add_argument('--headless')
-# options.add_argument('--no-sandbox')
+for loop in range(100):
 
-display = Display(visible=0, size=(800,600))
-display.start()
-print('Display Created')
+    print('Selenium Test (loop %s)' % loop)
+    display = Display(visible=0, size=(800,600))
+    display.start()
+    # print('Display Created')
 
-print('Create Webdriver')
-browser = webdriver.Chrome()
-print('Get page')
-browser.set_page_load_timeout(2)
-browser.get('https://shrinking-world.com')
-print(browser.page_source)
+    # print('Create Webdriver')
+    browser = webdriver.Chrome()
+    # print('Get page')
+    browser.set_page_load_timeout(2)
+    browser.get('https://shrinking-world.com')
+    print('%s byte in page' % len(browser.page_source))
 
-print('Close browser')
-browser.quit()
+    # print('Close browser')
+    browser.quit()
 
-print('Stop display')
-display.stop()
+    # print('Stop display')
+    display.stop()
+
+    system('dj system procs')
 
