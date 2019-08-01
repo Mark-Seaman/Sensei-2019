@@ -12,22 +12,17 @@ def capture_page(driver, url):
 
 
 def capture_page_features(url='http://localhost:8000', requirements=None):
-    driver = open_browser_dom()
-    driver.get(url)
-    features = extract_features(driver, requirements)
-    source = driver.page_source
-    close_browser_dom(driver)
+    dom = open_browser_dom()
+    dom.get(url)
+    features = check_page_features(dom, requirements)
+    source = dom.page_source
+    close_browser_dom(dom)
     return features, source
 
 
 def capture_page_source(dom, url):
     capture_page(dom, url)
     return dom.page_source
-
-
-def check_page_features(dom, url, requirements):
-    features = extract_features(dom, requirements)
-    return report_features(url, features, requirements)
 
 
 def close_browser_dom(browser):
@@ -37,10 +32,30 @@ def close_browser_dom(browser):
         display.stop()
 
 
-def extract_features(browser, features):
-    results = {}
+def check_features(features):
+
+    def check_feature(feature, actual, correct):
+        if actual == correct:
+            status = 'OK %s: ' % feature
+        else:
+            status = 'Bad %s: \n   expected:%s\n   actual:%s' % (feature, correct, actual)
+        return dict(status=status, feature=feature, actual=actual, correct=correct)
+
+    results = []
+    for f in features:
+        results.append(check_feature(f['feature'], f['actual'], f['correct']))
+    return results
+
+
+def check_page_features(dom, requirements):
+    features = extract_features(dom, requirements)
+    return check_features(features)
+
+
+def extract_features(dom, features):
+    results = []
     for t in features:
-        results[t] = find_css_selector(browser, t)
+        results.append(dict(feature=t, actual=find_css_selector(dom, t), correct='initial value'))
     return results
 
 
@@ -50,20 +65,6 @@ def find_css_selector(browser, selector):
         return tag.get_attribute("innerHTML")
     except:
         return '** No feature found: selector = %s **' % selector
-
-
-def check_features(features, requirements):
-
-    def check_feature(feature, actual, correct):
-        if actual == correct:
-            return 'OK %s: ' % feature
-        else:
-            return 'Bad %s: \n   expected:%s\n   actual:%s' % (feature, correct, actual)
-
-    report = []
-    for f in requirements.keys():
-        report.append(check_feature(f, features[f], requirements[f]))
-    return '\n'.join(report)
 
 
 def report_features(url, features):

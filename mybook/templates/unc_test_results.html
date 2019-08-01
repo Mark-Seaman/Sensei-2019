@@ -9,9 +9,6 @@
 {% block content %}
 
     <div class="card">
-        <div class="card-header ch-alt">
-            <h2>{{ title }}</h2>
-        </div>
         <div class="card-body card-padding">
             {% if text %}
                 {% autoescape off %}
@@ -20,6 +17,7 @@
             {% else %}
                 <h2>No document found.</h2>
             {% endif %}
+            <p>Page URL: <a href="{{ data.url }}">{{ data.url }}</a></p>
         </div>
     </div>
 
@@ -43,7 +41,12 @@
 
             {% if data.test_results %}
                 <h3>Test Results</h3>
-                {{ data.test_results }}
+                {% for requirement in data.test_results %}
+                    <h4>{{ requirement.feature }}</h4>
+                    <p><b>Status</b></p><p>{{ requirement.status }} </p>
+                    <p><b>Actual</b></p><p>{{ requirement.actual }} </p>
+                    <p><b>Correct</b></p><p>{{ requirement.correct }} </p>
+                {% endfor %}
             {% endif %}
         </div>
     </div>

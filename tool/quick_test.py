@@ -1,8 +1,7 @@
 
 
 def quick_test():
-    from tool.management.commands.system import count_processes, list_processes, prune_processes
-    print(prune_processes(['bash']))
+    page_features_test()
 
 
 def page_features_test():

@@ -29,7 +29,7 @@ urlpatterns = [
     # Private Pages
     url(r'^info/(?P<title>[\w/\-_.]*)$',        PrivateDoc.as_view()),
     url(r'^homework/(?P<title>[\w/\-_.]*)$',    UncHomework.as_view()),
-    url(r'^unc/(?P<title>[\w/\-_.]*)$',         UncTestResults.as_view()),
+    url(r'^unc/(?P<title>[\w/\-_.]*)/Test$',    UncTestResults.as_view()),
 
     # Seaman's Log
     url(r'^seamanslog$',                        SeamansLog.as_view()),

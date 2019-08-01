@@ -57,13 +57,14 @@ class UncTestResults(DocDisplay):
         self.text = document_text('unc/bacs200/project/01')
         self.title = 'Test Results: Project #1'
 
-        url = 'http://unco-bacs.org/bacs200/class/templates/simple.html'
-        results, source = capture_page_features(url)
+        url = 'http://unco-bacs.org'
+        requirements = ['head', 'body', 'h1', 'title']
+        results, source = capture_page_features(url, requirements)
         student = 'Mark Seaman'
 
         self.data = dict(student=student,
                          url=url,
-                         requirements=['head', 'body', 'h1'],
+                         requirements=requirements,
                          test_results=results,
                          source=source)
 
