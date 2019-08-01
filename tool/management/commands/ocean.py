@@ -102,7 +102,7 @@ def deploy(args):
     console(['bin/commit SENSEI_AUTO_COMMIT'])
     restart()
     web()
-    console(['. bin/bashrc && python manage.py tst'])
+    console(['". bin/bashrc && python manage.py tst"'])
 
 
 def restart():

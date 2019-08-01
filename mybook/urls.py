@@ -1,7 +1,8 @@
 from django.conf.urls import url
 from django.contrib.auth import login, logout
 
-from .seaman import DocFileIndex, DocList, UncHomework, UncTestResults, Leverage, MarkSeaman, PrivateDoc, SeamansLog
+from .seaman import DocFileIndex, DocList, Leverage, MarkSeaman, PrivateDoc, SeamansLog
+from unc.views import UncHomework, UncTestResults
 from .guide import SeamansGuide
 from .views import *
 from .spiritual import SpiritualDoc, SpiritualSelect
