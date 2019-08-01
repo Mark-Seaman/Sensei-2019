@@ -1,5 +1,6 @@
-from tool.page import close_browser_dom, open_browser_dom, check_page_features, verify_page
-from tool.shell import is_server
+from tool.page import close_browser_dom, open_browser_dom, verify_page
+from tool.shell import is_server,text_join
+from unc.models import Course, create_course
 
 
 def unc_views_test():
@@ -19,7 +20,9 @@ def unc_views_test():
 
 
 def unc_data_test():
-    return 'UNC DATA - build test'
+    create_course('bacs200', 'Web Development Intro (Fall 2019)', 'Mark Seaman',
+                  'Web Design and Development for Small Business')
+    return text_join([str(c) for c in Course.objects.all()])
 
 
 def unc_project_test():

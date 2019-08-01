@@ -1,19 +1,17 @@
-from tool.page import open_browser_dom, close_browser_dom, verify_page
+from unc.models import *
 
 
 def quick_test():
-    page = open_browser_dom()
 
-    url = 'http://unco-bacs.org'
-    requirements = ['head', 'body', 'h1', 'title']
-    print(verify_page(page, url, requirements))
+    course = Course.objects.get(pk=1)
+    course.name = 'bacs350'
+    course.title = 'Web Development Intermediate (Fall 2019)'
+    course.teacher = 'bacs350'
+    course.description = 'Intermediate Web Development with PHP/MySQL'
+    course.save()
 
-    url = 'https://MarkSeaman.org'
-    requirements = ['header h1', 'header h2', 'main h2#inventor', 'footer', 'p', 'nav', 'h1', 'h2', 'ul>li']
-    print(verify_page(page, url, requirements))
-
-    ['header h1', 'header h2', 'main h2#inventor', 'footer', 'p', 'nav', 'h1', 'h2', 'ul>li']
-    # url = 'https://MarkSeaman.org'
-    # print(get_page_source(url))
-
-    close_browser_dom(page)
+    course = create_course('bacs200', 'Web Development Intro (Fall 2019)', 'Mark Seaman',
+                           'Web Design and Development for Small Business')
+    print("Course record lookup: ", course)
+    for c in Course.objects.all():
+        print(c)

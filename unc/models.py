@@ -7,9 +7,6 @@ class Course(models.Model):
     teacher = models.CharField(null=True, max_length=100)
     description = models.TextField(null=True)
 
-    def __init__(self, name, title, teacher, description):
-        Course.objects.get_or_create(name, title, teacher, description)
-
     # , default='You must type a description of the course', validators=[MinLengthValidator(100)])
 
     def __str__(self):
@@ -17,11 +14,11 @@ class Course(models.Model):
 
 
 class Student(models.Model):
-    course  = models.ForeignKey(Course, on_delete=models.CASCADE, default=1)
-    name    = models.CharField(max_length=100)
-    email   = models.CharField(max_length=40)
-    domain  = models.CharField(max_length=100)
-    zbooks  = models.CharField(max_length=100, null=True)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, default=1)
+    name = models.CharField(max_length=100)
+    email = models.CharField(max_length=40)
+    domain = models.CharField(max_length=100)
+    zbooks = models.CharField(max_length=100, null=True)
 
     def __unicode__(self):
         return '%s, %s, %s' % (self.email, self.name, self.domain)
@@ -43,10 +40,11 @@ class Project(models.Model):
 
 class Requirement(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
-    actual = models.TextField()
-    correct = models.TextField()
+    num = models.IntegerField()
     label = models.CharField(max_length=100)
     selector = models.CharField(max_length=100)
+    actual = models.TextField()
+    correct = models.TextField()
 
     @property
     def status(self):
@@ -54,4 +52,8 @@ class Requirement(models.Model):
 
     def __str__(self):
         return 'Requirement %02d. %s' % (self.num, self.label)
+
+
+def create_course(name, title, teacher, description):
+    return Course.objects.get_or_create(name=name, title=title, teacher=teacher, description=description)[0]
 
