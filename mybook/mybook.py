@@ -59,7 +59,6 @@ def get_extra_data(title, text):
         return dict(day=my_age_in_days())
 
 
-
 def get_link_summary(title):
     text = read_markdown(doc_path(title))
     return find_markdown_links(text)

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'mybook',
     'tasks',
     'tool',
+    'unc',
 ]
 
 MIDDLEWARE = [

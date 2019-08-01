@@ -1,7 +1,7 @@
 from os import system
 from pprint import PrettyPrinter
 
-from tool.shell import is_server, redact_css, text_join
+from tool.shell import banner, is_server, redact_css, text_join
 
 display = ''
 
@@ -114,12 +114,18 @@ def requirements_summary(features):
 
     report = []
     for i,f in enumerate(features):
-        report.append('\nRequirement #%s - %s:\n\n    %s' % (i, f['feature'], f['actual']))
+        report.append('\nRequirement #%s - %s:\n\n    %s' % (i+1, f['feature'], f['actual']))
     return text_join(report)
 
 
 def report_requirements(features):
     return PrettyPrinter(indent=4, width=200).pformat(features)
+
+
+def verify_page(dom, url, requirements):
+    dom.get(url)
+    features = check_page_features(dom, requirements)
+    return banner(url) + '\n' + requirements_summary(features)
 
 
 def test_selenium_setup():

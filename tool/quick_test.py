@@ -1,5 +1,4 @@
-from tool.page import check_page_features, open_browser_dom, close_browser_dom, requirements_summary
-from tool.shell import banner
+from tool.page import open_browser_dom, close_browser_dom, verify_page
 
 
 def quick_test():
@@ -7,15 +6,11 @@ def quick_test():
 
     url = 'http://unco-bacs.org'
     requirements = ['head', 'body', 'h1', 'title']
+    print(verify_page(page, url, requirements))
 
     url = 'https://MarkSeaman.org'
     requirements = ['header h1', 'header h2', 'main h2#inventor', 'footer', 'p', 'nav', 'h1', 'h2', 'ul>li']
-
-    page.get(url)
-
-    features = check_page_features(page, requirements)
-    print(banner(url))
-    print(requirements_summary(features))
+    print(verify_page(page, url, requirements))
 
     ['header h1', 'header h2', 'main h2#inventor', 'footer', 'p', 'nav', 'h1', 'h2', 'ul>li']
     # url = 'https://MarkSeaman.org'

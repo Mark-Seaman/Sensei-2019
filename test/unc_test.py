@@ -1,4 +1,4 @@
-from tool.page import close_browser_dom, open_browser_dom, check_page_features, requirements_summary
+from tool.page import close_browser_dom, open_browser_dom, check_page_features, verify_page
 from tool.shell import is_server
 
 
@@ -12,9 +12,7 @@ def unc_views_test():
         # url = 'http://unco-bacs.org/bacs200/class/templates/simple.html'
         url = 'https://shrinking-world.com/homework/'
         requirements = ['head', 'body', 'h1', 'title']
-        page.get(url)
-        features = check_page_features(page, requirements)
-        summary = requirements_summary(features)
+        summary = verify_page(page, url, requirements)
 
         close_browser_dom(page)
         return summary
