@@ -20,6 +20,10 @@ class Student(models.Model):
     domain = models.CharField(max_length=100)
     zbooks = models.CharField(max_length=100, null=True)
 
+    # @property
+    # def name(self):
+    #     return 'Status: Requirement met' if self.correct == self.actual else 'Status: Requirement FAILED'
+    #
     def __unicode__(self):
         return '%s, %s, %s' % (self.email, self.name, self.domain)
 
@@ -29,8 +33,6 @@ class Project(models.Model):
     num = models.IntegerField()
     title = models.CharField(max_length=100)
     page = models.CharField(max_length=100, editable=False)
-    score = models.IntegerField(default=-1)
-    date = models.DateTimeField(null=True, editable=False)
     due = models.DateTimeField(editable=False)
     instructions = models.URLField()
 
@@ -54,6 +56,13 @@ class Requirement(models.Model):
         return 'Requirement %02d. %s' % (self.num, self.label)
 
 
-def create_course(name, title, teacher, description):
-    return Course.objects.get_or_create(name=name, title=title, teacher=teacher, description=description)[0]
+class Assignment(models.Model):
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    project = models.ForeignKey(Project, on_delete=models.CASCADE)
+    score = models.IntegerField()
+    date = models.DateTimeField(editable=False)
+    status = models.IntegerField()
+
+    def __str__(self):
+        return 'Assignment %02d. Student %s, Project %s' % (self.pk, self.student.name, self.project.num)
 

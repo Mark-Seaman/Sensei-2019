@@ -1,8 +1,4 @@
-from os import environ, system
-from os.path import join
 from datetime import datetime, date, timedelta
-
-from tool.shell import banner, file_tree_list, read_file
 
 
 # ------------------------------
