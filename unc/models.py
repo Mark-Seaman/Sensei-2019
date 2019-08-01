@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 
 class Course(models.Model):
@@ -33,7 +34,7 @@ class Project(models.Model):
     num = models.IntegerField()
     title = models.CharField(max_length=100)
     page = models.CharField(max_length=100, editable=False)
-    due = models.DateTimeField(editable=False)
+    due = models.DateTimeField(default=timezone.now(), editable=False)
     instructions = models.URLField()
 
     def __str__(self):
