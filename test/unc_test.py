@@ -20,9 +20,12 @@ def unc_views_test():
 
 
 def unc_data_test():
+    def print_course(c):
+        return '%s, %s, %s, %s' % (c.name, c.title, c.teacher, c.description)
+
     create_course('bacs200', 'Web Development Intro (Fall 2019)', 'Mark Seaman',
                   'Web Design and Development for Small Business')
-    return text_join([str(c) for c in Course.objects.all()])
+    return text_join([print_course(c) for c in Course.objects.all()])
 
 
 def unc_project_test():
