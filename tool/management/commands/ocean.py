@@ -102,6 +102,7 @@ def deploy(args):
     console(['bin/commit SENSEI_AUTO_COMMIT'])
     restart()
     web()
+    console(['tst'])
 
 
 def restart():
