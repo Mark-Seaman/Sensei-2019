@@ -1,8 +1,10 @@
 from os import system
+from pprint import PrettyPrinter
 
-from tool.shell import is_server, redact_css
+from tool.shell import is_server, redact_css, text_join
 
 display = ''
+
 
 def capture_page(driver, url):
     try:
@@ -36,9 +38,9 @@ def check_features(features):
 
     def check_feature(feature, actual, correct):
         if actual == correct:
-            status = 'OK %s: ' % feature
+            status = 'The requirement for %s is met.' % feature
         else:
-            status = 'Bad %s: \n   expected:%s\n   actual:%s' % (feature, correct, actual)
+            status = '** The requirement for %s is NOT met. Keep working. **' % feature
         return dict(status=status, feature=feature, actual=actual, correct=correct)
 
     results = []
@@ -55,7 +57,8 @@ def check_page_features(dom, requirements):
 def extract_features(dom, features):
     results = []
     for t in features:
-        results.append(dict(feature=t, actual=find_css_selector(dom, t), correct='initial value'))
+        f = redact_css(find_css_selector(dom, t))
+        results.append(dict(feature=t, actual=f, correct='initial value'))
     return results
 
 
@@ -67,15 +70,29 @@ def find_css_selector(browser, selector):
         return '** No feature found: selector = %s **' % selector
 
 
-def report_features(url, features):
+def find_tags(browser, tag):
+    tags = browser.find_elements_by_tag_name(tag)
+    return [t.get_attribute("innerHTML") for t in tags]
 
-    def feature_string(features, f):
-        return redact_css('\n\n## %s\n\n %s' % (f, features[f]))
 
-    report = ['# Page Features for %s:' % url]
-    for f in features.keys():
-        report.append(feature_string(features, f))
-    return '\n'.join(report)
+def find_xpath(browser, xpath):
+    try:
+        tag = browser.find_element_by_xpath(xpath)
+        return tag.get_attribute("innerHTML")
+    except:
+        return '** No feature found: xpath = %s **' % xpath
+
+
+def find_xpaths(browser, xpath):
+    tags = browser.find_elements_by_xpath(xpath)
+    return [t.get_attribute("innerHTML") for t in tags]
+
+
+def get_page_source(url):
+    dom = open_browser_dom()
+    capture_page(dom, url)
+    print(redact_css(dom.page_source))
+    close_browser_dom(dom)
 
 
 def open_browser_dom():
@@ -90,9 +107,19 @@ def open_browser_dom():
     else:
         options.add_argument('window-size=800x600')
         options.add_argument('headless')
-    # options.add_argument('window-size=800x600')
-    # options.add_argument('headless')
     return webdriver.Chrome(options=options)
+
+
+def requirements_summary(features):
+
+    report = []
+    for i,f in enumerate(features):
+        report.append('\nRequirement #%s - %s:\n\n    %s' % (i, f['feature'], f['actual']))
+    return text_join(report)
+
+
+def report_requirements(features):
+    return PrettyPrinter(indent=4, width=200).pformat(features)
 
 
 def test_selenium_setup():
@@ -116,56 +143,3 @@ def test_selenium_setup():
 
 
 
-# def find_xpath(browser, xpath):
-#     try:
-#         tag = browser.find_element_by_xpath(xpath)
-#         return tag.get_attribute("innerHTML")
-#     except:
-#         return '** No feature found: xpath = %s **' % xpath
-
-
-# def find_tags(browser, tag):
-#     tags = browser.find_elements_by_tag_name(tag)
-#     label = "\n%s:\n" % tag
-#     tags = [label + t.get_attribute("innerHTML") for t in tags]
-#     return '\n'.join(tags)
-
-# def find_xpaths(browser, xpath):
-#     tags = browser.find_elements_by_xpath(xpath)
-#     label = "\n%s:\n" % xpath
-#     tags = [label + t.get_attribute("innerHTML") for t in tags]
-#     return '\n'.join(tags)
-#
-#
-# def selenium_startup_test():
-#     if not is_server():
-#         browser = open_browser_dom()
-#         browser.get('http://localhost:8000')
-#         title = browser.title
-#         close_browser_dom(browser)
-#         return title
-#     else:
-#         return 'Test is disabled on the Sensei-Server'
-#
-#
-# def selenium_content_test():
-#     if not is_server():
-#         browser = open_browser_dom()
-#         browser.get('http://localhost:8000')
-#         source = redact_css(browser.page_source)
-#         close_browser_dom(browser)
-#         return source
-#     else:
-#         return 'Test is disabled on the Sensei-Server'
-#
-
-# def get_requirements(url):
-#     default_features = ['head', 'head title', 'header h1', 'header h2', 'div.logo', 'nav',
-#                         'main h1', 'main h1', 'main p', 'main li', 'footer']
-#     if url == 'http://localhost:8000/MarkSeaman':
-#         return ['header h1', 'header h2', 'main h2#inventor', 'footer', 'p', 'nav', 'h1', 'h2', 'ul>li']
-#     elif url == 'http://unco-bacs.org/bacs200/class/templates/simple.html':
-#         return ['head', 'body', 'h1']
-#     else:
-#         return default_features
-#

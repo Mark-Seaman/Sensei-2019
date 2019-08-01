@@ -4,7 +4,7 @@ from tool.management.commands.system import list_processes, count_processes, pru
 
 
 def system_files_test():
-    return shell('ls -l') + shell('pwd')
+    return shell('ls -l|grep -v hammer') + shell('pwd')
 
 
 def system_python_files_test():

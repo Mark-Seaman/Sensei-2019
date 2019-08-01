@@ -27,7 +27,7 @@ class Command(BaseCommand):
 
 def ocean_command(self, options):
     '''Execute all of the brain specific brains'''
-    self.stdout.write('starting ocean command ...')
+    # self.stdout.write('starting ocean command ...')
 
     if options:
         cmd = options[0]
@@ -55,7 +55,7 @@ def ocean_command(self, options):
     else:
         print('No arguments given')
         ocean_help()
-    self.stdout.write('... ending  ocean command')
+    # self.stdout.write('... ending  ocean command')
 
 
 def ocean_help():

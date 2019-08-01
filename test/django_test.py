@@ -2,7 +2,7 @@ from tool.shell import hostname, is_server, shell, shell_script
 
 
 def django_hammer_test():
-    return shell('ls -l hammer')
+    return shell('ls -l hammer|grep -v sensei.db')
 
 
 def django_settings_test():

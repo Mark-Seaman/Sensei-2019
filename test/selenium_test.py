@@ -1,5 +1,6 @@
-from tool.page import close_browser_dom, open_browser_dom, capture_page, extract_features, report_features
-from tool.shell import is_server
+
+from tool.page import close_browser_dom, open_browser_dom, check_page_features, requirements_summary
+from tool.shell import banner, is_server
 
 
 def get_requirements(url):
@@ -18,16 +19,22 @@ def selenium_features_test():
         return 'No Selenium on Sensei Server'
     else:
         dom = open_browser_dom()
-        features = []
+
         domains = ['https://MarkSeaman.org', 'https://shrinking-world.com', 'https://SeamansLog.com',
                    'https://Spiritual-Things.org', 'http://unco-bacs.org/bacs200/class/templates/simple.html']
+
+        pages = []
         for url in domains:
+            dom.get(url)
+
             requirements = get_requirements(url)
-            capture_page(dom, url)
-            x = extract_features(dom, requirements)
-            features.append(report_features(url, x))
+            features = check_page_features(dom, requirements)
+
+            pages.append(banner(url))
+            pages.append(requirements_summary(features))
+
         close_browser_dom(dom)
-        return '\n\n'.join(features)
+        return '\n\n'.join(pages)
 
 
 if __name__ == '__main__':

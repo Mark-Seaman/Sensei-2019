@@ -1,43 +1,24 @@
+from tool.page import check_page_features, open_browser_dom, close_browser_dom, requirements_summary
+from tool.shell import banner
 
 
 def quick_test():
-    page_features_test()
+    page = open_browser_dom()
 
+    url = 'http://unco-bacs.org'
+    requirements = ['head', 'body', 'h1', 'title']
 
-def page_features_test():
-    from tool.page import capture_page, close_browser_dom, extract_features, open_browser_dom, check_features
-    dom = open_browser_dom()
     url = 'https://MarkSeaman.org'
-    features = ['head', 'head title', 'header h1', 'header h2', 'div.logo', 'nav',
-                'main h1', 'main h1', 'main p', 'main li', 'footer']
-    capture_page(dom, url)
-    features = extract_features(dom, features)
-    print(check_features(features, features))
-    close_browser_dom(dom)
+    requirements = ['header h1', 'header h2', 'main h2#inventor', 'footer', 'p', 'nav', 'h1', 'h2', 'ul>li']
 
+    page.get(url)
 
-def page_source_test():
-    from tool.page import capture_page, close_browser_dom, open_browser_dom
-    dom = open_browser_dom()
-    url = 'https://MarkSeaman.org'
-    capture_page(dom, url)
-    print(dom.page_source)
-    close_browser_dom(dom)
+    features = check_page_features(page, requirements)
+    print(banner(url))
+    print(requirements_summary(features))
 
+    ['header h1', 'header h2', 'main h2#inventor', 'footer', 'p', 'nav', 'h1', 'h2', 'ul>li']
+    # url = 'https://MarkSeaman.org'
+    # print(get_page_source(url))
 
-# def close_chrome_processes():
-#     from tool.shell import shell, text_lines
-#     from re import split
-#     procs = text_lines(shell('ps -ef|grep chrome'))
-#     for p in procs:
-#         # print(p)
-#         p = split(' ', p)
-#         if p[3:]:
-#             print('kill %s' % p[3])
-#     procs = text_lines(shell('ps -ef|grep Xvfb'))
-#     for p in procs:
-#         # print(p)
-#         p = split(' ', p)
-#         if p[3:]:
-#             print('kill %s' % p[3])
-
+    close_browser_dom(page)
