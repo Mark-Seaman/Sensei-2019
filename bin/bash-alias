@@ -37,6 +37,8 @@ alias l='ls -al'
 alias le='less'
 alias ll='ls -l'
 
+alias n='cd ~/S1/bin && python ntsh.py'
+
 alias o='dj ocean'
 
 alias p='python'

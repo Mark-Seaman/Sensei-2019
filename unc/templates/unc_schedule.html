@@ -1,0 +1,27 @@
+{% extends "unc_theme.html" %}
+
+{% block content %}
+
+    <h1>{{ schedule.0.0 }}</h1>
+    <h2>{{ schedule.0.1 }}</h2>
+    <table class="table table-hover">
+        <tr>
+            {% for h in schedule.1 %}
+                <th>{{ h }}</th>
+            {% endfor %}
+        </tr>
+
+        {% for topic in schedule.2 %}
+            <tr>
+
+                {% for t in topic %}
+                    <td>{{ t }}</td>
+                {% endfor %}
+
+            </tr>
+        {% endfor %}
+
+    </table>
+
+{% endblock %}
+

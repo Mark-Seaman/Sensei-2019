@@ -1,3 +1,5 @@
+from _csv import reader
+
 from unc.models import Course, Project
 from tool.shell import text_join
 from django.utils.timezone import make_aware
@@ -41,3 +43,15 @@ def create_project(course, num, title, page, due, instructions):
     project.save()
     return project
 
+
+def schedule(course):
+    #     return "SCHEDULE FOR course"
+    #
+    #
+    # def schedule(course):
+    data_file = 'Documents/unc/%s/schedule.csv' % course
+    s = []
+    with open(data_file) as f:
+        for row in reader(f):
+            s.append(row)
+    return s[0], s[1], s[2:]

@@ -1,0 +1,42 @@
+{% extends "unc_theme.html" %}
+
+
+{% block content %}
+
+    <h1>Class Overview</h1>
+
+    <h2>Weekly Learning Agenda</h2>
+
+    <ul>
+        <li><a href="/unc/{{ course }}/01">Week 1 - Web hosting</a></li>
+        <li><a href="/unc/{{ course }}/02">Week 2 - HTML Basics</a></li>
+        <li><a href="/unc/{{ course }}/03">Week 3 - HTML Templates</a></li>
+    </ul>
+
+
+    <h2>Class Overview</h2>
+
+    <ul>
+        <li><a href="/unc/{{ course }}/docs">Documents</a></li>
+        <li><a href="/unc/{{ course }}/schedule">Class Schedule</a></li>
+        <li><a href="/unc/{{ course }}/01/project">Project #1</a></li>
+        <li><a href="/unc/{{ course }}/01/test">Test Page</a></li>
+    </ul>
+
+    {#    <div class="card">#}
+    {##}
+    {#        <div class="card-header ch-alt">#}
+    {#            {{ title }}#}
+    {#        </div>#}
+    {#        <div class="card-body card-padding">#}
+    {#            {% if text %}#}
+    {#                {% autoescape off %}#}
+    {#                    {{ text }}#}
+    {#                {% endautoescape %}#}
+    {#            {% else %}#}
+    {#                <h2>No document found.</h2>#}
+    {#            {% endif %}#}
+    {#        </div>#}
+    {#    </div>#}
+
+{% endblock %}

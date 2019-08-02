@@ -35,6 +35,9 @@ urlpatterns = [
     # Task
     url(r'^task/', include('tasks.urls')),
 
+    # UNC
+    url(r'^unc/', include('unc.urls')),
+
     # MyBook
     url(r'^', include('mybook.urls')),
 ]

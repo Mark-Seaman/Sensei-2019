@@ -1,0 +1,45 @@
+{% extends "unc_theme.html" %}
+
+
+{% block content %}
+
+    <h1>Week {{ week }}</h1>
+    <a href="../{{ course }}">Home</a>
+
+    <h2>Learn It</h2>
+    <p>Reading</p>
+    <p>Lesson</p>
+    <p>Slides</p>
+
+    <h2>Build It</h2>
+    <p>Project description</p>
+    <p><a href="/unc/{{ course }}/project/{{ week }}">/unc/{{ course }}/project/{{ week }}</a></p>
+
+    <h2>Test It</h2>
+    <p>Automatic Page Tester</p>
+    <p><a href="/unc/{{ course }}/{{ week }}/test">/unc/{{ course }}/{{ week }}/test</a></p>
+
+    <h2>Review It</h2>
+    <p>Reviews to do</p>
+    <p><a href="/unc/{{ course }}/{{ week }}/review">/unc/{{ course }}/{{ week }}/review</a></p>
+    <p>Feedback on your page</p>
+    <p><a href="/unc/{{ course }}/{{ week }}/feedback">/unc/{{ course }}/{{ week }}/feedback</a></p>
+
+
+    {#    <div class="card">#}
+    {##}
+    {#        <div class="card-header ch-alt">#}
+    {#            Project Document <a href="/unc/{{ course }}/project/{{ week }}">/unc/{{ course }}/project/{{ week }}</a>#}
+    {#        </div>#}
+    {#        <div class="card-body card-padding">#}
+    {#            {% if text %}#}
+    {#                {% autoescape off %}#}
+    {#                    {{ text }}#}
+    {#                {% endautoescape %}#}
+    {#            {% else %}#}
+    {#                <h2>No document found.</h2>#}
+    {#            {% endif %}#}
+    {#        </div>#}
+    {#    </div>#}
+
+{% endblock %}
