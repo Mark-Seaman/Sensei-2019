@@ -38,7 +38,7 @@ class Project(models.Model):
     instructions = models.URLField()
 
     def __str__(self):
-        return 'Project %02d. %s - %s' % (self.num, self.title, self.date)
+        return 'Project %02d. %s - %s' % (self.num, self.title, self.due)
 
 
 class Requirement(models.Model):
@@ -67,3 +67,14 @@ class Assignment(models.Model):
     def __str__(self):
         return 'Assignment %02d. Student %s, Project %s' % (self.pk, self.student.name, self.project.num)
 
+
+class Lesson(models.Model):
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, default=1)
+    project = models.ForeignKey(Project, on_delete=models.CASCADE)
+    week = models.IntegerField(default=1)
+    date = models.DateTimeField(default=None, null=True, editable=False)
+    lesson = models.IntegerField(default=1)
+    topic = models.CharField(default='none', max_length=100)
+    reading = models.CharField(default='none', max_length=100)
+
+    # CSV Data -- Week, Day, Date, Lesson, Topic, Reading, Projects, Process, Parts

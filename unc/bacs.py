@@ -44,14 +44,12 @@ def create_project(course, num, title, page, due, instructions):
     return project
 
 
-def schedule(course):
-    #     return "SCHEDULE FOR course"
-    #
-    #
-    # def schedule(course):
+def schedule_data(course):
+
     data_file = 'Documents/unc/%s/schedule.csv' % course
     s = []
     with open(data_file) as f:
         for row in reader(f):
             s.append(row)
     return s[0], s[1], s[2:]
+

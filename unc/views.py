@@ -3,7 +3,7 @@ from django.views.generic import TemplateView
 from mybook.mybook import document_text, homework_menu
 from tool.page import capture_page_features
 from tool.log import log_page
-from unc.bacs import schedule
+from unc.bacs import schedule_data
 
 
 class UncPage(TemplateView):
@@ -47,7 +47,7 @@ class UncSchedule(UncPage):
 
     def get_context_data(self, **kwargs):
         kwargs = super(UncSchedule, self).get_context_data(**kwargs)
-        kwargs['schedule'] = schedule(kwargs['course'])
+        kwargs['schedule'] = schedule_data(kwargs['course'])
         return kwargs
 
 
