@@ -34,7 +34,7 @@ class Project(models.Model):
     num = models.IntegerField()
     title = models.CharField(max_length=100)
     page = models.CharField(max_length=100, editable=False)
-    due = models.DateTimeField(default=timezone.now(), editable=False)
+    due = models.DateTimeField(default=None, null=True, editable=False)
     instructions = models.URLField()
 
     def __str__(self):
