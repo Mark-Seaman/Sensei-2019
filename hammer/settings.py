@@ -116,3 +116,26 @@ STATICFILES_DIRS = (BASE_DIR + '/static',)
 
 LOGIN_URL='/admin/login/'
 LOGIN_REDIRECT_URL = '/'
+
+
+# Logging
+
+LOG_FILE = join(BASE_DIR, 'hammer/log/hammer.log')
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': LOG_FILE,
+        },
+    },
+    'loggers': {
+        'hammer': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}

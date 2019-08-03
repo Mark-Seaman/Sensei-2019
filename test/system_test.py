@@ -1,6 +1,7 @@
 from tool.shell import hostname, is_server, shell
 from tool.files import recursive_list
 from tool.management.commands.system import list_processes, count_processes, prune_processes
+from tool.log import manage_log_length, recent_log_entries
 
 
 def system_files_test():
@@ -23,4 +24,7 @@ def system_processes_test():
 def system_prune_process_test():
     return prune_processes(['chrome']) + prune_processes(['Xvfb'])
 
+
+def system_log_test():
+    return manage_log_length()+recent_log_entries()
 

@@ -2,7 +2,7 @@ from django.core.management.base import BaseCommand
 import traceback
 from re import split
 
-from tool.log import log_exception
+from tool.log import log_exception, recent_log_entries
 from tool.text import count_lines, match_pattern, text_lines, text_join
 from tool.shell import shell
 
@@ -35,6 +35,8 @@ def system_command(self, options):
 
         if cmd == 'list':
             print(list_processes(args))
+        elif cmd == 'log':
+            print(recent_log_entries())
         elif cmd == 'procs':
             print(count_processes(args))
         elif cmd == 'prune':

@@ -4,27 +4,31 @@ from os.path import join
 from json import dumps
 from traceback import format_exc
 
-from .files import read_text
-from hammer.settings import LOG_DIR
+from tool.files import read_text
+from hammer.settings import LOG_FILE
+from tool.shell import text_join, text_lines
 
 
 def log(text, value=None):
-    logger = getLogger(__name__)
+    logger = getLogger('hammer')
     if value:
         text = "%s: %s" % (text, value)
-    logger.warning(str(datetime.now())+',  '+text)
+    logger.info(str(datetime.now())+',  '+text)
 
 
-def log_exception():
-    log('EXCEPTION', format_exc())
+def log_error(message):
+    logger = getLogger('hammer')
+    message = '\n\n** ERROR ** \n\n%s, %s' % (datetime.now(), message)
+    print(message)
+    logger.error(message)
+
+
+def log_exception(message=''):
+    log_error('EXCEPTION OCCURRED: %s\n%s\n\n' % (message, format_exc()))
 
 
 def log_json(text, data):
     log(text, dumps(data, sort_keys=True, indent=4))
-
-
-def log_file():
-    return join(LOG_DIR, 'hammer.log')
 
 
 def show_log():
@@ -42,3 +46,19 @@ def log_page(request, parms=''):
     if parms:
         message += ', %s' % parms
     log(message)
+
+
+def manage_log_length():
+    lines = open(LOG_FILE).read().split('\n')
+    length = len(lines)
+    if length > 500:
+        lines = lines [-100:]
+        open(LOG_FILE, 'w').write('\n'.join(lines))
+        return 'Too Long Log - %s, %s lines' % (LOG_FILE, length)
+    return 'Log Length OK - %d lines' % length
+
+
+def recent_log_entries():
+    lines = open(LOG_FILE).read().split('\n')
+    return text_join(lines[-20:])
+
