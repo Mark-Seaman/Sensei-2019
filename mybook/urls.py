@@ -45,5 +45,6 @@ urlpatterns = [
     url(r'^spiritual/(?P<title>[\w/\-_.]*)$',   SpiritualDoc.as_view()),
 
     # Documents
+    url(r'^favicon\.ico$', RedirectView.as_view(url='/static/favicon.ico')),
     url(r'^(?P<title>[\w/\-_.]*)$',             DocDisplay.as_view()),
 ]
