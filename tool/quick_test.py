@@ -1,14 +1,10 @@
-from unc.models import *
-from unc.bacs import *
+from unc.bacs import init_data_test
 
 
 def quick_test():
-    for l in Lesson.objects.all():
-        print(l.topic)
+    # Clear the table
+    # Lesson.objects.all().delete()
 
-
-def init_data_test():
-    initialize_data()
-    print(print_data())
+    init_data_test()
 
 

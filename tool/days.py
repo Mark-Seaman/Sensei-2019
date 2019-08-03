@@ -115,12 +115,17 @@ def enumerate_days(today, days):
     return [days_ago(today, days-d-1) for d in range(days)]
 
 
-# Convert from string to seconds after 1970
+# Convert from string to ctime object  (example format 1959-09-01)
 def to_date(s):
     return datetime.strptime(s, "%Y-%m-%d")
 
 
-# Format like   Tue, 03-11
+# Convert from string to ctime object (example format 9/1/1959)
+def parse_date(s):
+    return datetime.strptime(s, "%m/%d/%Y")
+
+
+# Convert from string to ctime object  (example format Tue, 09-01)
 def to_day(s):
     return datetime.strptime(s, "%a, %m-%d")
 
