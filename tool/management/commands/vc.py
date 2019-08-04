@@ -70,6 +70,7 @@ def vc_help():
 
 def git_cmd(cmd):
     # system(cmd)
+    print(cmd)
     print(git_filter(shell_script(cmd)))
 
 
