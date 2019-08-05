@@ -46,8 +46,8 @@ def log_page(request, parms=''):
 def manage_log_length():
     lines = read_lines(LOG_FILE)
     length = len(lines)
-    if length > 500:
-        lines = lines [-100:]
+    if length > 5000:
+        lines = lines [-1000:]
         open(LOG_FILE, 'w').write('\n'.join(lines))
         return 'Too Long Log - %s, %s lines' % (LOG_FILE, length)
     return 'Log Length OK - %d lines' % length
