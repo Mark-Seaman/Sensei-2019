@@ -1,7 +1,7 @@
 from tool.shell import hostname, is_server, shell
 from tool.files import recursive_list
 from tool.management.commands.system import list_processes, count_processes, prune_processes
-from tool.log import manage_log_length, recent_log_entries
+from tool.log import manage_log_length
 
 
 def system_files_test():
@@ -26,5 +26,5 @@ def system_prune_process_test():
 
 
 def system_log_test():
-    return manage_log_length()+recent_log_entries()
+    return manage_log_length()
 

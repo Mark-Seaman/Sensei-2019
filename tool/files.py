@@ -125,13 +125,14 @@ def read_json(filename):
     return {}
 
 
-# # Read lines from a file and strip off the tailing newline
-# def read_file(filename):
-#     if not exists(filename): return [ ]
-#     f=open(filename)
-#     results = f.read().split('\n')
-#     f.close()
-#     return results
+# Read lines from a file and strip off the tailing newline
+def read_lines(filename):
+    if not exists(filename):
+        return [ ]
+    f = open(filename)
+    results = f.read().split('\n')
+    f.close()
+    return results
 
 
 # Return the text from the file

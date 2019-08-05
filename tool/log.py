@@ -1,12 +1,11 @@
 from datetime import datetime
 from logging import getLogger
-from os.path import join
 from json import dumps
 from traceback import format_exc
 
-from tool.files import read_text
 from hammer.settings import LOG_FILE
-from tool.shell import text_join, text_lines
+from tool.shell import text_join
+from tool.files import read_lines
 
 
 def log(text, value=None):
@@ -31,10 +30,6 @@ def log_json(text, data):
     log(text, dumps(data, sort_keys=True, indent=4))
 
 
-def show_log():
-    return read_text(log_file())
-
-
 def log_notifications(title, recipients):
     with open('log/notifications.log', 'a') as f:
         text = "%s, %s, %s" % (str(datetime.now()), title, ' '.join(recipients))
@@ -49,7 +44,7 @@ def log_page(request, parms=''):
 
 
 def manage_log_length():
-    lines = open(LOG_FILE).read().split('\n')
+    lines = read_lines(LOG_FILE)
     length = len(lines)
     if length > 500:
         lines = lines [-100:]
@@ -59,6 +54,5 @@ def manage_log_length():
 
 
 def recent_log_entries():
-    lines = open(LOG_FILE).read().split('\n')
-    return text_join(lines[-20:])
+    return text_join(read_lines(open(LOG_FILE))[-100:])
 

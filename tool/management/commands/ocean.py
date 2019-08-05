@@ -39,14 +39,14 @@ def ocean_command(self, options):
             console(args)
         elif cmd == 'deploy':
             deploy(args)
+        elif cmd == 'log':
+            log(args)
         elif cmd == 'restart':
             restart()
         elif cmd == 'root':
             root()
         elif cmd == 'serve':
             runserver()
-        elif cmd == 'status':
-            system('cd ~/Brain; git status')
         elif cmd == 'web':
             web()
         else:
@@ -63,7 +63,6 @@ def ocean_help():
     usage:  brain cmd [args]
 
     cmd:
-        TODO: tst, docs, curl, index
 
         commit (comment) - Commit all changes and push
 
@@ -71,13 +70,13 @@ def ocean_help():
 
         deploy - Send code to server 
 
+        log - Show the system log
+
         restart - Restart the remote web server
 
         root - Login to remote server as root
         
         serve - Run the local web server
-
-        status - Show the git status
 
         web - Browse to the Brain App web page
 
@@ -104,6 +103,8 @@ def deploy(args):
     web()
     console(['". bin/bashrc && python manage.py tst"'])
 
+def log(args):
+    console(['". bin/bashrc && python manage.py log"'])
 
 def restart():
     print('Sensei Server Restart:  systemctl restart gunicorn')
