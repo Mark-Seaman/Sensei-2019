@@ -36,6 +36,7 @@ alias ip='ifconfig|grep "inet "'
 alias l='ls -al'
 alias le='less'
 alias ll='ls -l'
+alias log='sys log'
 
 alias n='cd ~/S1/bin && python ntsh.py'
 

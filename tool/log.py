@@ -54,5 +54,5 @@ def manage_log_length():
 
 
 def recent_log_entries():
-    return text_join(read_lines(open(LOG_FILE))[-100:])
+    return text_join(read_lines(LOG_FILE)[-100:])
 
