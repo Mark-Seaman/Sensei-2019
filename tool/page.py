@@ -27,13 +27,6 @@ def capture_page_source(dom, url):
     return dom.page_source
 
 
-def close_browser_dom(browser):
-    browser.quit()
-    if is_server():
-        global display
-        display.stop()
-
-
 def check_features(features):
 
     def check_feature(feature, actual, correct):
@@ -52,6 +45,13 @@ def check_features(features):
 def check_page_features(dom, requirements):
     features = extract_features(dom, requirements)
     return check_features(features)
+
+
+def close_browser_dom(browser):
+    browser.quit()
+    if is_server():
+        global display
+        display.stop()
 
 
 def extract_features(dom, features):

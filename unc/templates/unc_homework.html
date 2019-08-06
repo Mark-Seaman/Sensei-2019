@@ -3,40 +3,80 @@
 
 {% block content %}
 
-    <h1>Class Overview</h1>
-
-    <h2>Weekly Learning Agenda</h2>
-
-    <ul>
-        <li><a href="/unc/{{ course }}/01">Week 1 - Web hosting</a></li>
-        <li><a href="/unc/{{ course }}/02">Week 2 - HTML Basics</a></li>
-        <li><a href="/unc/{{ course }}/03">Week 3 - HTML Templates</a></li>
-    </ul>
-
-
-    <h2>Class Overview</h2>
-
-    <ul>
-        <li><a href="/unc/{{ course }}/docs">Documents</a></li>
-        <li><a href="/unc/{{ course }}/schedule">Class Schedule</a></li>
-        <li><a href="/unc/{{ course }}/01/project">Project #1</a></li>
-        <li><a href="/unc/{{ course }}/01/test">Test Page</a></li>
-    </ul>
-
-    {#    <div class="card">#}
+    {#    <h2>Class Overview</h2>#}
     {##}
-    {#        <div class="card-header ch-alt">#}
-    {#            {{ title }}#}
-    {#        </div>#}
-    {#        <div class="card-body card-padding">#}
-    {#            {% if text %}#}
-    {#                {% autoescape off %}#}
-    {#                    {{ text }}#}
-    {#                {% endautoescape %}#}
-    {#            {% else %}#}
-    {#                <h2>No document found.</h2>#}
-    {#            {% endif %}#}
-    {#        </div>#}
-    {#    </div>#}
+    {#    <ul>#}
+    {#        <li><a href="/unc/{{ course }}/docs">Documents</a></li>#}
+    {#        <li><a href="/unc/{{ course }}/schedule">Class Schedule</a></li>#}
+    {#        <li><a href="/unc/{{ course }}/01/project">Project #1</a></li>#}
+    {#        <li><a href="/unc/{{ course }}/01/test">Test Page</a></li>#}
+    {#    </ul>#}
+
+    <div class="accordion" id="my-accordion">
+
+        {% for topic in schedule %}
+
+            <div class="card">
+
+                <div class="card-header" id="heading-{{ topic.pk }}">
+
+                    <button class="btn btn-selector" type="button" data-toggle="collapse"
+                            data-target="#pane-{{ topic.pk }}"
+                            aria-expanded="true" aria-controls="pane-{{ topic.pk }}">
+                        <b>Lesson {{ topic.lesson }} - {{ topic.topic }}</b>
+                    </button>
+
+                </div>
+                <div id="pane-{{ topic.pk }}" class="collapse"
+                     aria-labelledby="heading-{{ topic.pk }}"
+                     data-parent="#my-accordion">
+
+                    <div class="card-body">
+                        <h2>Lesson {{ topic.lesson }} - {{ topic.topic }}</h2>
+                        <table class="table table-hover">
+                            <tr>
+                                <td>Lesson</td>
+                                <td>{{ topic.lesson }}</td>
+                            </tr>
+                            <tr>
+                                <td>Week</td>
+                                <td>{{ topic.week }}</td>
+                            </tr>
+                            <tr>
+                                <td>Date</td>
+                                <td>{{ topic.date|date:"D M d, Y" }}</td>
+                            </tr>
+                            <tr>
+                                <td>Lesson Notes</td>
+                                <td><a href="/unc/{{ course }}/lesson/{{ topic.week|stringformat:"02d" }}"
+                                       target="lesson">Notes #{{ topic.lesson }} - {{ topic.topic }}</a></td>
+
+                            </tr>
+                            <tr>
+                                <td>Lesson Slides</td>
+                                <td><a href="/unc/{{ course }}/{{ topic.week|stringformat:"02d" }}/slides"
+                                       target="slides">Slides #{{ topic.lesson }} - {{ topic.topic }}</a></td>
+
+                            </tr>
+                            <tr>
+                                <td>Project</td>
+                                <td><a href="/unc/{{ course }}/project/{{ topic.week|stringformat:"02d" }}"
+                                       target="project">Project #{{ topic.week }}</a></td>
+                            </tr>
+                            <tr>
+                                <td>Reading</td>
+                                <td>{{ topic.reading }}</td>
+                            </tr>
+
+                        </table>
+                    </div>
+
+                </div>
+
+            </div>
+
+        {% endfor %}
+
+    </div>
 
 {% endblock %}

@@ -16,6 +16,8 @@ urlpatterns = [
 
     url(r'^(?P<course>[-_ \w]+)/schedule$', UncSchedule.as_view()),
 
+    url(r'^(?P<course>[-_ \w]+)/(?P<lesson>\d\d)/slides$', UncSlides.as_view()),
+
     url(r'^(?P<course>[-_ \w]+)/(?P<week>\d\d)$',           UncWeek.as_view()),
     url(r'^(?P<course>[-_ \w]+)/(?P<title>[\w/\-_.]+)$',    UncDocDisplay.as_view()),
     url(r'^(?P<course>[-_ \w]+)$',                          UncHomework.as_view()),

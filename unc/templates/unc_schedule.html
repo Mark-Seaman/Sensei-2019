@@ -6,17 +6,21 @@
     <h2>{{ schedule.0.1 }}</h2>
     <table class="table table-hover">
         <tr>
-            {% for h in schedule.1 %}
-                <th>{{ h }}</th>
-            {% endfor %}
+            <th>Lesson</th>
+            <th>Date</th>
+            <th>Topic</th>
+            <th>Project</th>
+            <th>Reading</th>
         </tr>
 
-        {% for topic in schedule.2 %}
+        {% for topic in schedule.1 %}
             <tr>
 
-                {% for t in topic %}
-                    <td>{{ t }}</td>
-                {% endfor %}
+                <td>{{ topic.lesson }}</td>
+                <td>{{ topic.date|date:"D M d, Y" }}</td>
+                <td>{{ topic.topic }}</td>
+                <td>Project #{{ topic.week }}</td>
+                <td>{{ topic.reading }}</td>
 
             </tr>
         {% endfor %}

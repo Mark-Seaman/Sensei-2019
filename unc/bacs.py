@@ -79,11 +79,7 @@ def read_schedule(course):
 
 
 def schedule_data(course):
-    data_file = 'Documents/unc/%s/schedule.csv' % course
-    s = []
-    with open(data_file) as f:
-        for row in reader(f):
-            s.append(row)
-    return s[0], s[1], s[2:]
+    title = Course.objects.get(name=course).title
+    return [title, 'Class Schedule'], Lesson.objects.filter(course__name=course)
 
 

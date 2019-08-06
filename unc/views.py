@@ -4,6 +4,7 @@ from mybook.mybook import document_text, homework_menu
 from tool.page import capture_page_features
 from tool.log import log_page
 from unc.bacs import schedule_data
+from tool.document import read_markdown, fix_images
 
 
 class UncPage(TemplateView):
@@ -25,6 +26,11 @@ class UncDocDisplay(UncPage):
 
 class UncHomework(UncPage):
     template_name = 'unc_homework.html'
+
+    def get_context_data(self, **kwargs):
+        kwargs['schedule'] = schedule_data('bacs200')[1]
+        kwargs = super(UncHomework, self).get_context_data(**kwargs)
+        return kwargs
 
 
 class UncProject(UncPage):
@@ -51,14 +57,23 @@ class UncSchedule(UncPage):
         return kwargs
 
 
-class UncSlidesDisplay(UncPage):
+def slides_markdown(course, lesson):
+    doc = 'Documents/unc/%s/lesson/%s' % (course, lesson)
+    text = fix_images(read_markdown(doc), '/static/images/unc/%s' % course)
+    bear = '\n\n---\n\n<img src="/static/images/unc/bacs200/Bear.200.png">\n\n---\n\n'
+    return bear + text + bear
+
+
+class UncSlides(UncPage):
     template_name = 'unc_slides.html'
+    # template_name = 'unc_theme.html'
 
     def get_context_data(self, **kwargs):
-        title = self.kwargs.get('title')
-        course  = self.kwargs.get('course')
-        text = slides_markdown(title)
-        return site_settings(title=title, course=course, markdown=text)
+        course = self.kwargs.get('course')
+        lesson = self.kwargs.get('lesson')
+        kwargs['markdown'] = slides_markdown(course, lesson)
+        kwargs = super(UncSlides, self).get_context_data(**kwargs)
+        return kwargs
 
 
 class UncTestResults(UncPage):

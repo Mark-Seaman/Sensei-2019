@@ -134,6 +134,10 @@ def file_to_html(path, image_path=None):
         return 'No file found, ' + path
 
 
+def fix_images(text, image_path):
+    return text.replace('![](img/', '![](%s/' % image_path)
+
+
 def markdown_to_html(markdown_path, html_path):
     text = read_markdown(markdown_path)
     text = text_to_html(text)
