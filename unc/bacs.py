@@ -83,3 +83,10 @@ def schedule_data(course):
     return [title, 'Class Schedule'], Lesson.objects.filter(course__name=course)
 
 
+def weekly_lessons(course):
+    weeks = []
+    for w in range(15):
+        week = w + 1
+        weeks.append(Lesson.objects.filter(course__name=course, week=week))
+    return weeks
+

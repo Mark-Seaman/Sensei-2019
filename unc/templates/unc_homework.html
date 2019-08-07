@@ -3,72 +3,56 @@
 
 {% block content %}
 
-    {#    <h2>Class Overview</h2>#}
-    {##}
-    {#    <ul>#}
-    {#        <li><a href="/unc/{{ course }}/docs">Documents</a></li>#}
-    {#        <li><a href="/unc/{{ course }}/schedule">Class Schedule</a></li>#}
-    {#        <li><a href="/unc/{{ course }}/01/project">Project #1</a></li>#}
-    {#        <li><a href="/unc/{{ course }}/01/test">Test Page</a></li>#}
-    {#    </ul>#}
-
     <div class="accordion" id="my-accordion">
 
-        {% for topic in schedule %}
+        <h1>Weekly Plan</h1>
+
+        {% for week in weeks %}
 
             <div class="card">
 
-                <div class="card-header" id="heading-{{ topic.pk }}">
+                <div class="card-header collapse-header" id="heading-{{ week.0.week }}">
 
                     <button class="btn btn-selector" type="button" data-toggle="collapse"
-                            data-target="#pane-{{ topic.pk }}"
-                            aria-expanded="true" aria-controls="pane-{{ topic.pk }}">
-                        <b>Lesson {{ topic.lesson }} - {{ topic.topic }}</b>
+                            data-target="#pane-{{ week.0.week }}"
+                            aria-expanded="true" aria-controls="pane-{{ week.0.week }}">
+                        <b>Week {{ week.0.week }}</b>
+
                     </button>
 
                 </div>
-                <div id="pane-{{ topic.pk }}" class="collapse"
-                     aria-labelledby="heading-{{ topic.pk }}"
+                <div id="pane-{{ week.0.week }}" class="collapse"
+                     aria-labelledby="heading-{{ week.0.week }}"
                      data-parent="#my-accordion">
 
                     <div class="card-body">
-                        <h2>Lesson {{ topic.lesson }} - {{ topic.topic }}</h2>
-                        <table class="table table-hover">
-                            <tr>
-                                <td>Lesson</td>
-                                <td>{{ topic.lesson }}</td>
-                            </tr>
-                            <tr>
-                                <td>Week</td>
-                                <td>{{ topic.week }}</td>
-                            </tr>
-                            <tr>
-                                <td>Date</td>
-                                <td>{{ topic.date|date:"D M d, Y" }}</td>
-                            </tr>
-                            <tr>
-                                <td>Lesson Notes</td>
-                                <td><a href="/unc/{{ course }}/lesson/{{ topic.week|stringformat:"02d" }}"
-                                       target="lesson">Notes #{{ topic.lesson }} - {{ topic.topic }}</a></td>
+                        {% for lesson in week %}
 
-                            </tr>
-                            <tr>
-                                <td>Lesson Slides</td>
-                                <td><a href="/unc/{{ course }}/{{ topic.week|stringformat:"02d" }}/slides"
-                                       target="slides">Slides #{{ topic.lesson }} - {{ topic.topic }}</a></td>
+                            <h2> Lesson {{ lesson.lesson }} - {{ lesson.topic }}</h2>
+                            <p>
+                                {{ lesson.date|date:"D, M d, Y" }}
+                            </p>
+                            <p>
+                                Notes for lesson {{ lesson.lesson }} -
+                                <a href="/unc/{{ course }}/lesson/{{ lesson.week|stringformat:"02d" }}"
+                                   target="lesson">{{ lesson.topic }}</a>
+                            </p>
+                            <p>
+                                Slides for lesson {{ lesson.lesson }} -
+                                <a href="/unc/{{ course }}/{{ lesson.week|stringformat:"02d" }}/slides"
+                                   target="slides">{{ lesson.topic }}</a>
+                            </p>
+                            <p>
+                                <a href="/unc/{{ course }}/project/{{ lesson.week|stringformat:"02d" }}"
+                                   target="project">Project {{ lesson.week }}</a>
+                                - due on {{ lesson.date|date:"D, M d, Y" }}
+                            </p>
+                            <p>
+                                Textbook Reading - {{ lesson.reading }}
+                            </p>
 
-                            </tr>
-                            <tr>
-                                <td>Project</td>
-                                <td><a href="/unc/{{ course }}/project/{{ topic.week|stringformat:"02d" }}"
-                                       target="project">Project #{{ topic.week }}</a></td>
-                            </tr>
-                            <tr>
-                                <td>Reading</td>
-                                <td>{{ topic.reading }}</td>
-                            </tr>
+                        {% endfor %}
 
-                        </table>
                     </div>
 
                 </div>
@@ -76,7 +60,7 @@
             </div>
 
         {% endfor %}
-
     </div>
 
 {% endblock %}
+

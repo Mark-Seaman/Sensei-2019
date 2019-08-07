@@ -1,9 +1,15 @@
 from unc.bacs import print_data
 from tool.log import log, log_exception, log_error
 from tool.page import capture_page_features
+from tasks.models import Task
 
 
 def quick_test():
+    t = Task.objects.all()[0]
+    print('date format'+str(t.date))
+
+
+def capture_page():
     print(capture_page_features('https://shrinking-world.com/unc/bacs200/schedule',
                                 ['head', 'body', 'title', 'h1']))
 

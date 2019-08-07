@@ -35,7 +35,7 @@ def bad_days():
     start = end - timedelta(days=365)
     tasks = Task.objects.filter(date__gt=start, date__lte=end)
     totals = tasks.values('date').annotate(task_hours=Sum('hours')).order_by('-date')
-    return [(t['date'], t['task_hours']) for t in totals if t['task_hours'] != 14]
+    return [(str(t['date']), t['task_hours']) for t in totals if t['task_hours'] != 14]
 
 
 def bad_days_data(days):
@@ -44,7 +44,7 @@ def bad_days_data(days):
     tasks = Task.objects.filter(date__gt=start, date__lte=end)
     totals = tasks.values('date').annotate(task_hours=Sum('hours')).order_by('-date')
     total = sum([t['task_hours'] for t in totals])
-    table = [(t['date'], t['task_hours']) for t in totals if t['task_hours'] != 14]
+    table = [(str(t['date']), t['task_hours']) for t in totals if t['task_hours'] != 14]
     labels = ['Date', 'Invested Time']
 
     return {
