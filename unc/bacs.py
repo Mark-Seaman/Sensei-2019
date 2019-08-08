@@ -87,6 +87,6 @@ def weekly_lessons(course):
     weeks = []
     for w in range(15):
         week = w + 1
-        weeks.append(Lesson.objects.filter(course__name=course, week=week))
+        weeks.append(Lesson.objects.filter(course__name=course, week=week).order_by('date'))
     return weeks
 
