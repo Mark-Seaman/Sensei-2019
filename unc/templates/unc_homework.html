@@ -48,7 +48,7 @@
                                 - due on {{ lesson.date|date:"D, M d, Y" }}
                             </p>
                             <p>
-                                Textbook Reading - {{ lesson.reading }}
+                                Textbook Reading - {% autoescape off %}{{ lesson.reading }}{% endautoescape %}
                             </p>
 
                         {% endfor %}

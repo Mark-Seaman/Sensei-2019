@@ -23,7 +23,7 @@ def task_dates():
 
 
 def read_schedule():
-    import_schedule('bacs200')
+    # import_schedule('bacs200')
     print(print_data())
 
 

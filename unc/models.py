@@ -107,7 +107,7 @@ class Lesson(models.Model):
 
     # CSV Data -- Week, Day, Date, Lesson, Topic, Reading, Projects, Process, Parts
     def __str__(self):
-        return '%5d %5d   %-15s %-30s %s' % (self.lesson, self.week, date_str(self.date), self.topic, self.reading)
+        return '%d -- %5d %5d   %-15s %-30s %s' % (self.course.pk, self.lesson, self.week, date_str(self.date), self.topic, self.reading)
 
     @staticmethod
     def query(course):
