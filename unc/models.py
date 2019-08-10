@@ -103,7 +103,7 @@ class Lesson(models.Model):
     date = models.DateTimeField(default=None, null=True, editable=False)
     lesson = models.IntegerField(default=1)
     topic = models.CharField(default='none', max_length=100)
-    reading = models.CharField(default='none', max_length=100)
+    reading = models.CharField(default='none', max_length=200)
 
     # CSV Data -- Week, Day, Date, Lesson, Topic, Reading, Projects, Process, Parts
     def __str__(self):
