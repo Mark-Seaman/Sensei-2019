@@ -12,7 +12,9 @@ class UncPage(TemplateView):
 
     def get_context_data(self, **kwargs):
         log_page(self.request)
-        header = 'UNC Digital Classroom', 'UNC BACS 200', "/static/images/unc/Bear.200.png", 'UNC Bear'
+        course = self.kwargs.get('course','NONE')
+        course = 'BACS 350' if course=='bacs350' else 'BACS 200'
+        header = 'UNC Digital Classroom', 'UNC %s' % course, "/static/images/unc/Bear.200.png", 'UNC Bear'
         kwargs['header'] = dict(title=header[0], subtitle=header[1], logo=header[2], logo_text=header[3])
         doc_path = self.request.path[1:]
         kwargs['text'] = document_text(doc_path)

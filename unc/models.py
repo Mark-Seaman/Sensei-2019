@@ -57,8 +57,8 @@ class Project(models.Model):
         # return 'Project %02d. %s - %s' % (self.num, self.title, self.due)
 
     @staticmethod
-    def list():
-        return [str(o) for o in Project.objects.all()]
+    def list(course):
+        return [str(o) for o in Project.objects.filter(course__name=course).order_by('due')]
 
 
 class Requirement(models.Model):
