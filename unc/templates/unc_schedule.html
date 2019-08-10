@@ -19,8 +19,8 @@
                 <td>{{ topic.lesson }}</td>
                 <td>{{ topic.date|date:"D M d, Y" }}</td>
                 <td>{{ topic.topic }}</td>
-                <td>Project #{{ topic.week }}</td>
-                <td>{{ topic.reading }}</td>
+                <td>{{ topic.week }}</td>
+                <td>{% autoescape off %}{{ topic.reading }}{% endautoescape %}</td>
 
             </tr>
         {% endfor %}

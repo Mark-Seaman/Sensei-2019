@@ -17,8 +17,12 @@ class Course(models.Model):
         return '%4d %-10s %-44s %-20s %s' % (self.pk, self.name, self.title, self.teacher, self.description)
 
     @staticmethod
+    def query():
+        return Course.objects.all()
+
+    @staticmethod
     def list():
-        return [str(o) for o in Course.objects.all()]
+        return [str(o) for o in Course.query()]
 
 
 class Student(models.Model):
@@ -94,7 +98,7 @@ class Assignment(models.Model):
 
 class Lesson(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE, default=1)
-    project = models.ForeignKey(Project, on_delete=models.CASCADE)
+    project = models.ForeignKey(Project, null=True, on_delete=models.CASCADE)
     week = models.IntegerField(default=1)
     date = models.DateTimeField(default=None, null=True, editable=False)
     lesson = models.IntegerField(default=1)
@@ -103,8 +107,13 @@ class Lesson(models.Model):
 
     # CSV Data -- Week, Day, Date, Lesson, Topic, Reading, Projects, Process, Parts
     def __str__(self):
-        return '%-15s %-30s %s' % (date_str(self.date), self.topic, self.reading)
+        return '%5d %5d   %-15s %-30s %s' % (self.lesson, self.week, date_str(self.date), self.topic, self.reading)
 
     @staticmethod
-    def list():
-        return [str(c) for c in Lesson.objects.all()]
+    def query(course):
+        return Lesson.objects.filter(course__name=course).order_by('date')
+
+    @staticmethod
+    def list(course):
+        return [str(c) for c in Lesson.query(course)]
+

@@ -1,4 +1,5 @@
-from _csv import reader
+from csv import reader
+from re import compile
 
 from unc.models import Course, Project, Lesson
 from tool.shell import banner, text_join
@@ -8,24 +9,40 @@ from tool.days import parse_date, date_str
 
 
 def add_project(row):
-    # num = row[6] if row[6]!='' else '1'
     date = make_aware(parse_date(row[2]))
     date = date_str(date)
     page = 'bacs200/project_%s.html' % row[0]
     instructions = '/unc/bacs200/project/%s' % row[0]
+    title = 'Project %s' % row[0]
     # print(date, page, instructions)
-    create_project('bacs200', row[0], '1', page, date, instructions)
+    return create_project('bacs200', row[0], title, page, date, instructions)
 
 
 def add_lesson(row):
-    # print(row)
-    c = Course.objects.get(name='bacs200')
-    p = Project.objects.get(num=row[0])
-    date = make_aware(datetime.strptime(row[2], "%m/%d/%Y"))
-    num = row[3] if row[3] != '' else '1'
-    Lesson.objects.get_or_create(course=c, project=p, week=row[0], date=date, lesson=num, topic=row[4], reading=row[5])
 
     # CSV Data -- Week, Day, Date, Lesson, Topic, Reading, Projects, Process, Parts
+    # print(row)
+    project = add_project(row)
+    date = make_aware(datetime.strptime(row[2], "%m/%d/%Y"))
+    num = row[3] if row[3] != '' else '-1'
+    # print('create lesson (course=%s, lesson %s)' % (project.course.name, num))
+    # print('date: %s' % date)
+    lesson = Lesson.objects.get_or_create(course=project.course, lesson=num, date=date)[0]
+    lesson.week = row[0]
+    lesson.project = project
+    lesson.topic = row[4]
+    lesson.reading = zybooks_link(row[5])
+    lesson.save()
+    return lesson
+
+
+def zybooks_link(reading):
+    # print(reading)
+    match_pattern = r'^(\d+).(\d+) (.*)$'
+    replace_pattern = r'<a href="https://learn.zybooks.com/zybook/UNCOBACS200SeamanFall2019/chapter/\1/section/\2">\1.\2 - \3</a>'
+    link = compile(match_pattern).sub(replace_pattern, reading)
+    # print(link)
+    return link
 
 
 def create_course(name, title, teacher, description):
@@ -47,7 +64,6 @@ def create_project(course, num, title, page, due, instructions):
 def import_schedule(course):
     table = read_schedule(course)
     for row in table[2:-3]:
-        add_project(row)
         add_lesson(row)
 
 
@@ -61,14 +77,13 @@ def initialize_data():
                   'Web Design and Development for Small Business')
     create_course('bacs350', 'Web Development Intermediate (Fall 2019)', 'Mark Seaman',
                   'Intermediate Web Development with PHP/MySQL')
-    p1 = 'https://shrinking-world.com/unc/bacs200/project/01'
     import_schedule('bacs200')
 
 
 def print_data():
     courses = [banner('Courses')] + Course.list()
     projects = [banner('Projects')] + Project.list()
-    lessons = [banner('Lessons')] + Lesson.list()
+    lessons = [banner('Lessons')] + Lesson.list('bacs200') + Lesson.list('bacs350')
     return text_join(courses + projects + lessons)
 
 
@@ -80,7 +95,7 @@ def read_schedule(course):
 
 def schedule_data(course):
     title = Course.objects.get(name=course).title
-    return [title, 'Class Schedule'], Lesson.objects.filter(course__name=course)
+    return [title, 'Class Schedule'], Lesson.query(course)
 
 
 def weekly_lessons(course):
