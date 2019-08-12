@@ -41,6 +41,6 @@ def test_log_feature():
 
 def throw_exception():
     try:
-        open(xxx)
+        open('xxx')
     except:
         log_exception("Failed to open file")

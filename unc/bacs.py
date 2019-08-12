@@ -9,8 +9,8 @@ from tool.days import parse_date, date_str
 
 
 def add_project(course, row):
-    # date = make_aware(parse_date(row[2]))
-    date = make_aware(datetime.strptime(row[2], "%d-%b"))
+    date = make_aware(parse_date(row[2]))
+    # date = make_aware(datetime.strptime(row[2], "%d-%b"))
     date = date_str(date)
     page = '%s/project_%s.html' % (course, row[0])
     instructions = '/unc/%s/project/%s' % (course, row[0])
@@ -24,18 +24,18 @@ def add_lesson(course,row):
     # CSV Data -- Week, Day, Date, Lesson, Topic, Reading, Projects, Process, Parts
     # print(row)
     project = add_project(course, row)
-    # date = make_aware(parse_date(row[2]))
-    date = make_aware(datetime.strptime(row[2], "%d-%b"))
+    date = make_aware(parse_date(row[2]))
+    # date = make_aware(datetime.strptime(row[2], "%d-%b"))
     num = row[3] if row[3] != '' else '-1'
     print('%s - lesson %s - %s' % (date.strftime('%b %d'), num, row[4]))
     # print('date: %s' % date)
-    # lesson = Lesson.objects.get_or_create(course=project.course, lesson=num, date=date)[0]
-    # lesson.week = row[0]
-    # lesson.project = project
-    # lesson.topic = row[4]
-    # lesson.reading = zybooks_link(course[-3:], row[5])
-    # lesson.save()
-    # return lesson
+    lesson = Lesson.objects.get_or_create(course=project.course, lesson=num, date=date)[0]
+    lesson.week = row[0]
+    lesson.project = project
+    lesson.topic = row[4]
+    lesson.reading = zybooks_link(course[-3:], row[5])
+    lesson.save()
+    return lesson
 
 
 def create_course(name, title, teacher, description):
