@@ -3,6 +3,8 @@
 
 export PIPENV_IGNORE_VIRTUALENVS=1
 export PIPENV_VENV_IN_PROJECT=1
+export u=$HOME/UNC
+
 
 # Path variable
 export PATH=$p:\

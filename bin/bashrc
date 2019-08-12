@@ -12,6 +12,7 @@ then
     pip list
 else
     export p=$HOME/Sensei
+    export u=$HOME/UNC
     figlet 'Sensei Dev'
 fi
 

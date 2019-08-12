@@ -24,7 +24,7 @@ def task_dates():
 
 def read_schedule():
     import_schedule('bacs350')
-    print(print_data())
+    # print(print_data())
 
 
 def capture_page():
