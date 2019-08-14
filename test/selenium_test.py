@@ -1,5 +1,5 @@
 
-from tool.page import close_browser_dom, open_browser_dom, verify_page
+from tool.page import close_browser_dom, open_browser_dom #, verify_page
 from tool.shell import is_server
 
 
@@ -24,13 +24,11 @@ def selenium_features_test():
         domains = ['https://MarkSeaman.org', 'https://shrinking-world.com', 'https://SeamansLog.com',
                    'https://Spiritual-Things.org', 'http://unco-bacs.org/bacs200/class/templates/simple.html',
                    'http://unco-bacs.org']
-        pages = []
-        for url in domains:
-            requirements = get_requirements(url)
-            pages.append(verify_page(dom, url, requirements))
-        close_browser_dom(dom)
-        return '\n\n'.join(pages)
+        # pages = []
+        # for url in domains:
+        #     requirements = get_requirements(url)
+        #     pages.append(verify_page(dom, url, requirements))
+        # close_browser_dom(dom)
+        # return '\n\n'.join(pages)
+        return "TEST DISABLED"
 
-
-if __name__ == '__main__':
-    print(selenium_features_test())

@@ -1,9 +1,12 @@
-from unc.bacs import build_projects
 from re import compile
+
+from unc.bacs import build_projects
+from tool.page import validate_project_page
 
 
 def quick_test():
     build_projects()
+    validate_project_page('bacs200', '02')
 
 
 def zybooks_link():
