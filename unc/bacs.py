@@ -1,6 +1,8 @@
 from csv import reader
 from re import compile
 
+from tool.document import fix_images, read_markdown
+
 from unc.models import Course, Project, Lesson
 from tool.shell import banner, text_join
 from django.utils.timezone import make_aware
@@ -19,8 +21,7 @@ def add_project(course, row):
     return create_project(course, row[0], title, page, date, instructions)
 
 
-def add_lesson(course,row):
-
+def add_lesson(course, row):
     # CSV Data -- Week, Day, Date, Lesson, Topic, Reading, Projects, Process, Parts
     # print(row)
     project = add_project(course, row)
@@ -36,6 +37,22 @@ def add_lesson(course,row):
     lesson.reading = zybooks_link(course[-3:], row[5])
     lesson.save()
     return lesson
+
+
+def build_projects():
+
+    def create_project_record(course, project_num, page, features):
+        p = Project.lookup(course, project_num)
+        p.page = page
+        p.save()
+        for f in features:
+            p.add_requirement(f)
+
+    create_project_record('bacs200', '01', 'bacs200/index.html', ['head', 'body', 'h1', 'p'])
+    create_project_record('bacs200', '02', 'bacs200/profile.html', ['head', 'title', 'body', 'h1', 'p'])
+    create_project_record('bacs200', '03', 'bacs200/projects/index.html', ['head', 'body', 'h1', 'p'])
+    print_projects()
+    # print(Requirement.list())
 
 
 def create_course(name, title, teacher, description):
@@ -74,10 +91,17 @@ def initialize_data():
     import_schedule('bacs350')
 
 
+def print_projects():
+    for p in Project.objects.filter(course__name='bacs200').order_by('due'):
+        print(p)
+        print('    '+'\n    '.join([r.label for r in p.requirements]))
+
+
 def print_data():
+
     courses = [banner('Courses')] + Course.list()
-    bacs200 = [banner('BACS 200'), 'PROJECTS:'] + Project.list('bacs200') + ['', 'LESSONS:']+ Lesson.list('bacs200')
-    bacs350 = [banner('BACS 350'), 'PROJECTS:'] + Project.list('bacs350') + ['', 'LESSONS:']+ Lesson.list('bacs350')
+    bacs200 = [banner('BACS 200'), 'PROJECTS:'] + Project.list('bacs200') + ['', 'LESSONS:'] + Lesson.list('bacs200')
+    bacs350 = [banner('BACS 350'), 'PROJECTS:'] + Project.list('bacs350') + ['', 'LESSONS:'] + Lesson.list('bacs350')
     return text_join(courses + bacs200 + bacs350)
 
 
@@ -90,6 +114,13 @@ def read_schedule(course):
 def schedule_data(course):
     title = Course.objects.get(name=course).title
     return [title, 'Class Schedule'], Lesson.query(course)
+
+
+def slides_markdown(course, lesson):
+    doc = 'Documents/unc/%s/lesson/%s' % (course, lesson)
+    text = fix_images(read_markdown(doc), '/static/images/unc/%s' % course)
+    bear = '\n\n---\n\n<img src="/static/images/unc/bacs200/Bear.200.png">\n\n---\n\n'
+    return bear + text + bear
 
 
 def weekly_lessons(course):

@@ -56,6 +56,20 @@ class Project(models.Model):
         return '%s/project/%02d   %s  %-30s %s' % (self.course.name, self.num, self.title, self.page, self.due.strftime("%Y-%m-%d"))
         # return 'Project %02d. %s - %s' % (self.num, self.title, self.due)
 
+    def add_requirement(self, selector):
+        r = Requirement.objects.get_or_create(project=self, selector=selector)[0]
+        r.num = -1
+        r.label = selector
+        r.save()
+
+    @property
+    def requirements(self):
+        return Requirement.objects.filter(project=self)
+
+    @staticmethod
+    def lookup(course, id):
+        return Project.objects.get(course__name=course, num=id)
+
     @staticmethod
     def list(course):
         return [str(o) for o in Project.objects.filter(course__name=course).order_by('due')]
@@ -63,11 +77,11 @@ class Project(models.Model):
 
 class Requirement(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
-    num = models.IntegerField()
-    label = models.CharField(max_length=100)
+    num = models.IntegerField(default=-1)
+    label = models.CharField(default='None', max_length=100)
     selector = models.CharField(max_length=100)
-    actual = models.TextField()
-    correct = models.TextField()
+    actual = models.TextField(default='Test not run yet')
+    correct = models.TextField(default='Test not run yet')
 
     @property
     def status(self):

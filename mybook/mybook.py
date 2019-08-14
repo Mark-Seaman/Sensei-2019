@@ -139,14 +139,29 @@ def info_menu(title):
     return topic_menu(menu_items(title), '/info/', "Brain")
 
 
-def homework_menu(title):
+def unc_menu(course, title):
 
-    def menu_items(title):
-        return [('Part1', 'HTML', title == 'Part1'),
-                ('Part2', 'CSS', title == 'Part2'),
-                ('Part3', 'Design', title == 'Part3')]
+    def homework_menu(title):
 
-    return topic_menu(menu_items(title), '/homework/', "BACS 200", 'Index')
+        def menu_items(title):
+            return [('Part1', 'HTML', title == 'Part1'),
+                    ('Part2', 'CSS', title == 'Part2'),
+                    ('Part3', 'Design', title == 'Part3')]
+        return topic_menu(menu_items(title), '/unc/bacs200', "BACS 200", 'Index')
+
+    def bacs_350_menu(title):
+        def menu_items(title):
+            return [('Part1', 'Views',  title == 'Part1'),
+                    ('Part2', 'Data',   title == 'Part2'),
+                    ('Part3', 'Design', title == 'Part3')]
+        return topic_menu(menu_items(title), '/unc/bacs350', "BACS 350", 'Index')
+
+    if course == 'bacs200':
+        return homework_menu(title)
+    elif course == 'bacs350':
+        return bacs_350_menu(title)
+
+
 def mark_seaman_menu(title):
     def menu_items(title):
         return [('https://seamanslog.com', 'Blog'),

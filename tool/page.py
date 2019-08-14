@@ -1,7 +1,10 @@
 from os import system
+from os.path import join
 from pprint import PrettyPrinter
+from django.utils.timezone import now
 
 from tool.shell import banner, is_server, redact_css, text_join
+from unc.models import Project
 
 display = ''
 
@@ -13,13 +16,13 @@ def capture_page(driver, url):
         print("**error: capture_page(%s)" % url)
 
 
-def capture_page_features(url='http://localhost:8000', requirements=None):
+def capture_page_features(url, requirements):
     dom = open_browser_dom()
     dom.get(url)
-    features = check_page_features(dom, requirements)
+    check_page_features(dom, requirements)
     source = dom.page_source
     close_browser_dom(dom)
-    return features, source
+    return source
 
 
 def capture_page_source(dom, url):
@@ -27,24 +30,14 @@ def capture_page_source(dom, url):
     return dom.page_source
 
 
-def check_features(features):
-
-    def check_feature(feature, actual, correct):
-        if actual == correct:
-            status = 'The requirement for %s is met.' % feature
-        else:
-            status = '** The requirement for %s is NOT met. Keep working. **' % feature
-        return dict(status=status, feature=feature, actual=actual, correct=correct)
-
-    results = []
-    for f in features:
-        results.append(check_feature(f['feature'], f['actual'], f['correct']))
-    return results
-
-
 def check_page_features(dom, requirements):
-    features = extract_features(dom, requirements)
-    return check_features(features)
+    for r in requirements:
+        r.actual = redact_css(find_css_selector(dom, r.selector))
+        # if r.actual == r.correct:
+        #     r.status = 'The requirement for %s is met.' % r.selector
+        # else:
+        #     r.status = '** The requirement for %s is NOT met. Keep working. **' % r.selector
+        r.save()
 
 
 def close_browser_dom(browser):
@@ -52,14 +45,6 @@ def close_browser_dom(browser):
     if is_server():
         global display
         display.stop()
-
-
-def extract_features(dom, features):
-    results = []
-    for t in features:
-        f = redact_css(find_css_selector(dom, t))
-        results.append(dict(feature=t, actual=f, correct='initial value'))
-    return results
 
 
 def find_css_selector(browser, selector):
@@ -122,12 +107,6 @@ def report_requirements(features):
     return PrettyPrinter(indent=4, width=200).pformat(features)
 
 
-def verify_page(dom, url, requirements):
-    dom.get(url)
-    features = check_page_features(dom, requirements)
-    return banner(url) + '\n' + requirements_summary(features)
-
-
 def test_selenium_setup():
 
     # Check the version of Chromedriver
@@ -148,4 +127,44 @@ def test_selenium_setup():
     print('Web browser closed')
 
 
+def validate_project_page(course, project):
+    p = Project.lookup(course, project)
+    url = join('http://unco-bacs.org', p.page)
+    source = capture_page_features(url, p.requirements)
+    student = 'Mark Seaman'
+    return dict(student=student, url=url, requirements=p.requirements, source=source, date=now())
+
+
+# def verify_page(dom, url, requirements):
+#     dom.get(url)
+#     features = check_page_features(dom, requirements)
+#     return banner(url) + '\n' + requirements_summary(features)
+#
+
+
+# def check_page_features(dom, requirements):
+#     features = [r.selector for r in requirements]
+#     features = extract_features(dom, features)
+#     return check_features(features)
+#
+# def check_features(features):
+#
+#     def check_feature(feature, actual, correct):
+#         if actual == correct:
+#             status = 'The requirement for %s is met.' % feature
+#         else:
+#             status = '** The requirement for %s is NOT met. Keep working. **' % feature
+#         return dict(status=status, feature=feature, actual=actual, correct=correct)
+#
+#     results = []
+#     for f in features:
+#         results.append(check_feature(f['feature'], f['actual'], f['correct']))
+#     return results
+#
+# def extract_features(dom, features):
+#     results = []
+#     for t in features:
+#         f = redact_css(find_css_selector(dom, t))
+#         results.append(dict(feature=t, actual=f, correct='initial value'))
+#     return results
 
