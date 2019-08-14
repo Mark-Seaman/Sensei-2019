@@ -3,40 +3,36 @@ from os.path import join
 from pprint import PrettyPrinter
 from django.utils.timezone import now
 
-from tool.shell import banner, is_server, redact_css, text_join
+from tool.shell import is_server, redact_css, text_join
 from unc.models import Project
 
 display = ''
 
 
-def capture_page(driver, url):
+def capture_page(dom, url):
     try:
-        driver.get(url)
+        dom.get(url)
+        return dom.page_source
     except:
         print("**error: capture_page(%s)" % url)
 
 
 def capture_page_features(url, requirements):
     dom = open_browser_dom()
-    dom.get(url)
+    source = capture_page(dom, url)
     check_page_features(dom, requirements)
-    source = dom.page_source
     close_browser_dom(dom)
     return source
 
 
-def capture_page_source(dom, url):
-    capture_page(dom, url)
-    return dom.page_source
+# def capture_page_source(dom, url):
+#     capture_page(dom, url)
+#     return dom.page_source
 
 
 def check_page_features(dom, requirements):
     for r in requirements:
         r.actual = redact_css(find_css_selector(dom, r.selector))
-        # if r.actual == r.correct:
-        #     r.status = 'The requirement for %s is met.' % r.selector
-        # else:
-        #     r.status = '** The requirement for %s is NOT met. Keep working. **' % r.selector
         r.save()
 
 
