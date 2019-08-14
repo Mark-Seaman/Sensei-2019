@@ -28,7 +28,7 @@ def add_lesson(course, row):
     date = make_aware(parse_date(row[2]))
     # date = make_aware(datetime.strptime(row[2], "%d-%b"))
     num = row[3] if row[3] != '' else '-1'
-    print('%s - lesson %s - %s' % (date.strftime('%b %d'), num, row[4]))
+    # print('%s - lesson %s - %s' % (date.strftime('%b %d'), num, row[4]))
     # print('date: %s' % date)
     lesson = Lesson.objects.get_or_create(course=project.course, lesson=num, date=date)[0]
     lesson.week = row[0]
