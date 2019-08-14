@@ -1,5 +1,5 @@
 
-from tool.page import close_browser_dom, open_browser_dom
+from tool.page import close_browser_dom, open_browser_dom, redact_css
 from tool.shell import is_server
 
 
@@ -27,8 +27,7 @@ def selenium_features_test():
         pages = []
         for url in domains:
             dom.get(url)
-            pages.append(dom.page_source)
+            pages.append(redact_css(dom.page_source))
         close_browser_dom(dom)
         return '\n\n'.join(pages)
-        # return "TEST DISABLED"
 

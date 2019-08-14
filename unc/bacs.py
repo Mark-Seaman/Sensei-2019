@@ -39,7 +39,7 @@ def add_lesson(course, row):
     return lesson
 
 
-def build_projects():
+def build_projects(course):
 
     def create_project_record(course, project_num, page, features):
         p = Project.lookup(course, project_num)
@@ -48,10 +48,10 @@ def build_projects():
         for f in features:
             p.add_requirement(f)
 
-    create_project_record('bacs200', '01', 'bacs200/index.html', ['head', 'body', 'h1', 'p'])
-    create_project_record('bacs200', '02', 'bacs200/profile.html', ['head', 'title', 'body', 'h1', 'p'])
-    create_project_record('bacs200', '03', 'bacs200/projects/index.html', ['head', 'body', 'h1', 'p'])
-    print_projects()
+    create_project_record(course, '01', 'bacs200/index.html', ['head', 'body', 'h1', 'p'])
+    create_project_record(course, '02', 'bacs200/profile.html', ['head', 'title', 'body', 'h1', 'p'])
+    create_project_record(course, '03', 'bacs200/projects/index.html', ['head', 'body', 'h1', 'p'])
+    print_projects('bacs200')
     # print(Requirement.list())
 
 
@@ -91,16 +91,17 @@ def initialize_data():
     import_schedule('bacs350')
 
 
-def print_projects():
-    for p in Project.objects.filter(course__name='bacs200').order_by('due'):
-        print(p)
-        print('    '+'\n    '.join([r.label for r in p.requirements]))
+def print_projects(course):
+    results = []
+    for p in Project.objects.filter(course__name=course).order_by('due'):
+        results.append('Project %s' % p)
+        results.append('    '+'\n    '.join([r.label for r in p.requirements]))
+    return results
 
 
 def print_data():
-
     courses = [banner('Courses')] + Course.list()
-    bacs200 = [banner('BACS 200'), 'PROJECTS:'] + Project.list('bacs200') + ['', 'LESSONS:'] + Lesson.list('bacs200')
+    bacs200 = [banner('BACS 200'), 'PROJECTS:'] + print_projects('bacs200') + ['', 'LESSONS:'] + Lesson.list('bacs200')
     bacs350 = [banner('BACS 350'), 'PROJECTS:'] + Project.list('bacs350') + ['', 'LESSONS:'] + Lesson.list('bacs350')
     return text_join(courses + bacs200 + bacs350)
 
