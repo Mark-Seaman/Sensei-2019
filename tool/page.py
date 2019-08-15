@@ -1,12 +1,18 @@
 from os import system
 from os.path import join
-from pprint import PrettyPrinter
 from django.utils.timezone import now
 
-from tool.shell import is_server, redact_css, text_join
+from tool.shell import is_server, redact_css
+from tool.text import text_join
 from unc.models import Project
 
 display = ''
+
+
+def approve_requirements(project):
+    for i, r in enumerate(project.requirements):
+        r.correct = r.actual
+        r.save()
 
 
 def capture_page(dom, url):
@@ -25,14 +31,10 @@ def capture_page_features(url, requirements):
     return source
 
 
-# def capture_page_source(dom, url):
-#     capture_page(dom, url)
-#     return dom.page_source
-
-
 def check_page_features(dom, requirements):
     for r in requirements:
         r.actual = redact_css(find_css_selector(dom, r.selector))
+        # r.actual = eval('count_chars(r.actual)')
         r.save()
 
 
@@ -41,6 +43,32 @@ def close_browser_dom(browser):
     if is_server():
         global display
         display.stop()
+
+
+def count_chars(text):
+    return '%d characters in output' % len(text)
+
+
+def display_requirements(project):
+    results = []
+    for i, r in enumerate(project.requirements):
+        results.append('\nRequirement #%s: %s   \n' % (r.num, r.selector))
+        results.append('    Correct Output:     \n        %s' % r.correct)
+        results.append('    Actual Output:      \n        %s' % r.actual)
+        results.append('    Transform Output:   \n        %s' % r.transform)
+        results.append('    Test Status:        \n        %s' % r.results)
+    return text_join(results)
+
+
+def display_test_results(data):
+    results = []
+    results.append('Student: %s' % data['student'])
+    results.append('URL: %s' % data['url'])
+    for i, r in enumerate(data['requirements']):
+        r.num = i + 1
+        r.save()
+        results.append('Requirement: %s, %s, %s' % (r.num, r.selector, r.actual))
+    return text_join(results)
 
 
 def find_css_selector(browser, selector):
@@ -91,18 +119,6 @@ def open_browser_dom():
     return webdriver.Chrome(options=options)
 
 
-def requirements_summary(features):
-
-    report = []
-    for i,f in enumerate(features):
-        report.append('\nRequirement #%s - %s:\n\n    %s' % (i+1, f['feature'], f['actual']))
-    return text_join(report)
-
-
-def report_requirements(features):
-    return PrettyPrinter(indent=4, width=200).pformat(features)
-
-
 def test_selenium_setup():
 
     # Check the version of Chromedriver
@@ -131,36 +147,14 @@ def validate_project_page(course, project):
     return dict(student=student, url=url, requirements=p.requirements, source=source, date=now())
 
 
-# def verify_page(dom, url, requirements):
-#     dom.get(url)
-#     features = check_page_features(dom, requirements)
-#     return banner(url) + '\n' + requirements_summary(features)
-#
+def check_requirements(project):
+    for i, r in enumerate(project.requirements):
+        # if r.correct == 'Test not run yet':
+        #     r.correct = r.actual
+        if r.actual == r.correct:
+            r.results = eval('count_chars(r.actual)')
+        else:
+            r.results = 'FAIL'
+        r.save()
 
-
-# def check_page_features(dom, requirements):
-#     features = [r.selector for r in requirements]
-#     features = extract_features(dom, features)
-#     return check_features(features)
-#
-# def check_features(features):
-#
-#     def check_feature(feature, actual, correct):
-#         if actual == correct:
-#             status = 'The requirement for %s is met.' % feature
-#         else:
-#             status = '** The requirement for %s is NOT met. Keep working. **' % feature
-#         return dict(status=status, feature=feature, actual=actual, correct=correct)
-#
-#     results = []
-#     for f in features:
-#         results.append(check_feature(f['feature'], f['actual'], f['correct']))
-#     return results
-#
-# def extract_features(dom, features):
-#     results = []
-#     for t in features:
-#         f = redact_css(find_css_selector(dom, t))
-#         results.append(dict(feature=t, actual=f, correct='initial value'))
-#     return results
 
