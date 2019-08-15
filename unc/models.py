@@ -82,6 +82,8 @@ class Requirement(models.Model):
     selector = models.CharField(max_length=100)
     actual = models.TextField(default='Test not run yet')
     correct = models.TextField(default='Test not run yet')
+    results = models.TextField(default='Test not run yet')
+    transform = models.CharField(null=True, max_length=200)
 
     @property
     def status(self):

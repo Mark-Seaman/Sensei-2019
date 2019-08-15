@@ -1,5 +1,4 @@
-from unc.bacs import build_projects
-from tool.page import validate_project_page
+from tool.page import check_requirements, display_requirements
 
 '''
 Development To Do:
@@ -26,33 +25,39 @@ Page Tester
         rerun test
 '''
 
-from tool.page import close_browser_dom, open_browser_dom, validate_project_page
+
+from unc.models import Project
 
 
 def quick_test():
-    page = open_browser_dom()
-    summary = validate_project_page('bacs200', '02')
-    close_browser_dom(page)
-    display_test_results(summary)
-
-    # print('eval: %s' % eval('transform_output("four score")'))
-
-
-def display_test_results(data):
-    print('Student: %s' % data['student'])
-    print('URL: %s' % data['url'])
-    for i,r in enumerate(data['requirements']):
-        r.num = i+1
-        r.save()
-        print('Requirement: %s, %s, %s' % (r.num, r.selector, r.actual))
+    course, project = 'bacs200', '02'
+    p = Project.lookup(course, project)
+    # approve_requirements(p)
+    check_requirements(p)
+    summary = display_requirements(p)
+    print(summary)
 
 
 def transform_output(text):
     return text.replace('score','years')
 
 
+    # print('eval: %s' % eval('transform_output("four score")'))
 
-
+# from pprint import PrettyPrinter
+# from tool.text import text_join
+#
+# def requirements_summary(features):
+#
+#     report = []
+#     for i,f in enumerate(features):
+#         report.append('\nRequirement #%s - %s:\n\n    %s' % (i+1, f['feature'], f['actual']))
+#     return text_join(report)
+#
+#
+# def report_requirements(features):
+#     return PrettyPrinter(indent=4, width=200).pformat(features)
+#
 
 
 

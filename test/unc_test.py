@@ -1,4 +1,4 @@
-from tool.page import close_browser_dom, open_browser_dom, validate_project_page
+from tool.page import close_browser_dom, open_browser_dom, validate_project_page, display_test_results
 from tool.shell import banner, is_server, text_join
 from unc.bacs import build_projects, initialize_data, print_data, print_projects, zybooks_link
 
@@ -16,17 +16,6 @@ def unc_views_test():
         return summary
 
     # print('eval: %s' % eval('transform_output("four score")'))
-
-
-def display_test_results(data):
-    results = []
-    results.append('Student: %s' % data['student'])
-    results.append('URL: %s' % data['url'])
-    for i,r in enumerate(data['requirements']):
-        r.num = i+1
-        r.save()
-        results.append('Requirement: %s, %s, %s' % (r.num, r.selector, r.actual))
-    return text_join(results)
 
 
 def unc_data_test():
