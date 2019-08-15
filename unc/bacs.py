@@ -1,11 +1,13 @@
 from csv import reader
+from os.path import join
 from re import compile
 
 from tool.document import fix_images, read_markdown
+from tool.page import display_test_results, open_browser_dom, close_browser_dom, capture_page_features
 
 from unc.models import Course, Project, Lesson
 from tool.shell import banner, text_join
-from django.utils.timezone import make_aware
+from django.utils.timezone import make_aware, now
 from datetime import datetime
 from tool.days import parse_date, date_str
 
@@ -51,8 +53,7 @@ def build_projects(course):
     create_project_record(course, '01', 'bacs200/index.html', ['head', 'body', 'h1', 'p'])
     create_project_record(course, '02', 'bacs200/profile.html', ['head', 'title', 'body', 'h1', 'p'])
     create_project_record(course, '03', 'bacs200/projects/index.html', ['head', 'body', 'h1', 'p'])
-    print_projects('bacs200')
-    # print(Requirement.list())
+    return print_projects('bacs200')
 
 
 def create_course(name, title, teacher, description):
@@ -133,12 +134,28 @@ def weekly_lessons(course):
 
 
 def zybooks_link(course, reading):
-    # print(reading)
     match_pattern = r'^(\d+).(\d+) (.*)$'
     url = 'https://learn.zybooks.com/zybook/UNCOBACS%sSeamanFall2019' % course
     replace_pattern = r'<a href="%s/chapter/\1/section/\2">\1.\2 - \3</a>' % url
     link = compile(match_pattern).sub(replace_pattern, reading)
-    # print(link)
     return link
 
+
+def validate_unc_project(dom, course, project, ):
+    return banner('PROJECT %s' % project) + display_test_results(validate_project_page(dom, course, project))
+
+
+def test_project_page(course, project):
+    dom = open_browser_dom()
+    data = validate_project_page(dom, course, project)
+    close_browser_dom(dom)
+    return data
+
+
+def validate_project_page(dom, course, project):
+    p = Project.lookup(course, project)
+    url = join('http://unco-bacs.org', p.page)
+    source = capture_page_features(dom, url, p.requirements)
+    student = 'Mark Seaman'
+    return dict(student=student, url=url, requirements=p.requirements, source=source, date=now())
 

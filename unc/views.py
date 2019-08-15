@@ -2,8 +2,7 @@ from django.views.generic import TemplateView
 
 from mybook.mybook import document_text, unc_menu
 from tool.log import log_page
-from unc.bacs import schedule_data, weekly_lessons, slides_markdown
-from tool.page import validate_project_page
+from unc.bacs import schedule_data, weekly_lessons, slides_markdown, test_project_page
 
 
 class UncPage(TemplateView):
@@ -80,5 +79,5 @@ class UncTestResults(UncPage):
         kwargs = super(UncTestResults, self).get_context_data(**kwargs)
         course = self.kwargs.get('course')
         project = self.kwargs.get('project')
-        kwargs['test_results'] = validate_project_page(course, project)
+        kwargs['test_results'] = test_project_page(course, project)
         return kwargs

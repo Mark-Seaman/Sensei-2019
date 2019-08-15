@@ -39,7 +39,7 @@
         <div class="card-body card-padding">
 
             {% for f in test_results.requirements %}
-                <h3>Feature: {{ f.selector }}</h3>
+                <h3>Requirement: {{ f.selector }}</h3>
                 <p>
                     <b>Status: </b> {{ f.status }}
                 </p>
@@ -48,6 +48,9 @@
                 </p>
                 <p>
                     <b>Correct Output: </b> {{ f.correct }}
+                </p>
+                <p>
+                    <b>Test Status: </b> {{ f.status }}
                 </p>
             {% endfor %}
         </div>
