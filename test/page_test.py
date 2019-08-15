@@ -1,6 +1,6 @@
 
 from tool.page import close_browser_dom, open_browser_dom, redact_css
-from tool.shell import is_server
+from tool.shell import curl_get, is_server
 
 
 # def set_requirements(url):
@@ -16,7 +16,17 @@ from tool.shell import is_server
 #         return default_features
 
 
-def selenium_features_test():
+def page_curl_test():
+    pages = '''
+https://shrinking-world.com/Index
+https://MarkSeaman.org/Index
+https://MarkSeaman.info/info/Index
+    '''.split('\n')[1:-1]
+    output = [curl_get(p) for p in pages]
+    return '\n'.join(output)
+
+
+def page_features_test():
     if is_server():
         return 'No Selenium on Sensei Server'
     else:
@@ -27,6 +37,9 @@ def selenium_features_test():
         pages = []
         for url in domains:
             dom.get(url)
+            pages = []
+            default_features = ['head', 'head title', 'header h1', 'header h2', 'div.logo', 'nav',
+                                'main h1', 'main h2', 'main p', 'main li', 'footer']
             pages.append(redact_css(dom.page_source))
         close_browser_dom(dom)
         return '\n\n'.join(pages)

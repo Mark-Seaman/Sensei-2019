@@ -23,11 +23,11 @@ def capture_page(dom, url):
         print("**error: capture_page(%s)" % url)
 
 
-def capture_page_features(url, requirements):
-    dom = open_browser_dom()
+def capture_page_features(dom, url, requirements):
+    # dom = open_browser_dom()
     source = capture_page(dom, url)
     check_page_features(dom, requirements)
-    close_browser_dom(dom)
+    # close_browser_dom(dom)
     return source
 
 
@@ -97,11 +97,11 @@ def find_xpaths(browser, xpath):
     return [t.get_attribute("innerHTML") for t in tags]
 
 
-def get_page_source(url):
-    dom = open_browser_dom()
-    capture_page(dom, url)
-    print(redact_css(dom.page_source))
-    close_browser_dom(dom)
+# def get_page_source(url):
+#     dom = open_browser_dom()
+#     capture_page(dom, url)
+#     print(redact_css(dom.page_source))
+#     close_browser_dom(dom)
 
 
 def open_browser_dom():
@@ -139,10 +139,10 @@ def test_selenium_setup():
     print('Web browser closed')
 
 
-def validate_project_page(course, project):
+def validate_project_page(dom, course, project):
     p = Project.lookup(course, project)
     url = join('http://unco-bacs.org', p.page)
-    source = capture_page_features(url, p.requirements)
+    source = capture_page_features(dom, url, p.requirements)
     student = 'Mark Seaman'
     return dict(student=student, url=url, requirements=p.requirements, source=source, date=now())
 
