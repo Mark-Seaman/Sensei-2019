@@ -5,7 +5,7 @@ from re import compile
 from tool.document import fix_images, read_markdown
 from tool.page import display_test_results, open_browser_dom, close_browser_dom, capture_page_features
 
-from unc.models import Course, Project, Lesson
+from unc.models import Course, Project, Lesson, Requirement
 from tool.shell import banner, text_join
 from django.utils.timezone import make_aware, now
 from datetime import datetime
@@ -14,12 +14,10 @@ from tool.days import parse_date, date_str
 
 def add_project(course, row):
     date = make_aware(parse_date(row[2]))
-    # date = make_aware(datetime.strptime(row[2], "%d-%b"))
     date = date_str(date)
     page = '%s/project_%s.html' % (course, row[0])
     instructions = '/unc/%s/project/%s' % (course, row[0])
     title = 'Project %s' % row[0]
-    # print(date, page, instructions)
     return create_project(course, row[0], title, page, date, instructions)
 
 
@@ -28,10 +26,7 @@ def add_lesson(course, row):
     # print(row)
     project = add_project(course, row)
     date = make_aware(parse_date(row[2]))
-    # date = make_aware(datetime.strptime(row[2], "%d-%b"))
     num = row[3] if row[3] != '' else '-1'
-    # print('%s - lesson %s - %s' % (date.strftime('%b %d'), num, row[4]))
-    # print('date: %s' % date)
     lesson = Lesson.objects.get_or_create(course=project.course, lesson=num, date=date)[0]
     lesson.week = row[0]
     lesson.project = project
@@ -41,7 +36,25 @@ def add_lesson(course, row):
     return lesson
 
 
+def approve_requirements(project):
+    for i, r in enumerate(project.requirements):
+        r.correct = r.actual
+        r.save()
+
+# Approve project 1 results
+# from unc.bacs import approve_requirements
+# from unc.models import Project
+# approve_requirements(Project.lookup('bacs200', 1))
+# approve_requirements(Project.lookup('bacs200', 2))
+# approve_requirements(Project.lookup('bacs200', 3))
+
+
 def build_projects(course):
+
+    def modify_requirement(course, project_num, feature, transform):
+        r = Requirement.objects.get(project__course__name=course, project__num=project_num, selector=feature)
+        r.transform = transform
+        r.save()
 
     def create_project_record(course, project_num, page, features):
         p = Project.lookup(course, project_num)
@@ -51,6 +64,7 @@ def build_projects(course):
             p.add_requirement(f)
 
     create_project_record(course, '01', 'bacs200/index.html', ['head', 'body', 'h1', 'p'])
+    modify_requirement(course, '01', 'body', 'count_chars(r.actual, 880, 890)')
     create_project_record(course, '02', 'bacs200/profile.html', ['head', 'title', 'body', 'h1', 'p'])
     create_project_record(course, '03', 'bacs200/projects/index.html', ['head', 'body', 'h1', 'p'])
     return print_projects('bacs200')
@@ -125,6 +139,25 @@ def slides_markdown(course, lesson):
     return bear + text + bear
 
 
+def test_project_page(course, project):
+    dom = open_browser_dom()
+    data = validate_project_page(dom, course, project)
+    close_browser_dom(dom)
+    return data
+
+
+def validate_project_page(dom, course, project):
+    p = Project.lookup(course, project)
+    url = join('http://unco-bacs.org', p.page)
+    source = capture_page_features(dom, url, p.requirements)
+    student = 'Mark Seaman'
+    return dict(student=student, url=url, requirements=p.requirements, source=source, date=now())
+
+
+def validate_unc_project(dom, course, project, ):
+    return banner('PROJECT %s' % project) + display_test_results(validate_project_page(dom, course, project))
+
+
 def weekly_lessons(course):
     weeks = []
     for w in range(15):
@@ -140,22 +173,4 @@ def zybooks_link(course, reading):
     link = compile(match_pattern).sub(replace_pattern, reading)
     return link
 
-
-def validate_unc_project(dom, course, project, ):
-    return banner('PROJECT %s' % project) + display_test_results(validate_project_page(dom, course, project))
-
-
-def test_project_page(course, project):
-    dom = open_browser_dom()
-    data = validate_project_page(dom, course, project)
-    close_browser_dom(dom)
-    return data
-
-
-def validate_project_page(dom, course, project):
-    p = Project.lookup(course, project)
-    url = join('http://unco-bacs.org', p.page)
-    source = capture_page_features(dom, url, p.requirements)
-    student = 'Mark Seaman'
-    return dict(student=student, url=url, requirements=p.requirements, source=source, date=now())
 

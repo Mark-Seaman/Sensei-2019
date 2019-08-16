@@ -6,12 +6,6 @@ from tool.text import text_join
 display = ''
 
 
-def approve_requirements(project):
-    for i, r in enumerate(project.requirements):
-        r.correct = r.actual
-        r.save()
-
-
 def capture_page(dom, url):
     try:
         dom.get(url)
@@ -21,22 +15,20 @@ def capture_page(dom, url):
 
 
 def capture_page_features(dom, url, requirements):
-    # dom = open_browser_dom()
     source = capture_page(dom, url)
     for r in requirements:
-        r.actual = redact_css(find_css_selector(dom, r.selector))
-        # r.actual = eval('count_chars(r.actual)')
+        r.actual = find_css_selector(dom, r.selector)
+        if r.transform:
+            r.actual = eval(r.transform)
         r.save()
-    # check_page_features(dom, requirements)
-    # close_browser_dom(dom)
     return source
 
 
-def check_page_features(dom, requirements):
-    for r in requirements:
-        r.actual = redact_css(find_css_selector(dom, r.selector))
-        # r.actual = eval('count_chars(r.actual)')
-        r.save()
+# def check_page_features(dom, requirements):
+#     for r in requirements:
+#         r.actual = redact_css(find_css_selector(dom, r.selector))
+#         # r.actual = eval('count_chars(r.actual)')
+#         r.save()
 
 
 def close_browser_dom(browser):
@@ -46,8 +38,12 @@ def close_browser_dom(browser):
         display.stop()
 
 
-def count_chars(text):
-    return '%d characters in output' % len(text)
+def count_chars(text, min, max):
+    x = len(text)
+    if x > max or x < min:
+        return '%d Characters in output (should be between %s and %s)' % (len(text), min, max)
+    else:
+        return 'Characters in output (is between %s and %s)' % (min, max)
 
 
 def display_requirements(project):
@@ -121,7 +117,6 @@ def open_browser_dom():
 
 
 def test_selenium_setup():
-
     # Check the version of Chromedriver
     system('chromedriver --version')
 
@@ -149,5 +144,3 @@ def check_requirements(project):
         else:
             r.results = 'FAIL'
         r.save()
-
-

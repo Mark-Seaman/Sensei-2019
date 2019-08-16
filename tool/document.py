@@ -1,5 +1,6 @@
 from os import mkdir, listdir
 from os.path import exists, isdir, isfile, join, dirname
+from PIL import Image
 from platform import node
 
 from tool.shell import read_file, shell_pipe
@@ -154,6 +155,17 @@ def read_markdown(path):
     except:
         print('Found bad document: %s' % path)
         return 'Found bad document: %s' % path
+
+
+def resize_image(path, newpath, size):
+    if path != newpath:
+        try:
+            im = Image.open(path)
+            im.thumbnail((size, size), Image.ANTIALIAS)
+            im.save(newpath, "JPEG")
+        except IOError:
+            return "Cannot resize '%s'" % path
+    return '%s --> %s (%s pixels)' % (path, newpath, size)
 
 
 def text_to_html(text):

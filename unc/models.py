@@ -56,11 +56,13 @@ class Project(models.Model):
         return '%s/project/%02d   %s  %-30s %s' % (self.course.name, self.num, self.title, self.page, self.due.strftime("%Y-%m-%d"))
         # return 'Project %02d. %s - %s' % (self.num, self.title, self.due)
 
-    def add_requirement(self, selector):
+    def add_requirement(self, selector, transform=None):
         r = Requirement.objects.get_or_create(project=self, selector=selector)[0]
         r.num = -1
         r.label = selector
+        r.transform = transform
         r.save()
+        return r
 
     @property
     def requirements(self):

@@ -26,20 +26,44 @@ Page Tester
 '''
 
 
-from unc.models import Project
+from PIL import Image
 
 
 def quick_test():
-    course, project = 'bacs200', '02'
-    p = Project.lookup(course, project)
-    # approve_requirements(p)
-    check_requirements(p)
-    summary = display_requirements(p)
-    print(summary)
+    infile = '/Users/seaman/UNC/MarkSeaman/Mark-Seaman-800.jpg'
+    outfile = infile.replace('800', '100')
+    size = 100
+    resize_image(infile, outfile, size)
 
 
-def transform_output(text):
-    return text.replace('score','years')
+def resize_image(path, newpath, size):
+    print('%s --> %s (%s pixels)' % (path, newpath, size))
+    if path != newpath:
+        try:
+            im = Image.open(path)
+            im.thumbnail((size, size), Image.ANTIALIAS)
+            im.save(newpath, "JPEG")
+        except IOError:
+            print("Cannot resize '%s'" % path)
+
+
+
+# from unc.bacs import build_projects
+# build_projects('bacs200')
+
+from unc.models import Project
+
+
+#     course, project = 'bacs200', '02'
+#     p = Project.lookup(course, project)
+#     # approve_requirements(p)
+#     check_requirements(p)
+#     summary = display_requirements(p)
+#     print(summary)
+#
+#
+# def transform_output(text):
+#     return text.replace('score','years')
 
 
     # print('eval: %s' % eval('transform_output("four score")'))
