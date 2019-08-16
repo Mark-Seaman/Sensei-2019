@@ -10,7 +10,7 @@ from tool.log import log_page
 class BookNotes(DocDisplay):
     template_name = 'mybook_theme.html'
     site_title = 'Book Notes', 'Growth through reading'
-    logo = "/static/images/MarkSeaman.100.png", 'Mark Seaman'
+    logo = "/static/images/MarkSeaman/Mark-Seaman-100.jpg", 'Mark Seaman'
 
     def get_content_data(self):
         excerpt, url = booknotes_excerpt(self.kwargs.get('title'))
@@ -29,7 +29,7 @@ class Leverage(DocDisplay):
 
 class MarkSeaman(DocDisplay):
     site_title = 'Mark Seaman', 'Inventor - Teacher - Writer'
-    logo = "/static/images/MarkSeaman.100.png", 'Mark Seaman'
+    logo = "/static/images/MarkSeaman/Mark-Seaman-100.jpg", 'Mark Seaman'
 
     def get_content_data(self):
         domain = self.request.get_host()
@@ -56,7 +56,7 @@ class SeamansLog(DocDisplay):
     def get_context_data(self, **kwargs):
 
         def logo():
-            return "/static/images/MarkSeaman.100.png", 'Mark Seaman'
+            return "/static/images/MarkSeaman/Mark-Seaman-100.jpg", 'Mark Seaman'
 
         domain = self.request.get_host()
         title = self.kwargs.get('title', 'Index')
