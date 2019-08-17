@@ -83,7 +83,7 @@ def tst_diff(test_name):
 
 
 def tst_edit(self, args):
-    system('e %s' % args[0]+'_test.py')
+    system('e test/%s' % args[0]+'_test.py')
 
 
 def tst_find():

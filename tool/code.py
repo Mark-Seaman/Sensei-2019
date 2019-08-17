@@ -15,6 +15,7 @@ def doc_files():
     exclude = ['.git', 'env', '.venv']
     files = shell_file_list('Documents', '', exclude)
     files = delete_lines(files, '.DS_Store')
+    files = delete_lines(files, 'dktht')
     return text_lines(files)
 
 
