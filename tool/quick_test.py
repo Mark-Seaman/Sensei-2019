@@ -1,57 +1,38 @@
-from tool.page import check_requirements, display_requirements
+from unc.projects import build_projects
 
-'''
-Development To Do:
-
-Page Tester
-    Transform structure
-        add requirement.transform
-        debug eval logic
-    Tranform functions
-        text ()
-        search (regex)
-        replace (regex, sub)
-        lines (min, max)
-        chars (min, max)
-        links ()
-    Page Test
-        get page
-        capture features
-        verify requirements
-        present feedback
-        approve requirements
-        automated test
-        interactive test view
-        rerun test
-'''
-
-
-from PIL import Image
+from tool.text import text_join
+from unc.bacs import approve_requirements
+from unc.models import Project
 
 
 def quick_test():
-    infile = '/Users/seaman/UNC/MarkSeaman/Mark-Seaman-800.jpg'
-    outfile = infile.replace('800', '100')
-    size = 100
-    resize_image(infile, outfile, size)
+    print(text_join(build_projects('bacs200')))
+    approve_requirements(Project.lookup('bacs200', 1))
+    # approve_requirements(Project.lookup('bacs200', 2))
+
+# from PIL import Image
+#     infile = '/Users/seaman/UNC/MarkSeaman/Mark-Seaman-800.jpg'
+#     outfile = infile.replace('800', '100')
+#     size = 100
+#     resize_image(infile, outfile, size)
+#
+#
+# def resize_image(path, newpath, size):
+#     print('%s --> %s (%s pixels)' % (path, newpath, size))
+#     if path != newpath:
+#         try:
+#             im = Image.open(path)
+#             im.thumbnail((size, size), Image.ANTIALIAS)
+#             im.save(newpath, "JPEG")
+#         except IOError:
+#             print("Cannot resize '%s'" % path)
 
 
-def resize_image(path, newpath, size):
-    print('%s --> %s (%s pixels)' % (path, newpath, size))
-    if path != newpath:
-        try:
-            im = Image.open(path)
-            im.thumbnail((size, size), Image.ANTIALIAS)
-            im.save(newpath, "JPEG")
-        except IOError:
-            print("Cannot resize '%s'" % path)
 
+#
+# from tool.page import check_requirements, display_requirements
 
-
-# from unc.bacs import build_projects
-# build_projects('bacs200')
-
-from unc.models import Project
+# from unc.models import Project
 
 
 #     course, project = 'bacs200', '02'

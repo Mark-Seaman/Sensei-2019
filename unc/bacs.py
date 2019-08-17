@@ -41,33 +41,13 @@ def approve_requirements(project):
         r.correct = r.actual
         r.save()
 
+
 # Approve project 1 results
 # from unc.bacs import approve_requirements
 # from unc.models import Project
 # approve_requirements(Project.lookup('bacs200', 1))
 # approve_requirements(Project.lookup('bacs200', 2))
 # approve_requirements(Project.lookup('bacs200', 3))
-
-
-def build_projects(course):
-
-    def modify_requirement(course, project_num, feature, transform):
-        r = Requirement.objects.get(project__course__name=course, project__num=project_num, selector=feature)
-        r.transform = transform
-        r.save()
-
-    def create_project_record(course, project_num, page, features):
-        p = Project.lookup(course, project_num)
-        p.page = page
-        p.save()
-        for f in features:
-            p.add_requirement(f)
-
-    create_project_record(course, '01', 'bacs200/index.html', ['head', 'body', 'h1', 'p'])
-    modify_requirement(course, '01', 'body', 'count_chars(r.actual, 880, 890)')
-    create_project_record(course, '02', 'bacs200/profile.html', ['head', 'title', 'body', 'h1', 'p'])
-    create_project_record(course, '03', 'bacs200/projects/index.html', ['head', 'body', 'h1', 'p'])
-    return print_projects('bacs200')
 
 
 def create_course(name, title, teacher, description):
@@ -109,8 +89,9 @@ def initialize_data():
 def print_projects(course):
     results = []
     for p in Project.objects.filter(course__name=course).order_by('due'):
-        results.append('Project %s' % p)
-        results.append('    '+'\n    '.join([r.label for r in p.requirements]))
+        results.append('\nProject %s' % p)
+        for r in project_requirements(p):
+            results.append('    selector=%s, transform=%s' % (r.selector, r.transform))
     return results
 
 
@@ -119,6 +100,10 @@ def print_data():
     bacs200 = [banner('BACS 200'), 'PROJECTS:'] + print_projects('bacs200') + ['', 'LESSONS:'] + Lesson.list('bacs200')
     bacs350 = [banner('BACS 350'), 'PROJECTS:'] + Project.list('bacs350') + ['', 'LESSONS:'] + Lesson.list('bacs350')
     return text_join(courses + bacs200 + bacs350)
+
+
+def project_requirements(project):
+    return Requirement.objects.filter(project=project)
 
 
 def read_schedule(course):
@@ -149,9 +134,10 @@ def test_project_page(course, project):
 def validate_project_page(dom, course, project):
     p = Project.lookup(course, project)
     url = join('http://unco-bacs.org', p.page)
-    source = capture_page_features(dom, url, p.requirements)
+    source, requirements = capture_page_features(dom, url, project_requirements(p))
     student = 'Mark Seaman'
-    return dict(student=student, url=url, requirements=p.requirements, source=source, date=now())
+    requirements = project_requirements(p)
+    return dict(student=student, url=url, requirements=requirements, source=source, date=now())
 
 
 def validate_unc_project(dom, course, project, ):
@@ -172,5 +158,3 @@ def zybooks_link(course, reading):
     replace_pattern = r'<a href="%s/chapter/\1/section/\2">\1.\2 - \3</a>' % url
     link = compile(match_pattern).sub(replace_pattern, reading)
     return link
-
-

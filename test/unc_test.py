@@ -1,6 +1,7 @@
 from tool.page import close_browser_dom, open_browser_dom
 from tool.shell import is_server, text_join
-from unc.bacs import build_projects, initialize_data, print_data, zybooks_link, validate_unc_project
+from unc.bacs import initialize_data, print_data, zybooks_link, validate_unc_project
+from unc.projects import build_projects
 
 
 def unc_views_test():

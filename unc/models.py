@@ -56,14 +56,6 @@ class Project(models.Model):
         return '%s/project/%02d   %s  %-30s %s' % (self.course.name, self.num, self.title, self.page, self.due.strftime("%Y-%m-%d"))
         # return 'Project %02d. %s - %s' % (self.num, self.title, self.due)
 
-    def add_requirement(self, selector, transform=None):
-        r = Requirement.objects.get_or_create(project=self, selector=selector)[0]
-        r.num = -1
-        r.label = selector
-        r.transform = transform
-        r.save()
-        return r
-
     @property
     def requirements(self):
         return Requirement.objects.filter(project=self)
@@ -86,10 +78,15 @@ class Requirement(models.Model):
     correct = models.TextField(default='Test not run yet')
     results = models.TextField(default='Test not run yet')
     transform = models.CharField(null=True, max_length=200)
+    # face = models.CharField(default='/static/images/happy.jpg', max_length=100)
 
     @property
     def status(self):
-        return 'Status: Requirement met' if self.correct == self.actual else 'Status: Requirement FAILED'
+        return 'Requirement PASSED' if self.correct == self.actual else 'Requirement FAILED'
+
+    @property
+    def face(self):
+        return '/static/images/happy.jpg' if self.correct == self.actual else '/static/images/sad.jpg'
 
     def __str__(self):
         return 'Requirement %02d. %s' % (self.num, self.label)

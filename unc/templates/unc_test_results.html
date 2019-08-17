@@ -18,16 +18,11 @@
             <p>
                 Test Run at <b>{{ test_results.date }}</b>
             </p>
-
-            <h3>Page Source Code</h3>
-            <pre>
-                {{ test_results.source }}
-            </pre>
-
-            <h3>Page Requirement</h3>
+            <h3>Project Requirements</h3>
             <p>
                 <a href="/unc/{{ course }}/project/{{ project }}">Project {{ project }} Instructions</a>
             </p>
+
 
         </div>
     </div>
@@ -38,20 +33,50 @@
         </div>
         <div class="card-body card-padding">
 
-            {% for f in test_results.requirements %}
-                <h3>Requirement: {{ f.selector }}</h3>
+            <div class="accordion" id="my-accordion">
+
+                <div class="card">
+
+                    <div class="card-header collapse-header" id="heading-source">
+
+                        <button class="btn btn-selector" type="button" data-toggle="collapse"
+                                data-target="#pane-source"
+                                aria-expanded="true" aria-controls="pane-source">
+                            <b>Page Source Code</b>
+
+                        </button>
+
+                    </div>
+
+                    <div id="pane-source" class="collapse"
+                         aria-labelledby="heading-source"
+                         data-parent="#my-accordion">
+
+                        <div class="card-body">
+                            <h3>View Page Source Code</h3>
+
+                            <pre>{{ test_results.source }}</pre>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            {% for r in test_results.requirements %}
+                <h3>Requirement: {{ r.selector }} <img src="{{ r.face }}" width="100px" alt="test status"></h3>
                 <p>
-                    <b>Status: </b> {{ f.status }}
+                    <b>Status: </b> {{ r.status }}
                 </p>
                 <p>
-                    <b>Actual Output: </b> {{ f.actual }}
+                    <b>Actual Output: </b> {{ r.actual }}
                 </p>
                 <p>
-                    <b>Correct Output: </b> {{ f.correct }}
+                    <b>Correct Output: </b> {{ r.correct }}
                 </p>
-                <p>
-                    <b>Test Status: </b> {{ f.status }}
-                </p>
+                {#                <p>#}
+                {#                    <b>Test Feedback: </b> {{ r.feedback }}#}
+                {#                </p>#}
             {% endfor %}
         </div>
     </div>

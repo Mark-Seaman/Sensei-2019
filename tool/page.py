@@ -1,7 +1,7 @@
 from os import system
 
-from tool.shell import is_server, redact_css
-from tool.text import text_join
+from tool.shell import is_server
+from tool.text import text_join, text_lines
 
 display = ''
 
@@ -21,14 +21,7 @@ def capture_page_features(dom, url, requirements):
         if r.transform:
             r.actual = eval(r.transform)
         r.save()
-    return source
-
-
-# def check_page_features(dom, requirements):
-#     for r in requirements:
-#         r.actual = redact_css(find_css_selector(dom, r.selector))
-#         # r.actual = eval('count_chars(r.actual)')
-#         r.save()
+    return source, requirements
 
 
 def close_browser_dom(browser):
@@ -44,6 +37,14 @@ def count_chars(text, min, max):
         return '%d Characters in output (should be between %s and %s)' % (len(text), min, max)
     else:
         return 'Characters in output (is between %s and %s)' % (min, max)
+
+
+def count_lines(text, min, max):
+    x = len(text_lines(text))
+    if x > max or x < min:
+        return '%d Lines in output (should be between %s and %s)' % (x, min, max)
+    else:
+        return 'Lines in output (is between %s and %s)' % (min, max)
 
 
 def display_requirements(project):
@@ -62,8 +63,8 @@ def display_test_results(data):
     results.append('Student: %s' % data['student'])
     results.append('URL: %s' % data['url'])
     for i, r in enumerate(data['requirements']):
-        r.num = i + 1
-        r.save()
+        # r.num = i + 1
+        # r.save()
         results.append('Requirement: %s, %s, %s' % (r.num, r.selector, r.actual))
     return text_join(results)
 
@@ -92,13 +93,6 @@ def find_xpath(browser, xpath):
 def find_xpaths(browser, xpath):
     tags = browser.find_elements_by_xpath(xpath)
     return [t.get_attribute("innerHTML") for t in tags]
-
-
-# def get_page_source(url):
-#     dom = open_browser_dom()
-#     capture_page(dom, url)
-#     print(redact_css(dom.page_source))
-#     close_browser_dom(dom)
 
 
 def open_browser_dom():
@@ -133,14 +127,3 @@ def test_selenium_setup():
     # Close the webdriver
     driver.quit()
     print('Web browser closed')
-
-
-def check_requirements(project):
-    for i, r in enumerate(project.requirements):
-        # if r.correct == 'Test not run yet':
-        #     r.correct = r.actual
-        if r.actual == r.correct:
-            r.results = eval('count_chars(r.actual)')
-        else:
-            r.results = 'FAIL'
-        r.save()

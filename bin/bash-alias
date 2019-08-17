@@ -13,7 +13,7 @@ alias cs='code search code'
 alias days='todo days'
 alias docs='d doc'
 alias deploy='o deploy'
-alias ds='doc search'
+alias ds='code search doc'
 
 alias ea='e $p/bin/bash*'
 
