@@ -1,5 +1,6 @@
 from django.core.management.base import BaseCommand
-import traceback
+from traceback import format_exc
+from os import system
 
 from tool.code import code_files, list_functions, source_code, text_search
 from tool.log import log_exception
@@ -17,7 +18,7 @@ class Command(BaseCommand):
         except:
             log_exception()
             self.stdout.write('** code Exception (%s) **' % ' '.join(options['script']))
-            self.stdout.write(traceback.format_exc())
+            self.stdout.write(format_exc())
 
 
 def code_command(options):
@@ -32,6 +33,8 @@ def code_command(options):
             functions()
         elif cmd == 'files':
             files(args)
+        elif cmd == 'migrate':
+            migrate_database()
         elif cmd == 'source':
             source()
         else:
@@ -69,6 +72,10 @@ def files(path):
 def functions():
     print('code functions:')
     print(list_functions())
+
+
+def migrate_database():
+    system('python manage.py makemigrations && python manage.py migrate')
 
 
 def source():
