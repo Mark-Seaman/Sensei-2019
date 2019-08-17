@@ -1,5 +1,5 @@
 
-from tool.page import close_browser_dom, open_browser_dom, redact_css
+from tool.page import close_browser_dom, open_browser_dom
 from tool.shell import curl_get, is_server
 
 
@@ -27,7 +27,7 @@ def page_features_test():
             pages = []
             default_features = ['head', 'head title', 'header h1', 'header h2', 'div.logo', 'nav',
                                 'main h1', 'main h2', 'main p', 'main li', 'footer']
-            pages.append(redact_css(dom.page_source))
+            pages.append(dom.page_source)
         close_browser_dom(dom)
         return '\n\n'.join(pages)
 
