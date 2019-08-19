@@ -17,12 +17,20 @@ class Course(models.Model):
         return '%4d %-10s %-44s %-20s %s' % (self.pk, self.name, self.title, self.teacher, self.description)
 
     @staticmethod
+    def lookup(course):
+        return Course.objects.get(name=course)
+
+    @staticmethod
     def query():
         return Course.objects.all()
 
     @staticmethod
     def list():
         return [str(o) for o in Course.query()]
+
+    @staticmethod
+    def students(course):
+        return Student.objects.filter(course__name=course)
 
 
 class Student(models.Model):
@@ -32,11 +40,7 @@ class Student(models.Model):
     domain = models.CharField(max_length=100)
     zbooks = models.CharField(max_length=100, null=True)
 
-    # @property
-    # def name(self):
-    #     return 'Status: Requirement met' if self.correct == self.actual else 'Status: Requirement FAILED'
-    #
-    def __unicode__(self):
+    def __str__(self):
         return '%s, %s, %s' % (self.email, self.name, self.domain)
 
     @staticmethod
@@ -104,7 +108,7 @@ class Assignment(models.Model):
     status = models.IntegerField()
 
     def __str__(self):
-        return 'Assignment %02d. Student %s, Project %s' % (self.pk, self.student.name, self.project.num)
+        return '%d. %-30s Project %-10s %-15s %s' % (self.pk, self.student.name, self.project.num, date_str(self.date), self.status)
 
     @staticmethod
     def list():

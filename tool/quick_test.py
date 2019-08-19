@@ -1,14 +1,16 @@
 
 from tool.text import text_join
-from unc.bacs import approve_requirements
+from unc.bacs import approve_requirements, assign_homework, import_students, print_assignments
 from unc.models import Project
 from unc.projects import build_projects
 
 
 def quick_test():
-    pass
-
-
+    import_students('bacs200')
+    # clear_assignments()
+    assign_homework('bacs200', '01')
+    assign_homework('bacs200', '02')
+    print_assignments()
 
 
 def create_bacs_projects():

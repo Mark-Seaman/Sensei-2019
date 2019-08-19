@@ -1,5 +1,12 @@
+from pprint import PrettyPrinter
+from tool.text import text_join
+
 from tool.document import resize_image
 from tool.shell import hostname, is_server, shell, shell_script
+
+
+def format_dictionary(features):
+    return PrettyPrinter(indent=4, width=200).pformat(features)
 
 
 def django_hammer_test():
@@ -11,6 +18,16 @@ def django_image_resize_test():
     outfile = infile.replace('800', '100')
     size = 100
     return resize_image(infile, outfile, size)
+
+
+def django_dictionary_test():
+    d = [
+        {'student': 'Mark Seaman', 'url': 'http://unco-bacs.org/bacs200/index.html', 'requirements': 42 },
+        {'student': 'sad Seaman', 'url': 'http://unco-bacs.org/bacs200/index.html', 'requirements': 42},
+        {'student': 'dsaf Seaman', 'url': 'http://unco-bacs.org/bacs200/index.html', 'requirements': 42},
+        {'student': 'sdaf Seaman', 'url': 'http://unco-bacs.org/bacs200/index.html', 'requirements': 42},
+    ]
+    return format_dictionary(d)
 
 
 def django_python_version_test():

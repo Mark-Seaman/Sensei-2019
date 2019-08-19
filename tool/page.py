@@ -14,14 +14,13 @@ def capture_page(dom, url):
         print("**error: capture_page(%s)" % url)
 
 
-def capture_page_features(dom, url, requirements):
-    source = capture_page(dom, url)
+def capture_page_features(dom, requirements):
     for r in requirements:
         r.actual = find_css_selector(dom, r.selector)
         if r.transform:
             r.actual = eval(r.transform)
         r.save()
-    return source, requirements
+    return requirements
 
 
 def close_browser_dom(browser):
@@ -63,9 +62,7 @@ def display_test_results(data):
     results.append('Student: %s' % data['student'])
     results.append('URL: %s' % data['url'])
     for i, r in enumerate(data['requirements']):
-        # r.num = i + 1
-        # r.save()
-        results.append('Requirement: %s, %s, %s' % (r.num, r.selector, r.actual))
+        results.append('Requirement %s: %s, %s, %s' % (r.num, r.selector, r.actual, r.status))
     return text_join(results)
 
 
