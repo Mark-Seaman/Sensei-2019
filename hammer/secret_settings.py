@@ -36,3 +36,24 @@ Create a super user
 
 $ dj createsuperuser --username MarkSeaman --email mark.b.seaman@gmail.com
 '''
+
+
+# Django Email Settings
+
+# GMAIL - fails
+
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 465
+# EMAIL_HOST_USER = 'mark.b.seaman@gmail.com'
+# EMAIL_HOST_PASSWORD = 'MS1959-gmail'
+# EMAIL_USE_TLS = True
+# EMAIL_USE_SSL = False
+
+# Bluehost - fails
+
+# EMAIL_HOST = 'mail.unco-bacs.org'
+# EMAIL_PORT = 465
+# EMAIL_HOST_USER = 'uncobacs'
+# EMAIL_HOST_PASSWORD = 'MS1959-bh'
+# EMAIL_USE_TLS = False
+# EMAIL_USE_SSL = True

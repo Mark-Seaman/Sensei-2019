@@ -1,11 +1,17 @@
-from unc.projects import build_projects
 
 from tool.text import text_join
 from unc.bacs import approve_requirements
 from unc.models import Project
+from unc.projects import build_projects
 
 
 def quick_test():
+    pass
+
+
+
+
+def create_bacs_projects():
     print(text_join(build_projects('bacs200')))
     approve_requirements(Project.lookup('bacs200', 1))
     # approve_requirements(Project.lookup('bacs200', 2))
@@ -28,7 +34,6 @@ def quick_test():
 #             print("Cannot resize '%s'" % path)
 
 
-
 #
 # from tool.page import check_requirements, display_requirements
 
@@ -47,7 +52,7 @@ def quick_test():
 #     return text.replace('score','years')
 
 
-    # print('eval: %s' % eval('transform_output("four score")'))
+# print('eval: %s' % eval('transform_output("four score")'))
 
 # from pprint import PrettyPrinter
 # from tool.text import text_join
@@ -63,8 +68,6 @@ def quick_test():
 # def report_requirements(features):
 #     return PrettyPrinter(indent=4, width=200).pformat(features)
 #
-
-
 
 
 # from tool.log import log, log_exception, log_error

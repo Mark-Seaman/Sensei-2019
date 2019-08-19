@@ -1,4 +1,5 @@
-from os import chdir, environ, listdir, system, walk
+from django.core.mail import send_mail
+from os import listdir, walk
 from os.path import join, exists, isdir
 from platform import node
 from re import split
@@ -217,6 +218,16 @@ def no_blank_lines(text):
     text = [x for x in text if x.strip() != '']
     text = text_join(text)
     return text
+
+
+def send_email_test():
+    send_mail(
+        'Test Message from webserver',
+        'Here is the message.',
+        'mark.b.seaman@gmail.com',
+        ['mark@seamanfamily.org'],
+        fail_silently=False,
+    )
 
 
 def shell_file_list(path='.', filetype='', exclude_directories=[]):
