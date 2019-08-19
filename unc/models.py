@@ -58,7 +58,7 @@ class Project(models.Model):
 
     @property
     def requirements(self):
-        return Requirement.objects.filter(project=self)
+        return Requirement.objects.filter(project=self).order_by('num')
 
     @staticmethod
     def lookup(course, id):

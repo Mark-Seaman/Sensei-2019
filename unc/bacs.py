@@ -136,8 +136,8 @@ def validate_project_page(dom, course, project):
     url = join('http://unco-bacs.org', p.page)
     source, requirements = capture_page_features(dom, url, project_requirements(p))
     student = 'Mark Seaman'
-    requirements = project_requirements(p)
-    return dict(student=student, url=url, requirements=requirements, source=source, date=now())
+    # requirements = project_requirements(p)
+    return dict(student=student, url=url, requirements=p.requirements, source=source, date=now())
 
 
 def validate_unc_project(dom, course, project, ):
