@@ -50,7 +50,7 @@ def add_project(course, row):
 
 def add_student(name, email, domain, course):
     course = Course.lookup(course)
-    s = Student.objects.get_or_create(name=name, email=email, course=course, domain='NO DOMAIN SET')[0]
+    s = Student.objects.get_or_create(name=name, email=email, course=course)[0]
     u = add_user_login(name, email)
     s.user = u
     s.domain = domain
@@ -123,7 +123,7 @@ def import_students(course):
             return [row for row in reader(f)]
 
     def display_student(course, row):
-        print('%s %-30s %-15s %s' % (course, row[0], row[2], row[3]))
+        print('%s %-40s %-15s %s' % (course, row[0], row[2], row[3]))
 
     table = read_students(course)
     for row in table:
@@ -131,12 +131,19 @@ def import_students(course):
 
 
 def import_schedule(course):
+
     table = read_schedule(course)
     for row in table[2:]:
         add_lesson(course, row)
 
 
 def import_test_students():
+    # Student.objects.get(pk=7).delete()
+    # Student.objects.get(pk=8).delete()
+    # Student.objects.get(pk=9).delete()
+    # Student.objects.get(pk=10).delete()
+    # Student.objects.get(pk=11).delete()
+    # Student.objects.get(pk=12).delete()
     course = 'bacs200'
     add_student('Tony Stark', 'mark.b.seaman+iron_man@gmail.com', r'https://unco-bacs.org/iron_man', course)
     add_student('Natasha Romanov ', 'mark.b.seaman+black_widow@gmail.com', r'https://unco-bacs.org/black_widow', course)
@@ -184,7 +191,7 @@ def print_students(course):
     students = ['Students in %s' % course]
     for s in Course.students(course):
         u = list_user_login(s.user)
-        students.append('%s, %-30s user %s' % (s.pk, s.domain, u))
+        students.append('%s, %-40s user %s' % (s.pk, s.domain, u))
     return text_join(students)
 
 

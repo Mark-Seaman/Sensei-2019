@@ -39,7 +39,7 @@ class Student(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE, default=1)
     name = models.CharField(max_length=100)
     email = models.CharField(max_length=40)
-    domain = models.CharField(max_length=100)
+    domain = models.CharField(max_length=100, null=True)
     zbooks = models.CharField(max_length=100, null=True)
 
     def __str__(self):

@@ -6,9 +6,8 @@ def quick_test():
     # name, email = 'David Reveles Hernandez', 'reve4760@bears.unco.edu'
     # name, email = 'Tony Stark', 'mark.b.seaman+iron_man@gmail.com'
     # add_user_login(name, email)
-    # import_test_students()
-    # print(list_users())
-
+    import_test_students()
+    print(list_users())
     print(print_students('bacs200'))
 
 # def create_bacs_projects():
