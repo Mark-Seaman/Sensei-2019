@@ -1,0 +1,42 @@
+{% extends "unc_theme.html" %}
+
+
+{% block content %}
+
+    {% if students %}
+        <h2>Student Domains</h2>
+
+        <table class="table table-hover">
+
+            <tr>
+                <th>Student</th>
+                <th>Email</th>
+                <th>Home</th>
+            </tr>
+            {% for student in students %}
+
+                <tr>
+                    <td>
+                        {{ student.pk }}
+                    </td>
+                    <td>
+                        {{ student.name }}
+                    </td>
+                    <td>
+                        {{ student.email }}
+                    </td>
+                    <td>
+                        <a href="{{ student.domain }}/index.html" target="_blank">{{ student.domain }}/index.html</a>
+                    </td>
+                </tr>
+
+            {% endfor %}
+
+        </table>
+
+    {% else %}
+        <h1>No Student Domains registered</h1>
+    {% endif %}
+
+
+{% endblock %}

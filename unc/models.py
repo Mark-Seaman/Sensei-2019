@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.timezone import now
 from datetime import datetime
 from tool.days import date_str
+from django.contrib.auth.models import User
 
 
 class Course(models.Model):
@@ -34,6 +35,7 @@ class Course(models.Model):
 
 
 class Student(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     course = models.ForeignKey(Course, on_delete=models.CASCADE, default=1)
     name = models.CharField(max_length=100)
     email = models.CharField(max_length=40)

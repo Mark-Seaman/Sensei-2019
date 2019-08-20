@@ -2,7 +2,7 @@ from django.views.generic import TemplateView
 
 from mybook.mybook import document_text, unc_menu
 from tool.log import log_page
-from unc.bacs import schedule_data, weekly_lessons, slides_markdown, test_project_page
+from unc.bacs import schedule_data, slides_markdown, student_data, test_project_page, weekly_lessons
 
 
 class UncPage(TemplateView):
@@ -57,6 +57,15 @@ class UncSchedule(UncPage):
     def get_context_data(self, **kwargs):
         kwargs = super(UncSchedule, self).get_context_data(**kwargs)
         kwargs['schedule'] = schedule_data(kwargs['course'])
+        return kwargs
+
+
+class UncStudents(UncPage):
+    template_name = 'unc_students.html'
+
+    def get_context_data(self, **kwargs):
+        kwargs = super(UncStudents, self).get_context_data(**kwargs)
+        kwargs['students'] = student_data(kwargs['course'])
         return kwargs
 
 

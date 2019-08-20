@@ -9,6 +9,7 @@ from tool.days import parse_date, date_str
 from tool.document import fix_images, read_markdown
 from tool.page import display_test_results, open_browser_dom, close_browser_dom, capture_page, capture_page_features
 from tool.shell import banner, text_join
+from tool.user import add_user_login, list_user_login
 from unc.models import Assignment, Course, Project, Lesson, Requirement, Student
 
 
@@ -47,9 +48,14 @@ def add_project(course, row):
     return create_project(course, row[0], title, page, date, instructions)
 
 
-def add_student(name, email, course):
+def add_student(name, email, domain, course):
     course = Course.lookup(course)
-    Student.objects.get_or_create(name=name, email=email, course=course, domain='NO DOMAIN SET')
+    s = Student.objects.get_or_create(name=name, email=email, course=course, domain='NO DOMAIN SET')[0]
+    u = add_user_login(name, email)
+    s.user = u
+    s.domain = domain
+    s.save()
+    return s
 
 
 # def register_user_domain(name, email, password, domain):
@@ -122,16 +128,19 @@ def import_students(course):
     table = read_students(course)
     for row in table:
         display_student(course, row)
-    add_student('Tony Stark', 'iron_man@unco-bacs.org', course)
-    add_student('Natasha Romanov ', 'bwid@unco-bacs.org', course)
-    add_student('Bruce Banner', 'hulk@unco-bacs.org', course)
-    print_students(course)
 
 
 def import_schedule(course):
     table = read_schedule(course)
     for row in table[2:]:
         add_lesson(course, row)
+
+
+def import_test_students():
+    course = 'bacs200'
+    add_student('Tony Stark', 'mark.b.seaman+iron_man@gmail.com', r'https://unco-bacs.org/iron_man', course)
+    add_student('Natasha Romanov ', 'mark.b.seaman+black_widow@gmail.com', r'https://unco-bacs.org/black_widow', course)
+    add_student('Bruce Banner', 'mark.b.seaman+hulk@gmail.com', r'https://unco-bacs.org/hulk', course)
 
 
 def init_data_test():
@@ -149,9 +158,10 @@ def initialize_data():
 
 
 def print_assignments():
-    print('Assignments: ')
+    assigned = ['Assignments: ']
     for h in Assignment.objects.all():
-        print(h)
+        assigned.append(str(h))
+    return text_join(assigned)
 
 
 def print_projects(course):
@@ -171,9 +181,11 @@ def print_data():
 
 
 def print_students(course):
-    print('list_students', course)
-    for s in Student.objects.filter(course__name=course):
-        print(str(s.pk)+ ', ' + str(s))
+    students = ['Students in %s' % course]
+    for s in Course.students(course):
+        u = list_user_login(s.user)
+        students.append('%s, %-30s user %s' % (s.pk, s.domain, u))
+    return text_join(students)
 
 
 def project_requirements(project):
@@ -189,6 +201,10 @@ def read_schedule(course):
 def schedule_data(course):
     title = Course.objects.get(name=course).title
     return [title, 'Class Schedule'], Lesson.query(course)
+
+
+def student_data(course):
+    return Course.students(course)
 
 
 def slides_markdown(course, lesson):

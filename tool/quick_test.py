@@ -1,22 +1,20 @@
-
-from tool.text import text_join
-from unc.bacs import approve_requirements, assign_homework, import_students, print_assignments
-from unc.models import Project
-from unc.projects import build_projects
+from tool.user import add_user_login, list_users
+from unc.bacs import import_test_students, print_students
 
 
 def quick_test():
-    import_students('bacs200')
-    # clear_assignments()
-    assign_homework('bacs200', '01')
-    assign_homework('bacs200', '02')
-    print_assignments()
+    # name, email = 'David Reveles Hernandez', 'reve4760@bears.unco.edu'
+    # name, email = 'Tony Stark', 'mark.b.seaman+iron_man@gmail.com'
+    # add_user_login(name, email)
+    # import_test_students()
+    # print(list_users())
 
+    print(print_students('bacs200'))
 
-def create_bacs_projects():
-    print(text_join(build_projects('bacs200')))
-    approve_requirements(Project.lookup('bacs200', 1))
-    # approve_requirements(Project.lookup('bacs200', 2))
+# def create_bacs_projects():
+#     print(text_join(build_projects('bacs200')))
+#     approve_requirements(Project.lookup('bacs200', 1))
+#     # approve_requirements(Project.lookup('bacs200', 2))
 
 
 

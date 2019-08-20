@@ -13,7 +13,8 @@ urlpatterns = [
     # url(r'^(?P<course>[-_ \w]+)/(?P<week>\d\d)/(?P<title>[\w/\-_.]*)$',        UncWeek.as_view()),
     # url(r'^(?P<course>[-_ \w]+)/(?P<week>\d\d)$',           UncWeek.as_view()),
 
-    url(r'^(?P<course>[-_ \w]+)/(?P<project>\d\d)/test$',  UncTestResults.as_view()),
+    url(r'^(?P<course>[-_ \w]+)/students$',                 UncStudents.as_view()),
+    url(r'^(?P<course>[-_ \w]+)/(?P<project>\d\d)/test$',   UncTestResults.as_view()),
     url(r'^(?P<course>[-_ \w]+)/schedule$',                 UncSchedule.as_view()),
 
     url(r'^(?P<course>[-_ \w]+)/(?P<lesson>\d\d)/slides$',  UncSlides.as_view()),
