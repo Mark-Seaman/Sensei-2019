@@ -1,12 +1,28 @@
 from pprint import PrettyPrinter
-from tool.text import text_join
 
 from tool.document import resize_image
+from tool.log import log, log_exception, log_error
 from tool.shell import hostname, is_server, shell, shell_script
 
 
-def format_dictionary(features):
-    return PrettyPrinter(indent=4, width=200).pformat(features)
+def format_dictionary(data):
+    return PrettyPrinter(indent=4, width=200).pformat(data)
+
+
+def django_dictionary_test():
+    d = [
+        {'student': 'Mark Seaman', 'url': 'http://unco-bacs.org/bacs200/index.html', 'requirements': 42 },
+        {'student': 'sad Seaman', 'url': 'http://unco-bacs.org/bacs200/index.html', 'requirements': 42},
+        {'student': 'dsaf Seaman', 'url': 'http://unco-bacs.org/bacs200/index.html', 'requirements': 42},
+        {'student': 'sdaf Seaman', 'url': 'http://unco-bacs.org/bacs200/index.html', 'requirements': 42},
+    ]
+    return format_dictionary(d)
+
+
+def django_eval_test():
+    first = 'Mark'
+    last = 'Seaman'
+    return eval('"my name is " + first + "." + last')
 
 
 def django_hammer_test():
@@ -18,16 +34,6 @@ def django_image_resize_test():
     outfile = infile.replace('800', '100')
     size = 100
     return resize_image(infile, outfile, size)
-
-
-def django_dictionary_test():
-    d = [
-        {'student': 'Mark Seaman', 'url': 'http://unco-bacs.org/bacs200/index.html', 'requirements': 42 },
-        {'student': 'sad Seaman', 'url': 'http://unco-bacs.org/bacs200/index.html', 'requirements': 42},
-        {'student': 'dsaf Seaman', 'url': 'http://unco-bacs.org/bacs200/index.html', 'requirements': 42},
-        {'student': 'sdaf Seaman', 'url': 'http://unco-bacs.org/bacs200/index.html', 'requirements': 42},
-    ]
-    return format_dictionary(d)
 
 
 def django_python_version_test():
@@ -49,6 +55,19 @@ def django_settings_test():
 def django_shell_script_test():
     command_string = 'cat tool/shell.py|grep def'
     return shell_script(command_string)
+
+
+def django_log_test():
+
+    def throw_exception():
+        try:
+            open('xxx')
+        except:
+            log_exception("Failed to open file")
+
+    log('Page Request: %s' % 'https://shrinking-world.com')
+    # log_error('Really Bad things happen ')
+    # throw_exception()
 
 
 def django_webserver_test():

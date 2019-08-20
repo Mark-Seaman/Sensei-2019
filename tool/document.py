@@ -5,7 +5,7 @@ from platform import node
 
 from tool.shell import read_file, shell_pipe
 from hammer.settings import BASE_DIR
-from tool.log import log
+from tool.log import log, log_exception
 
 
 def doc_cards(page):
@@ -164,6 +164,7 @@ def resize_image(path, newpath, size):
             im.thumbnail((size, size), Image.ANTIALIAS)
             im.save(newpath, "JPEG")
         except IOError:
+            log_exception('Error while resizing image')
             return "Cannot resize '%s'" % path
     return '%s --> %s (%s pixels)' % (path, newpath, size)
 

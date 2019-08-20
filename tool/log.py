@@ -18,7 +18,7 @@ def log(text, value=None):
 def log_error(message):
     logger = getLogger('hammer')
     message = '\n\n** ERROR ** \n\n%s, %s' % (datetime.now(), message)
-    print(message)
+    # print(message)
     logger.error(message)
 
 
