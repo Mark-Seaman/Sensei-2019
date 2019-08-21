@@ -1,6 +1,5 @@
 from csv import reader
 from datetime import datetime
-from django.contrib.auth.models import User
 from django.utils.timezone import make_aware, now
 from os.path import join
 from re import compile
@@ -41,11 +40,23 @@ def add_lesson(course, row):
 
 
 def add_project(course, row):
+
+    def create_project(course, num, title, page, due, instructions):
+        course = Course.objects.get(name=course)
+        due = make_aware(datetime.strptime(due, "%Y-%m-%d"))
+        project = Project.objects.get_or_create(course=course, num=num)[0]
+        project.title = title
+        project.page = page
+        project.due = due
+        project.instructions = instructions
+        project.save()
+        return project
+
     date = make_aware(parse_date(row[2]))
     date = date_str(date)
     page = '%s/project_%s.html' % (course, row[0])
     instructions = '/unc/%s/project/%s' % (course, row[0])
-    title = 'Project %s' % row[0]
+    title = row[6]
     return create_project(course, row[0], title, page, date, instructions)
 
 
@@ -59,35 +70,12 @@ def add_student(name, email, domain, course):
     return s
 
 
-# def register_user_domain(name, email, password, domain):
-#     log('name: %s, email: %s, domain: %s' % (name, email, domain))
-#     assert ' ' in name
-#     first = name.split()[0]
-#     last = name.split()[-1]
-#     username = email
-#     u = User.objects.get_or_create(username=username)[0]
-#     u.first_name = first
-#     u.last_name = last
-#     u.email = email
-#     u.is_staff = True
-#     u.set_password(password)
-#     u.save()
-#     s = Student.objects.get_or_create(course_id=1, name=name, email=email, domain=domain)[0]
-#     return s
-
-
-def approve_requirements(project):
+# approve_requirements('bacs200', 1)
+def approve_requirements(course, id):
+    project = Project.lookup(course, id)
     for i, r in enumerate(project.requirements):
         r.correct = r.actual
         r.save()
-
-
-# Approve project 1 results
-# from unc.bacs import approve_requirements
-# from unc.models import Project
-# approve_requirements(Project.lookup('bacs200', 1))
-# approve_requirements(Project.lookup('bacs200', 2))
-# approve_requirements(Project.lookup('bacs200', 3))
 
 
 def assign_homework(course, project):
@@ -102,18 +90,6 @@ def clear_assignments():
 
 def create_course(name, title, teacher, description):
     return Course.objects.get_or_create(name=name, title=title, teacher=teacher, description=description)[0]
-
-
-def create_project(course, num, title, page, due, instructions):
-    course = Course.objects.get(name=course)
-    due = make_aware(datetime.strptime(due, "%Y-%m-%d"))
-    project = Project.objects.get_or_create(course=course, num=num)[0]
-    project.title = title
-    project.page = page
-    project.due = due
-    project.instructions = instructions
-    project.save()
-    return project
 
 
 def get_student(request):

@@ -2,10 +2,10 @@
 
 
 {% block content %}
-
+    <h1>Page Test Results</h1>
     <div class="card">
         <div class="card-header ch-alt">
-            <h2>Page Test Results</h2>
+            Test My Page
         </div>
         <div class="card-body card-padding">
 
@@ -28,7 +28,7 @@
 
     <div class="card">
         <div class="card-header ch-alt">
-            <h2>Page Requirements Test Results</h2>
+            Requirements
         </div>
         <div class="card-body card-padding">
 
@@ -41,7 +41,7 @@
                         <button class="btn btn-selector" type="button" data-toggle="collapse"
                                 data-target="#pane-source"
                                 aria-expanded="true" aria-controls="pane-source">
-                            <b>Page Source Code</b>
+                            <b>View Page Source</b>
 
                         </button>
 
@@ -52,7 +52,7 @@
                          data-parent="#my-accordion">
 
                         <div class="card-body">
-                            <h3>View Page Source Code</h3>
+                            <h3>{{ test_results.url }}</h3>
 
                             <pre>{{ test_results.source }}</pre>
                         </div>
@@ -73,9 +73,6 @@
                 <p>
                     <b>Correct Output: </b> {{ r.correct }}
                 </p>
-                {#                <p>#}
-                {#                    <b>Test Feedback: </b> {{ r.feedback }}#}
-                {#                </p>#}
             {% endfor %}
         </div>
     </div>
@@ -83,7 +80,7 @@
 
     <div class="card">
         <div class="card-header ch-alt">
-            <h2>Run Test Again</h2>
+            Run Test Again
         </div>
         <div class="card-body card-padding">
             <p>

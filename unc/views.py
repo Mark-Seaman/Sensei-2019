@@ -85,7 +85,6 @@ class UncStudents(UncPage):
 
 class UncSlides(UncPage):
     template_name = 'unc_slides.html'
-    # template_name = 'unc_theme.html'
 
     def get_context_data(self, **kwargs):
         course = self.kwargs.get('course')
@@ -100,7 +99,6 @@ class UncTestResults(UncPage):
 
     def get_context_data(self, **kwargs):
         kwargs = super(UncTestResults, self).get_context_data(**kwargs)
-        course = self.kwargs.get('course')
         project = self.kwargs.get('project')
         student = get_student(self.request)
         kwargs['test_results'] = test_project_page(student, project)

@@ -25,7 +25,51 @@
     <p>Feedback on your page</p>
     <p><a href="/unc/{{ course }}/{{ week }}/feedback">/unc/{{ course }}/{{ week }}/feedback</a></p>
 
+    <div class="card">
+        <div class="card-header">
+            Project #{{ project.num }}
+        </div>
+        <div class="card-body card-padding">
+            <p>Project #{{ project.title }}</p>
+            <p>Publish URL: {{ project.page }}</p>
+            <p>Due on {{ project.due_date }}</p>
+            <p>
+                <a href="/unc/{{ project.directions }}"
+                   target="project">Project #{{ project.num }} Directions</a>
+            </p>
+            <p>
+                <a href="{{ student.domain }}/{{ project.page }}"
+                   target="project">Visit My Page</a>
+            </p>
+            <p>
+                <a href="/unc/{{ course }}/{{ project.num|stringformat:"02d" }}/test"
+                   target="project">Test My Page</a>
+            </p>
+        </div>
+    </div>
 
+    {% for lesson in lessons %}
+
+        <h2> Lesson {{ lesson.lesson }} - {{ lesson.topic }}</h2>
+        <p>
+            {{ lesson.date|date:"D, M d, Y" }}
+        </p>
+        <p>
+            Notes for lesson {{ lesson.lesson }} -
+            <a href="/unc/{{ course }}/lesson/{{ lesson.week|stringformat:"02d" }}"
+               target="lesson">{{ lesson.topic }}</a>
+        </p>
+        <p>
+            Slides for lesson {{ lesson.lesson }} -
+            <a href="/unc/{{ course }}/{{ lesson.week|stringformat:"02d" }}/slides"
+               target="slides">{{ lesson.topic }}</a>
+        </p>
+
+        <p>
+            Textbook Reading - {% autoescape off %}{{ lesson.reading }}{% endautoescape %}
+        </p>
+
+    {% endfor %}
     {#    <div class="card">#}
     {##}
     {#        <div class="card-header ch-alt">#}
