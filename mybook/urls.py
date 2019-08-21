@@ -49,5 +49,6 @@ urlpatterns = [
 
     # Documents
     url(r'^favicon\.ico$', RedirectView.as_view(url='/static/favicon.ico')),
+    url(r'^robots\.txt$',  RedirectView.as_view(url='/static/robots.txt')),
     url(r'^(?P<title>[\w/\-_.]*)$',             DocDisplay.as_view()),
 ]
