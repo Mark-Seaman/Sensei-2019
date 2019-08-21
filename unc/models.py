@@ -63,6 +63,14 @@ class Project(models.Model):
         # return 'Project %02d. %s - %s' % (self.num, self.title, self.due)
 
     @property
+    def due_date(self):
+        return self.due.strftime("%A, %b %d")
+
+    @property
+    def directions(self):
+        return '%s/project/%02d' % (self.course.name, self.num)
+
+    @property
     def requirements(self):
         return Requirement.objects.filter(project=self).order_by('num')
 

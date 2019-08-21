@@ -116,7 +116,14 @@ pre {
 /* Classes */
 
 .card {
-    padding: 20px;
+    /*padding: 2px;*/
+    margin: 20px;
+    border: 2px solid  #0E3D65;
+}
+
+.card-header {
+    /*margin: 2px;*/
+    padding: 10px;
 }
 
 .collapse {
@@ -125,8 +132,12 @@ pre {
 
 .collapse-header {
     border: 1px solid #0E3D65;
-    /*background-color: #0E3D65;*/
-    padding: 0;
+    background-color: #0E3D65;
+    padding: 2px;
+}
+
+.collapse-header button {
+    color: white;
 }
 
 .collapse-header button:hover {

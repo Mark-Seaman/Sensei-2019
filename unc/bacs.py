@@ -7,6 +7,7 @@ from re import compile
 
 from tool.days import parse_date, date_str
 from tool.document import fix_images, read_markdown
+from tool.log import log_exception
 from tool.page import display_test_results, open_browser_dom, close_browser_dom, capture_page, capture_page_features
 from tool.shell import banner, text_join
 from tool.user import add_user_login, list_user_login
@@ -115,6 +116,14 @@ def create_project(course, num, title, page, due, instructions):
     return project
 
 
+def get_student(request):
+    try:
+        if not request.user.is_anonymous:
+            return Student.objects.get(user=request.user)
+    except:
+        log_exception('Cannot find student record, %s' % str(request.user))
+
+
 def import_students(course):
 
     def read_students(course):
@@ -139,9 +148,9 @@ def import_schedule(course):
 
 def import_test_students():
     course = 'bacs200'
-    add_student('Tony Stark', 'mark.b.seaman+iron_man@gmail.com', r'https://unco-bacs.org/iron_man', course)
-    add_student('Natasha Romanov ', 'mark.b.seaman+black_widow@gmail.com', r'https://unco-bacs.org/black_widow', course)
-    add_student('Bruce Banner', 'mark.b.seaman+hulk@gmail.com', r'https://unco-bacs.org/hulk', course)
+    add_student('Tony Stark',       'mark.b.seaman+iron_man@gmail.com',     r'https://unco-bacs.org/iron_man', course)
+    add_student('Natasha Romanov ', 'mark.b.seaman+black_widow@gmail.com',  r'https://unco-bacs.org/black_widow', course)
+    add_student('Bruce Banner',     'mark.b.seaman+hulk@gmail.com',         r'https://unco-bacs.org/hulk', course)
 
 
 def init_data_test():
@@ -241,7 +250,9 @@ def weekly_lessons(course):
     weeks = []
     for w in range(2):
         week = w + 1
-        weeks.append(Lesson.objects.filter(course__name=course, week=week).order_by('date'))
+        project = Project.lookup(course, week)
+        lessons = Lesson.objects.filter(course__name=course, week=week).order_by('date')
+        weeks.append((lessons, project))
     return weeks
 
 
@@ -251,3 +262,4 @@ def zybooks_link(course, reading):
     replace_pattern = r'<a href="%s/chapter/\1/section/\2">\1.\2 - \3</a>' % url
     link = compile(match_pattern).sub(replace_pattern, reading)
     return link
+

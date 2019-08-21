@@ -3,6 +3,24 @@
 
 {% block content %}
 
+    {{ student_info }}
+
+
+{#    <div class="card">#}
+{#        <div class="card-header">#}
+{#            {{ student.name }} Profile Settings#}
+{#        </div>#}
+{#        <div class="card-body card-padding">#}
+{#            <ul>#}
+{#                <li>Student Name: <b>{{ student.name }}</b></li>#}
+{#                <li>Student Website: <b><a href="{{ student.domain }}">{{ student.domain }}</a></b></li>#}
+{#                <li>Student Email: <b>{{ student.email }}</b></li>#}
+{#                <li>User name: <b>{{ student.user.username }}</b></li>#}
+{#            </ul>#}
+{#        </div>#}
+{#    </div>#}
+
+
     <div class="accordion" id="my-accordion">
 
         <h1>Course Lesson Content</h1>
@@ -11,22 +29,46 @@
 
             <div class="card">
 
-                <div class="card-header collapse-header" id="heading-{{ week.0.week }}">
+                <div class="card-header collapse-header" id="heading-{{ week.0.0.week }}">
 
                     <button class="btn btn-selector" type="button" data-toggle="collapse"
-                            data-target="#pane-{{ week.0.week }}"
-                            aria-expanded="true" aria-controls="pane-{{ week.0.week }}">
-                        <b>Week {{ week.0.week }}</b>
+                            data-target="#pane-{{ week.0.0.week }}"
+                            aria-expanded="true" aria-controls="pane-{{ week.0.0.week }}">
+                        <b>Week {{ week.0.0.week }}</b>
 
                     </button>
 
                 </div>
-                <div id="pane-{{ week.0.week }}" class="collapse"
-                     aria-labelledby="heading-{{ week.0.week }}"
+                <div id="pane-{{ week.0.0.week }}" class="collapse"
+                     aria-labelledby="heading-{{ week.0.0.week }}"
                      data-parent="#my-accordion">
 
                     <div class="card-body">
-                        {% for lesson in week %}
+
+                        <div class="card">
+                            <div class="card-header">
+                                Project #{{ week.1.num }}
+                            </div>
+                            <div class="card-body card-padding">
+                                <p>Project #{{ week.1.num }} - {{ week.1.title }}</p>
+                                <p>Publish URL: {{ week.1.page }}</p>
+                                <p>Due on {{ week.1.due_date }}</p>
+                                <p>
+                                    <a href="/unc/{{ week.1.directions }}"
+                                       target="project">Project #{{ week.1.num }} Directions</a>
+                                </p>
+                                <p>
+                                    <a href="{{ student.domain }}/{{ week.1.page }}"
+                                       target="project">Visit My Page</a>
+                                </p>
+                                <p>
+                                    <a href="/unc/{{ course }}/{{ week.1.num|stringformat:"02d" }}/test"
+                                       target="project">Test My Page</a>
+                                </p>
+                            </div>
+                        </div>
+
+                        {% for lesson in week.0 %}
 
                             <h2> Lesson {{ lesson.lesson }} - {{ lesson.topic }}</h2>
                             <p>
@@ -42,11 +84,7 @@
                                 <a href="/unc/{{ course }}/{{ lesson.week|stringformat:"02d" }}/slides"
                                    target="slides">{{ lesson.topic }}</a>
                             </p>
-                            <p>
-                                <a href="/unc/{{ course }}/project/{{ lesson.week|stringformat:"02d" }}"
-                                   target="project">Project {{ lesson.week }}</a>
-                                - due on {{ lesson.date|date:"D, M d, Y" }}
-                            </p>
+
                             <p>
                                 Textbook Reading - {% autoescape off %}{{ lesson.reading }}{% endautoescape %}
                             </p>
