@@ -1,8 +1,13 @@
 from pprint import PrettyPrinter
+from os.path import exists
 
 from tool.document import resize_image
 from tool.log import log, log_exception, log_error
 from tool.shell import hostname, is_server, shell, shell_script
+
+
+# Should be set to False in production
+TEST_MODE = False
 
 
 def format_dictionary(data):
@@ -31,9 +36,12 @@ def django_hammer_test():
 
 def django_image_resize_test():
     infile = '/Users/seaman/UNC/MarkSeaman/Mark-Seaman-800.jpg'
-    outfile = infile.replace('800', '100')
-    size = 100
-    return resize_image(infile, outfile, size)
+    if exists(infile):
+        outfile = infile.replace('800', '100')
+        size = 100
+        return resize_image(infile, outfile, size)
+    else:
+        return 'Image not available for resize'
 
 
 def django_python_version_test():
@@ -61,13 +69,14 @@ def django_log_test():
 
     def throw_exception():
         try:
-            open('xxx')
+            assert False
         except:
-            log_exception("Failed to open file")
+            log_exception("This assertion should fail")
 
     log('Page Request: %s' % 'https://shrinking-world.com')
-    # log_error('Really Bad things happen ')
-    # throw_exception()
+    if TEST_MODE:
+        log_error('Really Bad things happen ')
+        throw_exception()
 
 
 def django_webserver_test():
