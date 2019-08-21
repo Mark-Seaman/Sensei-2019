@@ -221,25 +221,26 @@ def slides_markdown(course, lesson):
     return bear + text + bear
 
 
-def test_project_page(course, project):
-    dom = open_browser_dom()
-    data = validate_project_page(dom, course, project)
-    close_browser_dom(dom)
-    return data
+def test_project_page(student, project):
+    if student:
+        dom = open_browser_dom()
+        data = validate_project_page(dom, student, project)
+        close_browser_dom(dom)
+        return data
 
 
-def validate_project_page(dom, course, project):
-    p = Project.lookup(course, project)
-    url = join('http://unco-bacs.org', p.page)
+def validate_project_page(dom, student, project):
+    p = Project.lookup(student.course.name, project)
+    url = join(student.domain, p.page)
     source = capture_page(dom, url)
     requirements = capture_page_features(dom, p.requirements)
     student = 'Mark Seaman'
     return dict(student=student, url=url, requirements=requirements, source=source, date=now())
 
 
-def validate_unc_project(dom, course, project, ):
+def validate_unc_project(dom, student, project, ):
     # print(validate_project_page(dom, course, project))
-    return banner('PROJECT %s' % project) + display_test_results(validate_project_page(dom, course, project))
+    return banner('PROJECT %s' % project) + display_test_results(validate_project_page(dom, student, project))
 
 
 def weekly_lessons(course):
