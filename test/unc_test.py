@@ -2,6 +2,7 @@ from tool.page import close_browser_dom, open_browser_dom
 from tool.shell import is_server, text_join
 from unc.bacs import import_test_students, assign_homework, initialize_data, print_data, print_students, print_assignments, zybooks_link, validate_unc_project
 from unc.projects import build_projects
+from unc.models import Student
 
 
 def unc_views_test():
@@ -9,9 +10,10 @@ def unc_views_test():
         return 'No Selenium on Sensei Server'
     else:
         dom = open_browser_dom()
-        summary = validate_unc_project(dom, 'bacs200', '01')
-        summary += validate_unc_project(dom, 'bacs200', '02')
-        summary += validate_unc_project(dom, 'bacs200', '03')
+        student = Student.objects.get(user__username='iron_man')
+        summary = validate_unc_project(dom, student, '01')
+        summary += validate_unc_project(dom, student, '02')
+        summary += validate_unc_project(dom, student, '03')
         close_browser_dom(dom)
         return summary
 
