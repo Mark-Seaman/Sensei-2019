@@ -1,0 +1,25 @@
+{% extends "mybook_theme.html" %}
+
+
+{% block content %}
+
+    <div class="card">
+
+        <div class="card-header ch-alt">
+            System Log
+        </div>
+
+        <div class="card-body card-padding">
+
+            {% if history %}
+                <pre>
+                {{ history }}
+                </pre>
+            {% else %}
+                <h2>No History Available</h2>
+            {% endif %}
+
+        </div>
+    </div>
+
+{% endblock %}

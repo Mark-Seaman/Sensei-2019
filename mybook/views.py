@@ -7,7 +7,7 @@ from random import choice
 from tool.document import doc_page, domain_doc
 from tool.log import log, log_page
 
-from mybook.mybook import shrinking_world_menu
+from mybook.mybook import shrinking_world_menu, read_system_log
 from mybook.mybook import document_text, page_settings
 
 
@@ -16,6 +16,17 @@ class SeamanFamily(RedirectView):
 
     def get_redirect_url(self, *args, **kwargs):
         return 'https://seamanfamily.org/%s' % self.kwargs.get('title')
+
+
+class SystemLog(TemplateView):
+    template_name = 'mybook_log.html'
+
+    def get_context_data(self, **kwargs):
+        log_page(self.request)
+        kwargs['history'] = read_system_log()
+        header = 'Sensei Server', 'System Log', "/static/images/SWS_Logo_200.jpg", 'Shrinking World Solutions'
+        kwargs['header'] = dict(title=header[0], subtitle=header[1], logo=header[2], logo_text=header[3])
+        return kwargs
 
 
 class DocDisplay(TemplateView):

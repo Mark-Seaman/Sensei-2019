@@ -138,12 +138,6 @@ def import_schedule(course):
 
 
 def import_test_students():
-    # Student.objects.get(pk=7).delete()
-    # Student.objects.get(pk=8).delete()
-    # Student.objects.get(pk=9).delete()
-    # Student.objects.get(pk=10).delete()
-    # Student.objects.get(pk=11).delete()
-    # Student.objects.get(pk=12).delete()
     course = 'bacs200'
     add_student('Tony Stark', 'mark.b.seaman+iron_man@gmail.com', r'https://unco-bacs.org/iron_man', course)
     add_student('Natasha Romanov ', 'mark.b.seaman+black_widow@gmail.com', r'https://unco-bacs.org/black_widow', course)
@@ -245,7 +239,7 @@ def validate_unc_project(dom, student, project, ):
 
 def weekly_lessons(course):
     weeks = []
-    for w in range(15):
+    for w in range(2):
         week = w + 1
         weeks.append(Lesson.objects.filter(course__name=course, week=week).order_by('date'))
     return weeks

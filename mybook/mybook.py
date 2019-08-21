@@ -9,7 +9,7 @@ from hammer.settings import BASE_DIR
 from tool.days import my_age_in_days
 from tool.document import doc_title, text_to_html, domain_doc, doc_html_text, read_markdown, doc_path
 from tool.log import log
-from tool.text import find_markdown_links
+from tool.text import find_markdown_links, text_join, text_lines
 
 
 def booknotes_excerpt(doc):
@@ -139,6 +139,39 @@ def info_menu(title):
     return topic_menu(menu_items(title), '/info/', "Brain")
 
 
+def mark_seaman_menu(title):
+    def menu_items(title):
+        return [('https://seamanslog.com', 'Blog'),
+                ('https://shrinking-world.com', 'Shrinking World'),
+                ('https://markseaman.org', 'Mark Seaman', True)]
+    return topic_menu(menu_items(title), '/MarkSeaman/', "Mark Seaman")
+
+
+def read_system_log():
+    lines = text_lines(open('hammer/log/hammer.log').read())
+    return text_join(reversed(lines[-100:]))
+
+
+def seamans_log_menu(title):
+    def menu_items(title):
+        return [('List', 'Articles', title == 'Index'),
+                ('Random', 'Read', title != 'List' and title != 'Index'),
+                ('https://markseaman.org', 'Mark Seaman')]
+
+    return topic_menu(menu_items(title), '/seamanslog/', "Seaman's Log")
+
+
+def shrinking_world_menu(title):
+    def menu_items(title):
+        return [('https://shrinking-world.com', 'Shrinking World', title == 'Index'),
+                ('https://shrinking-world.com/shrinkingworld/Leverage/', 'Leverage'),
+                ('https://seamansguide.com', 'Guides'),
+                ('https://seamanslog.com', 'Blog'),
+                ('https://markseaman.org', 'Mark Seaman')]
+
+    return topic_menu(menu_items(title), '/shrinkingworld/', "Shrinking World")
+
+
 def unc_menu(course, title):
 
     def homework_menu(title):
@@ -160,33 +193,5 @@ def unc_menu(course, title):
         return homework_menu(title)
     elif course == 'bacs350':
         return bacs_350_menu(title)
-
-
-def mark_seaman_menu(title):
-    def menu_items(title):
-        return [('https://seamanslog.com', 'Blog'),
-                ('https://shrinking-world.com', 'Shrinking World'),
-                ('https://markseaman.org', 'Mark Seaman', True)]
-    return topic_menu(menu_items(title), '/MarkSeaman/', "Mark Seaman")
-
-
-def seamans_log_menu(title):
-    def menu_items(title):
-        return [('List', 'Articles', title == 'Index'),
-                ('Random', 'Read', title != 'List' and title != 'Index'),
-                ('https://markseaman.org', 'Mark Seaman')]
-
-    return topic_menu(menu_items(title), '/seamanslog/', "Seaman's Log")
-
-
-def shrinking_world_menu(title):
-    def menu_items(title):
-        return [('https://shrinking-world.com', 'Shrinking World', title == 'Index'),
-                ('https://shrinking-world.com/shrinkingworld/Leverage/', 'Leverage'),
-                ('https://seamansguide.com', 'Guides'),
-                ('https://seamanslog.com', 'Blog'),
-                ('https://markseaman.org', 'Mark Seaman')]
-
-    return topic_menu(menu_items(title), '/shrinkingworld/', "Shrinking World")
 
 

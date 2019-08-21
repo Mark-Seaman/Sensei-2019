@@ -1,11 +1,11 @@
 from django.conf.urls import url
 from django.contrib.auth import login, logout
 
-from .seaman import DocFileIndex, DocList, Leverage, MarkSeaman, PrivateDoc, SeamansLog
-from unc.views import UncHomework, UncTestResults
-from .guide import SeamansGuide
-from .views import *
-from .spiritual import SpiritualDoc, SpiritualSelect
+from mybook.guide import SeamansGuide
+from mybook.seaman import DocFileIndex, DocList, Leverage, MarkSeaman, PrivateDoc, SeamansLog
+from mybook.spiritual import SpiritualDoc, SpiritualSelect
+from mybook.views import *
+
 
 urlpatterns = [
 
@@ -43,6 +43,9 @@ urlpatterns = [
     url(r'^spiritual/Index$',                   SpiritualDoc.as_view()),
     url(r'^spiritual/(?P<title>[\w\-_.]*)$',    SpiritualSelect.as_view()),
     url(r'^spiritual/(?P<title>[\w/\-_.]*)$',   SpiritualDoc.as_view()),
+
+    # System Log
+    url(r'^log$', SystemLog.as_view()),
 
     # Documents
     url(r'^favicon\.ico$', RedirectView.as_view(url='/static/favicon.ico')),
