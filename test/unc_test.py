@@ -1,5 +1,6 @@
 from tool.page import close_browser_dom, open_browser_dom
-from tool.shell import is_server, text_join
+from tool.shell import is_server
+from tool.text import text_lines, text_join
 from unc.bacs import import_test_students, assign_homework, initialize_data, print_data, print_students, print_assignments, zybooks_link, validate_unc_project
 from unc.projects import build_projects
 from unc.models import Student
@@ -20,12 +21,12 @@ def unc_views_test():
 
 def unc_data_test():
     initialize_data()
-    return print_data()
+    return "%s lines in output" % len(text_lines(print_data()))
 
 
 def unc_project_test():
     course = 'bacs200'
-    return text_join(build_projects(course))
+    return "%s lines in output" % len(build_projects(course))
 
 
 def unc_lesson_test():
@@ -37,10 +38,16 @@ def unc_review_test():
 
 
 def unc_student_test():
-    course = 'bacs200'
-    import_test_students()
-    students = print_students(course)
-    # clear_assignments()
-    assign_homework(course, '01')
-    assign_homework(course, '02')
-    return students + print_assignments()
+    output = []
+
+    for course in ['bacs200', 'bacs350']:
+        import_test_students()
+        students = print_students(course)
+        output.append(students)
+
+        # clear_assignments()
+        assign_homework(course, '01')
+        assign_homework(course, '02')
+        output.append(print_assignments(course))
+
+    return text_join(output)

@@ -1,5 +1,7 @@
 from csv import reader
 from datetime import datetime
+
+from django.contrib.auth.models import User
 from django.utils.timezone import make_aware, now
 from os.path import join
 from re import compile
@@ -9,7 +11,7 @@ from tool.document import fix_images, read_markdown
 from tool.log import log_exception
 from tool.page import display_test_results, open_browser_dom, close_browser_dom, capture_page, capture_page_features
 from tool.shell import banner, text_join
-from tool.user import add_user_login, list_user_login
+from tool.user import add_user_login, list_user_login, list_users
 from unc.models import Assignment, Course, Project, Lesson, Requirement, Student
 
 
@@ -124,9 +126,13 @@ def import_schedule(course):
 
 def import_test_students():
     course = 'bacs200'
-    add_student('Tony Stark',       'mark.b.seaman+iron_man@gmail.com',     r'https://unco-bacs.org/iron_man', course)
-    add_student('Natasha Romanov ', 'mark.b.seaman+black_widow@gmail.com',  r'https://unco-bacs.org/black_widow', course)
-    add_student('Bruce Banner',     'mark.b.seaman+hulk@gmail.com',         r'https://unco-bacs.org/hulk', course)
+    add_student('Tony Stark',       'mark.b.seaman+iron_man@gmail.com',     r'https://unco-bacs.org/iron_man',      course)
+    add_student('Natasha Romanov ', 'mark.b.seaman+black_widow@gmail.com',  r'https://unco-bacs.org/black_widow',   course)
+    add_student('Bruce Banner',     'mark.b.seaman+hulk@gmail.com',         r'https://unco-bacs.org/hulk',          course)
+    course = 'bacs350'
+    add_student('Steve Rogers',     'mark.b.seaman+cap@gmail.com',          r'https://unco-bacs.org/cap_america',   course)
+    add_student('Carol Danvers',    'mark.b.seaman+marvel@gmail.com',       r'https://unco-bacs.org/cap_marvel',    course)
+    add_student('Wanda Maximoff',   'mark.b.seaman+witch@gmail.com',        r'https://unco-bacs.org/scarlet_witch', course)
 
 
 def init_data_test():
@@ -143,9 +149,9 @@ def initialize_data():
     import_schedule('bacs350')
 
 
-def print_assignments():
-    assigned = ['Assignments: ']
-    for h in Assignment.objects.all():
+def print_assignments(course):
+    assigned = ['\n%s Assignments: ' % course]
+    for h in Assignment.objects.filter(project__course__name=course):
         assigned.append(str(h))
     return text_join(assigned)
 
@@ -167,7 +173,7 @@ def print_data():
 
 
 def print_students(course):
-    students = ['Students in %s' % course]
+    students = ['', 'Students in %s' % course]
     for s in Course.students(course):
         u = list_user_login(s.user)
         students.append('%s, %-40s user %s' % (s.pk, s.domain, u))
@@ -246,3 +252,18 @@ def zybooks_link(course, reading):
     link = compile(match_pattern).sub(replace_pattern, reading)
     return link
 
+
+def add_teacher():
+    course_name = 'bacs200'
+    name = 'MarkSeaman'
+    email = 'mark.b.seaman@gmail.com'
+    domain = r'https://unco-bacs.org'
+    c = Course.lookup(course_name)
+    u = User.objects.get(username=name)
+    s = Student.objects.get_or_create(name=name, email=email, course=c, user=u)[0]
+    s.user = u
+    s.domain = domain
+    s.save()
+
+    print(list_users())
+    print(print_students(course_name))
