@@ -29,60 +29,13 @@
 
                     <div class="card-body">
 
-{{ week.1 }}
-{#                    <pre>WEEK {{ week }}</pre>#}
+                        {{ week.1 }}
 
-            {#                        <div class="card">#}
-            {#                            <div class="card-header">#}
-            {#                                Project #{{ week.1.num }}#}
-            {#                            </div>#}
-            {#                            <div class="card-body card-padding">#}
-            {#                                <p>Project #{{ week.1.title }}</p>#}
-            {#                                <p>Publish URL: {{ week.1.page }}</p>#}
-            {#                                <p>Due on {{ week.1.due_date }}</p>#}
-            {#                                <p>#}
-            {#                                    <a href="/unc/{{ week.1.directions }}"#}
-            {#                                       target="project">Project #{{ week.1.num }} Directions</a>#}
-            {#                                </p>#}
-            {#                                <p>#}
-            {#                                    <a href="{{ student.domain }}/{{ week.1.page }}"#}
-            {#                                       target="project">Visit My Page</a>#}
-            {#                                </p>#}
-            {#                                <p>#}
-            {#                                    <a href="/unc/{{ course }}/{{ week.1.num|stringformat:"02d" }}/test"#}
-            {#                                       target="project">Test My Page</a>#}
-            {#                                </p>#}
-            {#                            </div>#}
-            {#                        </div>#}
-            {##}
-            {#                        {% for lesson in week.0 %}#}
-            {##}
-            {#                            <h2> Lesson {{ lesson.lesson }} - {{ lesson.topic }}</h2>#}
-            {#                            <p>#}
-            {#                                {{ lesson.date|date:"D, M d, Y" }}#}
-            {#                            </p>#}
-            {#                            <p>#}
-            {#                                Notes for lesson {{ lesson.lesson }} -#}
-            {#                                <a href="/unc/{{ course }}/lesson/{{ lesson.week|stringformat:"02d" }}"#}
-            {#                                   target="lesson">{{ lesson.topic }}</a>#}
-            {#                            </p>#}
-            {#                            <p>#}
-            {#                                Slides for lesson {{ lesson.lesson }} -#}
-            {#                                <a href="/unc/{{ course }}/{{ lesson.week|stringformat:"02d" }}/slides"#}
-            {#                                   target="slides">{{ lesson.topic }}</a>#}
-            {#                            </p>#}
-            {##}
-            {#                            <p>#}
-            {#                                Textbook Reading - {% autoescape off %}{{ lesson.reading }}{% endautoescape %}#}
-            {#                            </p>#}
-            {##}
-            {#                        {% endfor %}#}
+                    </div>
 
-                                </div>
+                </div>
 
-                            </div>
-
-                        </div>
+            </div>
 
         {% endfor %}
     </div>
