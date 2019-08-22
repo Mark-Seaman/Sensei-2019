@@ -3,7 +3,31 @@ from django.views.generic import TemplateView
 
 from mybook.mybook import document_text, unc_menu
 from tool.log import log_page
-from unc.bacs import schedule_data, slides_markdown, student_data, test_project_page, weekly_lessons, get_student
+from unc.bacs import schedule_data, slides_markdown, student_data, test_project_page, weekly_agenda, weekly_lessons, get_student
+
+
+def render_student_info(student):
+    return render_to_string('student.html', dict(student=student))
+
+
+def render_project(project, student):
+    return render_to_string('project.html', dict(project=project, student=student))
+
+
+def render_lessons(lessons):
+    return ''.join([render_to_string('lesson.html', dict(lesson=x)) for x in lessons])
+
+
+def render_weekly_agenda(plan, student):
+    project = render_project(plan['project'], student)
+    lessons = render_lessons(plan['lessons'])
+    weekly_plan = dict(week=plan['week'], project=project, lessons=lessons)
+    return render_to_string('week.html', weekly_plan)
+
+
+def render_course_agenda(course, student):
+    weeks = weekly_lessons(course)
+    return [(w['week'], render_weekly_agenda(w, student)) for w in weeks]
 
 
 class UncPage(TemplateView):
@@ -33,20 +57,14 @@ class UncDocDisplay(UncPage):
     template_name = 'unc_theme.html'
 
 
-def render_student_info(student):
-    return render_to_string('student.html', dict(student=student))
-
-
 class UncHomework(UncPage):
     template_name = 'unc_homework.html'
 
     def get_context_data(self, **kwargs):
-        course = kwargs['course']
-        kwargs['schedule'] = schedule_data(course)[1]
-        kwargs['weeks'] = weekly_lessons(course)
-        kwargs['card'] = render_to_string('card.html', dict(title='Card Title', body='Card Body'))
-        kwargs['student_info'] = render_student_info(get_student(self.request))
         kwargs = super(UncHomework, self).get_context_data(**kwargs)
+        # kwargs['card'] = render_to_string('card.html', dict(title='Card Title', body='Card Body'))
+        kwargs['weeks'] = render_course_agenda(kwargs['course'], kwargs['student'])
+        kwargs['student_info'] = render_student_info(kwargs['student'])
         return kwargs
 
 
@@ -54,16 +72,15 @@ class UncProject(UncPage):
     template_name = 'unc_project.html'
 
 
-# class UncWeek(UncPage):
-#     template_name = 'unc_week.html'
-#
-#     def get_content_data(self):
-#         self.text = document_text('unc/bacs200/01')
-#         self.menu = homework_menu(self.kwargs.get('title', 'Index'))
-#         student = 'Mark Seaman'
-#         self.title = 'Week #1: Aug 26 - Aug 30'
-#         self.data = dict(student=student)
-#
+class UncWeek(UncPage):
+    template_name = 'unc_week.html'
+
+    def get_context_data(self, **kwargs):
+        kwargs = super(UncWeek, self).get_context_data(**kwargs)
+        plan = weekly_agenda(kwargs['course'], int(kwargs['week']))
+        kwargs['plan'] = render_weekly_agenda(plan, kwargs['student'])
+        return kwargs
+
 
 class UncSchedule(UncPage):
     template_name = 'unc_schedule.html'

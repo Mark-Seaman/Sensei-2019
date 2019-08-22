@@ -68,7 +68,11 @@ class Project(models.Model):
 
     @property
     def directions(self):
-        return '%s/project/%02d' % (self.course.name, self.num)
+        return '/unc/%s/project/%02d' % (self.course.name, self.num)
+
+    @property
+    def test_link(self):
+        return '/unc/%s/%02d/test' % (self.course.name, self.num)
 
     @property
     def requirements(self):

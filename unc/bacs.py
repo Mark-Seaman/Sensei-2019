@@ -222,14 +222,21 @@ def validate_unc_project(dom, student, project, ):
     return banner('PROJECT %s' % project) + display_test_results(validate_project_page(dom, student, project))
 
 
+def weekly_agenda(course, week):
+    project = Project.lookup(course, week)
+    lessons = Lesson.objects.filter(course__name=course, week=week).order_by('date')
+    return dict(week=week, lessons=lessons, project=project)
+
+
 def weekly_lessons(course):
-    weeks = []
-    for w in range(2):
-        week = w + 1
-        project = Project.lookup(course, week)
-        lessons = Lesson.objects.filter(course__name=course, week=week).order_by('date')
-        weeks.append((lessons, project))
-    return weeks
+    # weeks = []
+    # for w in range(2):
+    #     week = w + 1
+    #     weekly_agenda(course, week)
+    #     # project = Project.lookup(course, week)
+    #     # lessons = Lesson.objects.filter(course__name=course, week=week).order_by('date')
+    #     weeks.append((lessons, project))
+    return [weekly_agenda(course, week+1) for week in range(15)]
 
 
 def zybooks_link(course, reading):

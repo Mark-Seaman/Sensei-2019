@@ -1,0 +1,24 @@
+<div class="card">
+
+    <div class="card-header">
+        Lesson {{ lesson.lesson }} - {{ lesson.date|date:"D, M d, Y" }} - {{ lesson.topic }}
+    </div>
+
+    <div class="card-body card-padding">
+        <p>
+            Notes for lesson #{{ lesson.lesson }} -
+            <a href="/unc/{{ lesson.course.name }}/lesson/{{ lesson.week|stringformat:"02d" }}"
+               target="lesson">{{ lesson.topic }}</a>
+        </p>
+        <p>
+            Slides for lesson #{{ lesson.lesson }} -
+            <a href="/unc/{{ lesson.course.name }}/{{ lesson.week|stringformat:"02d" }}/slides"
+               target="slides">{{ lesson.topic }}</a>
+        </p>
+
+        <p>
+            Textbook Reading - {% autoescape off %}{{ lesson.reading }}{% endautoescape %}
+        </p>
+    </div>
+
+</div>
