@@ -1,8 +1,9 @@
+from tool.page import close_browser_dom, open_browser_dom
 from tool.shell import is_server
 from tool.text import text_lines
 from tool.user import list_users
 from unc.bacs import *
-from unc.projects import build_projects
+from unc.projects import build_projects, print_assignments, validate_unc_project
 from unc.models import Student
 
 

@@ -3,7 +3,8 @@ from django.views.generic import TemplateView
 
 from mybook.mybook import document_text, unc_menu
 from tool.log import log_page
-from unc.bacs import schedule_data, slides_markdown, student_data, test_project_page, weekly_agenda, weekly_lessons, get_student
+from unc.bacs import schedule_data, slides_markdown, student_data, weekly_agenda, weekly_lessons, get_student
+from unc.projects import test_project_page
 
 
 def render_student_info(student):
