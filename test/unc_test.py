@@ -1,7 +1,7 @@
-from tool.page import close_browser_dom, open_browser_dom
 from tool.shell import is_server
-from tool.text import text_lines, text_join
-from unc.bacs import import_test_students, assign_homework, initialize_data, print_data, print_students, print_assignments, zybooks_link, validate_unc_project
+from tool.text import text_lines
+from tool.user import list_users
+from unc.bacs import *
 from unc.projects import build_projects
 from unc.models import Student
 
@@ -21,7 +21,7 @@ def unc_views_test():
 
 def unc_data_test():
     initialize_data()
-    return "%s lines in output" % len(text_lines(print_data()))
+    return "%s lines in output" % len(text_lines(list_course_content()))
 
 
 def unc_project_test():
@@ -38,11 +38,11 @@ def unc_review_test():
 
 
 def unc_student_test():
-    output = []
+    output = ['Sensei Users: ', list_users()]
 
     for course in ['bacs200', 'bacs350']:
         import_test_students()
-        students = print_students(course)
+        students = list_students(course)
         output.append(students)
 
         # clear_assignments()

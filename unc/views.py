@@ -48,13 +48,18 @@ class UncPage(TemplateView):
         header = 'UNC %s' % course, name, "/static/images/unc/Bear.200.png", 'UNC Bear', href
         kwargs['header'] = dict(title=header[0], subtitle=header[1], logo=header[2], logo_text=header[3], href=header[4])
         kwargs['student'] = student
-        doc_path = self.request.path[1:]
-        kwargs['text'] = document_text(doc_path)
         return kwargs
 
 
 class UncDocDisplay(UncPage):
     template_name = 'unc_theme.html'
+
+    def get_context_data(self, **kwargs):
+        kwargs = super(UncDocDisplay, self).get_context_data(**kwargs)
+        doc_path = self.request.path[1:]
+        image_path = '/static/images/unc/bacs200' if 'bacs200' == kwargs['course'] else '/static/images/unc/bacs350'
+        kwargs['text'] = document_text(doc_path, image_path)
+        return kwargs
 
 
 class UncHomework(UncPage):
@@ -104,10 +109,8 @@ class UncSlides(UncPage):
     template_name = 'unc_slides.html'
 
     def get_context_data(self, **kwargs):
-        course = self.kwargs.get('course')
-        lesson = self.kwargs.get('lesson')
-        kwargs['markdown'] = slides_markdown(course, lesson)
         kwargs = super(UncSlides, self).get_context_data(**kwargs)
+        kwargs['markdown'] = slides_markdown(kwargs['course'], kwargs['lesson'])
         return kwargs
 
 

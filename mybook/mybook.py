@@ -45,8 +45,11 @@ def booknotes_excerpt(doc):
     return excerpt(doc), 'http://markseaman.org/MarkSeaman/booknotes/%s' % doc
 
 
-def document_text(title):
-    return doc_html_text(title, '/static/images')
+def document_text(title, image_path=None):
+    if image_path:
+        return doc_html_text(title, image_path)
+    else:
+        return doc_html_text(title, '/static/images')
 
 
 def get_extra_data(title, text):

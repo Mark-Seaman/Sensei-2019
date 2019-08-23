@@ -10,9 +10,10 @@ from tool.days import parse_date, date_str
 from tool.document import fix_images, read_markdown
 from tool.log import log_exception
 from tool.page import display_test_results, open_browser_dom, close_browser_dom, capture_page, capture_page_features
-from tool.shell import banner, text_join
-from tool.user import add_user_login, list_user_login, list_users
-from unc.models import Assignment, Course, Project, Lesson, Requirement, Student
+from tool.shell import banner
+from tool.text import text_join
+from tool.user import add_user_login
+from unc.models import Assignment, Course, Project, Lesson, Student
 
 
 def add_assignment(course, student, project):
@@ -70,6 +71,19 @@ def add_student(name, email, domain, course):
     s.domain = domain
     s.save()
     return s
+
+
+def add_teacher():
+    course_name = 'bacs200'
+    name = 'MarkSeaman'
+    email = 'mark.b.seaman@gmail.com'
+    domain = r'https://unco-bacs.org'
+    c = Course.lookup(course_name)
+    u = User.objects.get(username=name)
+    s = Student.objects.get_or_create(name=name, email=email, course=c, user=u)[0]
+    s.user = u
+    s.domain = domain
+    s.save()
 
 
 # approve_requirements('bacs200', 1)
@@ -135,11 +149,6 @@ def import_test_students():
     add_student('Wanda Maximoff',   'mark.b.seaman+witch@gmail.com',        r'https://unco-bacs.org/scarlet_witch', course)
 
 
-def init_data_test():
-    initialize_data()
-    print(print_data())
-
-
 def initialize_data():
     create_course('bacs200', 'Web Development Intro (Fall 2019)', 'Mark Seaman',
                   'Web Design and Development for Small Business')
@@ -156,32 +165,33 @@ def print_assignments(course):
     return text_join(assigned)
 
 
-def print_projects(course):
+def list_project_details(course):
     results = []
     for p in Project.objects.filter(course__name=course).order_by('due'):
         results.append('\nProject %s' % p)
-        for r in project_requirements(p):
+        for r in p.requirements:
             results.append('    selector=%s, transform=%s' % (r.selector, r.transform))
     return results
 
 
-def print_data():
-    courses = [banner('Courses')] + Course.list()
-    bacs200 = [banner('BACS 200'), 'PROJECTS:'] + print_projects('bacs200') + ['', 'LESSONS:'] + Lesson.list('bacs200')
-    bacs350 = [banner('BACS 350'), 'PROJECTS:'] + Project.list('bacs350') + ['', 'LESSONS:'] + Lesson.list('bacs350')
-    return text_join(courses + bacs200 + bacs350)
+def list_course_content():
+    data = [banner('Course Content Data')]
+    data += Course.list()
+    for c in ['bacs200', 'bacs350']:
+        data.append(banner(c))
+        data.append('\nPROJECTS:\n')
+        data += Project.list('bacs200')
+        data.append('\nLESSONS:\n')
+        data += Lesson.list(c)
+        data.append('\nSTUDENTS:')
+        data.append(list_students(c))
+        data.append('\nASSIGNMENTS:')
+        data.append(print_assignments(c))
+    return text_join(data)
 
 
-def print_students(course):
-    students = ['', 'Students in %s' % course]
-    for s in Course.students(course):
-        u = list_user_login(s.user)
-        students.append('%s, %-40s user %s' % (s.pk, s.domain, u))
-    return text_join(students)
-
-
-def project_requirements(project):
-    return Requirement.objects.filter(project=project)
+def list_students(course):
+    return ("\nStudents %s:\n" % course) + text_join([str(s) for s in Course.students(course)])
 
 
 def read_schedule(course):
@@ -195,15 +205,15 @@ def schedule_data(course):
     return [title, 'Class Schedule'], Lesson.query(course)
 
 
-def student_data(course):
-    return Course.students(course)
-
-
 def slides_markdown(course, lesson):
     doc = 'Documents/unc/%s/lesson/%s' % (course, lesson)
     text = fix_images(read_markdown(doc), '/static/images/unc/%s' % course)
     bear = '\n\n---\n\n<img src="/static/images/unc/bacs200/Bear.200.png">\n\n---\n\n'
     return bear + text + bear
+
+
+def student_data(course):
+    return Course.students(course)
 
 
 def test_project_page(student, project):
@@ -224,7 +234,6 @@ def validate_project_page(dom, student, project):
 
 
 def validate_unc_project(dom, student, project, ):
-    # print(validate_project_page(dom, course, project))
     return banner('PROJECT %s' % project) + display_test_results(validate_project_page(dom, student, project))
 
 
@@ -235,14 +244,7 @@ def weekly_agenda(course, week):
 
 
 def weekly_lessons(course):
-    # weeks = []
-    # for w in range(2):
-    #     week = w + 1
-    #     weekly_agenda(course, week)
-    #     # project = Project.lookup(course, week)
-    #     # lessons = Lesson.objects.filter(course__name=course, week=week).order_by('date')
-    #     weeks.append((lessons, project))
-    return [weekly_agenda(course, week+1) for week in range(15)]
+    return [weekly_agenda(course, week+1) for week in range(3)]
 
 
 def zybooks_link(course, reading):
@@ -253,17 +255,3 @@ def zybooks_link(course, reading):
     return link
 
 
-def add_teacher():
-    course_name = 'bacs200'
-    name = 'MarkSeaman'
-    email = 'mark.b.seaman@gmail.com'
-    domain = r'https://unco-bacs.org'
-    c = Course.lookup(course_name)
-    u = User.objects.get(username=name)
-    s = Student.objects.get_or_create(name=name, email=email, course=c, user=u)[0]
-    s.user = u
-    s.domain = domain
-    s.save()
-
-    print(list_users())
-    print(print_students(course_name))

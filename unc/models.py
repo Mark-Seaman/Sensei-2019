@@ -11,10 +11,9 @@ class Course(models.Model):
     teacher = models.CharField(null=True, max_length=100)
     description = models.TextField(null=True)
 
-    # , default='You must type a description of the course', validators=[MinLengthValidator(100)])
+    # Require chars, default='You must type a description of the course', validators=[MinLengthValidator(100)])
 
     def __str__(self):
-        # return 'Course: %s - %s' % (self.name, self.title)
         return '%4d %-10s %-44s %-20s %s' % (self.pk, self.name, self.title, self.teacher, self.description)
 
     @staticmethod
@@ -43,7 +42,7 @@ class Student(models.Model):
     zbooks = models.CharField(max_length=100, null=True)
 
     def __str__(self):
-        return '%s, %s, %s' % (self.email, self.name, self.domain)
+        return '%-40s %-40s %s' % (self.email, self.name, self.domain)
 
     @staticmethod
     def list():
@@ -59,8 +58,7 @@ class Project(models.Model):
     instructions = models.URLField()
 
     def __str__(self):
-        return '%s/project/%02d   %s  %-30s %s' % (self.course.name, self.num, self.title, self.page, self.due.strftime("%Y-%m-%d"))
-        # return 'Project %02d. %s - %s' % (self.num, self.title, self.due)
+        return '%s/project/%02d   %-30s  %-30s %s' % (self.course.name, self.num, self.title, self.page, self.due.strftime("%Y-%m-%d"))
 
     @property
     def due_date(self):
@@ -96,7 +94,6 @@ class Requirement(models.Model):
     correct = models.TextField(default='Test not run yet')
     results = models.TextField(default='Test not run yet')
     transform = models.CharField(null=True, max_length=200)
-    # face = models.CharField(default='/static/images/happy.jpg', max_length=100)
 
     @property
     def status(self):

@@ -1,4 +1,4 @@
-from unc.bacs import print_projects
+from unc.bacs import list_project_details
 from unc.models import Requirement, Project
 
 
@@ -35,10 +35,10 @@ def bacs200_project2_requirements():
 
 
 def build_projects(course):
-    create_project_record(course, '01', 'index.php', bacs200_project1_requirements())
-    create_project_record(course, '02', 'bacs200/index.html', bacs200_project2_requirements())
+    create_project_record(course, '01', 'index.php',            bacs200_project1_requirements())
+    create_project_record(course, '02', 'bacs200/index.html',   bacs200_project2_requirements())
     create_project_record(course, '03', 'bacs200/profile.html', bacs200_project1_requirements())
-    return print_projects('bacs200')
+    return list_project_details('bacs200')
 
 
 def create_project_record(course, project_num, page, requirements):

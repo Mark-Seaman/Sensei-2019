@@ -1,6 +1,6 @@
-from test.unc_test import unc_student_test
+from unc.bacs import list_course_content
+
 
 def quick_test():
-    print(unc_student_test())
-
+    print(list_course_content())
 

@@ -69,7 +69,6 @@ def vc_help():
 # Functions
 
 def git_cmd(cmd):
-    # system(cmd)
     print(cmd)
     print(git_filter(shell_script(cmd)))
 
@@ -103,15 +102,15 @@ def git_filter(text):
 def vc_commit(args):
     for d in vc_dirs():
         comment = ' '.join(args)
-        cmd = 'echo commit %s && cd %s && git add -A . && git commit -m "%s"'
-        git_cmd(cmd % (d, d, comment))
+        cmd = 'cd %s && git add -A . && git commit -m "%s"'
+        git_cmd(cmd % (d, comment))
     vc_push()
 
 
 def vc_diff(args):
     for d in vc_dirs():
-        cmd = 'echo diff %s && cd %s && git diff --color'
-        git_cmd(cmd % (d, d))
+        cmd = 'cd %s && git diff --color'
+        git_cmd(cmd % d)
 
 
 def vc_dirs():
@@ -125,27 +124,27 @@ def vc_dirs():
 def vc_log(args):
     d = environ['p']
     system('figlet Sensei')
-    cmd = 'echo log %s && cd %s && git log --since="2 day ago" --name-only'
-    git_cmd(cmd %(d, d))
+    cmd = 'cd %s && git log --since="2 day ago" --name-only'
+    git_cmd(cmd % d)
     d = join(d, 'Documents')
     system('figlet Documents')
-    cmd = 'echo log %s && cd %s && git log --since="2 day ago" --name-only'
-    git_cmd(cmd %(d, d))
+    cmd = 'cd %s && git log --since="2 day ago" --name-only'
+    git_cmd(cmd % d)
 
 
 def vc_pull():
     for d in vc_dirs():
-        cmd = 'echo pull %s && cd %s && git pull'
-        git_cmd(cmd % (d, d))
+        cmd = 'cd %s && git pull'
+        git_cmd(cmd % d)
 
 
 def vc_push():
     for d in vc_dirs():
-        cmd = 'echo push %s && cd %s && git pull; git push'
-        git_cmd(cmd % (d, d))
+        cmd = 'cd %s && git pull; git push'
+        git_cmd(cmd %  d)
 
 
 def vc_status():
     for d in vc_dirs():
-        cmd = 'echo status %s && cd %s && git status'
-        git_cmd(cmd % (d, d))
+        cmd = 'cd %s && git status'
+        git_cmd(cmd %  d)
