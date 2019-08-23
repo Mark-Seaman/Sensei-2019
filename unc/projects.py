@@ -1,13 +1,44 @@
 from datetime import datetime
-from os.path import join
-
 from django.utils.timezone import make_aware, now
+from os.path import join
 
 from tool.days import parse_date, date_str
 from tool.page import open_browser_dom, close_browser_dom, capture_page, capture_page_features, display_test_results
 from tool.shell import banner
 from tool.text import text_join
 from unc.models import Requirement, Project, Course, Assignment
+
+
+def add_assignment(course, student, project):
+    c = Course.lookup(course)
+    p = Project.objects.get(course=c, num=int(project))
+    date = p.due
+    Assignment.objects.get_or_create(project=p,
+                                     student=student,
+                                     score=0,
+                                     date=date,
+                                     status=0)
+
+
+def add_project(course, row):
+
+    def create_project(course, num, title, page, due, instructions):
+        course = Course.objects.get(name=course)
+        due = make_aware(datetime.strptime(due, "%Y-%m-%d"))
+        project = Project.objects.get_or_create(course=course, num=num)[0]
+        project.title = title
+        project.page = page
+        project.due = due
+        project.instructions = instructions
+        project.save()
+        return project
+
+    date = make_aware(parse_date(row[2]))
+    date = date_str(date)
+    page = '%s/project_%s.html' % (course, row[0])
+    instructions = '/unc/%s/project/%s' % (course, row[0])
+    title = row[6]
+    return create_project(course, row[0], title, page, date, instructions)
 
 
 def add_requirement(project, id, selector, transform):
@@ -17,6 +48,18 @@ def add_requirement(project, id, selector, transform):
     r.transform = transform
     r.save()
     return r
+
+
+def approve_requirements(course, id):
+    project = Project.lookup(course, id)
+    for i, r in enumerate(project.requirements):
+        r.correct = r.actual
+        r.save()
+
+
+def assign_homework(course, project):
+    for s in Course.students(course):
+        add_assignment(course, s, project)
 
 
 def bacs200_project1_requirements():
@@ -49,6 +92,10 @@ def build_projects(course):
     return list_project_details('bacs200')
 
 
+def clear_assignments():
+    Assignment.objects.all().delete()
+
+
 def create_project_record(course, project_num, page, requirements):
     p = Project.lookup(course, project_num)
     p.page = page
@@ -57,28 +104,7 @@ def create_project_record(course, project_num, page, requirements):
         add_requirement(p, i + 1, r[0], r[1])
 
 
-def add_project(course, row):
-
-    def create_project(course, num, title, page, due, instructions):
-        course = Course.objects.get(name=course)
-        due = make_aware(datetime.strptime(due, "%Y-%m-%d"))
-        project = Project.objects.get_or_create(course=course, num=num)[0]
-        project.title = title
-        project.page = page
-        project.due = due
-        project.instructions = instructions
-        project.save()
-        return project
-
-    date = make_aware(parse_date(row[2]))
-    date = date_str(date)
-    page = '%s/project_%s.html' % (course, row[0])
-    instructions = '/unc/%s/project/%s' % (course, row[0])
-    title = row[6]
-    return create_project(course, row[0], title, page, date, instructions)
-
-
-def print_assignments(course):
+def list_assignments(course):
     assigned = ['\n%s Assignments: ' % course]
     for h in Assignment.objects.filter(project__course__name=course):
         assigned.append(str(h))
@@ -113,3 +139,5 @@ def validate_project_page(dom, student, project):
 
 def validate_unc_project(dom, student, project, ):
     return banner('PROJECT %s' % project) + display_test_results(validate_project_page(dom, student, project))
+
+

@@ -3,7 +3,7 @@ from tool.shell import is_server
 from tool.text import text_lines
 from tool.user import list_users
 from unc.bacs import *
-from unc.projects import build_projects, print_assignments, validate_unc_project
+from unc.projects import build_projects, list_assignments, validate_unc_project, assign_homework
 from unc.models import Student
 
 
@@ -49,6 +49,6 @@ def unc_student_test():
         # clear_assignments()
         assign_homework(course, '01')
         assign_homework(course, '02')
-        output.append(print_assignments(course))
+        output.append(list_assignments(course))
 
     return text_join(output)

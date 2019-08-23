@@ -10,19 +10,8 @@ from tool.log import log_exception
 from tool.shell import banner
 from tool.text import text_join
 from tool.user import add_user_login
-from unc.models import Assignment, Course, Project, Lesson, Student
-from unc.projects import add_project, print_assignments
-
-
-def add_assignment(course, student, project):
-    c = Course.lookup(course)
-    p = Project.objects.get(course=c, num=int(project))
-    date = p.due
-    Assignment.objects.get_or_create(project=p,
-                                     student=student,
-                                     score=0,
-                                     date=date,
-                                     status=0)
+from unc.models import Course, Project, Lesson, Student
+from unc.projects import add_project, list_assignments
 
 
 def add_lesson(course, row):
@@ -64,21 +53,6 @@ def add_teacher():
 
 
 # approve_requirements('bacs200', 1)
-def approve_requirements(course, id):
-    project = Project.lookup(course, id)
-    for i, r in enumerate(project.requirements):
-        r.correct = r.actual
-        r.save()
-
-
-def assign_homework(course, project):
-    for s in Course.students(course):
-        # print('assign ', course, s.name, project)
-        add_assignment(course, s, project)
-
-
-def clear_assignments():
-    Assignment.objects.all().delete()
 
 
 def create_course(name, title, teacher, description):
@@ -147,7 +121,7 @@ def list_course_content():
         data.append('\nSTUDENTS:')
         data.append(list_students(c))
         data.append('\nASSIGNMENTS:')
-        data.append(print_assignments(c))
+        data.append(list_assignments(c))
     return text_join(data)
 
 

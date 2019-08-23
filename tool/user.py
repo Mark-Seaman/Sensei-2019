@@ -19,6 +19,12 @@ def add_user_login(name, email, password='student'):
     return u
 
 
+def change_password(username, password):
+    u = User.objects.get(username=username)
+    u.set_password(password)
+    u.save()
+
+
 def list_user_login(user):
     name = user.first_name + ' ' + user.last_name
     return '%-2d %-20s %-20s %-30s ' % (user.pk, name, user.username, user.email)
