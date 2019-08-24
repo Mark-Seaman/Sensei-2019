@@ -6,6 +6,8 @@ Django settings for sensei project.
 # import os
 from os.path import dirname, abspath
 from os.path import join
+from platform import node
+
 
 # Build paths inside the project like this: join(BASE_DIR, ...)
 BASE_DIR = dirname(dirname(abspath(__file__)))
@@ -14,7 +16,10 @@ TEST_DIR = join(BASE_DIR, 'test')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = node() != 'sensei-server'
+
+# assert False
+
 
 # How hosts access the server
 ALLOWED_HOSTS = ['seamanfamily.org',
