@@ -42,7 +42,7 @@ class Student(models.Model):
     zbooks = models.CharField(max_length=100, null=True)
 
     def __str__(self):
-        return '%-40s %-40s %s' % (self.email, self.name, self.domain)
+        return '%d. %-40s %-40s %s' % (self.pk, self.email, self.name, self.domain)
 
     @staticmethod
     def list():

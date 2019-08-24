@@ -1,0 +1,25 @@
+{% extends "unc_theme.html" %}
+
+
+{% block content %}
+
+
+
+    <div class="page">
+
+        <h3>Student Domain</h3>
+
+        <p>
+            Register the URL for the domain of your website. Bluehost sent you an email that contains your domain name.
+        </p>
+        <p>
+            For example: <b>https://unco-bacs.org</b> is the name of my web server.
+        </p>
+
+        <form action="" method="post">{% csrf_token %}
+            {{ form.as_p }}
+            <input class="btn btn-primary btn-form" type="submit" value="Save Settings"/>
+        </form>
+
+    </div>
+{% endblock %}

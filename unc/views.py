@@ -1,9 +1,10 @@
 from django.template.loader import render_to_string
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, UpdateView
 
-from mybook.mybook import document_text, unc_menu
+from mybook.mybook import document_text
 from tool.log import log_page
 from unc.bacs import schedule_data, slides_markdown, student_data, weekly_agenda, weekly_lessons, get_student
+from unc.models import Student
 from unc.projects import test_project_page
 
 
@@ -34,6 +35,9 @@ def render_course_agenda(course, student):
 class UncPage(TemplateView):
     template_name = 'unc_theme.html'
 
+    # def get_header(self):
+        
+
     def get_context_data(self, **kwargs):
         log_page(self.request)
         student = get_student(self.request)
@@ -43,7 +47,7 @@ class UncPage(TemplateView):
             name = 'Not logged in'
         course = self.kwargs.get('course','NONE')
         title = self.kwargs.get('title', 'Index')
-        kwargs['menu'] = unc_menu(course, title)
+        # kwargs['menu'] = unc_menu(course, title)
         course = 'BACS 350' if course=='bacs350' else 'BACS 200'
         href = '/unc/bacs200'
         header = 'UNC %s' % course, name, "/static/images/unc/Bear.200.png", 'UNC Bear', href
@@ -103,6 +107,20 @@ class UncStudents(UncPage):
     def get_context_data(self, **kwargs):
         kwargs = super(UncStudents, self).get_context_data(**kwargs)
         kwargs['students'] = student_data(kwargs['course'])
+        return kwargs
+
+
+class UncStudent(UpdateView):
+    model = Student
+    fields = ['domain']
+    template_name = 'unc_student.html'
+    success_url = '/unc/bacs200'
+
+    def get_context_data(self, **kwargs):
+        log_page(self.request)
+        kwargs = super(UncStudent, self).get_context_data(**kwargs)
+        header = 'UNC Student Profile', kwargs['object'].name, "/static/images/unc/Bear.200.png", 'UNC Bear', '/unc/bacs200'
+        kwargs['header'] = dict(title=header[0], subtitle=header[1], logo=header[2], logo_text=header[3], href=header[4])
         return kwargs
 
 

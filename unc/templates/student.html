@@ -7,7 +7,10 @@
     <div class="card-body card-padding">
         <ul>
             <li>Student Name: <b>{{ student.name }}</b></li>
-            <li>Student Website: <b><a href="{{ student.domain }}">{{ student.domain }}</a></b></li>
+            <li>
+                Student Website: <b><a href="{{ student.domain }}">{{ student.domain }}</a></b>
+                <a href="/unc/student/{{ student.pk }}">Edit</a>
+            </li>
             <li>Student Email: <b>{{ student.email }}</b></li>
             <li>User name: <b>{{ student.user.username }}</b></li>
         </ul>
