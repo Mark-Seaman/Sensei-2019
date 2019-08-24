@@ -50,6 +50,13 @@ def add_requirement(project, id, selector, transform):
     return r
 
 
+def add_test_assignments():
+    course = 'cs350'
+    assign_homework(course, '01')
+    assign_homework(course, '02')
+    # clear_assignments()
+
+
 def approve_requirements(course, id):
     project = Project.lookup(course, id)
     for i, r in enumerate(project.requirements):
@@ -62,34 +69,29 @@ def assign_homework(course, project):
         add_assignment(course, s, project)
 
 
-def bacs200_project1_requirements():
+def fake_project_requirements():
     return [
         ('html', 'count_chars(r.actual, 10000, 20000)'),
-        ('head', 'count_chars(r.actual, 5000, 6000)'),
-        ('head title', ''),
-        ('body', 'count_lines(r.actual, 50, 200)'),
-        ('body header h1', ''),
-        ('h3', ''),
-        ('p', ''),
-    ]
-
-
-def bacs200_project2_requirements():
-    return [
-        ('head', 'count_chars(r.actual, 80, 85)'),
-        ('head title', 'count_chars(r.actual, 15, 30)'),
-        ('body', 'count_lines(r.actual, 20, 30)'),
-        ('body h1', 'count_chars(r.actual, 20, 30)'),
-        ('h2', ''),
-        ('p', ''),
+        # ('head', 'count_chars(r.actual, 5000, 6000)'),
+        # ('head title', ''),
+        # ('body', 'count_lines(r.actual, 50, 200)'),
+        # ('body header h1', ''),
+        # ('h3', ''),
+        # ('p', ''),
+        # ('head', 'count_chars(r.actual, 80, 85)'),
+        # ('head title', 'count_chars(r.actual, 15, 30)'),
+        # ('body', 'count_lines(r.actual, 20, 30)'),
+        # ('body h1', 'count_chars(r.actual, 20, 30)'),
+        # ('h2', ''),
+        # ('p', ''),
     ]
 
 
 def build_projects(course):
-    create_project_record(course, '01', 'index.php',            bacs200_project1_requirements())
-    create_project_record(course, '02', 'bacs200/index.html',   bacs200_project2_requirements())
-    create_project_record(course, '03', 'bacs200/profile.html', bacs200_project1_requirements())
-    return list_project_details('bacs200')
+    create_project_record(course, '01', 'index.php',            fake_project_requirements())
+    create_project_record(course, '02', 'bacs350/index.html',   fake_project_requirements())
+    # create_project_record(course, '03', 'bacs350/profile.html', bacs200_project1_requirements())
+    return list_project_details(course)
 
 
 def clear_assignments():
@@ -105,7 +107,7 @@ def create_project_record(course, project_num, page, requirements):
 
 
 def list_assignments(course):
-    assigned = ['\n%s Assignments: ' % course]
+    assigned = ['\n\nAssignments for %s:' % course]
     for h in Assignment.objects.filter(project__course__name=course):
         assigned.append(str(h))
     return text_join(assigned)
@@ -117,7 +119,7 @@ def list_project_details(course):
         results.append('\nProject %s' % p)
         for r in p.requirements:
             results.append('    selector=%s, transform=%s' % (r.selector, r.transform))
-    return results
+    return text_join(results)
 
 
 def test_project_page(student, project):

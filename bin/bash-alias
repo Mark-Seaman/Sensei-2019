@@ -35,6 +35,7 @@ alias host='hostname'
 alias i='dj todo idea'
 alias ip='ifconfig|grep "inet "'
 
+alias json='dj dumpdata | python -m json.tool'
 alias l='ls -al'
 alias le='less'
 alias ll='ls -l'

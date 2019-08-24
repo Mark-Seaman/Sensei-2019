@@ -50,7 +50,7 @@ def manage_log_length():
         lines = lines [-1000:]
         open(LOG_FILE, 'w').write('\n'.join(lines))
         return 'Too Long Log - %s, %s lines' % (LOG_FILE, length)
-    return 'Log Length OK - %d lines' % length
+    # return 'Log Length OK - %d lines' % length
 
 
 def recent_log_entries():

@@ -6,6 +6,7 @@ from re import compile
 
 from tool.days import parse_date
 from tool.document import fix_images, read_markdown
+from tool.files import recursive_list
 from tool.log import log_exception
 from tool.shell import banner
 from tool.text import text_join
@@ -34,6 +35,7 @@ def add_student(name, email, domain, course):
     s = Student.objects.get_or_create(name=name, email=email, course=course)[0]
     u = add_user_login(name, email)
     s.user = u
+    # s.course = course
     s.domain = domain
     s.save()
     return s
@@ -50,9 +52,6 @@ def add_teacher():
     s.user = u
     s.domain = domain
     s.save()
-
-
-# approve_requirements('bacs200', 1)
 
 
 def create_course(name, title, teacher, description):
@@ -83,24 +82,25 @@ def import_students(course):
 
 
 def import_schedule(course):
-
     table = read_schedule(course)
     for row in table[2:]:
         add_lesson(course, row)
+    return text_join(Lesson.list(course))
 
 
 def import_test_students():
-    course = 'bacs200'
+    course = 'cs350'
     add_student('Tony Stark',       'mark.b.seaman+iron_man@gmail.com',     r'https://unco-bacs.org/iron_man',      course)
     add_student('Natasha Romanov ', 'mark.b.seaman+black_widow@gmail.com',  r'https://unco-bacs.org/black_widow',   course)
     add_student('Bruce Banner',     'mark.b.seaman+hulk@gmail.com',         r'https://unco-bacs.org/hulk',          course)
-    course = 'bacs350'
     add_student('Steve Rogers',     'mark.b.seaman+cap@gmail.com',          r'https://unco-bacs.org/cap_america',   course)
     add_student('Carol Danvers',    'mark.b.seaman+marvel@gmail.com',       r'https://unco-bacs.org/cap_marvel',    course)
     add_student('Wanda Maximoff',   'mark.b.seaman+witch@gmail.com',        r'https://unco-bacs.org/scarlet_witch', course)
 
 
 def initialize_data():
+    create_course('cs350', 'Software Engineering (under development)', 'Mark Seaman',
+                  'This class is for test purposes only')
     create_course('bacs200', 'Web Development Intro (Fall 2019)', 'Mark Seaman',
                   'Web Design and Development for Small Business')
     create_course('bacs350', 'Web Development Intermediate (Fall 2019)', 'Mark Seaman',
@@ -112,10 +112,10 @@ def initialize_data():
 def list_course_content():
     data = [banner('Course Content Data')]
     data += Course.list()
-    for c in ['bacs200', 'bacs350']:
+    for c in unc_courses():
         data.append(banner(c))
         data.append('\nPROJECTS:\n')
-        data += Project.list('bacs200')
+        data += Project.list(c)
         data.append('\nLESSONS:\n')
         data += Lesson.list(c)
         data.append('\nSTUDENTS:')
@@ -169,3 +169,9 @@ def zybooks_link(course, reading):
     return link
 
 
+def show_course_files(course):
+    return banner(course) + text_join(recursive_list('Documents/unc/%s' % course))
+
+
+def unc_courses():
+    return ['bacs200', 'bacs350', 'cs350']
