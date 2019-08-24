@@ -1,0 +1,2191 @@
+[
+    {
+        "model": "unc.course",
+        "pk": 2,
+        "fields": {
+            "name": "bacs200",
+            "title": "Web Development Intro (Fall 2019)",
+            "teacher": "Mark Seaman",
+            "description": "Web Design and Development for Small Business"
+        }
+    },
+    {
+        "model": "unc.course",
+        "pk": 5,
+        "fields": {
+            "name": "bacs350",
+            "title": "Web Development Intermediate (Fall 2019)",
+            "teacher": "Mark Seaman",
+            "description": "Intermediate Web Development with PHP/MySQL"
+        }
+    },
+    {
+        "model": "unc.student",
+        "pk": 1,
+        "fields": {
+            "user": 3,
+            "course": 2,
+            "name": "Tony Stark",
+            "email": "mark.b.seaman+iron_man@gmail.com",
+            "domain": "https://unco-bacs.org/iron_man",
+            "zbooks": null
+        }
+    },
+    {
+        "model": "unc.student",
+        "pk": 2,
+        "fields": {
+            "user": 4,
+            "course": 2,
+            "name": "Natasha Romanov ",
+            "email": "mark.b.seaman+black_widow@gmail.com",
+            "domain": "https://unco-bacs.org/black_widow",
+            "zbooks": null
+        }
+    },
+    {
+        "model": "unc.student",
+        "pk": 3,
+        "fields": {
+            "user": 5,
+            "course": 2,
+            "name": "Bruce Banner",
+            "email": "mark.b.seaman+hulk@gmail.com",
+            "domain": "https://unco-bacs.org/hulk",
+            "zbooks": null
+        }
+    },
+    {
+        "model": "unc.student",
+        "pk": 4,
+        "fields": {
+            "user": 2,
+            "course": 2,
+            "name": "MarkSeaman",
+            "email": "mark.b.seaman@gmail.com",
+            "domain": "https://unco-bacs.org",
+            "zbooks": null
+        }
+    },
+    {
+        "model": "unc.student",
+        "pk": 5,
+        "fields": {
+            "user": 6,
+            "course": 5,
+            "name": "Steve Rogers",
+            "email": "mark.b.seaman+cap@gmail.com",
+            "domain": "https://unco-bacs.org/cap_america",
+            "zbooks": null
+        }
+    },
+    {
+        "model": "unc.student",
+        "pk": 6,
+        "fields": {
+            "user": 7,
+            "course": 5,
+            "name": "Carol Danvers",
+            "email": "mark.b.seaman+marvel@gmail.com",
+            "domain": "https://unco-bacs.org/cap_marvel",
+            "zbooks": null
+        }
+    },
+    {
+        "model": "unc.student",
+        "pk": 7,
+        "fields": {
+            "user": 8,
+            "course": 5,
+            "name": "Wanda Maximoff",
+            "email": "mark.b.seaman+witch@gmail.com",
+            "domain": "https://unco-bacs.org/scarlet_witch",
+            "zbooks": null
+        }
+    },
+    {
+        "model": "unc.project",
+        "pk": 6,
+        "fields": {
+            "course": 2,
+            "num": 1,
+            "title": "1 - Host",
+            "page": "index.php",
+            "due": "2019-08-30T06:00:00Z",
+            "instructions": "/unc/bacs200/project/1"
+        }
+    },
+    {
+        "model": "unc.project",
+        "pk": 7,
+        "fields": {
+            "course": 2,
+            "num": 2,
+            "title": "",
+            "page": "bacs200/index.html",
+            "due": "2019-09-06T06:00:00Z",
+            "instructions": "/unc/bacs200/project/2"
+        }
+    },
+    {
+        "model": "unc.project",
+        "pk": 8,
+        "fields": {
+            "course": 2,
+            "num": 3,
+            "title": "3 - Amuse",
+            "page": "bacs200/profile.html",
+            "due": "2019-09-13T06:00:00Z",
+            "instructions": "/unc/bacs200/project/3"
+        }
+    },
+    {
+        "model": "unc.project",
+        "pk": 9,
+        "fields": {
+            "course": 2,
+            "num": 4,
+            "title": "4 - Educate",
+            "page": "bacs200/project_4.html",
+            "due": "2019-09-20T06:00:00Z",
+            "instructions": "/unc/bacs200/project/4"
+        }
+    },
+    {
+        "model": "unc.project",
+        "pk": 10,
+        "fields": {
+            "course": 2,
+            "num": 5,
+            "title": "",
+            "page": "bacs200/project_5.html",
+            "due": "2019-09-27T06:00:00Z",
+            "instructions": "/unc/bacs200/project/5"
+        }
+    },
+    {
+        "model": "unc.project",
+        "pk": 11,
+        "fields": {
+            "course": 2,
+            "num": 6,
+            "title": "5 - Pets",
+            "page": "bacs200/project_6.html",
+            "due": "2019-10-04T06:00:00Z",
+            "instructions": "/unc/bacs200/project/6"
+        }
+    },
+    {
+        "model": "unc.project",
+        "pk": 12,
+        "fields": {
+            "course": 2,
+            "num": 7,
+            "title": "6 - Wanted",
+            "page": "bacs200/project_7.html",
+            "due": "2019-10-11T06:00:00Z",
+            "instructions": "/unc/bacs200/project/7"
+        }
+    },
+    {
+        "model": "unc.project",
+        "pk": 13,
+        "fields": {
+            "course": 2,
+            "num": 8,
+            "title": "7 - Templates",
+            "page": "bacs200/project_8.html",
+            "due": "2019-10-18T06:00:00Z",
+            "instructions": "/unc/bacs200/project/8"
+        }
+    },
+    {
+        "model": "unc.project",
+        "pk": 14,
+        "fields": {
+            "course": 2,
+            "num": 9,
+            "title": "8 - Study Guide",
+            "page": "bacs200/project_9.html",
+            "due": "2019-10-25T06:00:00Z",
+            "instructions": "/unc/bacs200/project/9"
+        }
+    },
+    {
+        "model": "unc.project",
+        "pk": 15,
+        "fields": {
+            "course": 2,
+            "num": 10,
+            "title": "9 - Vacation Packages",
+            "page": "bacs200/project_10.html",
+            "due": "2019-11-01T06:00:00Z",
+            "instructions": "/unc/bacs200/project/10"
+        }
+    },
+    {
+        "model": "unc.project",
+        "pk": 16,
+        "fields": {
+            "course": 2,
+            "num": 11,
+            "title": "10 - Business Blog",
+            "page": "bacs200/project_11.html",
+            "due": "2019-11-08T07:00:00Z",
+            "instructions": "/unc/bacs200/project/11"
+        }
+    },
+    {
+        "model": "unc.project",
+        "pk": 17,
+        "fields": {
+            "course": 2,
+            "num": 12,
+            "title": "11 - Teach a Trick",
+            "page": "bacs200/project_12.html",
+            "due": "2019-11-15T07:00:00Z",
+            "instructions": "/unc/bacs200/project/12"
+        }
+    },
+    {
+        "model": "unc.project",
+        "pk": 18,
+        "fields": {
+            "course": 2,
+            "num": 13,
+            "title": "12 - Personal Marketing",
+            "page": "bacs200/project_13.html",
+            "due": "2019-11-22T07:00:00Z",
+            "instructions": "/unc/bacs200/project/13"
+        }
+    },
+    {
+        "model": "unc.project",
+        "pk": 19,
+        "fields": {
+            "course": 2,
+            "num": 14,
+            "title": "13 - Non-profit",
+            "page": "bacs200/project_14.html",
+            "due": "2019-11-29T07:00:00Z",
+            "instructions": "/unc/bacs200/project/14"
+        }
+    },
+    {
+        "model": "unc.project",
+        "pk": 20,
+        "fields": {
+            "course": 2,
+            "num": 15,
+            "title": "14 - Web Design Course",
+            "page": "bacs200/project_15.html",
+            "due": "2019-12-06T07:00:00Z",
+            "instructions": "/unc/bacs200/project/15"
+        }
+    },
+    {
+        "model": "unc.project",
+        "pk": 36,
+        "fields": {
+            "course": 5,
+            "num": 1,
+            "title": "Bluehost Web Hosting",
+            "page": "bacs350/project_1.html",
+            "due": "2019-08-30T06:00:00Z",
+            "instructions": "/unc/bacs350/project/1"
+        }
+    },
+    {
+        "model": "unc.project",
+        "pk": 37,
+        "fields": {
+            "course": 5,
+            "num": 2,
+            "title": "Page Templates",
+            "page": "bacs350/project_2.html",
+            "due": "2019-09-06T06:00:00Z",
+            "instructions": "/unc/bacs350/project/2"
+        }
+    },
+    {
+        "model": "unc.project",
+        "pk": 38,
+        "fields": {
+            "course": 5,
+            "num": 3,
+            "title": "Complex Views",
+            "page": "bacs350/project_3.html",
+            "due": "2019-09-13T06:00:00Z",
+            "instructions": "/unc/bacs350/project/3"
+        }
+    },
+    {
+        "model": "unc.project",
+        "pk": 39,
+        "fields": {
+            "course": 5,
+            "num": 4,
+            "title": "Document Viewer",
+            "page": "bacs350/project_4.html",
+            "due": "2019-09-20T06:00:00Z",
+            "instructions": "/unc/bacs350/project/4"
+        }
+    },
+    {
+        "model": "unc.project",
+        "pk": 40,
+        "fields": {
+            "course": 5,
+            "num": 5,
+            "title": "Shopping Cart",
+            "page": "bacs350/project_5.html",
+            "due": "2019-09-27T06:00:00Z",
+            "instructions": "/unc/bacs350/project/5"
+        }
+    },
+    {
+        "model": "unc.project",
+        "pk": 41,
+        "fields": {
+            "course": 5,
+            "num": 6,
+            "title": "Page Logging",
+            "page": "bacs350/project_6.html",
+            "due": "2019-10-04T06:00:00Z",
+            "instructions": "/unc/bacs350/project/6"
+        }
+    },
+    {
+        "model": "unc.project",
+        "pk": 42,
+        "fields": {
+            "course": 5,
+            "num": 7,
+            "title": "Wiki",
+            "page": "bacs350/project_7.html",
+            "due": "2019-10-11T06:00:00Z",
+            "instructions": "/unc/bacs350/project/7"
+        }
+    },
+    {
+        "model": "unc.project",
+        "pk": 43,
+        "fields": {
+            "course": 5,
+            "num": 8,
+            "title": "Notes App",
+            "page": "bacs350/project_8.html",
+            "due": "2019-10-18T06:00:00Z",
+            "instructions": "/unc/bacs350/project/8"
+        }
+    },
+    {
+        "model": "unc.project",
+        "pk": 44,
+        "fields": {
+            "course": 5,
+            "num": 9,
+            "title": "",
+            "page": "bacs350/project_9.html",
+            "due": "2019-10-25T06:00:00Z",
+            "instructions": "/unc/bacs350/project/9"
+        }
+    },
+    {
+        "model": "unc.project",
+        "pk": 45,
+        "fields": {
+            "course": 5,
+            "num": 10,
+            "title": "",
+            "page": "bacs350/project_10.html",
+            "due": "2019-11-01T06:00:00Z",
+            "instructions": "/unc/bacs350/project/10"
+        }
+    },
+    {
+        "model": "unc.project",
+        "pk": 46,
+        "fields": {
+            "course": 5,
+            "num": 11,
+            "title": "",
+            "page": "bacs350/project_11.html",
+            "due": "2019-11-08T07:00:00Z",
+            "instructions": "/unc/bacs350/project/11"
+        }
+    },
+    {
+        "model": "unc.project",
+        "pk": 47,
+        "fields": {
+            "course": 5,
+            "num": 12,
+            "title": "",
+            "page": "bacs350/project_12.html",
+            "due": "2019-11-15T07:00:00Z",
+            "instructions": "/unc/bacs350/project/12"
+        }
+    },
+    {
+        "model": "unc.project",
+        "pk": 48,
+        "fields": {
+            "course": 5,
+            "num": 13,
+            "title": "",
+            "page": "bacs350/project_13.html",
+            "due": "2019-11-20T07:00:00Z",
+            "instructions": "/unc/bacs350/project/13"
+        }
+    },
+    {
+        "model": "unc.project",
+        "pk": 49,
+        "fields": {
+            "course": 5,
+            "num": 14,
+            "title": "",
+            "page": "bacs350/project_14.html",
+            "due": "2019-11-29T07:00:00Z",
+            "instructions": "/unc/bacs350/project/14"
+        }
+    },
+    {
+        "model": "unc.project",
+        "pk": 50,
+        "fields": {
+            "course": 5,
+            "num": 15,
+            "title": "",
+            "page": "bacs350/project_15.html",
+            "due": "2019-12-06T07:00:00Z",
+            "instructions": "/unc/bacs350/project/15"
+        }
+    },
+    {
+        "model": "unc.requirement",
+        "pk": 1,
+        "fields": {
+            "project": 6,
+            "num": 2,
+            "label": "head",
+            "selector": "head",
+            "actual": "Characters in output (is between 5000 and 6000)",
+            "correct": "\n        <meta charset=\"UTF-8\">\n        <title>Mark Seaman - BACS 200</title>\n    ",
+            "results": "Test not run yet",
+            "transform": "count_chars(r.actual, 5000, 6000)"
+        }
+    },
+    {
+        "model": "unc.requirement",
+        "pk": 2,
+        "fields": {
+            "project": 6,
+            "num": 4,
+            "label": "body",
+            "selector": "body",
+            "actual": "Lines in output (is between 50 and 200)",
+            "correct": "\n        <img src=\"https://shrinking-world.com/static/images/unc/bacs200/Bear_Logo.png\" style=\"float:right\">\n        <h1>Mark Seaman Home Page</h1>\n        <p>UNC - BACS 200</p>\n        <img src=\"images/MarkSeaman.200.png\" alt=\"MarkSeaman\" width=\"100px\">\n\n        <h2>Websites</h2>\n        <ul>\n            <li>\n                <a href=\"https://shrinking-world.com/unc/bacs200\">Class Website</a>\n            </li>\n            <li>\n                <a href=\"https://unco-bacs.org/wordpress/\">WordPress Blog</a>\n            </li>\n            <li>\n                <a href=\"class/index.php\">BACS 200 Class Lessons</a>\n            </li>\n            <li>\n                <a href=\"class/projects/index.html\">BACS 200 Class Projects</a>\n            </li>\n            <li>\n                <a href=\"class/templates/index.html\">BACS 200 Code Templates</a>\n            </li>\n        </ul>\n\n    \n\n\n",
+            "results": "Test not run yet",
+            "transform": "count_lines(r.actual, 50, 200)"
+        }
+    },
+    {
+        "model": "unc.requirement",
+        "pk": 3,
+        "fields": {
+            "project": 6,
+            "num": -1,
+            "label": "h1",
+            "selector": "h1",
+            "actual": "<a href=\"https://unco-bacs.org/\" rel=\"home\">Shrinking World Sensei</a>",
+            "correct": "Mark Seaman Home Page",
+            "results": "Test not run yet",
+            "transform": null
+        }
+    },
+    {
+        "model": "unc.requirement",
+        "pk": 4,
+        "fields": {
+            "project": 6,
+            "num": 7,
+            "label": "p",
+            "selector": "p",
+            "actual": "\n\t\t\t\tTeaching Technology\t\t\t",
+            "correct": "UNC - BACS 200",
+            "results": "Test not run yet",
+            "transform": ""
+        }
+    },
+    {
+        "model": "unc.requirement",
+        "pk": 5,
+        "fields": {
+            "project": 7,
+            "num": 1,
+            "label": "head",
+            "selector": "head",
+            "actual": "Characters in output (is between 80 and 85)",
+            "correct": "Test not run yet",
+            "results": "Test not run yet",
+            "transform": "count_chars(r.actual, 80, 85)"
+        }
+    },
+    {
+        "model": "unc.requirement",
+        "pk": 6,
+        "fields": {
+            "project": 7,
+            "num": -1,
+            "label": "title",
+            "selector": "title",
+            "actual": "Mark Seaman - BACS 200",
+            "correct": "Test not run yet",
+            "results": "Test not run yet",
+            "transform": null
+        }
+    },
+    {
+        "model": "unc.requirement",
+        "pk": 7,
+        "fields": {
+            "project": 7,
+            "num": 3,
+            "label": "body",
+            "selector": "body",
+            "actual": "Lines in output (is between 20 and 30)",
+            "correct": "Test not run yet",
+            "results": "Test not run yet",
+            "transform": "count_lines(r.actual, 20, 30)"
+        }
+    },
+    {
+        "model": "unc.requirement",
+        "pk": 8,
+        "fields": {
+            "project": 7,
+            "num": -1,
+            "label": "h1",
+            "selector": "h1",
+            "actual": "Mark Seaman Home Page",
+            "correct": "Test not run yet",
+            "results": "Test not run yet",
+            "transform": null
+        }
+    },
+    {
+        "model": "unc.requirement",
+        "pk": 9,
+        "fields": {
+            "project": 7,
+            "num": 6,
+            "label": "p",
+            "selector": "p",
+            "actual": "UNC - BACS 200",
+            "correct": "Test not run yet",
+            "results": "Test not run yet",
+            "transform": ""
+        }
+    },
+    {
+        "model": "unc.requirement",
+        "pk": 10,
+        "fields": {
+            "project": 8,
+            "num": 2,
+            "label": "head",
+            "selector": "head",
+            "actual": "Test not run yet",
+            "correct": "Test not run yet",
+            "results": "Test not run yet",
+            "transform": "count_chars(r.actual, 5000, 6000)"
+        }
+    },
+    {
+        "model": "unc.requirement",
+        "pk": 11,
+        "fields": {
+            "project": 8,
+            "num": 4,
+            "label": "body",
+            "selector": "body",
+            "actual": "Test not run yet",
+            "correct": "Test not run yet",
+            "results": "Test not run yet",
+            "transform": "count_lines(r.actual, 50, 200)"
+        }
+    },
+    {
+        "model": "unc.requirement",
+        "pk": 12,
+        "fields": {
+            "project": 8,
+            "num": -1,
+            "label": "h1",
+            "selector": "h1",
+            "actual": "Test not run yet",
+            "correct": "Test not run yet",
+            "results": "Test not run yet",
+            "transform": null
+        }
+    },
+    {
+        "model": "unc.requirement",
+        "pk": 13,
+        "fields": {
+            "project": 8,
+            "num": 7,
+            "label": "p",
+            "selector": "p",
+            "actual": "Test not run yet",
+            "correct": "Test not run yet",
+            "results": "Test not run yet",
+            "transform": ""
+        }
+    },
+    {
+        "model": "unc.requirement",
+        "pk": 14,
+        "fields": {
+            "project": 6,
+            "num": 1,
+            "label": "html",
+            "selector": "html",
+            "actual": "Characters in output (is between 10000 and 20000)",
+            "correct": "Test not run yet",
+            "results": "Test not run yet",
+            "transform": "count_chars(r.actual, 10000, 20000)"
+        }
+    },
+    {
+        "model": "unc.requirement",
+        "pk": 15,
+        "fields": {
+            "project": 6,
+            "num": 3,
+            "label": "head title",
+            "selector": "head title",
+            "actual": "Shrinking World Sensei \u2013 Teaching Technology",
+            "correct": "Test not run yet",
+            "results": "Test not run yet",
+            "transform": ""
+        }
+    },
+    {
+        "model": "unc.requirement",
+        "pk": 16,
+        "fields": {
+            "project": 6,
+            "num": 5,
+            "label": "body header h1",
+            "selector": "body header h1",
+            "actual": "<a href=\"https://unco-bacs.org/\" rel=\"home\">Shrinking World Sensei</a>",
+            "correct": "Test not run yet",
+            "results": "Test not run yet",
+            "transform": ""
+        }
+    },
+    {
+        "model": "unc.requirement",
+        "pk": 17,
+        "fields": {
+            "project": 6,
+            "num": 6,
+            "label": "h3",
+            "selector": "h3",
+            "actual": "<img class=\"wp-image-13\" style=\"width: 200px;\" src=\"https://unco-bacs.org/wp-content/uploads/2019/08/Mark-Seaman-200-3.jpg\" alt=\"Mark Seaman Profile Photo\" srcset=\"https://unco-bacs.org/wp-content/uploads/2019/08/Mark-Seaman-200-3.jpg 200w, https://unco-bacs.org/wp-content/uploads/2019/08/Mark-Seaman-200-3-150x150.jpg 150w\" sizes=\"(max-width: 200px) 100vw, 200px\">",
+            "correct": "Test not run yet",
+            "results": "Test not run yet",
+            "transform": ""
+        }
+    },
+    {
+        "model": "unc.requirement",
+        "pk": 18,
+        "fields": {
+            "project": 7,
+            "num": 2,
+            "label": "head title",
+            "selector": "head title",
+            "actual": "Characters in output (is between 15 and 30)",
+            "correct": "Test not run yet",
+            "results": "Test not run yet",
+            "transform": "count_chars(r.actual, 15, 30)"
+        }
+    },
+    {
+        "model": "unc.requirement",
+        "pk": 19,
+        "fields": {
+            "project": 7,
+            "num": 4,
+            "label": "body h1",
+            "selector": "body h1",
+            "actual": "Characters in output (is between 20 and 30)",
+            "correct": "Test not run yet",
+            "results": "Test not run yet",
+            "transform": "count_chars(r.actual, 20, 30)"
+        }
+    },
+    {
+        "model": "unc.requirement",
+        "pk": 20,
+        "fields": {
+            "project": 7,
+            "num": 5,
+            "label": "h2",
+            "selector": "h2",
+            "actual": "Websites",
+            "correct": "Test not run yet",
+            "results": "Test not run yet",
+            "transform": ""
+        }
+    },
+    {
+        "model": "unc.requirement",
+        "pk": 21,
+        "fields": {
+            "project": 8,
+            "num": 1,
+            "label": "html",
+            "selector": "html",
+            "actual": "Test not run yet",
+            "correct": "Test not run yet",
+            "results": "Test not run yet",
+            "transform": "count_chars(r.actual, 10000, 20000)"
+        }
+    },
+    {
+        "model": "unc.requirement",
+        "pk": 22,
+        "fields": {
+            "project": 8,
+            "num": 3,
+            "label": "head title",
+            "selector": "head title",
+            "actual": "Test not run yet",
+            "correct": "Test not run yet",
+            "results": "Test not run yet",
+            "transform": ""
+        }
+    },
+    {
+        "model": "unc.requirement",
+        "pk": 23,
+        "fields": {
+            "project": 8,
+            "num": 5,
+            "label": "body header h1",
+            "selector": "body header h1",
+            "actual": "Test not run yet",
+            "correct": "Test not run yet",
+            "results": "Test not run yet",
+            "transform": ""
+        }
+    },
+    {
+        "model": "unc.requirement",
+        "pk": 24,
+        "fields": {
+            "project": 8,
+            "num": 6,
+            "label": "h3",
+            "selector": "h3",
+            "actual": "Test not run yet",
+            "correct": "Test not run yet",
+            "results": "Test not run yet",
+            "transform": ""
+        }
+    },
+    {
+        "model": "unc.assignment",
+        "pk": 1,
+        "fields": {
+            "student": 3,
+            "project": 6,
+            "score": 0,
+            "date": "2019-08-30T06:00:00Z",
+            "status": 0
+        }
+    },
+    {
+        "model": "unc.assignment",
+        "pk": 2,
+        "fields": {
+            "student": 2,
+            "project": 6,
+            "score": 0,
+            "date": "2019-08-30T06:00:00Z",
+            "status": 0
+        }
+    },
+    {
+        "model": "unc.assignment",
+        "pk": 3,
+        "fields": {
+            "student": 1,
+            "project": 6,
+            "score": 0,
+            "date": "2019-08-30T06:00:00Z",
+            "status": 0
+        }
+    },
+    {
+        "model": "unc.assignment",
+        "pk": 4,
+        "fields": {
+            "student": 3,
+            "project": 7,
+            "score": 0,
+            "date": "2019-09-06T06:00:00Z",
+            "status": 0
+        }
+    },
+    {
+        "model": "unc.assignment",
+        "pk": 5,
+        "fields": {
+            "student": 2,
+            "project": 7,
+            "score": 0,
+            "date": "2019-09-06T06:00:00Z",
+            "status": 0
+        }
+    },
+    {
+        "model": "unc.assignment",
+        "pk": 6,
+        "fields": {
+            "student": 1,
+            "project": 7,
+            "score": 0,
+            "date": "2019-09-06T06:00:00Z",
+            "status": 0
+        }
+    },
+    {
+        "model": "unc.assignment",
+        "pk": 7,
+        "fields": {
+            "student": 4,
+            "project": 6,
+            "score": 0,
+            "date": "2019-08-30T06:00:00Z",
+            "status": 0
+        }
+    },
+    {
+        "model": "unc.assignment",
+        "pk": 8,
+        "fields": {
+            "student": 4,
+            "project": 7,
+            "score": 0,
+            "date": "2019-09-06T06:00:00Z",
+            "status": 0
+        }
+    },
+    {
+        "model": "unc.assignment",
+        "pk": 9,
+        "fields": {
+            "student": 5,
+            "project": 36,
+            "score": 0,
+            "date": "2019-08-30T06:00:00Z",
+            "status": 0
+        }
+    },
+    {
+        "model": "unc.assignment",
+        "pk": 10,
+        "fields": {
+            "student": 6,
+            "project": 36,
+            "score": 0,
+            "date": "2019-08-30T06:00:00Z",
+            "status": 0
+        }
+    },
+    {
+        "model": "unc.assignment",
+        "pk": 11,
+        "fields": {
+            "student": 7,
+            "project": 36,
+            "score": 0,
+            "date": "2019-08-30T06:00:00Z",
+            "status": 0
+        }
+    },
+    {
+        "model": "unc.assignment",
+        "pk": 12,
+        "fields": {
+            "student": 5,
+            "project": 37,
+            "score": 0,
+            "date": "2019-09-06T06:00:00Z",
+            "status": 0
+        }
+    },
+    {
+        "model": "unc.assignment",
+        "pk": 13,
+        "fields": {
+            "student": 6,
+            "project": 37,
+            "score": 0,
+            "date": "2019-09-06T06:00:00Z",
+            "status": 0
+        }
+    },
+    {
+        "model": "unc.assignment",
+        "pk": 14,
+        "fields": {
+            "student": 7,
+            "project": 37,
+            "score": 0,
+            "date": "2019-09-06T06:00:00Z",
+            "status": 0
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 1,
+        "fields": {
+            "course": 2,
+            "project": 6,
+            "week": 1,
+            "date": "2019-08-26T06:00:00Z",
+            "lesson": 1,
+            "topic": "Web Dev",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS200SeamanFall2019/chapter/1/section/1\">1.1 - Web History</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 2,
+        "fields": {
+            "course": 2,
+            "project": 6,
+            "week": 1,
+            "date": "2019-08-28T06:00:00Z",
+            "lesson": 2,
+            "topic": "Web Hosting",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS200SeamanFall2019/chapter/1/section/2\">1.2 - Domains & URLs</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 3,
+        "fields": {
+            "course": 2,
+            "project": 6,
+            "week": 1,
+            "date": "2019-08-30T06:00:00Z",
+            "lesson": 3,
+            "topic": "WordPress",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS200SeamanFall2019/chapter/1/section/3\">1.3 - HTTP</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 4,
+        "fields": {
+            "course": 2,
+            "project": 7,
+            "week": 2,
+            "date": "2019-09-02T06:00:00Z",
+            "lesson": 1,
+            "topic": "Labor Day",
+            "reading": ""
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 5,
+        "fields": {
+            "course": 2,
+            "project": 7,
+            "week": 2,
+            "date": "2019-09-04T06:00:00Z",
+            "lesson": 4,
+            "topic": "Domains & Servers",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS200SeamanFall2019/chapter/1/section/4\">1.4 - Web Trends</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 6,
+        "fields": {
+            "course": 2,
+            "project": 7,
+            "week": 2,
+            "date": "2019-09-06T06:00:00Z",
+            "lesson": 5,
+            "topic": "URLs",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS200SeamanFall2019/chapter/1/section/5\">1.5 - Intro to HTML</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 7,
+        "fields": {
+            "course": 2,
+            "project": 8,
+            "week": 3,
+            "date": "2019-09-09T06:00:00Z",
+            "lesson": 6,
+            "topic": "HTML Template",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS200SeamanFall2019/chapter/1/section/6\">1.6 - Intro to CSS</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 8,
+        "fields": {
+            "course": 2,
+            "project": 8,
+            "week": 3,
+            "date": "2019-09-11T06:00:00Z",
+            "lesson": 7,
+            "topic": "Basic HTML Elements",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS200SeamanFall2019/chapter/1/section/7\">1.7 - Intro to JavaScript</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 9,
+        "fields": {
+            "course": 2,
+            "project": 8,
+            "week": 3,
+            "date": "2019-09-13T06:00:00Z",
+            "lesson": 8,
+            "topic": "Writing HTML",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS200SeamanFall2019/chapter/2/section/1\">2.1 - HTML Doc Struture</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 10,
+        "fields": {
+            "course": 2,
+            "project": 9,
+            "week": 4,
+            "date": "2019-09-16T06:00:00Z",
+            "lesson": 9,
+            "topic": "Images",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS200SeamanFall2019/chapter/2/section/2\">2.2 - Basic tags</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 11,
+        "fields": {
+            "course": 2,
+            "project": 9,
+            "week": 4,
+            "date": "2019-09-18T06:00:00Z",
+            "lesson": 10,
+            "topic": "Lists & Tables",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS200SeamanFall2019/chapter/2/section/3\">2.3 - Comments</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 12,
+        "fields": {
+            "course": 2,
+            "project": 9,
+            "week": 4,
+            "date": "2019-09-20T06:00:00Z",
+            "lesson": 11,
+            "topic": "Hyperlinks",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS200SeamanFall2019/chapter/2/section/4\">2.4 - Lists</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 13,
+        "fields": {
+            "course": 2,
+            "project": 10,
+            "week": 5,
+            "date": "2019-09-23T06:00:00Z",
+            "lesson": 12,
+            "topic": "Workflow",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS200SeamanFall2019/chapter/2/section/5\">2.5 - Tables</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 14,
+        "fields": {
+            "course": 2,
+            "project": 10,
+            "week": 5,
+            "date": "2019-09-25T06:00:00Z",
+            "lesson": 13,
+            "topic": "Test & Debug",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS200SeamanFall2019/chapter/2/section/6\">2.6 - Images</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 15,
+        "fields": {
+            "course": 2,
+            "project": 10,
+            "week": 5,
+            "date": "2019-09-27T06:00:00Z",
+            "lesson": 1,
+            "topic": "Exam 1",
+            "reading": "2.7 Links"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 16,
+        "fields": {
+            "course": 2,
+            "project": 11,
+            "week": 6,
+            "date": "2019-09-30T06:00:00Z",
+            "lesson": 14,
+            "topic": "Stylesheets",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS200SeamanFall2019/chapter/2/section/8\">2.8 - Special Chars</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 17,
+        "fields": {
+            "course": 2,
+            "project": 11,
+            "week": 6,
+            "date": "2019-10-02T06:00:00Z",
+            "lesson": 15,
+            "topic": "Fonts & Color",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS200SeamanFall2019/chapter/2/section/9\">2.9 - Band web page</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 18,
+        "fields": {
+            "course": 2,
+            "project": 11,
+            "week": 6,
+            "date": "2019-10-04T06:00:00Z",
+            "lesson": 16,
+            "topic": "Margins & Padding",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS200SeamanFall2019/chapter/2/section/10\">2.10 - News article</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 19,
+        "fields": {
+            "course": 2,
+            "project": 12,
+            "week": 7,
+            "date": "2019-10-07T06:00:00Z",
+            "lesson": 17,
+            "topic": "Page Layout",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS200SeamanFall2019/chapter/3/section/1\">3.1 - HTML Containers</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 20,
+        "fields": {
+            "course": 2,
+            "project": 12,
+            "week": 7,
+            "date": "2019-10-09T06:00:00Z",
+            "lesson": 18,
+            "topic": "Page Structure",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS200SeamanFall2019/chapter/3/section/2\">3.2 - Forms</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 21,
+        "fields": {
+            "course": 2,
+            "project": 12,
+            "week": 7,
+            "date": "2019-10-11T06:00:00Z",
+            "lesson": 19,
+            "topic": "Menus",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS200SeamanFall2019/chapter/3/section/3\">3.3 - Common Widgets</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 22,
+        "fields": {
+            "course": 2,
+            "project": 13,
+            "week": 8,
+            "date": "2019-10-14T06:00:00Z",
+            "lesson": 20,
+            "topic": "Templates",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS200SeamanFall2019/chapter/3/section/4\">3.4 - HTML5 Widgets</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 23,
+        "fields": {
+            "course": 2,
+            "project": 13,
+            "week": 8,
+            "date": "2019-10-16T06:00:00Z",
+            "lesson": 21,
+            "topic": "Bootstap",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS200SeamanFall2019/chapter/3/section/5\">3.5 - Audio & Video</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 24,
+        "fields": {
+            "course": 2,
+            "project": 13,
+            "week": 8,
+            "date": "2019-10-18T06:00:00Z",
+            "lesson": 22,
+            "topic": "Forms",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS200SeamanFall2019/chapter/3/section/6\">3.6 - Script and Style</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 25,
+        "fields": {
+            "course": 2,
+            "project": 14,
+            "week": 9,
+            "date": "2019-10-21T06:00:00Z",
+            "lesson": 23,
+            "topic": "Tab Views",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS200SeamanFall2019/chapter/3/section/7\">3.7 - Dev Guidelines</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 26,
+        "fields": {
+            "course": 2,
+            "project": 14,
+            "week": 9,
+            "date": "2019-10-23T06:00:00Z",
+            "lesson": 24,
+            "topic": "Accordion Views",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS200SeamanFall2019/chapter/3/section/8\">3.8 - Restaurant Reviews</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 27,
+        "fields": {
+            "course": 2,
+            "project": 14,
+            "week": 9,
+            "date": "2019-10-25T06:00:00Z",
+            "lesson": 25,
+            "topic": "Carousel",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS200SeamanFall2019/chapter/3/section/9\">3.9 - Practice HTML5</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 28,
+        "fields": {
+            "course": 2,
+            "project": 15,
+            "week": 10,
+            "date": "2019-10-28T06:00:00Z",
+            "lesson": 26,
+            "topic": "Complex UI Design",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS200SeamanFall2019/chapter/4/section/1\">4.1 - CSS in HTML</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 29,
+        "fields": {
+            "course": 2,
+            "project": 15,
+            "week": 10,
+            "date": "2019-10-30T06:00:00Z",
+            "lesson": 27,
+            "topic": "Design Diagrams",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS200SeamanFall2019/chapter/4/section/2\">4.2 - Basic Selectors</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 30,
+        "fields": {
+            "course": 2,
+            "project": 15,
+            "week": 10,
+            "date": "2019-11-01T06:00:00Z",
+            "lesson": 1,
+            "topic": "Exam 2",
+            "reading": "4.3 Advanced Selectors"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 31,
+        "fields": {
+            "course": 2,
+            "project": 16,
+            "week": 11,
+            "date": "2019-11-04T07:00:00Z",
+            "lesson": 28,
+            "topic": "Business Blog",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS200SeamanFall2019/chapter/4/section/4\">4.4 - Common Properties</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 32,
+        "fields": {
+            "course": 2,
+            "project": 16,
+            "week": 11,
+            "date": "2019-11-06T07:00:00Z",
+            "lesson": 29,
+            "topic": "Adobe Photoshop",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS200SeamanFall2019/chapter/4/section/5\">4.5 - Font properties</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 33,
+        "fields": {
+            "course": 2,
+            "project": 16,
+            "week": 11,
+            "date": "2019-11-08T07:00:00Z",
+            "lesson": 30,
+            "topic": "Adobe Illustrator",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS200SeamanFall2019/chapter/4/section/6\">4.6 - Box Model</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 34,
+        "fields": {
+            "course": 2,
+            "project": 17,
+            "week": 12,
+            "date": "2019-11-11T07:00:00Z",
+            "lesson": 31,
+            "topic": "W3Schools",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS200SeamanFall2019/chapter/4/section/7\">4.7 - Styled band page</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 35,
+        "fields": {
+            "course": 2,
+            "project": 17,
+            "week": 12,
+            "date": "2019-11-13T07:00:00Z",
+            "lesson": 32,
+            "topic": "Web Dev Skills",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS200SeamanFall2019/chapter/4/section/8\">4.8 - News CSS</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 36,
+        "fields": {
+            "course": 2,
+            "project": 17,
+            "week": 12,
+            "date": "2019-11-15T07:00:00Z",
+            "lesson": 33,
+            "topic": "Web Design Rules",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS200SeamanFall2019/chapter/4/section/9\">4.9 - Auto loan CSS</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 37,
+        "fields": {
+            "course": 2,
+            "project": 18,
+            "week": 13,
+            "date": "2019-11-18T07:00:00Z",
+            "lesson": 34,
+            "topic": "Slide Show Website",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS200SeamanFall2019/chapter/9/section/1\">9.1 - jQuery</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 38,
+        "fields": {
+            "course": 2,
+            "project": 18,
+            "week": 13,
+            "date": "2019-11-20T07:00:00Z",
+            "lesson": 35,
+            "topic": "Learning",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS200SeamanFall2019/chapter/9/section/2\">9.2 - Selectors</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 39,
+        "fields": {
+            "course": 2,
+            "project": 18,
+            "week": 13,
+            "date": "2019-11-22T07:00:00Z",
+            "lesson": 36,
+            "topic": "Non-profit",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS200SeamanFall2019/chapter/9/section/3\">9.3 - Events</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 40,
+        "fields": {
+            "course": 2,
+            "project": 19,
+            "week": 14,
+            "date": "2019-11-25T07:00:00Z",
+            "lesson": 37,
+            "topic": "Project Planning",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS200SeamanFall2019/chapter/9/section/4\">9.4 - Styles</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 41,
+        "fields": {
+            "course": 2,
+            "project": 19,
+            "week": 14,
+            "date": "2019-11-27T07:00:00Z",
+            "lesson": 1,
+            "topic": "Thanksgiving",
+            "reading": ""
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 42,
+        "fields": {
+            "course": 2,
+            "project": 19,
+            "week": 14,
+            "date": "2019-11-29T07:00:00Z",
+            "lesson": 1,
+            "topic": "Thanksgiving",
+            "reading": ""
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 43,
+        "fields": {
+            "course": 2,
+            "project": 20,
+            "week": 15,
+            "date": "2019-12-02T07:00:00Z",
+            "lesson": 38,
+            "topic": "Project Tracking",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS200SeamanFall2019/chapter/9/section/5\">9.5 - DOM</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 44,
+        "fields": {
+            "course": 2,
+            "project": 20,
+            "week": 15,
+            "date": "2019-12-04T07:00:00Z",
+            "lesson": 39,
+            "topic": "Communication Tools",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS200SeamanFall2019/chapter/9/section/6\">9.6 - Ajax</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 45,
+        "fields": {
+            "course": 2,
+            "project": 20,
+            "week": 15,
+            "date": "2019-12-06T07:00:00Z",
+            "lesson": 40,
+            "topic": "Career Planning",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS200SeamanFall2019/chapter/9/section/8\">9.8 - Weather</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 46,
+        "fields": {
+            "course": 2,
+            "project": 7,
+            "week": 2,
+            "date": "2019-09-02T06:00:00Z",
+            "lesson": -1,
+            "topic": "Labor Day",
+            "reading": ""
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 47,
+        "fields": {
+            "course": 2,
+            "project": 10,
+            "week": 5,
+            "date": "2019-09-27T06:00:00Z",
+            "lesson": -1,
+            "topic": "Exam 1",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS200SeamanFall2019/chapter/2/section/7\">2.7 - Links</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 48,
+        "fields": {
+            "course": 2,
+            "project": 15,
+            "week": 10,
+            "date": "2019-11-01T06:00:00Z",
+            "lesson": -1,
+            "topic": "Exam 2",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS200SeamanFall2019/chapter/4/section/3\">4.3 - Advanced Selectors</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 49,
+        "fields": {
+            "course": 2,
+            "project": 19,
+            "week": 14,
+            "date": "2019-11-27T07:00:00Z",
+            "lesson": -1,
+            "topic": "Thanksgiving",
+            "reading": ""
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 50,
+        "fields": {
+            "course": 2,
+            "project": 19,
+            "week": 14,
+            "date": "2019-11-29T07:00:00Z",
+            "lesson": -1,
+            "topic": "Thanksgiving",
+            "reading": ""
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 96,
+        "fields": {
+            "course": 5,
+            "project": 36,
+            "week": 1,
+            "date": "2019-08-26T06:00:00Z",
+            "lesson": 1,
+            "topic": "Web Hosting",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS350SeamanFall2019/chapter/12/section/1\">12.1 - - Development </a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 97,
+        "fields": {
+            "course": 5,
+            "project": 36,
+            "week": 1,
+            "date": "2019-08-28T06:00:00Z",
+            "lesson": 2,
+            "topic": "Includes",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS350SeamanFall2019/chapter/12/section/2\">12.2 - - Using PHP </a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 98,
+        "fields": {
+            "course": 5,
+            "project": 36,
+            "week": 1,
+            "date": "2019-08-30T06:00:00Z",
+            "lesson": 3,
+            "topic": "Header/Footer",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS350SeamanFall2019/chapter/12/section/3\">12.3 - - Arithmetic</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 99,
+        "fields": {
+            "course": 5,
+            "project": 37,
+            "week": 2,
+            "date": "2019-09-02T06:00:00Z",
+            "lesson": -1,
+            "topic": "Labor Day",
+            "reading": ""
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 100,
+        "fields": {
+            "course": 5,
+            "project": 37,
+            "week": 2,
+            "date": "2019-09-04T06:00:00Z",
+            "lesson": 4,
+            "topic": "Apache",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS350SeamanFall2019/chapter/12/section/4\">12.4 - - Conditionals</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 101,
+        "fields": {
+            "course": 5,
+            "project": 37,
+            "week": 2,
+            "date": "2019-09-06T06:00:00Z",
+            "lesson": 5,
+            "topic": "Test and debug",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS350SeamanFall2019/chapter/12/section/5\">12.5 - - Arrays</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 102,
+        "fields": {
+            "course": 5,
+            "project": 38,
+            "week": 3,
+            "date": "2019-09-09T06:00:00Z",
+            "lesson": 6,
+            "topic": "Version control",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS350SeamanFall2019/chapter/12/section/6\">12.6 - - Functions</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 103,
+        "fields": {
+            "course": 5,
+            "project": 38,
+            "week": 3,
+            "date": "2019-09-11T06:00:00Z",
+            "lesson": 7,
+            "topic": "Design Patterns",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS350SeamanFall2019/chapter/12/section/7\">12.7 - - Includes</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 104,
+        "fields": {
+            "course": 5,
+            "project": 38,
+            "week": 3,
+            "date": "2019-09-13T06:00:00Z",
+            "lesson": 8,
+            "topic": "Object Design",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS350SeamanFall2019/chapter/12/section/8\">12.8 - - Objects</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 105,
+        "fields": {
+            "course": 5,
+            "project": 39,
+            "week": 4,
+            "date": "2019-09-16T06:00:00Z",
+            "lesson": 9,
+            "topic": "Strings",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS350SeamanFall2019/chapter/12/section/9\">12.9 - - Strings</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 106,
+        "fields": {
+            "course": 5,
+            "project": 39,
+            "week": 4,
+            "date": "2019-09-18T06:00:00Z",
+            "lesson": 10,
+            "topic": "Forms",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS350SeamanFall2019/chapter/12/section/10\">12.10 - - Forms</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 107,
+        "fields": {
+            "course": 5,
+            "project": 39,
+            "week": 4,
+            "date": "2019-09-20T06:00:00Z",
+            "lesson": 11,
+            "topic": "Regex",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS350SeamanFall2019/chapter/13/section/1\">13.1 - - Regex</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 108,
+        "fields": {
+            "course": 5,
+            "project": 40,
+            "week": 5,
+            "date": "2019-09-23T06:00:00Z",
+            "lesson": 12,
+            "topic": "Error Handling",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS350SeamanFall2019/chapter/13/section/2\">13.2 - - Errors</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 109,
+        "fields": {
+            "course": 5,
+            "project": 40,
+            "week": 5,
+            "date": "2019-09-25T06:00:00Z",
+            "lesson": 13,
+            "topic": "File Viewer",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS350SeamanFall2019/chapter/13/section/3\">13.3 - - Files</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 110,
+        "fields": {
+            "course": 5,
+            "project": 40,
+            "week": 5,
+            "date": "2019-09-27T06:00:00Z",
+            "lesson": -1,
+            "topic": "",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS350SeamanFall2019/chapter/13/section/4\">13.4 - Cookies</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 111,
+        "fields": {
+            "course": 5,
+            "project": 41,
+            "week": 6,
+            "date": "2019-09-30T06:00:00Z",
+            "lesson": 14,
+            "topic": "Cookies",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS350SeamanFall2019/chapter/13/section/5\">13.5 - - Database</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 112,
+        "fields": {
+            "course": 5,
+            "project": 41,
+            "week": 6,
+            "date": "2019-10-02T06:00:00Z",
+            "lesson": 15,
+            "topic": "SQL Basics",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS350SeamanFall2019/chapter/13/section/6\">13.6 - - MySQL</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 113,
+        "fields": {
+            "course": 5,
+            "project": 41,
+            "week": 6,
+            "date": "2019-10-04T06:00:00Z",
+            "lesson": 16,
+            "topic": "DB Connect",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS350SeamanFall2019/chapter/13/section/7\">13.7 - - MYSQLi</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 114,
+        "fields": {
+            "course": 5,
+            "project": 42,
+            "week": 7,
+            "date": "2019-10-07T06:00:00Z",
+            "lesson": 17,
+            "topic": "DB Query",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS350SeamanFall2019/chapter/13/section/8\">13.8 - - PHP Data Objects</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 115,
+        "fields": {
+            "course": 5,
+            "project": 42,
+            "week": 7,
+            "date": "2019-10-09T06:00:00Z",
+            "lesson": 18,
+            "topic": "DB Insert",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS350SeamanFall2019/chapter/13/section/9\">13.9 - - Users</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 116,
+        "fields": {
+            "course": 5,
+            "project": 42,
+            "week": 7,
+            "date": "2019-10-11T06:00:00Z",
+            "lesson": 19,
+            "topic": "Users",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS350SeamanFall2019/chapter/13/section/10\">13.10 - APIs</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 117,
+        "fields": {
+            "course": 5,
+            "project": 43,
+            "week": 8,
+            "date": "2019-10-14T06:00:00Z",
+            "lesson": 20,
+            "topic": "Files & Directories",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS350SeamanFall2019/chapter/14/section/1\">14.1 - Relational Databases</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 118,
+        "fields": {
+            "course": 5,
+            "project": 43,
+            "week": 8,
+            "date": "2019-10-16T06:00:00Z",
+            "lesson": 21,
+            "topic": "Pair Programming",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS350SeamanFall2019/chapter/14/section/2\">14.2 - SQL</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 119,
+        "fields": {
+            "course": 5,
+            "project": 43,
+            "week": 8,
+            "date": "2019-10-18T06:00:00Z",
+            "lesson": 22,
+            "topic": "Controller Design",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS350SeamanFall2019/chapter/14/section/3\">14.3 - Tables</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 120,
+        "fields": {
+            "course": 5,
+            "project": 44,
+            "week": 9,
+            "date": "2019-10-21T06:00:00Z",
+            "lesson": 23,
+            "topic": "Templates Design",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS350SeamanFall2019/chapter/14/section/4\">14.4 - Select</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 121,
+        "fields": {
+            "course": 5,
+            "project": 44,
+            "week": 9,
+            "date": "2019-10-23T06:00:00Z",
+            "lesson": 24,
+            "topic": "Page Templates",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS350SeamanFall2019/chapter/14/section/6\">14.6 - SQL Functions</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 122,
+        "fields": {
+            "course": 5,
+            "project": 44,
+            "week": 9,
+            "date": "2019-10-25T06:00:00Z",
+            "lesson": 25,
+            "topic": "DOM",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS350SeamanFall2019/chapter/14/section/7\">14.7 - Joining Tables</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 123,
+        "fields": {
+            "course": 5,
+            "project": 45,
+            "week": 10,
+            "date": "2019-10-28T06:00:00Z",
+            "lesson": 26,
+            "topic": "Ajax",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS350SeamanFall2019/chapter/14/section/8\">14.8 - Modifying Rows</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 124,
+        "fields": {
+            "course": 5,
+            "project": 45,
+            "week": 10,
+            "date": "2019-10-30T06:00:00Z",
+            "lesson": 27,
+            "topic": "Plugins",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS350SeamanFall2019/chapter/9/section/1\">9.1 - jQuery</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 125,
+        "fields": {
+            "course": 5,
+            "project": 45,
+            "week": 10,
+            "date": "2019-11-01T06:00:00Z",
+            "lesson": -1,
+            "topic": "",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS350SeamanFall2019/chapter/9/section/2\">9.2 - Selectors</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 126,
+        "fields": {
+            "course": 5,
+            "project": 46,
+            "week": 11,
+            "date": "2019-11-04T07:00:00Z",
+            "lesson": 28,
+            "topic": "Music Manager App",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS350SeamanFall2019/chapter/9/section/3\">9.3 - Events</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 127,
+        "fields": {
+            "course": 5,
+            "project": 46,
+            "week": 11,
+            "date": "2019-11-06T07:00:00Z",
+            "lesson": 29,
+            "topic": "Data Application",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS350SeamanFall2019/chapter/9/section/4\">9.4 - Styles</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 128,
+        "fields": {
+            "course": 5,
+            "project": 46,
+            "week": 11,
+            "date": "2019-11-08T07:00:00Z",
+            "lesson": 30,
+            "topic": "Data Update",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS350SeamanFall2019/chapter/9/section/5\">9.5 - DOM</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 129,
+        "fields": {
+            "course": 5,
+            "project": 47,
+            "week": 12,
+            "date": "2019-11-11T07:00:00Z",
+            "lesson": 31,
+            "topic": "Data Encapsulation",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS350SeamanFall2019/chapter/9/section/6\">9.6 - Ajax</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 130,
+        "fields": {
+            "course": 5,
+            "project": 47,
+            "week": 12,
+            "date": "2019-11-13T07:00:00Z",
+            "lesson": 32,
+            "topic": "User Authentication",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS350SeamanFall2019/chapter/9/section/8\">9.8 - Weather</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 131,
+        "fields": {
+            "course": 5,
+            "project": 47,
+            "week": 12,
+            "date": "2019-11-15T07:00:00Z",
+            "lesson": 33,
+            "topic": "Design Review App",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS350SeamanFall2019/chapter/9/section/9\">9.9 - Currency</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 132,
+        "fields": {
+            "course": 5,
+            "project": 48,
+            "week": 13,
+            "date": "2019-11-18T07:00:00Z",
+            "lesson": 34,
+            "topic": "Notes App",
+            "reading": "<a href=\"https://learn.zybooks.com/zybook/UNCOBACS350SeamanFall2019/chapter/16/section/1\">16.1 - Debugging</a>"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 133,
+        "fields": {
+            "course": 5,
+            "project": 48,
+            "week": 13,
+            "date": "2019-11-20T07:00:00Z",
+            "lesson": 35,
+            "topic": "App Structure",
+            "reading": "Software Lifecycle"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 134,
+        "fields": {
+            "course": 5,
+            "project": 49,
+            "week": 14,
+            "date": "2019-11-22T07:00:00Z",
+            "lesson": 36,
+            "topic": "Markdown Docs",
+            "reading": "Requirements"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 135,
+        "fields": {
+            "course": 5,
+            "project": 49,
+            "week": 14,
+            "date": "2019-11-25T07:00:00Z",
+            "lesson": 37,
+            "topic": "Slide show",
+            "reading": "Design"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 136,
+        "fields": {
+            "course": 5,
+            "project": 49,
+            "week": 14,
+            "date": "2019-11-27T07:00:00Z",
+            "lesson": -1,
+            "topic": "Thanksgiving",
+            "reading": ""
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 137,
+        "fields": {
+            "course": 5,
+            "project": 49,
+            "week": 14,
+            "date": "2019-11-29T07:00:00Z",
+            "lesson": -1,
+            "topic": "Thanksgiving",
+            "reading": ""
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 138,
+        "fields": {
+            "course": 5,
+            "project": 50,
+            "week": 15,
+            "date": "2019-12-02T07:00:00Z",
+            "lesson": 38,
+            "topic": "Final Project",
+            "reading": "Code"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 139,
+        "fields": {
+            "course": 5,
+            "project": 50,
+            "week": 15,
+            "date": "2019-12-04T07:00:00Z",
+            "lesson": 39,
+            "topic": "Final Project",
+            "reading": "Test"
+        }
+    },
+    {
+        "model": "unc.lesson",
+        "pk": 140,
+        "fields": {
+            "course": 5,
+            "project": 50,
+            "week": 15,
+            "date": "2019-12-06T07:00:00Z",
+            "lesson": 40,
+            "topic": "Final Project",
+            "reading": "Devops"
+        }
+    }
+]
