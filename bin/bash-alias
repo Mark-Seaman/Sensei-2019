@@ -67,6 +67,8 @@ alias tst='dj tst '
 
 alias u='cd ..; l'
 alias unc='cd $u; l'
+alias unc2='cd $u/bacs200; l'
+alias unc3='cd $u/bacs350; l'
 
 alias vc='dj vc'
 

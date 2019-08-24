@@ -4,21 +4,21 @@ from unc.bacs import *
 
 
 def quick_test():
-
-    move_students()
-
-    x = list_students('cs350')
+    import_all_students()
     # x = list_course_content()
-    print(x)
+    # x = unc_student_test()
+    # print(x)
 
 
-def move_students():
+def import_all_students():
+    # import_students('bacs350')
+    import_students('bacs200')
+
+
+def delete_students():
     c = create_course('cs350', 'Software Engineering (under development)', 'Mark Seaman',
                   'This class is for test purposes only')
-    print(c)
-    for s in Student.objects.all():
-        if s.course.name != 'cs350':
-            print('Move '+s.name)
+    Student.objects.all().delete()
 
 
 def show_unc_data():

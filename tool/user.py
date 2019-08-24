@@ -3,10 +3,7 @@ from django.contrib.auth.models import User
 from tool.text import text_join
 
 
-def add_user_login(name, email, password='student'):
-    assert ' ' in name
-    first = name.split(' ')[0]
-    last = ' '.join(name.split(' ')[1:])
+def add_user_login(first, last, email, password='student'):
     username = email[:email.index('@')].replace('mark.b.seaman+', '')
 
     u = User.objects.get_or_create(username=username)[0]

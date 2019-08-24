@@ -30,12 +30,12 @@ def add_lesson(course, row):
     return lesson
 
 
-def add_student(name, email, domain, course):
+def add_student(first, last, email, domain, course):
     course = Course.lookup(course)
+    name = '%s %s' % (first, last)
     s = Student.objects.get_or_create(name=name, email=email, course=course)[0]
-    u = add_user_login(name, email)
+    u = add_user_login(first, last, email)
     s.user = u
-    # s.course = course
     s.domain = domain
     s.save()
     return s
@@ -73,12 +73,24 @@ def import_students(course):
         with open(data_file) as f:
             return [row for row in reader(f)]
 
-    def display_student(course, row):
-        print('%s %-40s %-15s %s' % (course, row[0], row[2], row[3]))
+    def display_student(course, first, last, email):
+        print('%s, "%s_%s", %s' % (course, first, last, email))
 
     table = read_students(course)
-    for row in table:
-        display_student(course, row)
+    if course == 'bacs200':
+        for row in table[2:]:
+            # print(row)
+            name = row[0].split(' ')
+            first, last, email = name[0], ' '.join(name[1:]), row[3]
+            display_student(course, first, last, email)
+            # add_student(first, last, email, 'No Domain Configured', course)
+    else:
+        for row in table[2:-1]:
+            # print(row)
+            name = row[0].split(' ')
+            first, last, email = name[0], ' '.join(name[1:]), row[3]
+            display_student(course, first, last, email)
+            # add_student(first, last, email, 'No Domain Configured', course)
 
 
 def import_schedule(course):
@@ -90,12 +102,12 @@ def import_schedule(course):
 
 def import_test_students():
     course = 'cs350'
-    add_student('Tony Stark',       'mark.b.seaman+iron_man@gmail.com',     r'https://unco-bacs.org/iron_man',      course)
-    add_student('Natasha Romanov ', 'mark.b.seaman+black_widow@gmail.com',  r'https://unco-bacs.org/black_widow',   course)
-    add_student('Bruce Banner',     'mark.b.seaman+hulk@gmail.com',         r'https://unco-bacs.org/hulk',          course)
-    add_student('Steve Rogers',     'mark.b.seaman+cap@gmail.com',          r'https://unco-bacs.org/cap_america',   course)
-    add_student('Carol Danvers',    'mark.b.seaman+marvel@gmail.com',       r'https://unco-bacs.org/cap_marvel',    course)
-    add_student('Wanda Maximoff',   'mark.b.seaman+witch@gmail.com',        r'https://unco-bacs.org/scarlet_witch', course)
+    add_student('Tony', 'Stark',       'mark.b.seaman+iron_man@gmail.com',     r'https://unco-bacs.org/iron_man',      course)
+    add_student('Natasha', 'Romanov ', 'mark.b.seaman+black_widow@gmail.com',  r'https://unco-bacs.org/black_widow',   course)
+    add_student('Bruce', 'Banner',     'mark.b.seaman+hulk@gmail.com',         r'https://unco-bacs.org/hulk',          course)
+    add_student('Steve', 'Rogers',     'mark.b.seaman+cap@gmail.com',          r'https://unco-bacs.org/cap_america',   course)
+    add_student('Carol', 'Danvers',    'mark.b.seaman+marvel@gmail.com',       r'https://unco-bacs.org/cap_marvel',    course)
+    add_student('Wanda', 'Maximoff',   'mark.b.seaman+witch@gmail.com',        r'https://unco-bacs.org/scarlet_witch', course)
 
 
 def initialize_data():
