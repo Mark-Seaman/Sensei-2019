@@ -18,7 +18,6 @@ TEST_DIR = join(BASE_DIR, 'test')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = node() != 'sensei-server'
 
-# assert False
 
 
 # How hosts access the server
