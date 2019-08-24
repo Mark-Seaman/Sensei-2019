@@ -5,20 +5,28 @@ from unc.bacs import *
 
 def quick_test():
     import_all_students()
+    # x = list_users()
+
     # x = list_course_content()
-    # x = unc_student_test()
-    # print(x)
+    x = unc_student_test()
+    print(x)
 
 
 def import_all_students():
-    # import_students('bacs350')
+    import_students('bacs350')
     import_students('bacs200')
 
 
 def delete_students():
     c = create_course('cs350', 'Software Engineering (under development)', 'Mark Seaman',
                   'This class is for test purposes only')
+    print(c)
     Student.objects.all().delete()
+
+
+def show_course_content():
+    x = list_course_content()
+    print(x)
 
 
 def show_unc_data():

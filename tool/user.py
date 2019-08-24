@@ -24,7 +24,7 @@ def change_password(username, password):
 
 def list_user_login(user):
     name = user.first_name + ' ' + user.last_name
-    return '%-2d %-20s %-20s %-30s ' % (user.pk, name, user.username, user.email)
+    return '%-2d %-30s %-20s %-30s ' % (user.pk, name, user.username, user.email)
 
 
 def list_users():

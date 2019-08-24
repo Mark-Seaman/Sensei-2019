@@ -83,14 +83,14 @@ def import_students(course):
             name = row[0].split(' ')
             first, last, email = name[0], ' '.join(name[1:]), row[3]
             display_student(course, first, last, email)
-            # add_student(first, last, email, 'No Domain Configured', course)
+            add_student(first, last, email, 'No Domain Configured', course)
     else:
         for row in table[2:-1]:
             # print(row)
             name = row[0].split(' ')
             first, last, email = name[0], ' '.join(name[1:]), row[3]
             display_student(course, first, last, email)
-            # add_student(first, last, email, 'No Domain Configured', course)
+            add_student(first, last, email, 'No Domain Configured', course)
 
 
 def import_schedule(course):
