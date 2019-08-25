@@ -3,6 +3,8 @@ from datetime import datetime, date, timedelta
 
 # ------------------------------
 # Command Interpreter
+from django.utils.timezone import make_aware
+
 
 def days_command(options):
     if options:
@@ -146,3 +148,7 @@ if __name__ == '__main__':
     # num_weeks = 17
     # days_weeks(start, num_weeks)
     print_recent_dates()
+
+
+def due_date(due):
+    return make_aware(datetime.strptime(due, "%Y-%m-%d"))

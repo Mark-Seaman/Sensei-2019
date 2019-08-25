@@ -8,13 +8,10 @@ from unc.projects import assign_project_1, show_assignments
 DEVELOPMENT SCRIPT
 
 * student login
-    * learn from S1 code
-    * design UNC BACS login form
-    * redirect to login
-    * logout
     * student login status
     * improve login sequence for students
     * anonymous access
+    * select the class based on the student
     
 '''
 

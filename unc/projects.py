@@ -1,16 +1,11 @@
-from datetime import datetime
 from django.utils.timezone import make_aware, now
 from os.path import join
 
-from tool.days import parse_date, date_str
+from tool.days import parse_date, date_str, due_date
 from tool.page import open_browser_dom, close_browser_dom, capture_page, capture_page_features, display_test_results
 from tool.shell import banner
 from tool.text import text_join
-from unc.models import Requirement, Project, Course, Assignment
-
-
-def due_date(due):
-    return make_aware(datetime.strptime(due, "%Y-%m-%d"))
+from unc.models import Requirement, Project, Course, Assignment, Lesson
 
 
 def add_assignment(course, student, project, due):
@@ -117,6 +112,25 @@ def create_project_record(course, project_num, page, requirements):
     p.save()
     for i, r in enumerate(requirements):
         add_requirement(p, i + 1, r[0], r[1])
+
+
+def get_assignments(student):
+    def assigned(a):
+        link = '<a href="/unc/%s/project/%02d">Project #%s</a>' % (
+        a.project.course.name, a.project.num, a.project.title)
+        return dict(title=link, due=date_str(a.due), state=a.state)
+
+    return [assigned(a) for a in Assignment.objects.filter(student=student)]
+
+
+def get_readings(student):
+    def assigned(a):
+        return dict(title="Reading - %s" % a.reading, due=date_str(a.date), state='Not Completed')
+
+    def lessons(course, date):
+        return Lesson.query(course).filter(date__lte=due_date(date))
+
+    return [assigned(a) for a in lessons(student.course.name, '2019-08-30')]
 
 
 def list_assignments(course):

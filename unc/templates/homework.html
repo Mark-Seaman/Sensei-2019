@@ -1,0 +1,24 @@
+<div class="card">
+    <div class="card-header">
+        {{ title }}
+    </div>
+    <div class="card-body card-padding">
+        {{ student }}
+
+        <table class="table table-hover">
+            <th>Assignment</th>
+            <th>Due Date</th>
+            <th>Status</th>
+            <th></th>
+            {% for a in assignments %}
+                <tr>
+                    <td>{% autoescape off %}{{ a.title }}{% endautoescape %}</td>
+                    <td>{{ a.due }}</td>
+                    <td>{{ a.state }}</td>
+                    <td></td>
+                </tr>
+            {% endfor %}
+        </table>
+
+    </div>
+</div>

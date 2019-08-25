@@ -1,12 +1,20 @@
+from django.contrib.auth import logout
+# from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.template.loader import render_to_string
 from django.views.generic import RedirectView, TemplateView, UpdateView
-from django.contrib.auth import logout
 
 from mybook.mybook import document_text
 from tool.log import log_page
 from unc.bacs import schedule_data, slides_markdown, student_data, weekly_agenda, weekly_lessons, get_student
 from unc.models import Student
-from unc.projects import test_project_page
+from unc.projects import test_project_page, get_assignments, get_readings
+
+
+def render_homework_scorecard(student):
+    title = '%s Homework Scorecard' % student.name
+    # return render_to_string('homework.html', dict(title=title, assignments=))
+    return render_to_string('homework.html', dict(title=title, assignments=get_readings(student) + get_assignments(student)))
 
 
 def render_student_info(student):
@@ -33,11 +41,8 @@ def render_course_agenda(course, student):
     return [(w['week'], render_weekly_agenda(w, student)) for w in weeks]
 
 
-class UncPage(TemplateView):
+class UncPage(LoginRequiredMixin, TemplateView):
     template_name = 'unc_theme.html'
-
-    # def get_header(self):
-
 
     def get_context_data(self, **kwargs):
         log_page(self.request)
@@ -47,10 +52,8 @@ class UncPage(TemplateView):
         else:
             name = 'Not logged in'
         course = self.kwargs.get('course','NONE')
-        title = self.kwargs.get('title', 'Index')
-        # kwargs['menu'] = unc_menu(course, title)
-        course = 'BACS 350' if course=='bacs350' else 'BACS 200'
-        href = '/unc/bacs200'
+        course = 'BACS 350' if course == 'bacs350' else 'BACS 200'
+        href = '/unc/'+course
         header = 'UNC %s' % course, name, "/static/images/unc/Bear.200.png", 'UNC Bear', href
         kwargs['header'] = dict(title=header[0], subtitle=header[1], logo=header[2], logo_text=header[3], href=header[4])
         kwargs['student'] = student
@@ -76,6 +79,7 @@ class UncHomework(UncPage):
         # kwargs['card'] = render_to_string('card.html', dict(title='Card Title', body='Card Body'))
         kwargs['weeks'] = render_course_agenda(kwargs['course'], kwargs['student'])
         kwargs['student_info'] = render_student_info(kwargs['student'])
+        kwargs['homework'] = render_homework_scorecard(kwargs['student'])
         return kwargs
 
 
