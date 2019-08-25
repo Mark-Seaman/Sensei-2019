@@ -7,6 +7,7 @@ from .views import *
 urlpatterns = [
 
     # Authentication
+    url(r'^logout', UncLogout.as_view()),
     url(r'^', include('django.contrib.auth.urls')),
 
     # url(r'^(?P<course>[-_ \w]+)/(?P<title>[\w/\-_.]*)/project$', UncProject.as_view()),

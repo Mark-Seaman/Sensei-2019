@@ -1,5 +1,6 @@
 from django.template.loader import render_to_string
-from django.views.generic import TemplateView, UpdateView
+from django.views.generic import RedirectView, TemplateView, UpdateView
+from django.contrib.auth import logout
 
 from mybook.mybook import document_text
 from tool.log import log_page
@@ -36,7 +37,7 @@ class UncPage(TemplateView):
     template_name = 'unc_theme.html'
 
     # def get_header(self):
-        
+
 
     def get_context_data(self, **kwargs):
         log_page(self.request)
@@ -76,6 +77,13 @@ class UncHomework(UncPage):
         kwargs['weeks'] = render_course_agenda(kwargs['course'], kwargs['student'])
         kwargs['student_info'] = render_student_info(kwargs['student'])
         return kwargs
+
+
+class UncLogout(RedirectView):
+
+    def get_redirect_url(self, *args, **kwargs):
+        logout(self.request)
+        return '/unc/login/'
 
 
 class UncProject(UncPage):
