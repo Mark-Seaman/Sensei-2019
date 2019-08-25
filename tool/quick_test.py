@@ -4,17 +4,14 @@ from unc.bacs import *
 
 
 def quick_test():
-    import_all_students()
-    # x = list_users()
-
-    # x = list_course_content()
-    x = unc_student_test()
+    x = list_course_content()
     print(x)
 
 
 def import_all_students():
     import_students('bacs350')
     import_students('bacs200')
+    return unc_student_test()
 
 
 def delete_students():
@@ -38,6 +35,7 @@ def show_unc_data():
     # Students
     x = Student.objects.all().delete()
     x = import_test_students()
+    x = import_all_students()
     x = unc_student_test()
     x = add_student('Steve Rogers', 'mark.b.seaman+cap@gmail.com', r'https://unco-bacs.org/cap_america', 'cs350')
     x = Student.objects.get('Steve Rogers')
