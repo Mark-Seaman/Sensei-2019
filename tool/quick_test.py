@@ -1,6 +1,5 @@
-from test.unc_test import *
-from unc.models import *
 from unc.bacs import *
+from test.unc_test import *
 
 
 def quick_test():

@@ -4,39 +4,42 @@
 {% block content %}
 
     {% if students %}
-        <h2>Student Domains</h2>
+        <div class="page">
+            <h2>Student Domains</h2>
 
-        <table class="table table-hover">
-
-            <tr>
-                <th>Student</th>
-                <th>Email</th>
-                <th>Home</th>
-            </tr>
-            {% for student in students %}
+            <table class="table table-hover">
 
                 <tr>
-                    <td>
-                        {{ student.pk }}
-                    </td>
-                    <td>
-                        {{ student.name }}
-                    </td>
-                    <td>
-                        {{ student.email }}
-                    </td>
-                    <td>
-                        <a href="{{ student.domain }}/index.html" target="_blank">{{ student.domain }}/index.html</a>
-                    </td>
+                    <th>Id</th>
+                    <th>Student</th>
+                    <th>Email</th>
+                    <th>Domain</th>
                 </tr>
+                {% for student in students %}
 
-            {% endfor %}
+                    <tr>
+                        <td>
+                            <a href="/unc/student/{{ student.pk }}">{{ student.pk }}</a>
+                        </td>
+                        <td>
+                            {{ student.name }}
+                        </td>
+                        <td>
+                            {{ student.email }}
+                        </td>
+                        <td>
+                            <a href="{{ student.domain }}/index.html"
+                               target="_blank">{{ student.domain }}/index.html</a>
+                        </td>
+                    </tr>
 
-        </table>
+                {% endfor %}
+
+            </table>
+        </div>
 
     {% else %}
         <h1>No Student Domains registered</h1>
     {% endif %}
-
 
 {% endblock %}
