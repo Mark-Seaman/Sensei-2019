@@ -1,6 +1,6 @@
 from django.db import models
-from django.utils.timezone import now
-from datetime import datetime
+from django.utils import timezone
+# from datetime import datetime
 from tool.days import date_str
 from django.contrib.auth.models import User
 
@@ -54,7 +54,7 @@ class Project(models.Model):
     num = models.IntegerField()
     title = models.CharField(max_length=100)
     page = models.CharField(max_length=100, editable=False)
-    due = models.DateTimeField(default=datetime.now(), null=True, editable=False)
+    due = models.DateTimeField(null=True, editable=False)
     instructions = models.URLField()
 
     def __str__(self):
@@ -115,15 +115,26 @@ class Assignment(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
     score = models.IntegerField()
-    date = models.DateTimeField(editable=False)
+    date = models.DateTimeField(null=True, editable=False)
+    due = models.DateTimeField(null=True, editable=False)
     status = models.IntegerField()
 
     def __str__(self):
-        return '%d. %-30s Project %-10s %-15s %s' % (self.pk, self.student.name, self.project.num, date_str(self.date), self.status)
+        return '%4d.  %-30s  %-10s %-15s %-15s %s' % (self.pk, self.student.name, self.project.num, date_str(self.due), self.state, date_str(self.date))
 
     @staticmethod
     def list():
         return [str(o) for o in Assignment.objects.all()]
+
+    @property
+    def state(self):
+        if self.status == 0:
+            label = 'Assigned'
+        elif self.status == 1:
+            label = 'Tested'
+        elif self.status == 2:
+            label = 'Reviewed'
+        return label
 
 
 class Lesson(models.Model):

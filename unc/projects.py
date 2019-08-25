@@ -9,22 +9,30 @@ from tool.text import text_join
 from unc.models import Requirement, Project, Course, Assignment
 
 
-def add_assignment(course, student, project):
-    c = Course.lookup(course)
-    p = Project.objects.get(course=c, num=int(project))
-    date = p.due
-    Assignment.objects.get_or_create(project=p,
-                                     student=student,
-                                     score=0,
-                                     date=date,
-                                     status=0)
+def due_date(due):
+    return make_aware(datetime.strptime(due, "%Y-%m-%d"))
+
+
+def add_assignment(course, student, project, due):
+    p = Project.lookup(course, project)
+    a = Assignment.objects.get_or_create(project=p, student=student, score=0, due=due_date(due), status=0)[0]
+    a.date = now()
+    a.save()
+
+
+def assignment_due(course, student, project, due):
+    p = Project.lookup(course, project)
+    a = Assignment.objects.get(project=p, student=student)
+    a.due = due_date(due)
+    a.score = 0
+    a.status = 0
+    a.save()
 
 
 def add_project(course, row):
-
     def create_project(course, num, title, page, due, instructions):
         course = Course.objects.get(name=course)
-        due = make_aware(datetime.strptime(due, "%Y-%m-%d"))
+        due = due_date(due)
         project = Project.objects.get_or_create(course=course, num=num)[0]
         project.title = title
         project.page = page
@@ -52,8 +60,8 @@ def add_requirement(project, id, selector, transform):
 
 def add_test_assignments():
     course = 'cs350'
-    assign_homework(course, '01')
-    assign_homework(course, '02')
+    assign_homework(course, '01', '2019-08-30')
+    assign_homework(course, '02', '2019-09-06')
     # clear_assignments()
 
 
@@ -64,9 +72,9 @@ def approve_requirements(course, id):
         r.save()
 
 
-def assign_homework(course, project):
+def assign_homework(course, project, due):
     for s in Course.students(course):
-        add_assignment(course, s, project)
+        add_assignment(course, s, project, due)
 
 
 def fake_project_requirements():
@@ -88,8 +96,8 @@ def fake_project_requirements():
 
 
 def build_projects(course):
-    create_project_record(course, '01', 'index.php',            fake_project_requirements())
-    create_project_record(course, '02', 'bacs350/index.html',   fake_project_requirements())
+    create_project_record(course, '01', 'index.php', fake_project_requirements())
+    create_project_record(course, '02', 'bacs350/index.html', fake_project_requirements())
     # create_project_record(course, '03', 'bacs350/profile.html', bacs200_project1_requirements())
     return list_project_details(course)
 
@@ -107,7 +115,7 @@ def create_project_record(course, project_num, page, requirements):
 
 
 def list_assignments(course):
-    assigned = ['\n\nAssignments for %s:' % course]
+    assigned = ['\n\nAssignments for %s:           project          due            status         last update\n' % course]
     for h in Assignment.objects.filter(project__course__name=course):
         assigned.append(str(h))
     return text_join(assigned)
@@ -141,5 +149,3 @@ def validate_project_page(dom, student, project):
 
 def validate_unc_project(dom, student, project, ):
     return banner('PROJECT %s' % project) + display_test_results(validate_project_page(dom, student, project))
-
-
