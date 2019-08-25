@@ -118,7 +118,7 @@ STATICFILES_DIRS = (BASE_DIR + '/static',)
 
 # Login Pages
 
-LOGIN_URL='/admin/login/'
+LOGIN_URL='/unc/login/'
 LOGIN_REDIRECT_URL = '/'
 
 

@@ -1,13 +1,13 @@
 from django.conf.urls import url
-from django.contrib.auth import login, logout
+# from django.contrib import auth
+from django.urls import include
 
 from .views import *
 
 urlpatterns = [
 
     # Authentication
-    url(r'^login',                              login, {'template_name': 'mybook_login.html'}, name='login'),
-    url(r'^logout$',                            logout, {'next_page': '/login'}),
+    url(r'^', include('django.contrib.auth.urls')),
 
     # url(r'^(?P<course>[-_ \w]+)/(?P<title>[\w/\-_.]*)/project$', UncProject.as_view()),
     # url(r'^(?P<course>[-_ \w]+)/(?P<week>\d\d)/(?P<title>[\w/\-_.]*)$',        UncWeek.as_view()),

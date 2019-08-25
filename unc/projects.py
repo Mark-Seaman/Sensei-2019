@@ -77,6 +77,11 @@ def assign_homework(course, project, due):
         add_assignment(course, s, project, due)
 
 
+def assign_project_1():
+    for c in Course.all():
+        assign_homework(c, '01', '2019-08-30')
+
+
 def fake_project_requirements():
     return [
         ('html', 'count_chars(r.actual, 10000, 20000)'),
@@ -130,6 +135,10 @@ def list_project_details(course):
     return text_join(results)
 
 
+def show_assignments():
+    return text_join([list_assignments(c) for c in Course.all()])
+
+
 def test_project_page(student, project):
     if student:
         dom = open_browser_dom()
@@ -149,3 +158,5 @@ def validate_project_page(dom, student, project):
 
 def validate_unc_project(dom, student, project, ):
     return banner('PROJECT %s' % project) + display_test_results(validate_project_page(dom, student, project))
+
+

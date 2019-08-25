@@ -1,48 +1,28 @@
 from unc.bacs import *
+from unc.bacs import import_all_students
 from unc.projects import *
 from test.unc_test import *
+from unc.projects import assign_project_1, show_assignments
 
 '''
 DEVELOPMENT SCRIPT
 
-* assign homework
-    * display assignments
-    * add due date to assignments
-    * assign Project #1 to CS350
-    * assign Reading #1-3 to CS350
-    * assign Project #1 a,b,c and Readings 1-3
-    * design Project #1 a,b,c instructions and requirements
-    * homework dashboard
+* student login
+    * learn from S1 code
+    * design UNC BACS login form
+    * redirect to login
+    * logout
+    * student login status
+    * improve login sequence for students
+    * anonymous access
+    
 '''
 
 
 def quick_test():
-    # x = Student.objects.get(pk=52).delete()
-    # x = list_students('bacs350')
-
-    course = 'bacs200'
-    # Assignment.objects.all().delete()
-    assign_homework(course, '01', '2019-08-30')
-    x = list_assignments(course)
-
-    # x = unc_assignment_test()
-
-    # x = import_all_students()
-
+    assign_project_1()
+    x = show_assignments()
     print(x)
-
-
-def import_all_students():
-    import_students('bacs350')
-    import_students('bacs200')
-    return unc_student_test()
-
-
-def delete_students():
-    c = create_course('cs350', 'Software Engineering (under development)', 'Mark Seaman',
-                  'This class is for test purposes only')
-    print(c)
-    Student.objects.filter(course=c).delete()
 
 
 def show_course_content():

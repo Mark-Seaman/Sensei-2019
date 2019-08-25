@@ -1,0 +1,70 @@
+{% extends "unc_theme.html" %}
+
+
+{% block header %}
+
+    <header>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-8">
+                    <h1>UNC BACS Student</h1>
+                    <h2>Login</h2>
+                </div>
+                <div class="logo col-sm-4">
+                    <div class="pull-right">
+                        <img class="img-rounded img-responsive" src="{{ header.logo }}"
+                             alt="{{ header.logo_text }}" width="150px">
+                        <p><a href="/unc/logout/">Logout</a></p>
+                        <p><a href="/unc/login/?next=/">Login</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="login-form">
+
+        <h1>Log In</h1>
+
+        {% if form.errors %}
+            <p style="color: red">
+                <i class="hm-icon zmdi zmdi-alert-triangle"></i>
+                &nbsp; Your username and password didn't match.
+                Please try again.</p>
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="form-group">
+
+                <div class="fg-line">
+                    <span class="fg-label">{{ form.username.label_tag }}</span>
+                    <span class="fg-input"><input type="text" class="form-control input" name="username"></span>
+                </div>
+
+                <div class="fg-line">
+                    <span class="fg-label">{{ form.password.label_tag }}</span>
+                    <span class="fg-input"><input type="password" class="form-control input" name="password"></span>
+                    {#{{ form.password }}#}
+                </div>
+
+                <div class="fg-line">
+                    <button class="btn btn-primary fg-button">Log In</button>
+                    <button class="btn btn-primary fg-button" href="/register">Sign Up</button>
+                </div>
+
+                <input type="hidden" name="next" value="{{ next }}"/>
+
+            </div>
+
+        </form>
+    </div>
+
+{% endblock %}
+

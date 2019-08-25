@@ -157,9 +157,25 @@ pre {
     background-color: #0E3D65;
 }
 
+.form-error {
+    color: red;
+}
+
+.fg-line {
+    margin: 2em 20%;
+}
+
 .lesson-table {
     margin: 5%;
     padding: 5%;
+}
+
+.login-form {
+    border: 1px solid black;
+    box-shadow: 2px 2px 5px grey;
+    padding: 2em;
+    margin: auto;
+    max-width: 600px;
 }
 
 .page {

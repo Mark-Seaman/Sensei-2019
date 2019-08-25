@@ -4,13 +4,13 @@ from tool.text import text_join, text_lines
 from tool.user import list_users
 from unc.bacs import import_schedule, import_test_students, initialize_data, list_course_content, list_students, \
     show_course_files, zybooks_link, unc_courses
-from unc.projects import add_test_assignments, build_projects, list_assignments, validate_unc_project
+from unc.projects import add_test_assignments, build_projects, show_assignments, validate_unc_project
 from unc.models import Student
 
 
 def unc_assignment_test():
     add_test_assignments()
-    return text_join([list_assignments(course) for course in unc_courses()])
+    return show_assignments()
 
 
 def unc_course_files_test():

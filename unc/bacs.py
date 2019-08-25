@@ -66,6 +66,12 @@ def get_student(request):
         log_exception('Cannot find student record, %s' % str(request.user))
 
 
+def import_all_students():
+    import_students('bacs350')
+    import_students('bacs200')
+    print(text_join([list_students(c) for c in unc_courses()]))
+
+
 def import_students(course):
 
     def read_students(course):
@@ -186,4 +192,12 @@ def show_course_files(course):
 
 
 def unc_courses():
-    return ['bacs200', 'bacs350', 'cs350']
+    return Course.all()
+
+
+# def delete_students():
+#     c = create_course('cs350', 'Software Engineering (under development)', 'Mark Seaman',
+#                   'This class is for test purposes only')
+#     print(c)
+#     Student.objects.filter(course=c).delete()
+

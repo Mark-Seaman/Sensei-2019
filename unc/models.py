@@ -1,6 +1,4 @@
 from django.db import models
-from django.utils import timezone
-# from datetime import datetime
 from tool.days import date_str
 from django.contrib.auth.models import User
 
@@ -15,6 +13,10 @@ class Course(models.Model):
 
     def __str__(self):
         return '%4d %-10s %-44s %-20s %s' % (self.pk, self.name, self.title, self.teacher, self.description)
+
+    @staticmethod
+    def all():
+        return [c.name for c in Course.objects.all()]
 
     @staticmethod
     def lookup(course):
