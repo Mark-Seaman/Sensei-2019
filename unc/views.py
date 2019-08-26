@@ -52,8 +52,8 @@ class UncPage(LoginRequiredMixin, TemplateView):
         else:
             name = 'Not logged in'
         course = self.kwargs.get('course','NONE')
-        course = 'BACS 350' if course == 'bacs350' else 'BACS 200'
         href = '/unc/'+course
+        course = 'BACS 350' if course == 'bacs350' else 'BACS 200'
         header = 'UNC %s' % course, name, "/static/images/unc/Bear.200.png", 'UNC Bear', href
         kwargs['header'] = dict(title=header[0], subtitle=header[1], logo=header[2], logo_text=header[3], href=header[4])
         kwargs['student'] = student
