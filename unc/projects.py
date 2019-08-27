@@ -5,7 +5,7 @@ from tool.days import parse_date, date_str, due_date
 from tool.page import open_browser_dom, close_browser_dom, capture_page, capture_page_features, display_test_results
 from tool.shell import banner
 from tool.text import text_join
-from unc.models import Requirement, Project, Course, Assignment, Lesson
+from unc.models import Assignment, Course, Lesson, Project, Requirement, Student
 
 
 def add_assignment(course, student, project, due):
@@ -77,6 +77,25 @@ def assign_project_1():
         assign_homework(c, '01', '2019-08-30')
 
 
+def build_projects(course):
+    create_project_record(course, '01', 'index.php', fake_project_requirements())
+    create_project_record(course, '02', 'bacs350/index.html', fake_project_requirements())
+    # create_project_record(course, '03', 'bacs350/profile.html', bacs200_project1_requirements())
+    return list_project_details(course)
+
+
+def clear_assignments():
+    Assignment.objects.all().delete()
+
+
+def create_project_record(course, project_num, page, requirements):
+    p = Project.lookup(course, project_num)
+    p.page = page
+    p.save()
+    for i, r in enumerate(requirements):
+        add_requirement(p, i + 1, r[0], r[1])
+
+
 def fake_project_requirements():
     return [
         ('html', 'count_chars(r.actual, 10000, 20000)'),
@@ -95,23 +114,17 @@ def fake_project_requirements():
     ]
 
 
-def build_projects(course):
-    create_project_record(course, '01', 'index.php', fake_project_requirements())
-    create_project_record(course, '02', 'bacs350/index.html', fake_project_requirements())
-    # create_project_record(course, '03', 'bacs350/profile.html', bacs200_project1_requirements())
-    return list_project_details(course)
+# from unc.models import *
 
+def fix_domains():
+    for s in Student.objects.filter():
+        if s.domain != 'No Domain Configured':
+            if not s.domain.startswith('http'):
+                s.domain = 'http://'+s.domain
+                s.save()
+                print(s.domain)
 
-def clear_assignments():
-    Assignment.objects.all().delete()
-
-
-def create_project_record(course, project_num, page, requirements):
-    p = Project.lookup(course, project_num)
-    p.page = page
-    p.save()
-    for i, r in enumerate(requirements):
-        add_requirement(p, i + 1, r[0], r[1])
+# fix_domains()
 
 
 def get_assignments(student):
