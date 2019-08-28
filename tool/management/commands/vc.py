@@ -117,7 +117,9 @@ def vc_dirs():
     home   = environ['p']
     doc    = join(environ['p'], 'Documents')
     unc    = join(environ['HOME'], 'UNC')
-    dirs   = [d for d in [home, doc, unc] if exists(d)]
+    bacs200 = join(unc, 'UNC-BACS200-2019-Fall')
+    bacs350 = join(unc, 'UNC-BACS350-2019-Fall')
+    dirs   = [d for d in [home, doc, unc, bacs200, bacs350] if exists(d)]
     return dirs
 
 

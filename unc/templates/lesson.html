@@ -7,12 +7,12 @@
     <div class="card-body card-padding">
         <p>
             Notes for lesson #{{ lesson.lesson }} -
-            <a href="/unc/{{ lesson.course.name }}/lesson/{{ lesson.week|stringformat:"02d" }}"
+            <a href="/unc/{{ lesson.course.name }}/lesson/{{ lesson.lesson|stringformat:"02d" }}"
                target="lesson">{{ lesson.topic }}</a>
         </p>
         <p>
             Slides for lesson #{{ lesson.lesson }} -
-            <a href="/unc/{{ lesson.course.name }}/{{ lesson.week|stringformat:"02d" }}/slides"
+            <a href="/unc/{{ lesson.course.name }}/{{ lesson.lesson|stringformat:"02d" }}/slides"
                target="slides">{{ lesson.topic }}</a>
         </p>
 

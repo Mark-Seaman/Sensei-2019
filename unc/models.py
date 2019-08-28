@@ -32,7 +32,7 @@ class Course(models.Model):
 
     @staticmethod
     def students(course):
-        return Student.objects.filter(course__name=course)
+        return Student.objects.filter(course__name=course).order_by('user__last_name')
 
 
 class Student(models.Model):
