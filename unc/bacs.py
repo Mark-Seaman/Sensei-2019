@@ -57,6 +57,12 @@ def add_teacher():
 def create_course(name, title, teacher, description):
     return Course.objects.get_or_create(name=name, title=title, teacher=teacher, description=description)[0]
 
+def fix_domain_protocols():
+    for s in Student.objects.all():
+        if s.domain != 'No Domain Configured' and not s.domain.startswith('http'):
+            s.domain = 'http://' + s.domain
+            s.save()
+            print(s.domain)
 
 def get_student(request):
     try:
