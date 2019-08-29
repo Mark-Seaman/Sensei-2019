@@ -19,6 +19,7 @@ def unc_course_files_test():
 def unc_sample_files_test():
     return show_sample_files()
 
+
 def unc_data_test():
     initialize_data()
     return "%s lines in output" % len(text_lines(list_course_content()))
