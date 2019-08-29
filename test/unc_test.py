@@ -47,7 +47,7 @@ def unc_student_test():
         import_test_students()
         students = list_students(course)
         output.append(students)
-    return text_join(output)
+    return '%s Student Records' % len(text_lines(text_join(output)))
 
 
 def unc_views_test():
