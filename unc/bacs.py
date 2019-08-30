@@ -32,7 +32,8 @@ def add_lesson(course, row):
 # add_student('Daniel', 'Macias', 'maci9611@bears.unco.edu', 'No domain Configured', 'bacs200')
 # add_student('Lincoln', 'Turner', 'turn6173@bears.unco.edu', 'No domain Configured', 'bacs200')
 # add_student('Cyrus', 'Brown', 'brow8292@bears.unco.edu', 'No domain Configured', 'bacs200')
-
+# add_student('David', 'Thompson', 'thom1664@bears.unco.edu', 'No domain Configured', 'bacs350')
+# add_student('Fahad', 'Dahish', 'dahi8862@bears.unco.edu', 'No domain Configured', 'bacs200')
 
 def add_student(first, last, email, domain, course):
     course = Course.lookup(course)
