@@ -1,9 +1,8 @@
 from tool.page import close_browser_dom, open_browser_dom
 from tool.shell import is_server
-from tool.text import text_join, text_lines
+from tool.text import text_lines
 from tool.user import list_users
-from unc.bacs import import_schedule, import_test_students, initialize_data, list_course_content, list_students, \
-    show_course_files, zybooks_link, unc_courses
+from unc.bacs import *
 from unc.projects import add_test_assignments, build_projects, show_assignments, validate_unc_project
 from unc.models import Student
 
@@ -15,6 +14,10 @@ def unc_assignment_test():
 
 def unc_course_files_test():
     return text_join([show_course_files(course) for course in unc_courses()])
+
+
+def unc_sample_files_test():
+    return show_sample_files()
 
 
 def unc_data_test():
@@ -45,7 +48,7 @@ def unc_student_test():
         import_test_students()
         students = list_students(course)
         output.append(students)
-    return text_join(output)
+    return '%s Student Records' % len(text_lines(text_join(output)))
 
 
 def unc_views_test():

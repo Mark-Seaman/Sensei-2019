@@ -1,7 +1,8 @@
 from csv import reader
-
 from django.contrib.auth.models import User
 from django.utils.timezone import make_aware
+from os import environ
+from os.path import exists, join
 from re import compile
 
 from tool.days import parse_date
@@ -28,6 +29,7 @@ def add_lesson(course, row):
     lesson.reading = zybooks_link(course[-3:], row[5])
     lesson.save()
     return lesson
+
 
 # add_student('Daniel', 'Macias', 'maci9611@bears.unco.edu', 'No domain Configured', 'bacs200')
 # add_student('Lincoln', 'Turner', 'turn6173@bears.unco.edu', 'No domain Configured', 'bacs200')
@@ -62,12 +64,14 @@ def add_teacher():
 def create_course(name, title, teacher, description):
     return Course.objects.get_or_create(name=name, title=title, teacher=teacher, description=description)[0]
 
+
 def fix_domain_protocols():
     for s in Student.objects.all():
         if s.domain != 'No Domain Configured' and not s.domain.startswith('http'):
             s.domain = 'http://' + s.domain
             s.save()
             print(s.domain)
+
 
 def get_student(request):
     try:
@@ -84,7 +88,6 @@ def import_all_students():
 
 
 def import_students(course):
-
     def read_students(course):
         data_file = 'Documents/unc/%s/students.csv' % course
         with open(data_file) as f:
@@ -119,12 +122,13 @@ def import_schedule(course):
 
 def import_test_students():
     course = 'cs350'
-    add_student('Tony', 'Stark',       'mark.b.seaman+iron_man@gmail.com',     r'https://unco-bacs.org/iron_man',      course)
-    add_student('Natasha', 'Romanov ', 'mark.b.seaman+black_widow@gmail.com',  r'https://unco-bacs.org/black_widow',   course)
-    add_student('Bruce', 'Banner',     'mark.b.seaman+hulk@gmail.com',         r'https://unco-bacs.org/hulk',          course)
-    add_student('Steve', 'Rogers',     'mark.b.seaman+cap@gmail.com',          r'https://unco-bacs.org/cap_america',   course)
-    add_student('Carol', 'Danvers',    'mark.b.seaman+marvel@gmail.com',       r'https://unco-bacs.org/cap_marvel',    course)
-    add_student('Wanda', 'Maximoff',   'mark.b.seaman+witch@gmail.com',        r'https://unco-bacs.org/scarlet_witch', course)
+    add_student('Tony', 'Stark', 'mark.b.seaman+iron_man@gmail.com', r'https://unco-bacs.org/iron_man', course)
+    add_student('Natasha', 'Romanov ', 'mark.b.seaman+black_widow@gmail.com', r'https://unco-bacs.org/black_widow',
+                course)
+    add_student('Bruce', 'Banner', 'mark.b.seaman+hulk@gmail.com', r'https://unco-bacs.org/hulk', course)
+    add_student('Steve', 'Rogers', 'mark.b.seaman+cap@gmail.com', r'https://unco-bacs.org/cap_america', course)
+    add_student('Carol', 'Danvers', 'mark.b.seaman+marvel@gmail.com', r'https://unco-bacs.org/cap_marvel', course)
+    add_student('Wanda', 'Maximoff', 'mark.b.seaman+witch@gmail.com', r'https://unco-bacs.org/scarlet_witch', course)
 
 
 def initialize_data():
@@ -187,7 +191,7 @@ def weekly_agenda(course, week):
 
 
 def weekly_lessons(course):
-    return [weekly_agenda(course, week+1) for week in range(2)]
+    return [weekly_agenda(course, week + 1) for week in range(1)]
 
 
 def zybooks_link(course, reading):
@@ -202,13 +206,27 @@ def show_course_files(course):
     return banner(course) + text_join(recursive_list('Documents/unc/%s' % course))
 
 
+def show_sample_files():
+    def list_files(path):
+        if exists(path):
+            return banner(path) + text_join(recursive_list(path))
+        else:
+            return '%s path does not exist' % path
+
+    paths = [
+        join(environ['HOME'], 'UNC', 'old-code', 'public_html'),
+        join(environ['HOME'], 'UNC', 'UNC-BACS200-2019-Fall', 'public_html'),
+        join(environ['HOME'], 'UNC', 'UNC-BACS350-2019-Fall', 'public_html'),
+    ]
+
+    return text_join([list_files(path) for path in paths])
+
+
 def unc_courses():
     return Course.all()
-
 
 # def delete_students():
 #     c = create_course('cs350', 'Software Engineering (under development)', 'Mark Seaman',
 #                   'This class is for test purposes only')
 #     print(c)
 #     Student.objects.filter(course=c).delete()
-
