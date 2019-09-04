@@ -1,0 +1,10 @@
+#!/bin/bash
+# Push code to Bluehost demo server
+
+# 200
+cd ~/UNC/UNC-BACS200-2019-Fall/public_html/bacs200
+rsync -auv ./ uncobacs@unco-bacs.org:public_html/bacs200
+
+# 350
+cd ~/UNC/UNC-BACS350-2019-Fall/public_html/bacs350
+rsync -auv ./ uncobacs@unco-bacs.org:public_html/bacs350

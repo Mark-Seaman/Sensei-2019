@@ -1,0 +1,5 @@
+#!/bin/bash
+# Push code to Bluehost demo server
+
+ssh uncobacs@unco-bacs.org 
+
