@@ -7,8 +7,8 @@ alias b='brackets'
 
 alias co='vc commit'
 alias code='dj code'
-alias code2='d ~/UNC/UNC-BACS200-2019-Fall'
-alias code3='d ~/UNC/UNC-BACS350-2019-Fall'
+alias code2='d ~/UNC/UNC-BACS200-2019-Fall/public_html/bacs200'
+alias code3='d ~/UNC/UNC-BACS350-2019-Fall/public_html/bacs350'
 alias console='ssh sensei@seamanfamily.org'
 alias cs='code search code'
 
