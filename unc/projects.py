@@ -38,9 +38,9 @@ def add_project(course, row):
 
     date = make_aware(parse_date(row[2]))
     date = date_str(date)
-    page = '%s/project_%s.html' % (course, row[0])
+    page = '%s/project/%s' % (course, row[0])
     instructions = '/unc/%s/project/%s' % (course, row[0])
-    title = row[6]
+    title = row[6] if row[6:] else 'None'
     return create_project(course, row[0], title, page, date, instructions)
 
 
@@ -98,7 +98,7 @@ def create_project_record(course, project_num, page, requirements):
 
 def fake_project_requirements():
     return [
-        ('html', 'count_chars(r.actual, 10000, 20000)'),
+        ('html', 'count_chars(r.actual, 1, 10)'),
         # ('head', 'count_chars(r.actual, 5000, 6000)'),
         # ('head title', ''),
         # ('body', 'count_lines(r.actual, 50, 200)'),
@@ -125,6 +125,16 @@ def fix_domains():
                 print(s.domain)
 
 # fix_domains()
+
+
+def fix_project_pages():
+    course = 'bacs200'
+    create_project_record(course, '01', 'index.php',            fake_project_requirements())
+    create_project_record(course, '02', 'bacs200/inspire.html', fake_project_requirements())
+    course = 'bacs350'
+    create_project_record(course, '01', 'index.php',            fake_project_requirements())
+    create_project_record(course, '02', 'bacs350/index.php',    fake_project_requirements())
+    return list_project_details(course)
 
 
 def get_assignments(student):

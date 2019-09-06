@@ -141,8 +141,8 @@ def initialize_data():
                   'Web Design and Development for Small Business')
     create_course('bacs350', 'Web Development Intermediate (Fall 2019)', 'Mark Seaman',
                   'Intermediate Web Development with PHP/MySQL')
-    import_schedule('bacs200')
-    import_schedule('bacs350')
+    # import_schedule('bacs200')
+    # import_schedule('bacs350')
 
 
 def list_course_content():

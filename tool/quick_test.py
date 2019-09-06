@@ -17,8 +17,7 @@ DEVELOPMENT SCRIPT
 
 
 def quick_test():
-    assign_project_1()
-    x = show_assignments()
+    x = list_users()
     print(x)
 
 
@@ -47,8 +46,13 @@ def show_unc_data():
     # Projects
     x = import_schedule('cs350')
     x = build_projects('cs350')
+    x = import_schedule('bacs200')
+    x = import_schedule('bacs350')
+    fix_project_pages()
     x = unc_project_test()
     x = unc_assignment_test()
+    x = show_assignments()
+
 
     x = list_course_content()
 

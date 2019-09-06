@@ -4,11 +4,11 @@ from os import listdir
 from os.path import join
 from random import choice
 
-from tool.document import doc_page, domain_doc
-from tool.log import log, log_page
-
 from mybook.mybook import shrinking_world_menu, read_system_log
 from mybook.mybook import document_text, page_settings
+from tool.document import doc_page, domain_doc
+from tool.log import log, log_page
+from unc.models import Student
 
 
 class SeamanFamily(RedirectView):
@@ -80,4 +80,9 @@ class DocRandom(RedirectView):
 class DocRoot(RedirectView):
     def get_redirect_url(self, *args, **kwargs):
         log_page(self.request, 'Redirect Index')
-        return '/%s' % domain_doc(self.request.get_host(),'Index')
+        u = self.request.user
+        if not u.is_anonymous:
+            s = Student.objects.filter(user=u)
+            if s:
+                return '/unc/%s' % s[0].course.name
+        return '/%s' % domain_doc(self.request.get_host(), 'Index')
