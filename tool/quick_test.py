@@ -18,12 +18,9 @@ DEVELOPMENT SCRIPT
 
 def quick_test():
     x = import_schedule('bacs200')
+    x = import_schedule('bacs350')
     fix_project_pages()
-    print(x)
-    
-    x = Project.list('bacs200')
-    # x = import_schedule('bacs350')
-    print(x)
+    # print(x)
 
 
 

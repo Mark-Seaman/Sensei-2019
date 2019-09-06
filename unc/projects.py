@@ -130,7 +130,7 @@ def fix_domains():
 def fix_project_pages():
     course = 'bacs200'
     create_project_record(course, '01', 'index.php',            fake_project_requirements())
-    create_project_record(course, '02', 'bacs200/index.html',   fake_project_requirements())
+    create_project_record(course, '02', 'bacs200/inspire.html', fake_project_requirements())
     course = 'bacs350'
     create_project_record(course, '01', 'index.php',            fake_project_requirements())
     create_project_record(course, '02', 'bacs350/index.php',    fake_project_requirements())
