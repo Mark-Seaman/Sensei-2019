@@ -17,11 +17,8 @@ DEVELOPMENT SCRIPT
 
 
 def quick_test():
-    x = import_schedule('bacs200')
-    x = import_schedule('bacs350')
-    fix_project_pages()
-    # print(x)
-
+    x = list_users()
+    print(x)
 
 
 def show_course_content():
@@ -49,6 +46,9 @@ def show_unc_data():
     # Projects
     x = import_schedule('cs350')
     x = build_projects('cs350')
+    x = import_schedule('bacs200')
+    x = import_schedule('bacs350')
+    fix_project_pages()
     x = unc_project_test()
     x = unc_assignment_test()
     x = show_assignments()
