@@ -14,7 +14,9 @@
                     <th>Id</th>
                     <th>Student</th>
                     <th>Email</th>
-                    <th>Domain</th>
+{#                    <th>Domain</th>#}
+                    <th>Project #1</th>
+                    <th>Project #2</th>
                 </tr>
                 {% for student in students %}
 
@@ -31,6 +33,14 @@
                         <td>
                             <a href="{{ student.domain }}"
                                target="_blank">{{ student.domain }}</a>
+                        </td>
+                        <td>
+                            <a href="{{ student.domain }}/bacs350/index.php"
+                               target="_blank">bacs350/index.php</a>
+                        </td>
+                        <td>
+                            <a href="{{ student.domain }}/bacs200/index.html"
+                               target="_blank">bacs200/index.html</a>
                         </td>
                     </tr>
 
