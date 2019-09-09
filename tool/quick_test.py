@@ -4,20 +4,12 @@ from unc.projects import *
 from test.unc_test import *
 from unc.projects import assign_project_1, show_assignments
 
-'''
-DEVELOPMENT SCRIPT
-
-* student login
-    * student login status
-    * improve login sequence for students
-    * anonymous access
-    * select the class based on the student
-    
-'''
-
 
 def quick_test():
-    x = list_users()
+    x = import_schedule('bacs200')
+    x = import_schedule('bacs350')
+    fix_project_pages()
+    x = list_course_content()
     print(x)
 
 
