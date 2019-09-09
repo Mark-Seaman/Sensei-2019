@@ -3,7 +3,7 @@ from tool.shell import is_server
 from tool.text import text_lines
 from tool.user import list_users
 from unc.bacs import *
-from unc.projects import add_test_assignments, build_projects, show_assignments, validate_unc_project
+from unc.projects import add_test_assignments, fix_project_pages, show_assignments, validate_unc_project
 from unc.models import Student
 
 
@@ -28,7 +28,7 @@ def unc_data_test():
 def unc_project_test():
     course = 'cs350'
     output = import_schedule(course)
-    output += build_projects(course)
+    fix_project_pages()
     output += list_course_content()
     return "%s lines in output" % len(output)
 
