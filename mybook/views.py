@@ -48,6 +48,10 @@ class DocDisplay(TemplateView):
 
     def get(self, request, *args, **kwargs):
         title = self.kwargs.get('title', 'Index')
+        if title.startswith('info'):
+            if not self.request.user.is_superuser:
+                log('SECURITY VIOLATION: %s --> %s' % (title, '/unc/logout'))
+                return HttpResponseRedirect('/unc/logout')
         url = doc_page(self.request.path[1:])
         if url:
             log('REDIRECT: %s --> %s' % (title, url))
