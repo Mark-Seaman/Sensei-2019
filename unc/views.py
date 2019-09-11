@@ -78,8 +78,9 @@ class UncHomework(UncPage):
         kwargs = super(UncHomework, self).get_context_data(**kwargs)
         # kwargs['card'] = render_to_string('card.html', dict(title='Card Title', body='Card Body'))
         kwargs['weeks'] = render_course_agenda(kwargs['course'], kwargs['student'])
-        kwargs['student_info'] = render_student_info(kwargs['student'])
-        kwargs['homework'] = render_homework_scorecard(kwargs['student'])
+        if kwargs['student']:
+            kwargs['student_info'] = render_student_info(kwargs['student'])
+            kwargs['homework'] = render_homework_scorecard(kwargs['student'])
         return kwargs
 
 
