@@ -95,9 +95,9 @@ input {
 
 img {
     max-width: 800px;
-    margin: 10%;
-    border: 1px solid #0E3D65;
-    box-shadow: 2px 2px 5px #0E3D65;
+    margin: 20px;
+    /*border: 1px solid #0E3D65;*/
+    /*box-shadow: 2px 2px 5px #0E3D65;*/
 }
 
 li {
@@ -195,6 +195,12 @@ pre {
 
 .pane * {
     margin: 20px;
+}
+
+.project {
+    border: 3px solid #F6B018;
+    background-color: #f0f0f0;
+    color: #0E3D65;
 }
 
 .navbar-nav .nav-item.active {
