@@ -1,53 +1,15 @@
 from django.contrib.auth import logout
 # from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.template.loader import render_to_string
 from django.views.generic import RedirectView, TemplateView, UpdateView
 
 from mybook.mybook import document_text
 from tool.log import log_page
-from unc.bacs import schedule_data, slides_markdown, student_data, weekly_agenda, weekly_lessons, get_student
+from unc.bacs import schedule_data, slides_markdown, student_data, weekly_agenda, get_student
 from unc.models import Student
-from unc.projects import test_project_page, get_assignments, get_readings, get_lesson
-
-
-def render_homework_scorecard(student):
-    title = '%s Homework Scorecard' % student.name
-    # return render_to_string('homework.html', dict(title=title, assignments=))
-    return render_to_string('homework.html', dict(title=title, assignments=get_readings(student) + get_assignments(student)))
-
-
-def render_student_info(student):
-    return render_to_string('student.html', dict(student=student))
-
-
-def render_project(project, student):
-    skill = render_skill(get_lesson(project.course.name, 1), student)
-    return render_to_string('project.html', dict(project=project, skill=skill, student=student))
-
-
-def render_skill(lesson, student):
-    return render_to_string('skill.html', dict(lesson=lesson, student=student))
-
-
-def render_lesson(lesson):
-    return render_to_string('lesson.html', dict(lesson=lesson))
-
-
-def render_lessons(lessons):
-    return ''.join([render_lesson(lesson) for lesson in lessons])
-
-
-def render_weekly_agenda(plan, student):
-    project = render_project(plan['project'], student)
-    lessons = render_lessons(plan['lessons'])
-    weekly_plan = dict(week=plan['week'], project=project, lessons=lessons)
-    return render_to_string('week.html', weekly_plan)
-
-
-def render_course_agenda(course, student):
-    weeks = weekly_lessons(course)
-    return [(w['week'], render_weekly_agenda(w, student)) for w in weeks]
+from unc.projects import test_project_page
+from unc.render import render_homework_scorecard, render_student_info, render_weekly_agenda, render_course_agenda, \
+    render_skill_doc
 
 
 class UncPage(LoginRequiredMixin, TemplateView):
@@ -60,11 +22,12 @@ class UncPage(LoginRequiredMixin, TemplateView):
             name = student.name
         else:
             name = 'Not logged in'
-        course = self.kwargs.get('course','NONE')
-        href = '/unc/'+course
+        course = self.kwargs.get('course', 'NONE')
+        href = '/unc/' + course
         course = 'BACS 350' if course == 'bacs350' else 'BACS 200'
         header = 'UNC %s' % course, name, "/static/images/unc/Bear.200.png", 'UNC Bear', href
-        kwargs['header'] = dict(title=header[0], subtitle=header[1], logo=header[2], logo_text=header[3], href=header[4])
+        kwargs['header'] = dict(title=header[0], subtitle=header[1], logo=header[2], logo_text=header[3],
+                                href=header[4])
         kwargs['student'] = student
         return kwargs
 
@@ -77,6 +40,23 @@ class UncDocDisplay(UncPage):
         doc_path = self.request.path[1:]
         image_path = '/static/images/unc/bacs200' if 'bacs200' == kwargs['course'] else '/static/images/unc/bacs350'
         kwargs['text'] = document_text(doc_path, image_path)
+        return kwargs
+
+
+class UncSkillDisplay(UncPage):
+    template_name = 'unc_theme.html'
+
+    def get_context_data(self, **kwargs):
+        kwargs = super(UncSkillDisplay, self).get_context_data(**kwargs)
+        doc_path = self.request.path[1:]
+        student = kwargs['student']
+        # lesson = kwargs['lesson']
+        text = render_skill_doc(doc_path, student)
+        # image_path = '/static/images/unc/bacs200' if 'bacs200' == kwargs['course'] else '/static/images/unc/bacs350'
+        # text = document_text(doc_path, image_path)
+        # skills_path = '%s' % ()
+        # text = text.replace('{{ skills }}', 'xxx')
+        kwargs['text'] = text
         return kwargs
 
 
@@ -141,8 +121,10 @@ class UncStudent(UpdateView):
     def get_context_data(self, **kwargs):
         log_page(self.request)
         kwargs = super(UncStudent, self).get_context_data(**kwargs)
-        header = 'UNC Student Profile', kwargs['object'].name, "/static/images/unc/Bear.200.png", 'UNC Bear', '/unc/bacs200'
-        kwargs['header'] = dict(title=header[0], subtitle=header[1], logo=header[2], logo_text=header[3], href=header[4])
+        header = 'UNC Student Profile', kwargs[
+            'object'].name, "/static/images/unc/Bear.200.png", 'UNC Bear', '/unc/bacs200'
+        kwargs['header'] = dict(title=header[0], subtitle=header[1], logo=header[2], logo_text=header[3],
+                                href=header[4])
         return kwargs
 
 

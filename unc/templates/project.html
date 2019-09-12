@@ -18,7 +18,11 @@
             <a href="{{ student.domain }}/{{ project.page }}" target="project">Visit My Page</a>
         </p>
 
-        {{ skill }}
+        {% if skills %}
+            {% for s in skills %}
+                {{ s }}
+            {% endfor %}
+        {% endif %}
 
         <!--
             <p>
