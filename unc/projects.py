@@ -158,6 +158,12 @@ def get_readings(student):
     return [assigned(a) for a in lessons(student.course.name, '2019-08-30')]
 
 
+def get_lesson(course, lesson_num):
+    x = Lesson.query(course).filter(lesson=lesson_num)
+    if x:
+        return x[0]
+
+
 def list_assignments(course):
     assigned = ['\n\nAssignments for %s:           project          due            status         last update\n' % course]
     for h in Assignment.objects.filter(project__course__name=course):

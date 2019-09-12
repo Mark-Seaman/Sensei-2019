@@ -132,6 +132,8 @@ def import_test_students():
     add_student('Steve', 'Rogers', 'mark.b.seaman+cap@gmail.com', r'https://unco-bacs.org/cap_america', course)
     add_student('Carol', 'Danvers', 'mark.b.seaman+marvel@gmail.com', r'https://unco-bacs.org/cap_marvel', course)
     add_student('Wanda', 'Maximoff', 'mark.b.seaman+witch@gmail.com', r'https://unco-bacs.org/scarlet_witch', course)
+    add_student('Sensei', '200', 'mark.b.seaman+200@gmail.com', r'https://unco-bacs.org', 'bacs200')
+    add_student('Sensei', '350', 'mark.b.seaman+350@gmail.com', r'https://unco-bacs.org', 'bacs350')
 
 
 def initialize_data():

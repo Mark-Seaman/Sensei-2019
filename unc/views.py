@@ -8,7 +8,7 @@ from mybook.mybook import document_text
 from tool.log import log_page
 from unc.bacs import schedule_data, slides_markdown, student_data, weekly_agenda, weekly_lessons, get_student
 from unc.models import Student
-from unc.projects import test_project_page, get_assignments, get_readings
+from unc.projects import test_project_page, get_assignments, get_readings, get_lesson
 
 
 def render_homework_scorecard(student):
@@ -22,11 +22,20 @@ def render_student_info(student):
 
 
 def render_project(project, student):
-    return render_to_string('project.html', dict(project=project, student=student))
+    skill = render_skill(get_lesson(project.course.name, 1), student)
+    return render_to_string('project.html', dict(project=project, skill=skill, student=student))
+
+
+def render_skill(lesson, student):
+    return render_to_string('skill.html', dict(lesson=lesson, student=student))
+
+
+def render_lesson(lesson):
+    return render_to_string('lesson.html', dict(lesson=lesson))
 
 
 def render_lessons(lessons):
-    return ''.join([render_to_string('lesson.html', dict(lesson=x)) for x in lessons])
+    return ''.join([render_lesson(lesson) for lesson in lessons])
 
 
 def render_weekly_agenda(plan, student):
