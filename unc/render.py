@@ -42,7 +42,7 @@ def render_skill_doc(doc_path, student):
     course = student.course.name
     image_path = '/static/images/unc/bacs200' if 'bacs200' == course else '/static/images/unc/bacs350'
     text = document_text(doc_path, image_path)
-    skills_path = '%s/%s/%s' % ('https://unco-bacs.org', 'bacs350', 'skills')
+    skills_path = '%s/%s/%s' % ('https://unco-bacs.org', course, 'skills')
     text = text.replace('{{ skills }}', skills_path)
     return text
 
