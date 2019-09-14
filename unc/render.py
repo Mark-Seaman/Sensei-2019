@@ -3,6 +3,7 @@ from django.template.loader import render_to_string
 from mybook.mybook import document_text
 from unc.bacs import weekly_lessons
 from unc.projects import get_readings, get_assignments, get_lesson
+from unc.models import Skill
 
 
 def render_course_agenda(course, student):
@@ -25,11 +26,22 @@ def render_lessons(lessons):
 
 
 def render_project(project, student):
-    skills = [
-        render_skill_link(get_lesson(project.course.name, 1), student),
-        render_skill_link(get_lesson(project.course.name, 2), student),
-    ]
+    # skills = [
+    #     render_skill_link(get_lesson(project.course.name, 1), student),
+    #     render_skill_link(get_lesson(project.course.name, 2), student),
+    # ]
+    skills = render_skills(student)
     return render_to_string('project.html', dict(project=project, skills=skills, student=student))
+
+
+def skills_images():
+    return ['bluehost.png', 'wordpress.png', 'ftp-site-manager.png', 'ftp-dirs.png', 'ftp-files.png']
+
+
+def render_skills(student):
+    skills = Skill.query(student.course.name)
+    skills = [dict(skill=s, images=s.images.split(',')) for s in skills]
+    return render_to_string('skills.html', dict(skills=skills, student=student))
 
 
 def render_skill_link(lesson, student):

@@ -168,17 +168,19 @@ class Skill(models.Model):
     num = models.IntegerField()
     due = models.DateTimeField(default=None, null=True)
     topic = models.CharField(default='none', max_length=100)
+    images = models.CharField(default='', max_length=200)
 
     # CSV Data -- Course, Num, Topic, Due
     def __str__(self):
-        return '%s - Skill #%s - %-20s - due %s' % (self.course.name, self.num, self.topic, date_str(self.due))
+        return '%s - Skill #%s - %-20s - due %s - %s' % (self.course.name, self.num, self.topic, date_str(self.due), self.images)
 
     @staticmethod
-    def create(course, num, topic, due):
+    def create(course, num, topic, due, images):
         course = Course.lookup(course)
         s = Skill.objects.get_or_create(course=course, num=num)[0]
         s.topic = topic
         s.due = due_date(due)
+        s.images = images
         s.save()
         return s
 

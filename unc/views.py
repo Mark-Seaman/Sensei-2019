@@ -9,7 +9,7 @@ from unc.bacs import schedule_data, slides_markdown, student_data, weekly_agenda
 from unc.models import Student
 from unc.projects import test_project_page
 from unc.render import render_homework_scorecard, render_student_info, render_weekly_agenda, render_course_agenda, \
-    render_skill_doc
+    render_skill_doc, render_skills
 
 
 class UncPage(LoginRequiredMixin, TemplateView):
@@ -65,11 +65,13 @@ class UncHomework(UncPage):
 
     def get_context_data(self, **kwargs):
         kwargs = super(UncHomework, self).get_context_data(**kwargs)
+        student = kwargs['student']
         # kwargs['card'] = render_to_string('card.html', dict(title='Card Title', body='Card Body'))
-        kwargs['weeks'] = render_course_agenda(kwargs['course'], kwargs['student'])
+        kwargs['weeks'] = render_course_agenda(kwargs['course'], student)
         if kwargs['student']:
-            kwargs['student_info'] = render_student_info(kwargs['student'])
-            kwargs['homework'] = render_homework_scorecard(kwargs['student'])
+            kwargs['student_info'] = render_student_info(student)
+            kwargs['homework'] = render_homework_scorecard(student)
+            kwargs['skills'] = render_skills(student)
         return kwargs
 
 

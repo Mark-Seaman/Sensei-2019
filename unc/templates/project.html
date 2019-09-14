@@ -18,12 +18,7 @@
             <a href="{{ student.domain }}/{{ project.page }}" target="project">Visit My Page</a>
         </p>
 
-        {% if skills %}
-            {% for s in skills %}
-                {{ s }}
-            {% endfor %}
-        {% endif %}
-
+        {{ skills }}
         <p>
             Visit my <a href="{{ student.domain }}/{{ project.course.name }}/skills" target="skills">Skill Demos</a>
         </p>

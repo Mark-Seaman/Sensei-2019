@@ -1,0 +1,42 @@
+<div class="card project">
+    <div class="card-header  project">
+        Skills for {{ student.name }}
+    </div>
+
+    <div class="card-body card-padding project">
+
+        {% if skills %}
+            <p>
+                Domain: <a href="{{ student.domain }}">All Skill on Student Site</a>
+            </p>
+            <p>
+                All Skills on {{ student.name }} Student Site:
+                <a href="{{ student.domain }}/{{ student.course.name }}/skills">Demo of Skills</a>
+            </p>
+
+            <table class="table table-hover">
+                <th></th>
+
+                {% for s in skills %}
+                    <tr>
+                        <td><a href="/unc/{{ student.course.name }}/skills/{{ s.skill.num|stringformat:"02d" }}">Skill
+                            #{{ s.skill.num }}</a></td>
+                        <td>{{ s.skill.topic }}</td>
+                        <td>Due on {{ s.skill.due |date:"D, M d" }}</td>
+                    </tr>
+                    <tr>
+                        {% for i in s.images %}
+                            <td>
+                                <img src="{{ student.domain }}/{{ student.course.name }}/skills/{{ i }}" width="250px">
+                            </td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+
+
+            </table>
+        {% endif %}
+
+
+    </div>
+</div>

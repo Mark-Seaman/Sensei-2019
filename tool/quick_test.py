@@ -12,6 +12,7 @@ def init_unc_data():
     x = import_schedule('bacs200')
     x = import_schedule('bacs350')
     fix_project_pages()
+    print(update_skills())
     x = list_course_content()
     print(x)
 
@@ -48,6 +49,8 @@ def show_unc_data():
     x = unc_assignment_test()
     x = show_assignments()
 
+    # Skills
+    x = update_skills()
 
     x = list_course_content()
 
