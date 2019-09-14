@@ -9,7 +9,7 @@ from unc.models import Student
 
 def unc_assignment_test():
     add_test_assignments()
-    return show_assignments()
+    return "%s lines in output" % len(text_lines(show_assignments()))
 
 
 def unc_course_files_test():
