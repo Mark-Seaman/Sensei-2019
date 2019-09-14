@@ -7,21 +7,21 @@
 
         {% if skills %}
             <p>
-                Domain: <a href="{{ student.domain }}">All Skill on Student Site</a>
+                Domain: <a href="{{ student.domain }}">{{ student.domain }}</a>
             </p>
             <p>
-                All Skills on {{ student.name }} Student Site:
+                {{ student.name }} Student Site:
                 <a href="{{ student.domain }}/{{ student.course.name }}/skills">Demo of Skills</a>
             </p>
 
             <table class="table table-hover">
-                <th></th>
+                <th>Skill Challenge</th>
+                <th>Due Date</th>
 
                 {% for s in skills %}
                     <tr>
                         <td><a href="/unc/{{ student.course.name }}/skills/{{ s.skill.num|stringformat:"02d" }}">Skill
-                            #{{ s.skill.num }}</a></td>
-                        <td>{{ s.skill.topic }}</td>
+                            #{{ s.skill.num }} - {{ s.skill.topic }}</a></td>
                         <td>Due on {{ s.skill.due |date:"D, M d" }}</td>
                     </tr>
                     <tr>
@@ -33,10 +33,8 @@
                     </tr>
                 {% endfor %}
 
-
             </table>
         {% endif %}
-
 
     </div>
 </div>
