@@ -1,11 +1,14 @@
-from unc.bacs import *
-from unc.bacs import import_all_students
-from unc.projects import *
 from test.unc_test import *
-from unc.projects import assign_project_1, show_assignments
+from unc.projects import *
+from unc.models import *
+from unc.skills import update_skills
 
 
 def quick_test():
+    print(update_skills())
+
+
+def init_unc_data():
     x = import_schedule('bacs200')
     x = import_schedule('bacs350')
     fix_project_pages()

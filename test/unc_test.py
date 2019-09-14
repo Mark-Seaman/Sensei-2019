@@ -5,6 +5,7 @@ from tool.user import list_users
 from unc.bacs import *
 from unc.projects import add_test_assignments, fix_project_pages, show_assignments, validate_unc_project
 from unc.models import Student
+from unc.skills import update_skills
 
 
 def unc_assignment_test():
@@ -39,6 +40,10 @@ def unc_lesson_test():
 
 def unc_review_test():
     return 'UNC REVIEW - build test'
+
+
+def unc_skills_test():
+    return update_skills()
 
 
 def unc_student_test():

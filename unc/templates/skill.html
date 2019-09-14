@@ -1,4 +1,12 @@
-<p>
-    <a href="/unc/{{ lesson.course.name }}/skills/{{ lesson.lesson|stringformat:"02d" }}"
-       target="lesson">Skill #{{ lesson.lesson }} - {{ lesson.topic }}</a>
-</p>
+<div class="card project">
+    <div class="card-header  project">
+        Skill #{{ lesson.lesson }} - {{ lesson.topic }}
+    </div>
+
+    <div class="card-body card-padding project">
+        <p>
+            <a href="/unc/{{ lesson.course.name }}/skills/{{ lesson.lesson|stringformat:"02d" }}"
+               target="lesson">Skill #{{ lesson.lesson }}</a>
+        </p>
+    </div>
+</div>

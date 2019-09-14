@@ -2,6 +2,8 @@ from django.db import models
 from tool.days import date_str
 from django.contrib.auth.models import User
 
+from tool.days import due_date
+
 
 class Course(models.Model):
     name = models.CharField(max_length=20)
@@ -150,7 +152,7 @@ class Lesson(models.Model):
 
     # CSV Data -- Week, Day, Date, Lesson, Topic, Reading, Projects, Process, Parts
     def __str__(self):
-        return '%d -- %5d %5d   %-15s %-30s %s' % (self.course.pk, self.lesson, self.week, date_str(self.date), self.topic, self.reading)
+        return '%d -- %5d %5d   %-15s %-20s %s' % (self.course.pk, self.lesson, self.week, date_str(self.date), self.topic, self.reading)
 
     @staticmethod
     def query(course):
@@ -159,4 +161,36 @@ class Lesson(models.Model):
     @staticmethod
     def list(course):
         return [str(c) for c in Lesson.query(course)]
+
+
+class Skill(models.Model):
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    num = models.IntegerField()
+    due = models.DateTimeField(default=None, null=True)
+    topic = models.CharField(default='none', max_length=100)
+
+    # CSV Data -- Course, Num, Topic, Due
+    def __str__(self):
+        return '%s - Skill #%s - %-20s - due %s' % (self.course.name, self.num, self.topic, date_str(self.due))
+
+    @staticmethod
+    def create(course, num, topic, due):
+        course = Course.lookup(course)
+        s = Skill.objects.get_or_create(course=course, num=num)[0]
+        s.topic = topic
+        s.due = due_date(due)
+        s.save()
+        return s
+
+    @staticmethod
+    def get(course, num):
+        return Skill.objects.get(course__name=course, num=num)
+
+    @staticmethod
+    def query(course):
+        return Skill.objects.filter(course__name=course).order_by('num')
+
+    @staticmethod
+    def list(course):
+        return [str(c) for c in Skill.query(course)]
 
