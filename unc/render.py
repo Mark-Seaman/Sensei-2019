@@ -40,7 +40,7 @@ def skills_images():
 
 def render_skills(student):
     skills = Skill.query(student.course.name)
-    skills = [dict(skill=s, images=s.images.split(',')) for s in skills]
+    skills = [dict(num="%02d" % s.num, skill=s, images=s.images.split(',')) for s in skills]
     return render_to_string('skills.html', dict(skills=skills, student=student))
 
 
