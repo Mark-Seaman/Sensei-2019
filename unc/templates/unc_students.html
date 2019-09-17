@@ -37,6 +37,11 @@
                                    target="_my_project">{{ project.page }}</a>
                             </td>
                         {% endfor %}
+                        {% for skill in student.2 %}
+                            <td>
+                                <img src="{{ student.0.domain }}/{{ student.0.course.name }}/skills/{{ skill }}" width="100">
+                            </td>
+                        {% endfor %}
                     </tr>
 
                 {% endfor %}

@@ -12,7 +12,7 @@ from tool.log import log_exception
 from tool.shell import banner
 from tool.text import text_join
 from tool.user import add_user_login
-from unc.models import Course, Project, Lesson, Student
+from unc.models import Course, Project, Lesson, Skill, Student
 from unc.projects import add_project, list_assignments
 
 
@@ -190,7 +190,9 @@ def student_data(course):
 
 
 def student_projects(course):
-    return [(s, Project.query(course)[:4]) for s in Course.students(course)]
+    skills = [s.images.split(',')[0] for s in Skill.query(course)]
+    projects = Project.query(course)[:4]
+    return [(s, projects, skills) for s in Course.students(course)]
 
 
 def weekly_agenda(course, week):
