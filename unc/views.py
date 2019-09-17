@@ -5,7 +5,7 @@ from django.views.generic import RedirectView, TemplateView, UpdateView
 
 from mybook.mybook import document_text
 from tool.log import log_page
-from unc.bacs import schedule_data, slides_markdown, student_data, weekly_agenda, get_student
+from unc.bacs import schedule_data, slides_markdown, student_projects, weekly_agenda, get_student
 from unc.models import Student
 from unc.projects import test_project_page
 from unc.render import render_homework_scorecard, render_student_info, render_weekly_agenda, render_course_agenda, \
@@ -110,7 +110,7 @@ class UncStudents(UncPage):
 
     def get_context_data(self, **kwargs):
         kwargs = super(UncStudents, self).get_context_data(**kwargs)
-        kwargs['students'] = student_data(kwargs['course'])
+        kwargs['students'] = student_projects(kwargs['course'])
         return kwargs
 
 

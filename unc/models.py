@@ -72,14 +72,6 @@ class Project(models.Model):
     def directions(self):
         return '/unc/%s/project/%02d' % (self.course.name, self.num)
 
-    @property
-    def test_link(self):
-        return '/unc/%s/%02d/test' % (self.course.name, self.num)
-
-    @property
-    def requirements(self):
-        return Requirement.objects.filter(project=self).order_by('num')
-
     @staticmethod
     def lookup(course, id):
         return Project.objects.get(course__name=course, num=id)
@@ -87,6 +79,18 @@ class Project(models.Model):
     @staticmethod
     def list(course):
         return [str(o) for o in Project.objects.filter(course__name=course).order_by('due')]
+
+    @staticmethod
+    def query(course):
+        return Project.objects.filter(course__name=course).order_by('due')
+
+    @property
+    def requirements(self):
+        return Requirement.objects.filter(project=self).order_by('num')
+
+    @property
+    def test_link(self):
+        return '/unc/%s/%02d/test' % (self.course.name, self.num)
 
 
 class Requirement(models.Model):

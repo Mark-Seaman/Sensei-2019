@@ -189,6 +189,10 @@ def student_data(course):
     return Course.students(course)
 
 
+def student_projects(course):
+    return [(s, Project.query(course)[:4]) for s in Course.students(course)]
+
+
 def weekly_agenda(course, week):
     project = Project.lookup(course, week)
     lessons = Lesson.objects.filter(course__name=course, week=week).order_by('date')

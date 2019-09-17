@@ -14,32 +14,29 @@
                     <th>Id</th>
                     <th>Student</th>
                     <th>Email</th>
-{#                    <th>Domain</th>#}
                     <th>Project #1</th>
                     <th>Project #2</th>
+                    <th>Project #3</th>
+                    <th>Project #4</th>
                 </tr>
                 {% for student in students %}
 
                     <tr>
                         <td>
-                            <a href="/unc/student/{{ student.pk }}">{{ student.pk }}</a>
+                            <a href="/unc/student/{{ student.0.pk }}">{{ student.0.pk }}</a>
                         </td>
                         <td>
-                            {{ student.name }}
+                            {{ student.0.name }}
                         </td>
                         <td>
-                            {{ student.email }}
+                            {{ student.0.email }}
                         </td>
-                        <td>
-                            <a href="{{ student.domain }}"
-                               target="_blank">{{ student.domain }}</a>
-                        </td>
-                        <td>
-                            <a href="{{ student.domain }}/bacs200/inspire.html"
-                               target="_blank">bacs200/inspire.html</a>
-                            <a href="{{ student.domain }}/bacs350/index.php"
-                               target="_blank">bacs350/index.php</a>
-                        </td>
+                        {% for project in student.1 %}
+                            <td>
+                                <a href="{{ student.0.domain }}/{{ project.page }}"
+                                   target="_my_project">{{ project.page }}</a>
+                            </td>
+                        {% endfor %}
                     </tr>
 
                 {% endfor %}
