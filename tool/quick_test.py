@@ -1,11 +1,13 @@
 from test.unc_test import *
+from unc.bacs import drop_students
 from unc.projects import *
 from unc.models import *
 from unc.skills import update_skills
 
 
 def quick_test():
-    print(update_skills())
+    drop_students()
+    # print(update_skills())
 
 
 def init_unc_data():

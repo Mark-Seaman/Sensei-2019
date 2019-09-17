@@ -49,6 +49,14 @@ class Student(models.Model):
         return '%d. %-40s %-40s %s' % (self.pk, self.email, self.name, self.domain)
 
     @staticmethod
+    def get(id):
+        return Student.objects.get(pk=id)
+
+    @staticmethod
+    def lookup(name):
+        return Student.objects.get(name=name)
+
+    @staticmethod
     def list():
         return [str(o) for o in Student.objects.all()]
 

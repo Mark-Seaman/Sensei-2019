@@ -67,6 +67,21 @@ def add_teacher():
 def create_course(name, title, teacher, description):
     return Course.objects.get_or_create(name=name, title=title, teacher=teacher, description=description)[0]
 
+'''
+from unc.bacs import *
+drop_students()
+'''
+
+def drop_students():
+    for f in ['Max Lloyd', 'Michael Koval', 'Deisy Guzman', 'Shalom Ekumbo']:
+        try:
+            s = Student.lookup(f)
+            print(s)
+            s.user.delete()
+            s.delete()
+        except:
+            print("No student: "+f)
+
 
 def fix_domain_protocols():
     for s in Student.objects.all():
