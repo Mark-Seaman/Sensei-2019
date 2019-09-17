@@ -3,8 +3,8 @@
 
 # 200
 cd ~/UNC/UNC-BACS200-Demo
-rsync -auv --exclude .git ./ uncobacs@unco-bacs.org:public_html/bacs200
+rsync -auv bacs200/ uncobacs@unco-bacs.org:public_html/bacs200
 
 # 350
 cd ~/UNC/UNC-BACS350-Demo
-rsync -auv --exclude .git ./ uncobacs@unco-bacs.org:public_html/bacs350
+rsync -auv  bacs350/ uncobacs@unco-bacs.org:public_html/bacs350
