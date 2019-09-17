@@ -132,10 +132,12 @@ def fix_project_pages():
     create_project_record(course, '01', 'index.php',                    fake_project_requirements())
     create_project_record(course, '02', 'bacs200/inspire.html',         fake_project_requirements())
     create_project_record(course, '03', 'bacs200/amuse.html',           fake_project_requirements())
+    create_project_record(course, '04', 'bacs200/project/index.html',   fake_project_requirements())
     course = 'bacs350'
     create_project_record(course, '01', 'index.php',                    fake_project_requirements())
     create_project_record(course, '02', 'bacs350/index.php',            fake_project_requirements())
     create_project_record(course, '03', 'bacs350/superhero/index.php',  fake_project_requirements())
+    create_project_record(course, '04', 'bacs350/planner/index.php',    fake_project_requirements())
     return list_project_details(course)
 
 
