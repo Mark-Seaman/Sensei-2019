@@ -34,8 +34,12 @@ def render_project(project, student):
     return render_to_string('project.html', dict(project=project, skills=skills, student=student))
 
 
-def skills_images():
-    return ['bluehost.png', 'wordpress.png', 'ftp-site-manager.png', 'ftp-dirs.png', 'ftp-files.png']
+# def skills_images():
+#     return ['bluehost.png', 'wordpress.png', 'ftp-site-manager.png', 'ftp-dirs.png', 'ftp-files.png']
+
+
+def render_reviews(student):
+    return render_to_string('review.html', dict(student=student))
 
 
 def render_skills(student):

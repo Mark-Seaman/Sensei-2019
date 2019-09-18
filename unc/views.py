@@ -9,7 +9,7 @@ from unc.bacs import schedule_data, slides_markdown, student_projects, weekly_ag
 from unc.models import Student
 from unc.projects import test_project_page
 from unc.render import render_homework_scorecard, render_student_info, render_weekly_agenda, render_course_agenda, \
-    render_skill_doc, render_skills
+    render_reviews, render_skill_doc, render_skills
 
 
 class UncPage(LoginRequiredMixin, TemplateView):
@@ -72,6 +72,7 @@ class UncHomework(UncPage):
             kwargs['student_info'] = render_student_info(student)
             kwargs['homework'] = render_homework_scorecard(student)
             kwargs['skills'] = render_skills(student)
+            kwargs['reviews'] = render_reviews(student)
         return kwargs
 
 
