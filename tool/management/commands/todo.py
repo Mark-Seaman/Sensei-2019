@@ -29,7 +29,7 @@ class Command(BaseCommand):
             self.stdout.write(format_exc())
 
 
-def recent_dates(days=3):
+def recent_dates(days=4):
     start = datetime.today()
     return [days_ago(start, days - d - 1) for d in range(days)]
 
@@ -42,8 +42,6 @@ Grow 0
     weight: 20
 
 Tools 0
-
-Write 0
 
 Teach 0
 
