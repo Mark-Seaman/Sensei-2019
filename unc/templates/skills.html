@@ -28,7 +28,10 @@
                     <tr>
                         {% for i in s.images %}
                             <td>
-                                <img src="{{ student.domain }}/{{ student.course.name }}/skills/{{ i }}" width="250px">
+                                <a href="{{ student.domain }}/{{ student.course.name }}/skills/{{ i }}">
+                                    <img src="{{ student.domain }}/{{ student.course.name }}/skills/{{ i }}" width="150px">
+                                    {{ i }}
+                                </a>
                             </td>
                         {% endfor %}
                     </tr>
