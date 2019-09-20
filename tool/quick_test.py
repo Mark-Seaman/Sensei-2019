@@ -1,12 +1,12 @@
 from test.unc_test import *
-from unc.bacs import drop_students
+from unc.bacs import *
 from unc.projects import *
 from unc.models import *
 from unc.skills import update_skills
 
 
 def quick_test():
-    drop_students()
+    rename_topics()
     # print(update_skills())
 
 

@@ -167,6 +167,10 @@ class Lesson(models.Model):
         return '%d -- %5d %5d   %-15s %-20s %s' % (self.course.pk, self.lesson, self.week, date_str(self.date), self.topic, self.reading)
 
     @staticmethod
+    def lookup(course, id):
+        return Lesson.objects.get(course__name=course, lesson=id)
+
+    @staticmethod
     def query(course):
         return Lesson.objects.filter(course__name=course).order_by('date')
 

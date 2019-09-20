@@ -31,15 +31,6 @@ def add_lesson(course, row):
     return lesson
 
 
-# add_student('Daniel', 'Macias', 'maci9611@bears.unco.edu', 'No domain Configured', 'bacs200')
-# add_student('Lincoln', 'Turner', 'turn6173@bears.unco.edu', 'No domain Configured', 'bacs200')
-# add_student('Cyrus', 'Brown', 'brow8292@bears.unco.edu', 'No domain Configured', 'bacs200')
-# add_student('David', 'Thompson', 'thom1664@bears.unco.edu', 'No domain Configured', 'bacs350')
-# add_student('Fahad', 'Dahish', 'dahi8862@bears.unco.edu', 'No domain Configured', 'bacs200')
-# add_student('Michael', 'Koval', 'kova3550@bears.unco.edu', 'No domain Configured', 'bacs200')
-# add_student('Max', 'Lloyd', 'lloy3384@bears.unco.edu', 'No domain Configured', 'bacs200')
-
-
 def add_student(first, last, email, domain, course):
     course = Course.lookup(course)
     name = '%s %s' % (first, last)
@@ -186,6 +177,19 @@ def read_schedule(course):
     data_file = 'Documents/unc/%s/schedule.csv' % course
     with open(data_file) as f:
         return [row[:-2] for row in reader(f)]
+
+
+def rename_topics():
+
+    def set_lesson_topic(course, lesson_id, name):
+        x = Lesson.lookup(course, lesson_id)
+        x.topic = name
+        x.save()
+
+    course = 'bacs200'
+    set_lesson_topic(course, '11', 'Forming URLs')
+    course = 'bacs350'
+    set_lesson_topic(course, '11', 'Document Viewer')
 
 
 def schedule_data(course):
