@@ -1,76 +1,120 @@
 {% extends "unc_theme.html" %}
 
 
-{% block card %}
+{% block content %}
 
-<h1>{{ title }}</h1>
-<p>Student: {{ student.name }}</p>
+    <h1>{{ title }}</h1>
+    <p>Student: {{ student.name }}</p>
 
-{% if q %}
-<h2>Question</h2>
-
-<p>When Loading Page </p>
-<p><b>{{ q.page }}</b></p>
-<p>What is the <b>{{ q.url_type }} URL</b> for the href that points to</p>
-<p><b>{{ q.url }}</b></p>
-
-<form action="/unc/url-answer/{{ student.pk }}" method="post"> {% csrf_token %}
-    <input type="text" name="answer" placeholder="your URL answer" class="url-answer">
-    <input type="hidden" name="answered" value="{{ answered }}">
-    <input type="hidden" name="left" value="{{ left }}">
-    <input type="hidden" name="page" value="{{ q.page }}">
-    <input type="hidden" name="url" value="{{ q.url }}">
-    <input type="hidden" name="url_type" value="{{ q.url_type }}">
-    <input type="hidden" name="correct" value="{{ q.correct }}">
-    <input type="submit" value="Submit" class="form-btn">
-</form>
-
-{# <p>Hint: <b>{{ q.correct }}</b></p>#}
-{% endif %}
-
-
-{% if a %}
-<h2>Answer</h2>
-
-<div class="box">
-
-    <div class="pull-right">
-        {% if a.iscorrect %}
-        <p class="answer-correct">Correct!</p>
-        <p>
-            <img class="image" src="/static/images/smiley/smiley1.jpg" alt="Happy Face">
-        </p>
-
-        {% else %}
-        <p class="answer-incorrect">Wrong!</p>
-        <p>
-            <img class="image" src="/static/images/smiley/sad1.jpg" alt="Sad Face">
-            Why?
-        </p>
-        {% endif %}
-    </div>
-    <div>
-        <p>When Loading Page </p>
-        <p><b>{{ a.page }}</b></p>
-        <p>What is the <b>{{ a.url_type }} URL</b> for the href that points to </p>
-        <p><b>{{ a.url }}</b></p>
-
-        <p>Your Answer: </p>
-        <p><b>{{ a.answer }}</b></p>
-        <p>Correct Answer: </p>
-        <p><b>{{ a.correct }}</b></p>
+    <h2>Score</h2>
+    <div class="row">
+        <div class="col-sm-4">
+            <h3>Correct Answers: <b>{{ correct }}</b></h3>
+        </div>
+        <div class="col-sm-4">
+            <h3>Incorrect Answers: <b>{{ incorrect }}</b></h3>
+        </div>
+        <div class="col-sm-4">
+            <h3>Questions Remaining: <b>{{ left }}</b></h3>
+        </div>
     </div>
 
-</div>
 
-<a href="/unc/url-question/{{ student.pk }}?answered={{ answered }}&left={{ left }}" class="form-btn">Next Question</a>
+    {% if q %}
+
+        <div class="card">
+            <div class="card-header">
+                Question
+            </div>
+            <div class="card-body">
+                <p>When Loading Page </p>
+                <p><b>{{ q.page }}</b></p>
+                <p>What is the <b>{{ q.url_type }} URL</b> for the href that points to</p>
+                <p><b>{{ q.url }}</b></p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                Answer
+            </div>
+            <div class="card-body">
+                <form action="/unc/url-answer" method="post"> {% csrf_token %}
+                    <p>Your Answer</p>
+                    <p>
+                        <input type="text" name="answer" placeholder="your URL answer" class="url-answer">
+                    </p>
+
+                    <input type="hidden" name="answered" value="{{ answered }}">
+                    <input type="hidden" name="left" value="{{ left }}">
+                    <input type="hidden" name="page" value="{{ q.page }}">
+                    <input type="hidden" name="url" value="{{ q.url }}">
+                    <input type="hidden" name="url_type" value="{{ q.url_type }}">
+                    <input type="hidden" name="correct" value="{{ q.correct }}">
+                    <p>
+                        <button class="btn btn-primary">Save Answer</button>
+                    </p>
+                </form>
+            </div>
+        </div>
+
+    {% endif %}
 
 
-{% endif %}
+    {% if a %}
 
-<h2>Score</h2>
+        <div class="card">
+            <div class="card-header">
+                Question
+            </div>
+            <div class="card-body">
+                <p>When Loading Page </p>
+                <p><b>{{ a.page }}</b></p>
+                <p>What is the <b>{{ a.url_type }} URL</b> for the href that points to </p>
+                <p><b>{{ a.url }}</b></p>
+            </div>
+        </div>
 
-<p>Questions Answered: <b>{{ answered }}</b></p>
-<p>Questions Left: <b>{{ left }}</b></p>
+        <div class="card">
+            <div class="card-header">
+                Answer
+            </div>
+            <div class="card-body">
+                <div class="pull-right">
+                    {% if a.iscorrect %}
+                        <p class="answer-correct">Correct!</p>
+                        <p>
+                            <img class="image" src="/static/images/smiley/smiley1.jpg" alt="Happy Face" width="100">
+                        </p>
+
+                    {% else %}
+                        <p class="answer-incorrect">Wrong!</p>
+                        <p>
+                            <img class="image" src="/static/images/smiley/sad1.jpg" alt="Sad Face" width="100">
+                            Why?
+                        </p>
+                    {% endif %}
+                </div>
+                <div>
+                    <p>Your Answer: <b>{{ a.answer }}</b></p>
+
+                    {% if not a.iscorrect %}
+                        <p>Correct Answer: <b>{{ a.correct }}</b></p>
+                    {% endif %}
+
+                    <p>Hint: {{ a.hint }}</p>
+                </div>
+            </div>
+        </div>
+
+        <p>
+            <a href="/unc/url-question?answered={{ answered }}&left={{ left }}" class="btn btn-primary">
+                Next Question
+            </a>
+        </p>
+
+    {% endif %}
+
+
 
 {% endblock %}

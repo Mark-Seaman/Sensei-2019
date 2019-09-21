@@ -216,5 +216,6 @@ class Skill(models.Model):
 class UrlGame(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
     answered = models.IntegerField(default=0)
+    correct = models.IntegerField(default=0)
     left = models.IntegerField(default=10)
 

@@ -1,24 +1,29 @@
 {% extends "unc_theme.html" %}
 
 
-{% block card %}
+{% block content %}
 
-    <h1>{{ title }}</h1>
+    <h1>{{ student.name }} - {{ title }}</h1>
 
-    <h2>Game Over</h2>
-
-    <div class="box">
-
-        <p class="answer-correct">You Win!</p>
-        <p>
-            <img class="image" src="/static/images/smiley/smiley1.jpg" alt="Happy Face">
-        </p>
-
-        <p>Student: {{ student.name }}</p>
-
-        <p>Questions Answered: <b>{{ answered }}</b></p>
-        <p>Questions Left: <b>{{ left }}</b></p>
-
+    <h2>Game Over - You Win!</h2>
+    <div class="row">
+        <div class="col-sm-4">
+            <h3>Correct Answers: <b>{{ correct }}</b></h3>
+        </div>
+        <div class="col-sm-4">
+            <h3>Incorrect Answers: <b>{{ incorrect }}</b></h3>
+        </div>
+        <div class="col-sm-4">
+            <h3>Questions Remaining: <b>{{ left }}</b></h3>
+        </div>
     </div>
+
+    <p>
+        You Win! Take a screen shot and post it at "<b>{{ student.domain }}/{{ student.course.name }}/skills/urlgame.png</b>".
+    </p>
+    <p>
+        <img class="image" src="/static/images/smiley/smiley1.jpg" alt="Happy Face">
+    </p>
+
 
 {% endblock %}

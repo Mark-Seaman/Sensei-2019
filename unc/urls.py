@@ -3,6 +3,7 @@ from django.conf.urls import url
 from django.urls import include
 
 from .views import *
+from .urlgame import UncUrlGameAnswer, UncUrlGameQuestion, UncUrlGameDone
 
 urlpatterns = [
 
@@ -21,6 +22,10 @@ urlpatterns = [
 
     url(r'^(?P<course>[-_ \w]+)/(?P<lesson>\d\d)/slides$',  UncSlides.as_view()),
     url(r'^(?P<course>[-_ \w]+)/skills/(?P<lesson>\d\d)$',  UncSkillDisplay.as_view()),
+
+    url(r'^url-question$',                                  UncUrlGameQuestion.as_view()),
+    url(r'^url-answer$',                                    UncUrlGameAnswer.as_view()),
+    url(r'^url-game-done$',                                 UncUrlGameDone.as_view()),
 
     url(r'^(?P<course>[-_ \w]+)/(?P<title>[\w/\-_.]+)$',    UncDocDisplay.as_view()),
     url(r'^(?P<course>[-_ \w]+)$',                          UncHomework.as_view()),

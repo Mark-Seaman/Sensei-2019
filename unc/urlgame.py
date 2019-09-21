@@ -5,6 +5,8 @@ from os.path import join
 from random import choice, randint
 
 from unc.models import Student, UrlGame
+from unc.views import UncPage
+from unc.bacs import get_student
 
 
 def generate_url_question():
@@ -29,6 +31,17 @@ def generate_url_question():
         correct = join(dir_name, file_name)
 
     return dict(page=page, url=url, url_type=url_type, correct=correct)
+
+
+def get_hint(url_type):
+    hint = "URL Type is %s URL." % url_type
+    if url_type == 'Absolute':
+        hint += '  Always include the protocol and domain in the URL.'
+    elif url_type == 'Relative':
+        hint += '  Only list the path (directory path and filename).'
+    else:
+        hint += '  Always start with "/" to get to the root of the current domain in the URL.'
+    return hint
 
 
 def relative_path(p1, p2):
@@ -139,13 +152,12 @@ class UncUrlGameAnswer(FormView):
         left = forms.IntegerField()
 
     form_class = UrlForm
-    template_name = 'unc_urlgame.html'
+    template_name = 'urlgame.html'
 
     def get_context_data(self, **kwargs):
-        id = self.kwargs.get('id', '1')
-        student = Student.objects.get(pk=id)
-        game = UrlGame.objects.get(student=student)
-        title = 'URL Crusher - Answer'
+        student = get_student(self.request)
+        header = ['UNC BACS', student.name, "/static/images/unc/Bear.200.png", 'UNC Bear']
+        kwargs['header'] = dict(title=header[0], subtitle=header[1], logo=header[2], logo_text=header[3])
 
         self.answer = self.request.GET.get('answer', "None")
         self.page = self.request.GET.get('page', "None")
@@ -154,15 +166,23 @@ class UncUrlGameAnswer(FormView):
         self.correct = self.request.GET.get('correct', 'None')
         self.iscorrect = (self.request.GET.get('iscorrect') == u'True')
         self.image = self.request.GET.get('image')
+        hint = get_hint(self.url_type)
 
-        answer = dict(answer=self.answer, url=self.url, correct=self.correct, image=self.image,
-                      page=self.page, url_type=self.url_type, iscorrect=self.iscorrect)
-        return dict(title=title, student=student, a=answer, answered=game.answered, left=game.left)
+        answer = dict(a=dict(answer=self.answer, url=self.url, correct=self.correct, image=self.image,
+                      page=self.page, url_type=self.url_type, iscorrect=self.iscorrect, hint=hint))
+
+        game = UrlGame.objects.get_or_create(student=student)[0]
+        game = dict(correct=game.correct, incorrect=game.answered - game.correct, answered=game.answered, left=game.left)
+
+        kwargs.update(answer)
+        kwargs.update(game)
+        return kwargs
+
+        # return dict(title=title, student=student, a=answer, answered=game.answered, correct=game.correct, incorrect=game.answered-game.correct, left=game.left)
 
     def form_valid(self, form):
-        id = self.kwargs.get('id', '1')
-        student = Student.objects.get(pk=id)
-        game = UrlGame.objects.get(student=student)
+        student = get_student(self.request)
+        game = UrlGame.objects.get_or_create(student=student)[0]
 
         self.url = form.data.get('url')
         self.answer = form.data.get('answer')
@@ -173,6 +193,7 @@ class UncUrlGameAnswer(FormView):
         self.iscorrect = (self.correct == self.answer)
         if self.iscorrect:
             game.left = game.left - 1
+            game.correct += 1
         else:
             game.left = 10
         game.answered = game.answered + 1
@@ -181,11 +202,10 @@ class UncUrlGameAnswer(FormView):
         return super(UncUrlGameAnswer, self).form_valid(form)
 
     def get_success_url(self):
-        id = self.kwargs.get('id', '1')
-        student = Student.objects.get(pk=id)
-        game = UrlGame.objects.get(student=student)
+        student = get_student(self.request)
+        game = UrlGame.objects.get_or_create(student=student)[0]
         if game.left < 1:
-            return '/unc/url-game-done/%s' % id
+            return '/unc/url-game-done'
         else:
             parms = '&'.join([
                 "answer=%s" % self.answer,
@@ -196,26 +216,30 @@ class UncUrlGameAnswer(FormView):
                 "image=%s" % url_feedback(self.answer, self.correct),
                 "iscorrect=%s" % self.iscorrect,
             ])
-            return '/unc/url-answer/%s?%s' % (id, parms)
+            return '/unc/url-answer?%s' % parms
 
 
-class UncUrlGameQuestion(TemplateView):
-    template_name = 'unc_urlgame.html'
-
-    def get_context_data(self, **kwargs):
-        id = self.kwargs.get('id', '1')
-        student = Student.objects.get(pk=id)
-        game = UrlGame.objects.get(student=student)
-        title = 'URL Crusher - Question'
-        return dict(title=title, student=student, q=generate_url_question(), answered=game.answered, left=game.left)
-
-
-class UncUrlGameDone(TemplateView):
-    template_name = 'unc_urlgame_done.html'
+class UncUrlGameQuestion(UncPage):
+    template_name = 'urlgame.html'
 
     def get_context_data(self, **kwargs):
-        id = self.kwargs.get('id', '1')
-        student = Student.objects.get(pk=id)
-        game = UrlGame.objects.get(student=student)
-        title = 'URL Crusher'
-        return dict(title=title, student=student, answered=game.answered, left=game.left)
+        kwargs['title'] = 'URL Crusher'
+        kwargs = super(UncUrlGameQuestion, self).get_context_data(**kwargs)
+        game = UrlGame.objects.get_or_create(student=kwargs['student'])[0]
+        question = generate_url_question()
+        # return dict(title=title, student=student, q=question, correct=game.correct, incorrect=game.answered-game.correct, answered=game.answered, left=game.left)
+        game = dict(q=question, correct=game.correct, incorrect=game.answered-game.correct, answered=game.answered, left=game.left)
+        kwargs.update(game)
+        return kwargs
+
+
+class UncUrlGameDone(UncPage):
+    template_name = 'urlgame_done.html'
+
+    def get_context_data(self, **kwargs):
+        kwargs['title'] = 'URL Crusher'
+        kwargs = super(UncUrlGameDone, self).get_context_data(**kwargs)
+        game = UrlGame.objects.get_or_create(student=kwargs['student'])[0]
+        game = dict(correct=game.correct, incorrect=game.answered-game.correct, answered=game.answered, left=game.left)
+        kwargs.update(game)
+        return kwargs
