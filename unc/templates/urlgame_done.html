@@ -1,0 +1,24 @@
+{% extends "unc_theme.html" %}
+
+
+{% block card %}
+
+    <h1>{{ title }}</h1>
+
+    <h2>Game Over</h2>
+
+    <div class="box">
+
+        <p class="answer-correct">You Win!</p>
+        <p>
+            <img class="image" src="/static/images/smiley/smiley1.jpg" alt="Happy Face">
+        </p>
+
+        <p>Student: {{ student.name }}</p>
+
+        <p>Questions Answered: <b>{{ answered }}</b></p>
+        <p>Questions Left: <b>{{ left }}</b></p>
+
+    </div>
+
+{% endblock %}

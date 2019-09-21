@@ -1,0 +1,76 @@
+{% extends "unc_theme.html" %}
+
+
+{% block card %}
+
+<h1>{{ title }}</h1>
+<p>Student: {{ student.name }}</p>
+
+{% if q %}
+<h2>Question</h2>
+
+<p>When Loading Page </p>
+<p><b>{{ q.page }}</b></p>
+<p>What is the <b>{{ q.url_type }} URL</b> for the href that points to</p>
+<p><b>{{ q.url }}</b></p>
+
+<form action="/unc/url-answer/{{ student.pk }}" method="post"> {% csrf_token %}
+    <input type="text" name="answer" placeholder="your URL answer" class="url-answer">
+    <input type="hidden" name="answered" value="{{ answered }}">
+    <input type="hidden" name="left" value="{{ left }}">
+    <input type="hidden" name="page" value="{{ q.page }}">
+    <input type="hidden" name="url" value="{{ q.url }}">
+    <input type="hidden" name="url_type" value="{{ q.url_type }}">
+    <input type="hidden" name="correct" value="{{ q.correct }}">
+    <input type="submit" value="Submit" class="form-btn">
+</form>
+
+{# <p>Hint: <b>{{ q.correct }}</b></p>#}
+{% endif %}
+
+
+{% if a %}
+<h2>Answer</h2>
+
+<div class="box">
+
+    <div class="pull-right">
+        {% if a.iscorrect %}
+        <p class="answer-correct">Correct!</p>
+        <p>
+            <img class="image" src="/static/images/smiley/smiley1.jpg" alt="Happy Face">
+        </p>
+
+        {% else %}
+        <p class="answer-incorrect">Wrong!</p>
+        <p>
+            <img class="image" src="/static/images/smiley/sad1.jpg" alt="Sad Face">
+            Why?
+        </p>
+        {% endif %}
+    </div>
+    <div>
+        <p>When Loading Page </p>
+        <p><b>{{ a.page }}</b></p>
+        <p>What is the <b>{{ a.url_type }} URL</b> for the href that points to </p>
+        <p><b>{{ a.url }}</b></p>
+
+        <p>Your Answer: </p>
+        <p><b>{{ a.answer }}</b></p>
+        <p>Correct Answer: </p>
+        <p><b>{{ a.correct }}</b></p>
+    </div>
+
+</div>
+
+<a href="/unc/url-question/{{ student.pk }}?answered={{ answered }}&left={{ left }}" class="form-btn">Next Question</a>
+
+
+{% endif %}
+
+<h2>Score</h2>
+
+<p>Questions Answered: <b>{{ answered }}</b></p>
+<p>Questions Left: <b>{{ left }}</b></p>
+
+{% endblock %}

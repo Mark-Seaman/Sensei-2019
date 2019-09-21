@@ -212,3 +212,9 @@ class Skill(models.Model):
     def list(course):
         return [str(c) for c in Skill.query(course)]
 
+
+class UrlGame(models.Model):
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    answered = models.IntegerField(default=0)
+    left = models.IntegerField(default=10)
+
