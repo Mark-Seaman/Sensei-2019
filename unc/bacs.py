@@ -179,7 +179,7 @@ def read_schedule(course):
         return [row[:-2] for row in reader(f)]
 
 
-def rename_topics():
+def update_topics():
 
     def set_lesson_topic(course, lesson_id, name):
         x = Lesson.lookup(course, lesson_id)
@@ -209,8 +209,8 @@ def student_data(course):
 
 
 def student_projects(course):
-    skills = [s.images.split(',')[0] for s in Skill.query(course)]
-    projects = Project.query(course)[:4]
+    skills = [s.images.split(',')[0] for s in Skill.query(course)[3:5]]
+    projects = Project.query(course)[4:6]
     return [(s, projects, skills) for s in Course.students(course)]
 
 

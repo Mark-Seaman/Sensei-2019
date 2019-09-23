@@ -127,20 +127,6 @@ def fix_domains():
 # fix_domains()
 
 
-def fix_project_pages():
-    course = 'bacs200'
-    create_project_record(course, '01', 'index.php',                    fake_project_requirements())
-    create_project_record(course, '02', 'bacs200/inspire.html',         fake_project_requirements())
-    create_project_record(course, '03', 'bacs200/amuse.html',           fake_project_requirements())
-    create_project_record(course, '04', 'bacs200/project/index.html',   fake_project_requirements())
-    course = 'bacs350'
-    create_project_record(course, '01', 'index.php',                    fake_project_requirements())
-    create_project_record(course, '02', 'bacs350/index.php',            fake_project_requirements())
-    create_project_record(course, '03', 'bacs350/superhero/index.php',  fake_project_requirements())
-    create_project_record(course, '04', 'bacs350/planner/index.php',    fake_project_requirements())
-    return list_project_details(course)
-
-
 def get_assignments(student):
     def assigned(a):
         link = '<a href="/unc/%s/project/%02d">Project #%s</a>' % (
@@ -192,6 +178,21 @@ def test_project_page(student, project):
         data = validate_project_page(dom, student, project)
         close_browser_dom(dom)
         return data
+
+
+def update_projects():
+    create_project_record('bacs200', '01', 'index.php',                    fake_project_requirements())
+    create_project_record('bacs200', '02', 'bacs200/inspire.html',         fake_project_requirements())
+    create_project_record('bacs200', '03', 'bacs200/amuse.html',           fake_project_requirements())
+    create_project_record('bacs200', '04', 'bacs200/project/index.html',   fake_project_requirements())    
+    create_project_record('bacs200', '05', 'bacs200/study_guide.html',     fake_project_requirements())
+    
+    create_project_record('bacs350', '01', 'index.php',                    fake_project_requirements())
+    create_project_record('bacs350', '02', 'bacs350/index.php',            fake_project_requirements())
+    create_project_record('bacs350', '03', 'bacs350/superhero/index.php',  fake_project_requirements())
+    create_project_record('bacs350', '04', 'bacs350/planner/index.php',    fake_project_requirements())    
+    create_project_record('bacs350', '05', 'bacs350/docman/index.php',     fake_project_requirements())
+    return list_project_details('bacs200') + list_project_details('bacs350')
 
 
 def validate_project_page(dom, student, project):

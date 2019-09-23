@@ -2,11 +2,12 @@ from test.unc_test import *
 from unc.bacs import *
 from unc.projects import *
 from unc.models import *
-from unc.skills import update_skills
+from unc.skills import *
 
 
 def quick_test():
-    rename_topics()
+    update_topics()
+    update_project_pages()
     print(update_skills())
 
 
