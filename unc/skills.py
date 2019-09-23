@@ -5,7 +5,7 @@ def build_skills():
     Skill.create('bacs200', 1, 'Web Hosting',   '2019-09-16', 'bluehost.png,wordpress.png')
     Skill.create('bacs200', 2, 'FTP',           '2019-09-16', 'ftp-site-manager.png,ftp-dirs.png,ftp-files.png')
     Skill.create('bacs200', 3, 'Brackets',      '2019-09-20', 'brackets.png')
-    Skill.create('bacs200', 4, 'URL Game',      '2019-09-20', 'urlgame.png')
+    Skill.create('bacs200', 4, 'URL Game',      '2019-09-23', 'urlgame.png')
 
     Skill.create('bacs350', 1, 'Web Hosting',   '2019-09-16', 'bluehost.png,wordpress.png')
     Skill.create('bacs350', 2, 'FTP',           '2019-09-16', 'ftp-site-manager.png,ftp-dirs.png,ftp-files.png')
