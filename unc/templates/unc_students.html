@@ -4,56 +4,55 @@
 {% block content %}
 
 
-    {% if students %}
-        <div class="page">
-            <h2>Student Domains</h2>
+{% if students %}
+<div class="page">
+    <h2>Student Domains</h2>
 
-            <table class="table table-hover">
+    <table class="table table-hover">
 
-                <tr>
-                    <th>Id</th>
-                    <th>Student</th>
-                    <th>Email</th>
-                    <th>Project #1</th>
-                    <th>Project #2</th>
-                    <th>Project #3</th>
-                    <th>Project #4</th>
-                    <th>Skill #1</th>
-                    <th>Skill #2</th>
-                    <th>Skill #3</th>
-                </tr>
-                {% for student in students %}
+        <tr>
+            <th>Id</th>
+            <th>Student</th>
+            <th>Email</th>
+            <th>Project #1</th>
+            <th>Project #2</th>
+            <th>Project #3</th>
+            <th>Project #4</th>
+            <th>Project #5</th>
+            <th>Skill #3</th>
+            <th>Skill #4</th>
+        </tr>
+        {% for student in students %}
 
-                    <tr>
-                        <td>
-                            <a href="/unc/student/{{ student.0.pk }}">{{ student.0.pk }}</a>
-                        </td>
-                        <td>
-                            {{ student.0.name }}
-                        </td>
-                        <td>
-                            {{ student.0.email }}
-                        </td>
-                        {% for project in student.1 %}
-                            <td>
-                                <a href="{{ student.0.domain }}/{{ project.page }}"
-                                   target="_my_project">{{ project.page }}</a>
-                            </td>
-                        {% endfor %}
-                        {% for skill in student.2 %}
-                            <td>
-                                <img src="{{ student.0.domain }}/{{ student.0.course.name }}/skills/{{ skill }}" width="100">
-                            </td>
-                        {% endfor %}
-                    </tr>
+        <tr>
+            <td>
+                <a href="/unc/student/{{ student.0.pk }}">{{ student.0.pk }}</a>
+            </td>
+            <td>
+                {{ student.0.name }}
+            </td>
+            <td>
+                {{ student.0.email }}
+            </td>
+            {% for project in student.1 %}
+            <td>
+                <a href="{{ student.0.domain }}/{{ project.page }}" target="_my_project">{{ project.page }}</a>
+            </td>
+            {% endfor %}
+            {% for skill in student.2 %}
+            <td>
+                <img src="{{ student.0.domain }}/{{ student.0.course.name }}/skills/{{ skill }}" width="100">
+            </td>
+            {% endfor %}
+        </tr>
 
-                {% endfor %}
+        {% endfor %}
 
-            </table>
-        </div>
+    </table>
+</div>
 
-    {% else %}
-        <h1>No Student Domains registered</h1>
-    {% endif %}
+{% else %}
+<h1>No Student Domains registered</h1>
+{% endif %}
 
 {% endblock %}
