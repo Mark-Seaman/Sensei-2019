@@ -7,7 +7,7 @@ from unc.skills import *
 
 def quick_test():
     update_topics()
-    update_project_pages()
+    update_projects()
     print(update_skills())
 
 
