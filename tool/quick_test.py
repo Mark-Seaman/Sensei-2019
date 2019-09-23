@@ -7,7 +7,7 @@ from unc.skills import update_skills
 
 def quick_test():
     rename_topics()
-    # print(update_skills())
+    print(update_skills())
 
 
 def init_unc_data():
