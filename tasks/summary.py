@@ -71,7 +71,7 @@ def percent(actual, total):
     if total == 0:
         return 0
     else:
-        return int((int(actual) * 100 + 5) / total)
+        return round((float(actual) * 100) / total)
 
 
 def percent_display(amount, total):

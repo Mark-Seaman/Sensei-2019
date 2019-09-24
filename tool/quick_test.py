@@ -12,10 +12,10 @@ def quick_test():
     #     t.name = 'Teach'
     #     t.save()
     #     print(t.name, date_str(t.date))
-    actual, total = 760, 1000
-    print(int((int(actual) * 100 + 5) / total))
-    actual, total = 740, 1000
-    print(int((int(actual) * 100 + 5) / total))
+    actual, total = 7.6, 100
+    print(actual, total,  round((float(actual) * 100) / total))
+    actual, total = 7.4, 100
+    print(actual, total,  round((float(actual) * 100) / total))
 
 
 def init_unc_data():
