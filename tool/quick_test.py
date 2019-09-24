@@ -8,10 +8,14 @@ from tasks.summary import *
 
 def quick_test():
     # print(time_summary(365))
-    for t in Task.objects.filter(name='UNC'):
-        t.name = 'Teach'
-        t.save()
-        print(t.name, date_str(t.date))
+    # for t in Task.objects.filter(name='UNC'):
+    #     t.name = 'Teach'
+    #     t.save()
+    #     print(t.name, date_str(t.date))
+    actual, total = 7.6, 10
+    print(int((int(actual) * 100 + 5) / total))
+    actual, total = 7.4, 10
+    print(int((int(actual) * 100 + 5) / total))
 
 
 def init_unc_data():

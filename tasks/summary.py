@@ -63,7 +63,7 @@ def combine_work_tasks(table, total):
         else:
             results.append(row)
     if total != 0:
-        results = [('Work', work, '%4.1f' % (work * 100 / total))] + results
+        results = [('Work', work, '%4.0f' % (work * 100 / total))] + results
         return results
 
 
