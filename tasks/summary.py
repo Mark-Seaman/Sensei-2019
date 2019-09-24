@@ -12,7 +12,7 @@ def activity_summary(activity):
 
     if activity == 'Work':
         activities = work_types()
-        activity = 'UNC'
+        activity = 'Teach'
     else:
         activities = [activity]
 
@@ -197,7 +197,7 @@ def time_summary(days):
 
 
 def work_types():
-    return 'Hire,Aspire,Business,Family,UNC,Tools,WAM,Sign,Write,Hammer'.split(',')
+    return 'Hire,Aspire,Business,Family,Teach,Tools,WAM,Sign,Write,Hammer'.split(',')
 
 
 def task_export():
