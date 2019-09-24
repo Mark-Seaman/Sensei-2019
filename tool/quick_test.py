@@ -7,7 +7,11 @@ from tasks.summary import *
 
 
 def quick_test():
-    print(time_summary(365))
+    # print(time_summary(365))
+    for t in Task.objects.filter(name='UNC'):
+        t.name = 'Teach'
+        t.save()
+        print(t.name, date_str(t.date))
 
 
 def init_unc_data():
