@@ -12,9 +12,9 @@ def quick_test():
     #     t.name = 'Teach'
     #     t.save()
     #     print(t.name, date_str(t.date))
-    actual, total = 7.6, 10
+    actual, total = 760, 1000
     print(int((int(actual) * 100 + 5) / total))
-    actual, total = 7.4, 10
+    actual, total = 740, 1000
     print(int((int(actual) * 100 + 5) / total))
 
 
