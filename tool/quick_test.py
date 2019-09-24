@@ -7,7 +7,7 @@ from tasks.summary import *
 
 
 def quick_test():
-    print(time_summary(8))
+    print(time_summary(365))
 
 
 def init_unc_data():
