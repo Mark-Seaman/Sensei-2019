@@ -22,7 +22,7 @@ def activity_summary(activity):
 
 
 def activities_work():
-    return ['WAM', 'Sign', 'UNC', 'Business', 'Tools', 'Hammer', 'Hire', 'Write', 'Aspire']
+    return ['WAM', 'Sign', 'UNC', 'Teach', 'Business', 'Tools', 'Hammer', 'Hire', 'Write', 'Aspire']
 
 
 def sort_activity(data):
@@ -188,7 +188,7 @@ def time_summary(days):
     total = sum([t['task_hours'] for t in totals])
     labels = ['Task Name', 'Invested Time', 'Percentage']
     table = [(t['name'], t['task_hours'], percent_display(t['task_hours'], total)) for t in totals]
-    # table = combine_work_tasks(table, total)
+    table = combine_work_tasks(table, total)
     return {
         'total': total,
         'labels': labels,
