@@ -11,9 +11,7 @@ def build_skills():
     Skill.create('bacs350', 2, 'FTP',           '2019-09-16', 'ftp-site-manager.png,ftp-dirs.png,ftp-files.png')
     Skill.create('bacs350', 3, 'Github',        '2019-09-16', 'git-files.png,git-changes.png')
     Skill.create('bacs350', 4, 'Share Code',    '2019-09-20', 'git-pull.png')
-#    Skill.create('bacs350', 5, 'Apache',        '2019-09-20', 'git-pull.png')
-
-    
+    Skill.create('bacs350', 5, 'Apache',        '2019-09-25', 'apache.png')
 
 
 def print_skills(course):
