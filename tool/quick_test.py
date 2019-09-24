@@ -3,19 +3,19 @@ from unc.bacs import *
 from unc.projects import *
 from unc.models import *
 from unc.skills import *
+from tasks.summary import *
 
 
 def quick_test():
-    update_topics()
-    update_projects()
-    print(update_skills())
+    print(time_summary(8))
 
 
 def init_unc_data():
     x = import_schedule('bacs200')
     x = import_schedule('bacs350')
-    fix_project_pages()
-    print(update_skills())
+    update_topics()
+    update_projects()
+    update_skills()
     x = list_course_content()
     print(x)
 
@@ -47,7 +47,8 @@ def show_unc_data():
     x = build_projects('cs350')
     x = import_schedule('bacs200')
     x = import_schedule('bacs350')
-    fix_project_pages()
+    x = update_topics()
+    x = update_projects()
     x = unc_project_test()
     x = unc_assignment_test()
     x = show_assignments()
