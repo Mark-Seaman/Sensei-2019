@@ -188,7 +188,7 @@ def time_summary(days):
     total = sum([t['task_hours'] for t in totals])
     labels = ['Task Name', 'Invested Time', 'Percentage']
     table = [(t['name'], t['task_hours'], percent_display(t['task_hours'], total)) for t in totals]
-    table = combine_work_tasks(table, total)
+    # table = combine_work_tasks(table, total)
     return {
         'total': total,
         'labels': labels,
