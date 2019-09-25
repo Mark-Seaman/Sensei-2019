@@ -7,16 +7,7 @@ from tasks.summary import *
 
 
 def quick_test():
-    # print(time_summary(365))
-    # for t in Task.objects.filter(name='UNC'):
-    #     t.name = 'Teach'
-    #     t.save()
-    #     print(t.name, date_str(t.date))
-    actual, total = 7.6, 100
-    print(actual, total,  round((float(actual) * 100) / total))
-    actual, total = 7.4, 100
-    print(actual, total,  round((float(actual) * 100) / total))
-
+    init_unc_data()
 
 def init_unc_data():
     x = import_schedule('bacs200')
