@@ -188,8 +188,13 @@ def update_topics():
 
     course = 'bacs200'
     set_lesson_topic(course, '11', 'Forming URLs')
+    set_lesson_topic(course, '12', 'Development Workflow')
+    set_lesson_topic(course, '13', 'Test and Debug')
     course = 'bacs350'
     set_lesson_topic(course, '11', 'Document Viewer')
+    set_lesson_topic(course, '12', 'Document Manager')
+    set_lesson_topic(course, '13', 'Directory Listing')
+    set_lesson_topic(course, '14', 'Document Select')
 
 
 def schedule_data(course):
