@@ -22,8 +22,12 @@ def add_lesson(course, row):
     project = add_project(course, row)
     date = make_aware(parse_date(row[2]))
     num = row[3] if row[3] != '' else '-1'
-    lesson = Lesson.objects.get_or_create(course=project.course, lesson=num, date=date)[0]
+    x = Lesson.objects.filter(course=project.course, date=date)
+    if len(x)> 1:
+        print (x)
+    lesson = Lesson.objects.get_or_create(course=project.course, date=date)[0]
     lesson.week = row[0]
+    lesson.lesson = num
     lesson.project = project
     lesson.topic = row[4]
     lesson.reading = zybooks_link(course[-3:], row[5])

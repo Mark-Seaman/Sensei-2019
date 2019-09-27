@@ -7,7 +7,12 @@ from tasks.summary import *
 
 
 def quick_test():
+    for l in Lesson.objects.filter(course__name='bacs350', date__gte='2019-09-27'):
+        print(l.pk, l.date, l.lesson, l.topic, l.course.name)
+        l.delete()
+    # print(Lesson.objects.get(pk=60).delete())
     init_unc_data()
+
 
 def init_unc_data():
     x = import_schedule('bacs200')
