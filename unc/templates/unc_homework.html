@@ -4,13 +4,87 @@
 {% block content %}
 
     {{ student_info }}
-    {{ reviews }}
-    {{ skills }}
-    {#    {{ homework }}#}
 
     <div class="accordion" id="my-accordion">
 
-        <h1>Course Lesson Content</h1>
+        <h2>Student Projects</h2>
+
+        <div class="card">
+
+            <div class="card-header collapse-header" id="heading-skills">
+
+                <button class="btn btn-selector" type="button" data-toggle="collapse"
+                        data-target="#pane-skills"
+                        aria-expanded="true" aria-controls="pane-skills">
+                    <b>Skills</b>
+
+                </button>
+
+            </div>
+            <div id="pane-skills" class="collapse"
+                 aria-labelledby="heading-skills"
+                 data-parent="#my-accordion">
+
+                <div class="card-body">
+
+                    {{ skills }}
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <div class="card-header collapse-header" id="heading-projects">
+
+                <button class="btn btn-selector" type="button" data-toggle="collapse"
+                        data-target="#pane-projects"
+                        aria-expanded="true" aria-controls="pane-projects">
+                    <b>Projects</b>
+
+                </button>
+
+            </div>
+            <div id="pane-projects" class="collapse"
+                 aria-labelledby="heading-projects"
+                 data-parent="#my-accordion">
+
+                <div class="card-body">
+
+                    <table class="table table-hover">
+                        <th>Project</th>
+                        <th>Instructions</th>
+                        <th>Page</th>
+                        <th>Due</th>
+
+                        {% for p in projects %}
+                            <tr>
+                                <td>
+                                    {{ p.num }}
+                                </td>
+                                <td>
+                                    <a href="{{ p.directions }}" target="project">{{ p.directions }}</a>
+                                </td>
+                                <td>
+                                    <a href="{{ student.domain }}/{{ p.page }}" target="project">{{ p.page }}</a>
+                                </td>
+                                <td>
+                                    {{ p.due_date }}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <h2>Weekly Lessons</h2>
 
         {% for week in weeks %}
 
