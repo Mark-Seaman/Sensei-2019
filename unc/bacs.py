@@ -194,11 +194,17 @@ def update_topics():
     set_lesson_topic(course, '11', 'Forming URLs')
     set_lesson_topic(course, '12', 'Development Workflow')
     set_lesson_topic(course, '13', 'Test and Debug')
+    set_lesson_topic(course, '14', 'Using Stylesheets')
+    set_lesson_topic(course, '15', 'Text & Color')
+    set_lesson_topic(course, '16', 'Spacing & Borders')
     course = 'bacs350'
     set_lesson_topic(course, '11', 'Document Viewer')
     set_lesson_topic(course, '12', 'Document Manager')
     set_lesson_topic(course, '13', 'Directory Listing')
     set_lesson_topic(course, '14', 'Document Select')
+    set_lesson_topic(course, '15', 'SQL Tables')
+    set_lesson_topic(course, '16', 'Database Connect')
+    set_lesson_topic(course, '17', 'List Rows ')
 
 
 def schedule_data(course):
