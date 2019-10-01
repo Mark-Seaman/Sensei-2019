@@ -13,6 +13,7 @@ def build_skills():
     Skill.create('bacs350', 3, 'Github',        '2019-09-16', 'git-files.png,git-changes.png')
     Skill.create('bacs350', 4, 'Share Code',    '2019-09-20', 'git-pull.png')
     Skill.create('bacs350', 5, 'Apache',        '2019-09-25', 'apache.png')
+    Skill.create('bacs350', 6, 'Database',      '2019-10-02', 'database.png')
 
 
 def print_skills(course):
