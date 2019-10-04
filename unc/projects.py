@@ -186,12 +186,15 @@ def update_projects():
     create_project_record('bacs200', '03', 'bacs200/amuse.html',           fake_project_requirements())
     create_project_record('bacs200', '04', 'bacs200/project/index.html',   fake_project_requirements())    
     create_project_record('bacs200', '05', 'bacs200/study_guide.html',     fake_project_requirements())
-    
+    create_project_record('bacs200', '06', 'bacs200/index.html',           fake_project_requirements())
+
     create_project_record('bacs350', '01', 'index.php',                    fake_project_requirements())
     create_project_record('bacs350', '02', 'bacs350/index.php',            fake_project_requirements())
     create_project_record('bacs350', '03', 'bacs350/superhero/index.php',  fake_project_requirements())
     create_project_record('bacs350', '04', 'bacs350/planner/index.php',    fake_project_requirements())    
     create_project_record('bacs350', '05', 'bacs350/docman/index.php',     fake_project_requirements())
+    create_project_record('bacs350', '06', 'bacs350/subscriber/index.php', fake_project_requirements())
+    
     return list_project_details('bacs200') + list_project_details('bacs350')
 
 
