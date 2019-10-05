@@ -43,7 +43,7 @@ alias le='less'
 alias ll='ls -l'
 alias log='sys log'
 
-alias n='cd ~/S1/bin && python ntsh.py'
+alias n='cd ~/Archive/Sensei-2018/bin && python ntsh.py'
 
 alias o='dj ocean'
 

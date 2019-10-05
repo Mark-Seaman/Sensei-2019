@@ -194,7 +194,7 @@ def update_projects():
     create_project_record('bacs350', '04', 'bacs350/planner/index.php',    fake_project_requirements())    
     create_project_record('bacs350', '05', 'bacs350/docman/index.php',     fake_project_requirements())
     create_project_record('bacs350', '06', 'bacs350/subscriber/index.php', fake_project_requirements())
-    
+
     return list_project_details('bacs200') + list_project_details('bacs350')
 
 
