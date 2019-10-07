@@ -197,6 +197,10 @@ def update_topics():
     set_lesson_topic(course, '14', 'Using Stylesheets')
     set_lesson_topic(course, '15', 'Text & Color')
     set_lesson_topic(course, '16', 'Spacing & Borders')
+    set_lesson_topic(course, '17', 'Page Layout')
+    set_lesson_topic(course, '18', 'Page Structure')
+    set_lesson_topic(course, '19', 'Menus')
+    
     course = 'bacs350'
     set_lesson_topic(course, '11', 'Document Viewer')
     set_lesson_topic(course, '12', 'Document Manager')
@@ -205,6 +209,9 @@ def update_topics():
     set_lesson_topic(course, '15', 'SQL Tables')
     set_lesson_topic(course, '16', 'Database Connect')
     set_lesson_topic(course, '17', 'List Rows ')
+    set_lesson_topic(course, '18', 'CRUD Operations')
+    set_lesson_topic(course, '19', 'Add Records')
+    set_lesson_topic(course, '20', 'Update Records')
 
 
 def schedule_data(course):
