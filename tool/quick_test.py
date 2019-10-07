@@ -15,8 +15,8 @@ def quick_test():
 
 
 def init_unc_data():
-    x = import_schedule('bacs200')
-    x = import_schedule('bacs350')
+    # x = import_schedule('bacs200')
+    # x = import_schedule('bacs350')
     update_topics()
     update_projects()
     update_skills()

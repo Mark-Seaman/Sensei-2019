@@ -200,7 +200,7 @@ def update_topics():
     set_lesson_topic(course, '17', 'Page Layout')
     set_lesson_topic(course, '18', 'Page Structure')
     set_lesson_topic(course, '19', 'Menus')
-    
+
     course = 'bacs350'
     set_lesson_topic(course, '11', 'Document Viewer')
     set_lesson_topic(course, '12', 'Document Manager')
@@ -236,24 +236,6 @@ def student_projects(course):
     return [(s, projects, skills) for s in Course.students(course)]
 
 
-def weekly_agenda(course, week):
-    project = Project.lookup(course, week)
-    lessons = Lesson.objects.filter(course__name=course, week=week).order_by('date')
-    return dict(week=week, lessons=lessons, project=project)
-
-
-def weekly_lessons(course):
-    return [weekly_agenda(course, week + 1) for week in range(6)]
-
-
-def zybooks_link(course, reading):
-    match_pattern = r'^(\d+).(\d+) (.*)$'
-    url = 'https://learn.zybooks.com/zybook/UNCOBACS%sSeamanFall2019' % course
-    replace_pattern = r'<a href="%s/chapter/\1/section/\2">\1.\2 - \3</a>' % url
-    link = compile(match_pattern).sub(replace_pattern, reading)
-    return link
-
-
 def show_course_files(course):
     return banner(course) + text_join(recursive_list('Documents/unc/%s' % course))
 
@@ -282,3 +264,21 @@ def unc_courses():
 #                   'This class is for test purposes only')
 #     print(c)
 #     Student.objects.filter(course=c).delete()
+
+
+def weekly_agenda(course, week):
+    project = Project.lookup(course, week)
+    lessons = Lesson.objects.filter(course__name=course, week=week).order_by('date')
+    return dict(week=week, lessons=lessons, project=project)
+
+
+def weekly_lessons(course):
+    return [weekly_agenda(course, week + 1) for week in range(7)]
+
+
+def zybooks_link(course, reading):
+    match_pattern = r'^(\d+).(\d+) (.*)$'
+    url = 'https://learn.zybooks.com/zybook/UNCOBACS%sSeamanFall2019' % course
+    replace_pattern = r'<a href="%s/chapter/\1/section/\2">\1.\2 - \3</a>' % url
+    link = compile(match_pattern).sub(replace_pattern, reading)
+    return link
