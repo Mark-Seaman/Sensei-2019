@@ -231,8 +231,8 @@ def student_data(course):
 
 
 def student_projects(course):
-    skills = [s.images.split(',')[0] for s in Skill.query(course)[2:]]
-    projects = Project.query(course)[3:5]
+    skills = [s.images.split(',')[0] for s in Skill.query(course)[3:]]
+    projects = Project.query(course)[4:7]
     return [(s, projects, skills) for s in Course.students(course)]
 
 
