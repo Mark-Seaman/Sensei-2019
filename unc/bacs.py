@@ -185,9 +185,11 @@ def read_schedule(course):
 
 def update_topics():
 
-    def set_lesson_topic(course, lesson_id, name):
+    def set_lesson_topic(course, lesson_id, name, zybooks=None):
         x = Lesson.lookup(course, lesson_id)
         x.topic = name
+        if zybooks:
+            x.reading = zybooks_link(course[-3:], zybooks)
         x.save()
 
     course = 'bacs200'
@@ -199,7 +201,7 @@ def update_topics():
     set_lesson_topic(course, '16', 'Spacing & Borders')
     set_lesson_topic(course, '17', 'Page Layout')
     set_lesson_topic(course, '18', 'Page Structure')
-    set_lesson_topic(course, '19', 'Menus')
+    set_lesson_topic(course, '19', 'Menus', '4.5 Font & Text Properties')
 
     course = 'bacs350'
     set_lesson_topic(course, '11', 'Document Viewer')
