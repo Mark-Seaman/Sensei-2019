@@ -202,6 +202,9 @@ def update_topics():
     set_lesson_topic(course, '17', 'Page Layout')
     set_lesson_topic(course, '18', 'Page Structure')
     set_lesson_topic(course, '19', 'Menus', '4.5 Font & Text Properties')
+    set_lesson_topic(course, '20', 'Bootstrap', '3.1 HTML Containers')
+    set_lesson_topic(course, '21', 'Tab View', '3.2 Forms')
+    set_lesson_topic(course, '22', 'Accordion', '3.3 Common Widgets')
 
     course = 'bacs350'
     set_lesson_topic(course, '11', 'Document Viewer')
@@ -214,6 +217,9 @@ def update_topics():
     set_lesson_topic(course, '18', 'CRUD Operations')
     set_lesson_topic(course, '19', 'Add Records')
     set_lesson_topic(course, '20', 'Update Records')
+    set_lesson_topic(course, '21', 'Data Form Views', '14.1 Relational Databases')
+    set_lesson_topic(course, '22', 'Edit View', '14.2 SQL')
+    set_lesson_topic(course, '23', 'Forms App', '14.3 Tables')
 
 
 def schedule_data(course):
@@ -275,7 +281,7 @@ def weekly_agenda(course, week):
 
 
 def weekly_lessons(course):
-    return [weekly_agenda(course, week + 1) for week in range(7)]
+    return [weekly_agenda(course, week + 1) for week in range(8)]
 
 
 def zybooks_link(course, reading):
