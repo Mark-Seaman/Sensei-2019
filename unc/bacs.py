@@ -202,9 +202,9 @@ def update_topics():
     set_lesson_topic(course, '17', 'Page Layout')
     set_lesson_topic(course, '18', 'Page Structure')
     set_lesson_topic(course, '19', 'Menus', '4.5 Font & Text Properties')
-    set_lesson_topic(course, '20', 'Bootstrap', '3.1 HTML Containers')
-    set_lesson_topic(course, '21', 'Tab View', '3.2 Forms')
-    set_lesson_topic(course, '22', 'Accordion', '3.3 Common Widgets')
+    set_lesson_topic(course, '20', 'Bootstrap', '4.6 Box Model')
+    set_lesson_topic(course, '21', 'Tab View', '3.1 HTML Containers')
+    set_lesson_topic(course, '22', 'Accordion', '3.2 Forms') # 3.3 Common Widgets
 
     course = 'bacs350'
     set_lesson_topic(course, '11', 'Document Viewer')
