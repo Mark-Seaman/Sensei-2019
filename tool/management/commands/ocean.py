@@ -33,11 +33,10 @@ def ocean_command(self, options):
         cmd = options[0]
         args = options[1:]
 
-        if cmd == 'commit':
-            commit(args)
-        elif cmd == 'console':
+        if cmd == 'console':
             console(args)
         elif cmd == 'deploy':
+            system('./manage.py vc commit deploy %s' % ' '.join(args))
             deploy(args)
         elif cmd == 'log':
             log(args)
@@ -64,8 +63,6 @@ def ocean_help():
 
     cmd:
 
-        commit (comment) - Commit all changes and push
-
         console - Open a terminal on the Digital Ocean droplet
 
         deploy - Send code to server 
@@ -83,13 +80,6 @@ def ocean_help():
     ''')
 
 
-def commit(args):
-    comment = ' '.join(args)
-    git_command = 'git add .; git commit -m "%s"; git pull; git push' % comment
-    system('cd $p;' + git_command)
-    system('cd $p/Documents;' + git_command)
-
-
 def console(args):
     commmand = ' '.join(args)
     print('Remote Command: %s' % commmand)
@@ -98,14 +88,14 @@ def console(args):
 
 def deploy(args):
     system('bluepush')
-    commit(args)
-    console(['bin/commit SENSEI_AUTO_COMMIT'])
     restart()
     web()
     console(['". bin/bashrc && python manage.py tst"'])
 
+
 def log(args):
     console(['". bin/bashrc && python manage.py log"'])
+
 
 def restart():
     print('Sensei Server Restart:  systemctl restart gunicorn')
