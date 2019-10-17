@@ -1,5 +1,4 @@
 from django.contrib.auth import logout
-# from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import RedirectView, TemplateView, UpdateView
 
@@ -43,6 +42,19 @@ class UncDocDisplay(UncPage):
         return kwargs
 
 
+class UncLessonDisplay(TemplateView):
+    template_name = 'unc_theme.html'
+
+    def get_context_data(self, **kwargs):
+        title = self.kwargs.get('title', 'Index.md')
+        image_path = '/static/images/unc/django'
+        doc_path = 'unc/django/%s' % title
+        kwargs['text'] = document_text(doc_path, image_path)
+        header = 'UNC Python Webdev', 'Lesson '+title, "/static/images/unc/Bear.200.png", 'UNC Bear', '/unc/django'
+        kwargs['header'] = dict(title=header[0], subtitle=header[1], logo=header[2], logo_text=header[3], href=header[4])
+        return kwargs
+
+
 class UncSkillDisplay(UncPage):
     template_name = 'unc_theme.html'
 
@@ -50,12 +62,7 @@ class UncSkillDisplay(UncPage):
         kwargs = super(UncSkillDisplay, self).get_context_data(**kwargs)
         doc_path = self.request.path[1:]
         student = kwargs['student']
-        # lesson = kwargs['lesson']
         text = render_skill_doc(doc_path, student)
-        # image_path = '/static/images/unc/bacs200' if 'bacs200' == kwargs['course'] else '/static/images/unc/bacs350'
-        # text = document_text(doc_path, image_path)
-        # skills_path = '%s' % ()
-        # text = text.replace('{{ skills }}', 'xxx')
         kwargs['text'] = text
         return kwargs
 

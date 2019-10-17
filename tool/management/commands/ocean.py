@@ -88,6 +88,7 @@ def console(args):
 
 def deploy(args):
     system('bluepush')
+    console(['bin/commit SENSEI_AUTO_COMMIT'])
     restart()
     web()
     console(['". bin/bashrc && python manage.py tst"'])
