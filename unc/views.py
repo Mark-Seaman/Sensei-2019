@@ -50,7 +50,7 @@ class UncLessonDisplay(TemplateView):
         image_path = '/static/images/unc/django'
         doc_path = 'unc/django/%s' % title
         kwargs['text'] = document_text(doc_path, image_path)
-        header = 'UNC Python Webdev', 'Lesson '+title, "/static/images/unc/Bear.200.png", 'UNC Bear', '/unc/django'
+        header = 'UNC Python Webdev', 'Lesson '+title, "/static/images/unc/Bear.200.png", 'UNC Bear', '/unc/django/Index.md'
         kwargs['header'] = dict(title=header[0], subtitle=header[1], logo=header[2], logo_text=header[3], href=header[4])
         return kwargs
 
