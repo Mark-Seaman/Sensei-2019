@@ -1,8 +1,9 @@
 from django.db import models
-from tool.days import date_str
 from django.contrib.auth.models import User
+from django.core.validators import MinLengthValidator
 
-from tool.days import due_date
+
+from tool.days import due_date, date_str
 
 
 class Course(models.Model):
@@ -177,6 +178,33 @@ class Lesson(models.Model):
     @staticmethod
     def list(course):
         return [str(c) for c in Lesson.query(course)]
+
+
+# class Requirements(models.Model):
+#     labels = models.TextField(default='NONE')
+#     url = models.URLField()
+#
+#
+# class Review(models.Model):
+#     reviewer = models.ForeignKey(Student, on_delete=models.CASCADE, editable=False)
+#     designer = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='designer', default=1, editable=False)
+#     page = models.CharField(max_length=100, editable=False)
+#     score = models.IntegerField(default=-1)
+#     date = models.DateTimeField(null=True, editable=False)
+#     due = models.DateTimeField(editable=False)
+#     requirement_labels = models.ForeignKey(Requirements, on_delete=models.CASCADE, default=1)
+#     requirements = models.TextField(default='NONE')
+#     requirement_1 = models.BooleanField(default=False)
+#     requirement_2 = models.BooleanField(default=False)
+#     requirement_3 = models.BooleanField(default=False)
+#     requirement_4 = models.BooleanField(default=False)
+#     requirement_5 = models.BooleanField(default=False)
+#     requirement_6 = models.BooleanField(default=False)
+#     requirement_7 = models.BooleanField(default=False)
+#     requirement_8 = models.BooleanField(default=False)
+#     requirement_9 = models.BooleanField(default=False)
+#     requirement_10 = models.BooleanField(default=False)
+#     notes = models.TextField(validators=[MinLengthValidator(100)])
 
 
 class Skill(models.Model):
