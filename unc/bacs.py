@@ -204,7 +204,10 @@ def update_topics():
     set_lesson_topic(course, '19', 'Menus', '4.5 Font & Text Properties')
     set_lesson_topic(course, '20', 'Bootstrap', '4.6 Box Model')
     set_lesson_topic(course, '21', 'Tab View', '3.1 HTML Containers')
-    set_lesson_topic(course, '22', 'Accordion', '3.2 Forms') # 3.3 Common Widgets
+    set_lesson_topic(course, '22', 'Accordion', '3.2 Forms')
+    set_lesson_topic(course, '23', 'Version Control', '3.3 Common Widgets')
+    set_lesson_topic(course, '24', 'W3Schools', '3.4 HTML5 Widgets')
+    set_lesson_topic(course, '25', 'W3Schools Tutorials', '3.5 Audio & Video')
 
     course = 'bacs350'
     set_lesson_topic(course, '11', 'Document Viewer')
@@ -220,6 +223,9 @@ def update_topics():
     set_lesson_topic(course, '21', 'Data Form Views', '14.1 Relational Databases')
     set_lesson_topic(course, '22', 'Edit View', '14.2 SQL')
     set_lesson_topic(course, '23', 'Forms App', '14.3 Tables')
+    set_lesson_topic(course, '24', 'Logging', '14.4 Insert Records')
+    set_lesson_topic(course, '25', 'MVC Pattern', '14.5 Selecting Records')
+    set_lesson_topic(course, '26', 'Single Page App', '14.6 SQL Functions')
 
 
 def schedule_data(course):

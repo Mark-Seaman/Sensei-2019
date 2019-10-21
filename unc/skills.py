@@ -14,6 +14,7 @@ def update_skills():
     Skill.create('bacs200', 6, 'Developer Tools', '2019-10-04', 'devtools.png')
     Skill.create('bacs200', 7, 'New Page Template', '2019-10-09', 'newpage.png,article.png')
     Skill.create('bacs200', 8, 'Using Bootstrap', '2019-10-16', 'bootstrap.png,tabs.png,accordion.png')
+    Skill.create('bacs200', 9, 'Version Control', '2019-10-21', 'get-files.png,git-changes.png,git-push.png')
 
     Skill.create('bacs350', 1, 'Web Hosting', '2019-09-16', 'bluehost.png,wordpress.png')
     Skill.create('bacs350', 2, 'FTP', '2019-09-16', 'ftp-site-manager.png,ftp-dirs.png,ftp-files.png')
