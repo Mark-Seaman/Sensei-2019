@@ -1,0 +1,57 @@
+{% extends "unc_theme.html" %}
+
+
+{% block content %}
+
+<h1>Student Design Reviews</h1>
+
+<h3>Review Details</h3>
+<p>Reviewed by: <b><a href="/unc/student/{{ object.reviewer.id }}">{{ object.reviewer.email }}</a></b></p>
+<p>Designer: <b><a href="/unc/student/{{ object.designer.id }}">{{ object.designer.email }}</a></b>
+</p>
+<p>Domain: <b>{{ object.designer.domain }}</b></p>
+<p>Page: <b><a href="http://{{ object.designer.domain }}/{{ object.page }}">{{ object.page }}</a>
+    </b></p>
+<p>Validator: <b><a href="https://validator.w3.org/nu/?doc=http://{{ object.designer.domain }}/{{ object.page }}">{{ object.page }}</a>
+    </b></p>
+<p>Date: <b>{{ object.date }}</b></p>
+
+<h3>Requirements Met</h3>
+<p>
+    Select the requirements that are met by this page.
+</p>
+<div class="page">
+    <b>Scorecard for {{ object.designer.domain }}/{{ object.page }}</b>
+    <form action="/unc/review/{{ object.pk }}" method="post">{% csrf_token %}
+        {# <label>Total Score</label>{{ form.score }}#}
+        <br>
+        {{ form.requirement_1 }} &nbsp; <label>{{ requirements.0 }}</label>
+        <br>
+        {{ form.requirement_2 }} &nbsp; <label>{{ requirements.1 }}</label>
+        <br>
+        {{ form.requirement_3 }} &nbsp; <label>{{ requirements.2 }}</label>
+        <br>
+        {{ form.requirement_4 }} &nbsp; <label>{{ requirements.3 }}</label>
+        <br>
+        {{ form.requirement_5 }} &nbsp; <label>{{ requirements.4 }}</label>
+        <br>
+        {{ form.requirement_6 }} &nbsp; <label>{{ requirements.5 }}</label>
+        <br>
+        {{ form.requirement_7 }} &nbsp; <label>{{ requirements.6 }}</label>
+        <br>
+        {{ form.requirement_8 }} &nbsp; <label>{{ requirements.7 }}</label>
+        <br>
+        {{ form.requirement_9 }} &nbsp; <label>{{ requirements.8 }}</label>
+        <br>
+        {{ form.requirement_10 }} &nbsp; <label>{{ requirements.9 }}</label>
+        <br>
+        <br><label><b>Summary of Problems</b></label>
+        <br>
+        {{ form.notes }}
+        <br>
+        <br>
+
+        <button class="btn palette-Green bg">Submit Review</button>
+    </form>
+</div>
+{% endblock %}

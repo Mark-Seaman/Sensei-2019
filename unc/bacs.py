@@ -146,17 +146,17 @@ def import_test_students():
     add_student('Sensei', '350', 'mark.b.seaman+350@gmail.com', r'https://unco-bacs.org', 'bacs350')
 
 
-def initialize_data():
-    create_course('cs350', 'Software Engineering (under development)', 'Mark Seaman',
-                  'This class is for test purposes only')
-    create_course('bacs200', 'Web Development Intro (Fall 2019)', 'Mark Seaman',
-                  'Web Design and Development for Small Business')
-    create_course('bacs350', 'Web Development Intermediate (Fall 2019)', 'Mark Seaman',
-                  'Intermediate Web Development with PHP/MySQL')
-    # import_schedule('bacs200')
-    # import_schedule('bacs350')
-
-
+# def initialize_data():
+#     create_course('cs350', 'Software Engineering (under development)', 'Mark Seaman',
+#                   'This class is for test purposes only')
+#     create_course('bacs200', 'Web Development Intro (Fall 2019)', 'Mark Seaman',
+#                   'Web Design and Development for Small Business')
+#     create_course('bacs350', 'Web Development Intermediate (Fall 2019)', 'Mark Seaman',
+#                   'Intermediate Web Development with PHP/MySQL')
+#     # import_schedule('bacs200')
+#     # import_schedule('bacs350')
+#
+#
 def list_course_content():
     data = [banner('Course Content Data')]
     data += Course.list()
@@ -254,30 +254,8 @@ def show_course_files(course):
     return banner(course) + text_join(recursive_list('Documents/unc/%s' % course))
 
 
-def show_sample_files():
-    def list_files(path):
-        if exists(path):
-            return banner(path) + text_join(recursive_list(path))
-        else:
-            return '%s path does not exist' % path
-
-    paths = [
-        join(environ['HOME'], 'UNC', 'old-code', 'public_html'),
-        join(environ['HOME'], 'UNC', 'UNC-BACS200-2019-Fall', 'public_html'),
-        join(environ['HOME'], 'UNC', 'UNC-BACS350-2019-Fall', 'public_html'),
-    ]
-
-    return text_join([list_files(path) for path in paths])
-
-
 def unc_courses():
     return Course.all()
-
-# def delete_students():
-#     c = create_course('cs350', 'Software Engineering (under development)', 'Mark Seaman',
-#                   'This class is for test purposes only')
-#     print(c)
-#     Student.objects.filter(course=c).delete()
 
 
 def weekly_agenda(course, week):

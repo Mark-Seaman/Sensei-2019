@@ -1,44 +1,34 @@
-<div class="card project">
-    <div class="card-header  project">
-        Skills for {{ student.name }}
-    </div>
+<h3>Skills for {{ student.name }}</h3>
 
-    <div class="card-body card-padding project">
+{% if skills %}
+    <p>
+        {{ student.name }} Domain: <a href="{{ student.domain }}">{{ student.domain }}</a>
+    </p>
 
-        {% if skills %}
-            <p>
-                Domain: <a href="{{ student.domain }}">{{ student.domain }}</a>
-            </p>
-            <p>
-                {{ student.name }} Student Site:
-                <a href="{{ student.domain }}/{{ student.course.name }}/skills">Demo of Skills</a>
-            </p>
+    {% for s in skills %}
+        <div class="card">
+            <div class="card-header">
+                <a href="/unc/{{ student.course.name }}/skills/{{ s.num }}">Skill #{{ s.skill.num }}
+                    - {{ s.skill.topic }}</a> - Due on {{ s.skill.due |date:"D, M d" }}
+            </div>
 
-            <table class="table table-hover">
-                <th>Skill Challenge</th>
-                <th>Due Date</th>
-                <th>Instructions</th>
-
-                {% for s in skills %}
-                    <tr>
-                        <td><a href="/unc/{{ student.course.name }}/skills/{{ s.num }}">Skill
-                            #{{ s.skill.num }} - {{ s.skill.topic }}</a></td>
-                        <td>Due on {{ s.skill.due |date:"D, M d" }}</td>
-                    </tr>
-                    <tr>
-                        {% for i in s.images %}
-                            <td>
-                                <a href="{{ student.domain }}/{{ student.course.name }}/skills/{{ i }}" target="_blank">
-                                    <img src="{{ student.domain }}/{{ student.course.name }}/skills/{{ i }}" width="150px">
-                                    {{ i }}
-                                </a>
-                            </td>
-                        {% endfor %}
-                    </tr>
+            <div class="card-body card-padding">
+                {% for i in s.images %}
+                    <div class="card w20">
+                        <p>
+                            <a href="{{ student.domain }}/{{ student.course.name }}/skills/{{ i }}" target="_blank">
+                                <img src="{{ student.domain }}/{{ student.course.name }}/skills/{{ i }}" width="150px">
+                                <p>{{ i }}</p>
+                            </a>
+                        </p>
+                    </div>
                 {% endfor %}
 
-            </table>
-        {% endif %}
+            </div>
+        </div>
 
-    </div>
-</div>
+    {% endfor %}
+
+{% endif %}
+
+

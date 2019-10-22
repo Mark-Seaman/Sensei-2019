@@ -17,13 +17,9 @@ def unc_course_files_test():
     return text_join([show_course_files(course) for course in unc_courses()])
 
 
-def unc_sample_files_test():
-    return show_sample_files()
-
-
-def unc_data_test():
-    initialize_data()
-    return "%s lines in output" % len(text_lines(list_course_content()))
+# def unc_data_test():
+#     initialize_data()
+#     return "%s lines in output" % len(text_lines(list_course_content()))
 
 
 def unc_project_test():
@@ -50,7 +46,7 @@ def unc_student_test():
     output = ['Sensei Users: ', list_users()]
 
     for course in unc_courses():
-        import_test_students()
+        # import_test_students()
         students = list_students(course)
         output.append(students)
     return '%s Student Records' % len(text_lines(text_join(output)))

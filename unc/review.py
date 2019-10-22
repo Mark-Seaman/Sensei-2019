@@ -2,7 +2,7 @@ from django.utils.timezone import make_aware
 from datetime import datetime
 from random import shuffle
 
-from unc.models import Course, Review
+from unc.models import Course
 
 
 def assign_reviews(course, page, due, requirements):

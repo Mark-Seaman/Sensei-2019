@@ -7,8 +7,8 @@ from tool.log import log_page
 from unc.bacs import schedule_data, slides_markdown, student_projects, weekly_agenda, get_student
 from unc.models import Project, Student
 from unc.projects import test_project_page
-from unc.render import render_homework_scorecard, render_student_info, render_weekly_agenda, render_course_agenda, \
-    render_reviews, render_skill_doc, render_skills
+from unc.render import *
+from unc.review import *
 
 
 class UncPage(LoginRequiredMixin, TemplateView):
@@ -157,3 +157,51 @@ class UncTestResults(UncPage):
         student = get_student(self.request)
         kwargs['test_results'] = test_project_page(student, project)
         return kwargs
+
+
+# class UncEditReview(UpdateView):
+#     model = Review
+#     fields = ['requirement_1', 'requirement_2', 'requirement_3', 'requirement_4', 'requirement_5',
+#               'requirement_6', 'requirement_7', 'requirement_8', 'requirement_9', 'requirement_10', 'notes']
+#     template_name = 'unc_review.html'
+#
+#     def get_context_data(self, **kwargs):
+#         pk = self.kwargs.get('pk')
+#         review = get_review(pk)
+#         requirements = review.requirement_labels.labels.split('\n')
+#         kwargs = dict(title='Design Review', requirements=requirements)
+#         return super(UncEditReview, self).get_context_data(**kwargs)
+#
+#     def form_valid(self, form):
+#         self.object.score = count_score(self.object)
+#         self.object.date = now()
+#         return super(UncEditReview, self).form_valid(form)
+#
+#     def get_success_url(self):
+#         student_id = self.object.reviewer.pk
+#         return '/unc/student/%s' % student_id
+
+
+# class UncReviewFeedback(TemplateView):
+#     template_name = 'unc_feedback.html'
+#
+#     def get_context_data(self, **kwargs):
+#         pk = self.kwargs.get('pk')
+#         review = get_review(pk)
+#         requirements = review.requirement_labels.labels.split('\n')
+#         title = 'Design Review Feedback'
+#         return site_settings(student_active='active', title=title, review=review, requirements=requirements)
+#
+#
+# class UncReviews(TemplateView):
+#     template_name = 'unc_reviews.html'
+#
+#     def get_context_data(self, **kwargs):
+#         course = '1'
+#         reviews = query_reviewers(course)
+#         designers = query_designers(course)
+#         return site_settings(student_active='active', title='Design Reviews', reviews=reviews, designers=designers)
+#
+
+
+

@@ -13,8 +13,6 @@ urlpatterns = [
 
     url(r'^django/(?P<title>[\w/\-_.]+)$',                  UncLessonDisplay.as_view()),
 
-    # url(r'^(?P<course>[-_ \w]+)/(?P<title>[\w/\-_.]*)/project$', UncProject.as_view()),
-    # url(r'^(?P<course>[-_ \w]+)/(?P<week>\d\d)/(?P<title>[\w/\-_.]*)$',        UncWeek.as_view()),
     url(r'^(?P<course>[-_ \w]+)/week/(?P<week>\d\d)$',      UncWeek.as_view()),
 
     # url(r'student/(?P<pk>\d+)$',                            UncStudent.as_view()),
@@ -24,6 +22,10 @@ urlpatterns = [
 
     url(r'^(?P<course>[-_ \w]+)/(?P<lesson>\d\d)/slides$',  UncSlides.as_view()),
     url(r'^(?P<course>[-_ \w]+)/skills/(?P<lesson>\d\d)$',  UncSkillDisplay.as_view()),
+
+    # url(r'^review/(?P<pk>[\d]+)$',                        UncEditReview.as_view()),
+    # url(r'^reviews$',                                     UncReviews.as_view()),
+    # url(r'^feedback/(?P<pk>[\d]+)$',                      UncReviewFeedback.as_view()),
 
     url(r'^url-question$',                                  UncUrlGameQuestion.as_view()),
     url(r'^url-answer$',                                    UncUrlGameAnswer.as_view()),

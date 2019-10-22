@@ -187,6 +187,11 @@ pre {
     border-radius: 10px;
 }
 
+.page2 {
+    margin: 2em;
+    padding: 2em;
+}
+
 .pane {
     background-color: #fff;
     box-shadow: 2px 2px 5px grey;
@@ -204,6 +209,27 @@ pre {
 }
 
 .navbar-nav .nav-item.active {
-    /*box-shadow: 2px 2px 5px black;*/
     font-weight: bold;
+}
+
+
+div.tab-pane {
+    background-color: #eee;
+    box-shadow: 2px 2px 5px gray;
+    padding: 3em;
+}
+
+.nav-tabs .nav-link.active {
+    background-color: #eee;
+    font-weight: bold;
+}
+
+.w40 {
+    float: left;
+    width: 40%;
+}
+
+.w20 {
+    float: left;
+    width: 20%;
 }
