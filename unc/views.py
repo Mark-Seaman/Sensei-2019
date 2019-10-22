@@ -1,6 +1,7 @@
 from django.contrib.auth import logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import RedirectView, TemplateView, UpdateView
+from django.utils.timezone import now
 
 from mybook.mybook import document_text
 from tool.log import log_page
@@ -159,27 +160,27 @@ class UncTestResults(UncPage):
         return kwargs
 
 
-# class UncEditReview(UpdateView):
-#     model = Review
-#     fields = ['requirement_1', 'requirement_2', 'requirement_3', 'requirement_4', 'requirement_5',
-#               'requirement_6', 'requirement_7', 'requirement_8', 'requirement_9', 'requirement_10', 'notes']
-#     template_name = 'unc_review.html'
-#
-#     def get_context_data(self, **kwargs):
-#         pk = self.kwargs.get('pk')
-#         review = get_review(pk)
-#         requirements = review.requirement_labels.labels.split('\n')
-#         kwargs = dict(title='Design Review', requirements=requirements)
-#         return super(UncEditReview, self).get_context_data(**kwargs)
-#
-#     def form_valid(self, form):
-#         self.object.score = count_score(self.object)
-#         self.object.date = now()
-#         return super(UncEditReview, self).form_valid(form)
-#
-#     def get_success_url(self):
-#         student_id = self.object.reviewer.pk
-#         return '/unc/student/%s' % student_id
+class UncEditReview(UpdateView):
+    model = Review
+    fields = ['requirement_1', 'requirement_2', 'requirement_3', 'requirement_4', 'requirement_5',
+              'requirement_6', 'requirement_7', 'requirement_8', 'requirement_9', 'requirement_10', 'notes']
+    template_name = 'unc_review.html'
+
+    def get_context_data(self, **kwargs):
+        pk = self.kwargs.get('pk')
+        review = get_review(pk)
+        labels = [r.strip() for r in review.requirement_labels.split('\n')]
+        kwargs = dict(title='Design Review', labels=labels)
+        return super(UncEditReview, self).get_context_data(**kwargs)
+
+    def form_valid(self, form):
+        self.object.score = count_score(self.object)
+        self.object.date = now()
+        return super(UncEditReview, self).form_valid(form)
+
+    def get_success_url(self):
+        student_id = self.object.reviewer.pk
+        return '/unc/student/%s' % student_id
 
 
 # class UncReviewFeedback(TemplateView):

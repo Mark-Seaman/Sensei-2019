@@ -23,7 +23,7 @@ urlpatterns = [
     url(r'^(?P<course>[-_ \w]+)/(?P<lesson>\d\d)/slides$',  UncSlides.as_view()),
     url(r'^(?P<course>[-_ \w]+)/skills/(?P<lesson>\d\d)$',  UncSkillDisplay.as_view()),
 
-    # url(r'^review/(?P<pk>[\d]+)$',                        UncEditReview.as_view()),
+    url(r'^review/(?P<pk>[\d]+)$',                          UncEditReview.as_view()),
     # url(r'^reviews$',                                     UncReviews.as_view()),
     # url(r'^feedback/(?P<pk>[\d]+)$',                      UncReviewFeedback.as_view()),
 

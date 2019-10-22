@@ -10,9 +10,9 @@
 <p>Designer: <b><a href="/unc/student/{{ object.designer.id }}">{{ object.designer.email }}</a></b>
 </p>
 <p>Domain: <b>{{ object.designer.domain }}</b></p>
-<p>Page: <b><a href="http://{{ object.designer.domain }}/{{ object.page }}">{{ object.page }}</a>
+<p>Page: <b><a href="{{ object.designer.domain }}/{{ object.page }}">{{ object.page }}</a>
     </b></p>
-<p>Validator: <b><a href="https://validator.w3.org/nu/?doc=http://{{ object.designer.domain }}/{{ object.page }}">{{ object.page }}</a>
+<p>Validator: <b><a href="https://validator.w3.org/nu/?doc={{ object.designer.domain }}/{{ object.page }}">{{ object.page }}</a>
     </b></p>
 <p>Date: <b>{{ object.date }}</b></p>
 
@@ -25,25 +25,25 @@
     <form action="/unc/review/{{ object.pk }}" method="post">{% csrf_token %}
         {# <label>Total Score</label>{{ form.score }}#}
         <br>
-        {{ form.requirement_1 }} &nbsp; <label>{{ requirements.0 }}</label>
+        {{ form.requirement_1 }} &nbsp; <label>{{ labels.0 }}</label>
         <br>
-        {{ form.requirement_2 }} &nbsp; <label>{{ requirements.1 }}</label>
+        {{ form.requirement_2 }} &nbsp; <label>{{ labels.1 }}</label>
         <br>
-        {{ form.requirement_3 }} &nbsp; <label>{{ requirements.2 }}</label>
+        {{ form.requirement_3 }} &nbsp; <label>{{ labels.2 }}</label>
         <br>
-        {{ form.requirement_4 }} &nbsp; <label>{{ requirements.3 }}</label>
+        {{ form.requirement_4 }} &nbsp; <label>{{ labels.3 }}</label>
         <br>
-        {{ form.requirement_5 }} &nbsp; <label>{{ requirements.4 }}</label>
+        {{ form.requirement_5 }} &nbsp; <label>{{ labels.4 }}</label>
         <br>
-        {{ form.requirement_6 }} &nbsp; <label>{{ requirements.5 }}</label>
+        {{ form.requirement_6 }} &nbsp; <label>{{ labels.5 }}</label>
         <br>
-        {{ form.requirement_7 }} &nbsp; <label>{{ requirements.6 }}</label>
+        {{ form.requirement_7 }} &nbsp; <label>{{ labels.6 }}</label>
         <br>
-        {{ form.requirement_8 }} &nbsp; <label>{{ requirements.7 }}</label>
+        {{ form.requirement_8 }} &nbsp; <label>{{ labels.7 }}</label>
         <br>
-        {{ form.requirement_9 }} &nbsp; <label>{{ requirements.8 }}</label>
+        {{ form.requirement_9 }} &nbsp; <label>{{ labels.8 }}</label>
         <br>
-        {{ form.requirement_10 }} &nbsp; <label>{{ requirements.9 }}</label>
+        {{ form.requirement_10 }} &nbsp; <label>{{ labels.9 }}</label>
         <br>
         <br><label><b>Summary of Problems</b></label>
         <br>
