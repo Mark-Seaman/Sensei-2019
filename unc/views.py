@@ -179,8 +179,8 @@ class UncEditReview(UpdateView):
         return super(UncEditReview, self).form_valid(form)
 
     def get_success_url(self):
-        student_id = self.object.reviewer.pk
-        return '/unc/student/%s' % student_id
+        student = self.object.reviewer
+        return '/unc/%s' % student.course.name
 
 
 # class UncReviewFeedback(TemplateView):
