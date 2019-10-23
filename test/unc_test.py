@@ -3,14 +3,14 @@ from tool.shell import is_server
 from tool.text import text_lines
 from tool.user import list_users
 from unc.bacs import *
-from unc.projects import add_test_assignments, update_projects, show_assignments, validate_unc_project
+from unc.projects import list_projects, update_projects, validate_unc_project
 from unc.models import Student
-from unc.skills import update_skills
+from unc.skills import print_skills, update_skills
 
 
-def unc_assignment_test():
-    add_test_assignments()
-    return "%s lines in output" % len(text_lines(show_assignments()))
+# def unc_assignment_test():
+#     add_test_assignments()
+#     return "%s lines in output" % len(text_lines(show_assignments()))
 
 
 def unc_course_files_test():
@@ -23,15 +23,16 @@ def unc_course_files_test():
 
 
 def unc_project_test():
-    course = 'cs350'
-    output = import_schedule(course)
+    # course = 'cs350'
+    # output = import_schedule(course)
     update_projects()
-    output += list_course_content()
-    return "%s lines in output" % len(output)
+    projects = list_projects('bacs200') + list_projects('bacs350')
+    return projects  # "%s lines in output" % len(projects)
 
 
 def unc_lesson_test():
-    return zybooks_link('bacs200', '1.1 Web Introduction')
+    update_lessons()
+    return list_lessons('bacs200') + list_lessons('bacs350')
 
 
 def unc_review_test():
@@ -39,7 +40,8 @@ def unc_review_test():
 
 
 def unc_skills_test():
-    return update_skills()
+    update_skills()
+    return print_skills('bacs350') + '\n' + print_skills('bacs200')
 
 
 def unc_student_test():

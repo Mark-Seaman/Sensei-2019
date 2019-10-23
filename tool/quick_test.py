@@ -66,7 +66,7 @@ def assign_reviews():
 def init_unc_data():
     # x = import_schedule('bacs200')
     # x = import_schedule('bacs350')
-    update_topics()
+    update_lessons()
     update_projects()
     update_skills()
     x = list_course_content()

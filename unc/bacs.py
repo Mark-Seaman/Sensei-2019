@@ -173,6 +173,10 @@ def list_course_content():
     return text_join(data)
 
 
+def list_lessons(course):
+    return text_join(Lesson.list(course))
+
+
 def list_students(course):
     return ("\nStudents %s:\n" % course) + text_join([str(s) for s in Course.students(course)])
 
@@ -183,7 +187,37 @@ def read_schedule(course):
         return [row[:-2] for row in reader(f)]
 
 
-def update_topics():
+def schedule_data(course):
+    title = Course.objects.get(name=course).title
+    return [title, 'Class Schedule'], Lesson.query(course)
+
+
+def slides_markdown(course, lesson):
+    doc = 'Documents/unc/%s/lesson/%s' % (course, lesson)
+    text = fix_images(read_markdown(doc), '/static/images/unc/%s' % course)
+    bear = '\n\n---\n\n<img src="/static/images/unc/bacs200/Bear.200.png">\n\n---\n\n'
+    return bear + text + bear
+
+
+def student_data(course):
+    return Course.students(course)
+
+
+def student_projects(course):
+    skills = [s.images.split(',')[0] for s in Skill.query(course)[5:]]
+    projects = Project.query(course)[5:8]
+    return [(s, projects, skills) for s in Course.students(course)]
+
+
+def show_course_files(course):
+    return banner(course) + text_join(recursive_list('Documents/unc/%s' % course))
+
+
+def unc_courses():
+    return Course.all()
+
+
+def update_lessons():
 
     def set_lesson_topic(course, lesson_id, name, zybooks=None):
         x = Lesson.lookup(course, lesson_id)
@@ -226,36 +260,6 @@ def update_topics():
     set_lesson_topic(course, '24', 'Logging', '14.4 Insert Records')
     set_lesson_topic(course, '25', 'MVC Pattern', '14.5 Selecting Records')
     set_lesson_topic(course, '26', 'Single Page App', '14.6 SQL Functions')
-
-
-def schedule_data(course):
-    title = Course.objects.get(name=course).title
-    return [title, 'Class Schedule'], Lesson.query(course)
-
-
-def slides_markdown(course, lesson):
-    doc = 'Documents/unc/%s/lesson/%s' % (course, lesson)
-    text = fix_images(read_markdown(doc), '/static/images/unc/%s' % course)
-    bear = '\n\n---\n\n<img src="/static/images/unc/bacs200/Bear.200.png">\n\n---\n\n'
-    return bear + text + bear
-
-
-def student_data(course):
-    return Course.students(course)
-
-
-def student_projects(course):
-    skills = [s.images.split(',')[0] for s in Skill.query(course)[5:]]
-    projects = Project.query(course)[5:8]
-    return [(s, projects, skills) for s in Course.students(course)]
-
-
-def show_course_files(course):
-    return banner(course) + text_join(recursive_list('Documents/unc/%s' % course))
-
-
-def unc_courses():
-    return Course.all()
 
 
 def weekly_agenda(course, week):

@@ -8,20 +8,20 @@ from tool.text import text_join
 from unc.models import Assignment, Course, Lesson, Project, Requirement, Student
 
 
-def add_assignment(course, student, project, due):
-    p = Project.lookup(course, project)
-    a = Assignment.objects.get_or_create(project=p, student=student, score=0, due=due_date(due), status=0)[0]
-    a.date = now()
-    a.save()
-
-
-def assignment_due(course, student, project, due):
-    p = Project.lookup(course, project)
-    a = Assignment.objects.get(project=p, student=student)
-    a.due = due_date(due)
-    a.score = 0
-    a.status = 0
-    a.save()
+# def add_assignment(course, student, project, due):
+#     p = Project.lookup(course, project)
+#     a = Assignment.objects.get_or_create(project=p, student=student, score=0, due=due_date(due), status=0)[0]
+#     a.date = now()
+#     a.save()
+#
+#
+# def assignment_due(course, student, project, due):
+#     p = Project.lookup(course, project)
+#     a = Assignment.objects.get(project=p, student=student)
+#     a.due = due_date(due)
+#     a.score = 0
+#     a.status = 0
+#     a.save()
 
 
 def add_project(course, row):
@@ -53,12 +53,12 @@ def add_requirement(project, id, selector, transform):
     return r
 
 
-def add_test_assignments():
-    course = 'cs350'
-    assign_homework(course, '01', '2019-08-30')
-    assign_homework(course, '02', '2019-09-06')
-    # clear_assignments()
-
+# def add_test_assignments():
+#     course = 'cs350'
+#     assign_homework(course, '01', '2019-08-30')
+#     assign_homework(course, '02', '2019-09-06')
+#     # clear_assignments()
+#
 
 def approve_requirements(course, id):
     project = Project.lookup(course, id)
@@ -67,25 +67,20 @@ def approve_requirements(course, id):
         r.save()
 
 
-def assign_homework(course, project, due):
-    for s in Course.students(course):
-        add_assignment(course, s, project, due)
+# def assign_homework(course, project, due):
+#     for s in Course.students(course):
+#         add_assignment(course, s, project, due)
+#
 
-
-def assign_project_1():
-    for c in Course.all():
-        assign_homework(c, '01', '2019-08-30')
-
-
-def build_projects(course):
-    create_project_record(course, '01', 'index.php', fake_project_requirements())
-    create_project_record(course, '02', 'bacs350/index.html', fake_project_requirements())
-    # create_project_record(course, '03', 'bacs350/profile.html', bacs200_project1_requirements())
-    return list_project_details(course)
-
-
-def clear_assignments():
-    Assignment.objects.all().delete()
+# def build_projects(course):
+#     create_project_record(course, '01', 'index.php', fake_project_requirements())
+#     create_project_record(course, '02', 'bacs350/index.html', fake_project_requirements())
+#     # create_project_record(course, '03', 'bacs350/profile.html', bacs200_project1_requirements())
+#     return list_project_details(course)
+#
+#
+# def clear_assignments():
+#     Assignment.objects.all().delete()
 
 
 def create_project_record(course, project_num, page, requirements):
@@ -159,7 +154,7 @@ def list_assignments(course):
     return text_join(assigned)
 
 
-def list_project_details(course):
+def list_projects(course):
     results = []
     for p in Project.objects.filter(course__name=course).order_by('due'):
         results.append('\nProject %s' % p)
@@ -201,8 +196,6 @@ def update_projects():
     create_project_record('bacs350', '08', 'bacs350/notes/index.php',      fake_project_requirements())
     create_project_record('bacs350', '09', 'bacs350/review/index.php',     fake_project_requirements())
 
-    return list_project_details('bacs200') + list_project_details('bacs350')
-
 
 def validate_project_page(dom, student, project):
     p = Project.lookup(student.course.name, project)
@@ -213,7 +206,7 @@ def validate_project_page(dom, student, project):
     return dict(student=student, url=url, requirements=requirements, source=source, date=now())
 
 
-def validate_unc_project(dom, student, project, ):
+def validate_unc_project(dom, student, project):
     return banner('PROJECT %s' % project) + display_test_results(validate_project_page(dom, student, project))
 
 
