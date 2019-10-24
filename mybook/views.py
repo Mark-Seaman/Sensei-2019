@@ -50,7 +50,7 @@ class DocDisplay(TemplateView):
         path = self.request.path[1:]
         log("GET: path = %s" % path)
         log('USER: user = %s' % self.request.user.username)
-        if title.startswith('info'):
+        if path.startswith('info'):
             if not self.request.user.is_superuser:
                 redir = 'https://shrinking-world.com/shrinkingworld/SecurityViolation'
                 log('SECURITY VIOLATION: %s --> %s' % (path, redir))
