@@ -48,6 +48,8 @@ class DocDisplay(TemplateView):
 
     def get(self, request, *args, **kwargs):
         title = self.kwargs.get('title', 'Index')
+        log("GET: title = %s" % title)
+        log('USER: user = %s' % self.request.user.username)
         if title.startswith('info'):
             if not self.request.user.is_superuser:
                 redir = 'https://shrinking-world.com/shrinkingworld/SecurityViolation'
