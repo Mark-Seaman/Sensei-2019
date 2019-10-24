@@ -47,17 +47,17 @@ class DocDisplay(TemplateView):
         return page_settings(self.title, self.site_title, self.logo, self.menu, self.text, self.data)
 
     def get(self, request, *args, **kwargs):
-        title = self.kwargs.get('title', 'Index')
-        log("GET: title = %s" % title)
+        path = self.request.path[1:]
+        log("GET: path = %s" % path)
         log('USER: user = %s' % self.request.user.username)
         if title.startswith('info'):
             if not self.request.user.is_superuser:
                 redir = 'https://shrinking-world.com/shrinkingworld/SecurityViolation'
-                log('SECURITY VIOLATION: %s --> %s' % (title, redir))
+                log('SECURITY VIOLATION: %s --> %s' % (path, redir))
                 return HttpResponseRedirect(redir)
-        url = doc_page(self.request.path[1:])
+        url = doc_page(path)
         if url:
-            log('REDIRECT: %s --> %s' % (title, url))
+            log('REDIRECT: %s --> %s' % (path, url))
             return HttpResponseRedirect('/' + url)
 
         return self.render_to_response(self.get_context_data(**kwargs))
