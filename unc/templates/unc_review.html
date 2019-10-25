@@ -3,97 +3,97 @@
 
 {% block content %}
 
-    <h1>Student Design Reviews</h1>
+<h1>Student Design Reviews</h1>
 
-    <div class="card">
-        <div class="card-header">
-            Review Details
-        </div>
-
-        <div class="card-body card-padding">
-
-            <table>
-                <tr>
-                    <td>Reviewed by:</td>
-                    <td><b>{{ object.reviewer.email }}</b></td>
-                </tr>
-                <tr>
-                    <td>Designer:</td>
-                    <td><b>{{ object.designer.email }}</b></td>
-                </tr>
-                <tr>
-                    <td>Domain:</td>
-                    <td><b>{{ object.designer.domain }}</b></td>
-                </tr>
-                <tr>
-                    <td>Page:</td>
-                    <td>
-                        <b><a href="{{ object.designer.domain }}/{{ object.page }}">{{ object.page }}</a></b>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Date:</td>
-                    <td><b>{{ object.date }}</b></td>
-                </tr>
-                <tr>
-                    <td>Validator:</td>
-                    <td>
-                        <b>
-                            <a href="https://validator.w3.org/nu/?doc={{ object.designer.domain }}/{{ object.page }}">
-                                {{ object.page }}</a>
-                        </b>
-                    </td>
-                </tr>
-            </table>
-
-        </div>
+<div class="card">
+    <div class="card-header">
+        Review Details
     </div>
 
+    <div class="card-body card-padding">
 
-    <div class="card">
-        <div class="card-header">
-            Requirements Scorecard
-        </div>
+        <table>
+            <tr>
+                <td>Reviewed by:</td>
+                <td><b>{{ object.reviewer.email }}</b></td>
+            </tr>
+            <tr>
+                <td>Designer:</td>
+                <td><b>{{ object.designer.email }}</b></td>
+            </tr>
+            <tr>
+                <td>Domain:</td>
+                <td><b>{{ object.designer.domain }}</b></td>
+            </tr>
+            <tr>
+                <td>Page:</td>
+                <td>
+                    <b><a href="{{ object.designer.domain }}/{{ object.page }}">{{ object.page }}</a></b>
+                </td>
+            </tr>
+            <tr>
+                <td>Date:</td>
+                <td><b>{{ object.date }}</b></td>
+            </tr>
+            <tr>
+                <td>Validator:</td>
+                <td>
+                    <b>
+                        <a href="https://validator.w3.org/nu/?doc={{ object.designer.domain }}/{{ object.page }}">
+                            {{ object.page }}</a>
+                    </b>
+                </td>
+            </tr>
+        </table>
 
-        <div class="card-body card-padding">
-            <p>
-                Select the requirements that are met by this page.
-            </p>
-
-            <b>Scorecard for {{ object.designer.domain }}/{{ object.page }}</b>
-
-            <form action="/unc/review/{{ object.pk }}" method="post">{% csrf_token %}
-                {# <label>Total Score</label>{{ form.score }}#}
-                <br>
-                {{ form.requirement_1 }} &nbsp; <label>{{ labels.0 }}</label>
-                <br>
-                {{ form.requirement_2 }} &nbsp; <label>{{ labels.1 }}</label>
-                <br>
-                {{ form.requirement_3 }} &nbsp; <label>{{ labels.2 }}</label>
-                <br>
-                {{ form.requirement_4 }} &nbsp; <label>{{ labels.3 }}</label>
-                <br>
-                {{ form.requirement_5 }} &nbsp; <label>{{ labels.4 }}</label>
-                <br>
-                {{ form.requirement_6 }} &nbsp; <label>{{ labels.5 }}</label>
-                <br>
-                {{ form.requirement_7 }} &nbsp; <label>{{ labels.6 }}</label>
-                <br>
-                {{ form.requirement_8 }} &nbsp; <label>{{ labels.7 }}</label>
-                <br>
-                {{ form.requirement_9 }} &nbsp; <label>{{ labels.8 }}</label>
-                <br>
-                {{ form.requirement_10 }} &nbsp; <label>{{ labels.9 }}</label>
-                <br>
-                <br><label><b>Summary of Problems</b></label>
-                <br>
-                {{ form.notes }}
-                <br>
-                <br>
-
-                <button class="button">Submit Review</button>
-            </form>
-        </div>
     </div>
+</div>
+
+
+<div class="card">
+    <div class="card-header">
+        Requirements Scorecard
+    </div>
+
+    <div class="card-body card-padding">
+        <p>
+            Select the requirements that are met by this page.
+        </p>
+
+        <b>Scorecard for {{ object.designer.domain }}/{{ object.page }}</b>
+
+        <form action="/unc/review/{{ object.pk }}" method="post">{% csrf_token %}
+            {# <label>Total Score</label>{{ form.score }}#}
+            <br>
+            {{ form.requirement_1 }} &nbsp; <label>{{ labels.0 }}</label>
+            <br>
+            {{ form.requirement_2 }} &nbsp; <label>{{ labels.1 }}</label>
+            <br>
+            {{ form.requirement_3 }} &nbsp; <label>{{ labels.2 }}</label>
+            <br>
+            {{ form.requirement_4 }} &nbsp; <label>{{ labels.3 }}</label>
+            <br>
+            {{ form.requirement_5 }} &nbsp; <label>{{ labels.4 }}</label>
+            <br>
+            {{ form.requirement_6 }} &nbsp; <label>{{ labels.5 }}</label>
+            <br>
+            {{ form.requirement_7 }} &nbsp; <label>{{ labels.6 }}</label>
+            <br>
+            {{ form.requirement_8 }} &nbsp; <label>{{ labels.7 }}</label>
+            <br>
+            {{ form.requirement_9 }} &nbsp; <label>{{ labels.8 }}</label>
+            <br>
+            {{ form.requirement_10 }} &nbsp; <label>{{ labels.9 }}</label>
+            <br>
+            <br><label><b>Summary of Problems</b></label>
+            <br>
+            {{ form.notes }}
+            <br>
+            <br>
+
+            <button class="btn btn-primary">Submit Review</button>
+        </form>
+    </div>
+</div>
 
 {% endblock %}
