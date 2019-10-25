@@ -118,19 +118,32 @@ pre {
     padding: 10px 20px;
 }
 
+textarea {
+    width: 80%;
+    margin: auto;
+}
+
 
 /* ----------------------------------------------- */
 /* Classes */
 
 
-.blinking{
-    animation:blinkingText 0.5s infinite;
+.blinking {
+    animation: blinkingText 0.5s infinite;
 }
 
-@keyframes blinkingText{
-    0%{     color: red;    }
-    50%{    color: transparent; }
-    100%{   color: red;    }
+@keyframes blinkingText {
+    0% {
+        color: red;
+    }
+
+    50% {
+        color: transparent;
+    }
+
+    100% {
+        color: red;
+    }
 }
 
 .btn-form {
@@ -254,5 +267,3 @@ div.tab-pane {
     float: left;
     width: 20%;
 }
-
-
