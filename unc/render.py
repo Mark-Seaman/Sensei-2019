@@ -1,9 +1,11 @@
 from django.template.loader import render_to_string
 
 from mybook.mybook import document_text
+from tool.document import text_to_html
 from unc.bacs import weekly_lessons
 from unc.projects import get_readings, get_assignments, get_lesson
 from unc.models import Skill
+from unc.review import review_feedback, student_reviews, student_reviews_done, get_review
 
 
 def render_course_agenda(course, student):
@@ -25,21 +27,32 @@ def render_lessons(lessons):
     return ''.join([render_lesson(lesson) for lesson in lessons])
 
 
+def render_notes(review):
+    return text_to_html(review.notes)
+
+
 def render_project(project, student):
-    # skills = [
-    #     render_skill_link(get_lesson(project.course.name, 1), student),
-    #     render_skill_link(get_lesson(project.course.name, 2), student),
-    # ]
     skills = render_skills(student)
     return render_to_string('project.html', dict(project=project, skills=skills, student=student))
 
 
-# def skills_images():
-#     return ['bluehost.png', 'wordpress.png', 'ftp-site-manager.png', 'ftp-dirs.png', 'ftp-files.png']
+def render_review(review_id):
+    review = get_review(review_id)
+    return dict(title='Design Review',
+                review=review,
+                requirements=requirements_met(review),
+                notes=render_notes(review))
 
 
 def render_reviews(student):
-    return render_to_string('review.html', dict(student=student))
+    reviews_to_do = student_reviews(student.pk)
+    reviews_done = student_reviews_done(student.pk)
+    feedback = review_feedback(student.pk)
+    return render_to_string('review.html',
+                            dict(student=student,
+                                 reviews_to_do=reviews_to_do,
+                                 reviews_done=reviews_done,
+                                 review_feedback=feedback))
 
 
 def render_skills(student):
@@ -72,5 +85,17 @@ def render_weekly_agenda(plan, student):
     lessons = render_lessons(plan['lessons'])
     weekly_plan = dict(week=plan['week'], project=project, lessons=lessons)
     return render_to_string('week.html', weekly_plan)
+
+
+def requirements_met(review):
+    def status(req):
+        return '<span class="green">PASS</span>' if req else '<span class="red blinking">FAIL</span><b></b>'
+
+    status = [status(review.requirement_1), status(review.requirement_2), status(review.requirement_3),
+              status(review.requirement_4), status(review.requirement_5), status(review.requirement_6),
+              status(review.requirement_7), status(review.requirement_8), status(review.requirement_9),
+              status(review.requirement_10)]
+    labels = [r.strip() for r in review.requirement_labels.split('\n')]
+    return zip(labels, status)
 
 

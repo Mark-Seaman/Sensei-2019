@@ -25,7 +25,7 @@ urlpatterns = [
 
     url(r'^review/(?P<pk>[\d]+)$',                          UncEditReview.as_view()),
     # url(r'^reviews$',                                     UncReviews.as_view()),
-    # url(r'^feedback/(?P<pk>[\d]+)$',                      UncReviewFeedback.as_view()),
+    url(r'^feedback/(?P<pk>[\d]+)$',                        UncReviewFeedback.as_view()),
 
     url(r'^url-question$',                                  UncUrlGameQuestion.as_view()),
     url(r'^url-answer$',                                    UncUrlGameAnswer.as_view()),

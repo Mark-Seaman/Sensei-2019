@@ -1,20 +1,126 @@
+<h3>Design Reviews</h3>
+
+<p>
+    Web designers are responsible for their own work but also for giving
+    accurate, timely, and helpful feedback.
+</p>
+<p>
+    Check out the pages for other students to improve your own design skills.
+</p>
+<p>
+    <a href="/unc/{{ student.course.name }}/students">View All Student Pages</a>
+</p>
+
+
 <div class="card">
 
     <div class="card-header">
-        Design Reviews
+        Design Reviews To Do
     </div>
 
     <div class="card-body card-padding">
-        <div>
+
+        {% if reviews_to_do %}
             <p>
-                Web designers are responsible for their own work but also for giving
-                accurate, timely, and helpful feedback.
+                The following reviews are scheduled to be completed by the due date. You will only get credit
+                if the review is done correctly and on time.
             </p>
-            <p>
-                Check out the pages for other students to improve your own design skills.
-            </p>
-            <a href="/unc/{{ student.course.name }}/students">View Student Pages</a>
-        </div>
+            <ul>
+
+                {% for r in reviews_to_do %}
+                    <li>
+                        <b>{{ r.page }}</b> - due on {{ r.due }}
+
+                        <ul>
+                            <li>Review #{{ r.pk }}</li>
+                            <li><a href="/unc/review/{{ r.pk }}">Perform Review</a></li>
+                            <li>Reviewer {{ r.reviewer.name }}</li>
+                            <li>Designer {{ r.designer.name }}</li>
+                            <li>Score {{ r.score }}</li>
+                        </ul>
+
+                    </li>
+                {% endfor %}
+
+            </ul>
+
+        {% endif %}
+
+    </div>
+</div>
+
+
+<div class="card">
+
+    <div class="card-header">
+        Design Reviews Done
     </div>
 
+    <div class="card-body card-padding">
+
+        {% if reviews_done %}
+            <p>
+                The following reviews are scheduled to be completed by the due date. You will only get credit
+                if the review is done correctly and on time.
+            </p>
+            <ul>
+
+                {% for r in reviews_done %}
+                    <li>
+                        <b>{{ r.page }}</b> - due on {{ r.due }}
+
+                        <ul>
+                            <li>Review #{{ r.pk }}</li>
+                            <li><a href="/unc/review/{{ r.pk }}">Update Review</a></li>
+                            <li>Reviewer {{ r.reviewer.name }}</li>
+                            <li>Designer {{ r.designer.name }}</li>
+                            <li>Score {{ r.score }}</li>
+                        </ul>
+
+                    </li>
+                {% endfor %}
+
+            </ul>
+
+        {% endif %}
+
+    </div>
+</div>
+
+
+<div class="card">
+
+    <div class="card-header">
+        Design Review Feedback
+    </div>
+
+    <div class="card-body card-padding">
+
+        {% if review_feedback %}
+            <p>
+                The following reviews are scheduled to be completed by the due date. You will only get credit
+                if the review is done correctly and on time.
+            </p>
+            <ul>
+
+                {% for r in review_feedback %}
+                    <li>
+                        <b>{{ r.page }}</b> - due on {{ r.due }}
+
+                        <ul>
+                            <li>Review #{{ r.pk }}</li>
+                            <li><a href="/unc/feedback/{{ r.pk }}">Review Feedback</a></li>
+                            <li>Reviewer {{ r.reviewer.name }}</li>
+                            <li>Designer {{ r.designer.name }}</li>
+                            <li>Score {{ r.score }}</li>
+                        </ul>
+
+                    </li>
+                {% endfor %}
+
+            </ul>
+
+        {% endif %}
+
+    </div>
 </div>

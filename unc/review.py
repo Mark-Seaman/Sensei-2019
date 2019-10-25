@@ -2,7 +2,7 @@ from django.utils.timezone import make_aware
 from datetime import datetime
 from random import shuffle
 
-from unc.models import Course, Review
+from unc.models import Course, Review, Student
 
 
 # def assign_reviews(course, page, due, requirements):
@@ -18,12 +18,13 @@ def count_score(r):
     return len([x for x in requirements if x])
 
 
-def create_review(reviewer, designer, page, due, requirements):
+def create_review(reviewer, designer, page, due, requirements, notes):
     due = '%s 23:59' % due
     due = make_aware(datetime.strptime(due, "%Y-%m-%d %H:%M"))
     r = Review.objects.get_or_create(reviewer=reviewer, designer=designer, page=page)[0]
     r.due = due
     r.requirement_labels = requirements
+    r.notes = notes
     r.save()
     return r
 
@@ -61,12 +62,8 @@ def get_review(id):
 #
 # def projects():
 #     return len(Review.objects.all().distinct('due'))
-#
-#
-# def review_feedback(student_id):
-#     return Review.objects.filter(designer=student_id).exclude(score=-1)
-#
-#
+
+
 # def review_groups(course):
 #
 #     groups = []
@@ -92,6 +89,10 @@ def get_review(id):
 #     return x
 
 
+def review_feedback(student_id):
+    return Review.objects.filter(designer=student_id).exclude(score=-1)
+
+
 def student_reviews(student_id):
     return Review.objects.filter(reviewer=student_id, score=-1)
 
@@ -105,3 +106,93 @@ def student_reviews_done(student_id):
 #         return 'smiley1.jpg'
 #     else:
 #         return 'sad1.jpg'
+def print_reviews(reviewer=None):
+    print('Design Reviews')
+    if reviewer:
+        for r in student_reviews(reviewer.pk):
+            print(r)
+            print('REQUIREMENTS:\n%s\n' % r.requirement_labels)
+            print('NOTES:\n%s\n' % r.notes)
+    else:
+        for r in Review.objects.all():
+            print(r)
+            # print('REQUIREMENTS:\n%s\n' % r.requirement_labels)
+            # print('NOTES:\n%s\n' % r.notes)
+
+
+bacs200_1_requirements = '''Page exists at bacs200/index.html
+Title, Author
+Link to class website 
+Profile Photo
+CSS Stylesheet (in separate file)
+Banner with site title and tag line
+Project table with page and validation links
+Skills table with links to skills
+Valid HTML
+Valid CSS'''
+bacs200_1_notes = '''* Page exists at bacs200/index.html
+    *
+    *
+* Title, Author
+    *
+    *
+* Link to class website 
+    *
+* Profile Photo
+    *
+* CSS Stylesheet (in separate file)
+    *
+* Banner with site title and tag line
+    *
+* Project table with page and validation links
+    *
+* Skills table with links to skills
+    *
+* Valid HTML
+    *
+* Valid CSS
+    *
+'''
+bacs350_1_requirements = '''Page exists at bacs350/index.php
+Title, Author
+Link to class website 
+Profile Photo
+CSS Stylesheet (in separate file)
+Banner with site title and tag line
+Links to project pages (planner, project, docman, superhero, subscriber, notes)
+Skills table with links to skills
+Valid HTML
+Valid CSS'''
+bacs350_1_notes = '''* Page exists at bacs350/index.php
+    *
+    *
+* Title, Author
+    *
+    *
+* Link to class website 
+    *
+* Profile Photo
+    *
+* CSS Stylesheet (in separate file)
+    *
+* Banner with site title and tag line
+    *
+* Links to project pages (planner, project, docman, superhero, subscriber, notes)
+    *
+* Skills table with links to skills
+    *
+* Valid HTML
+    *
+* Valid CSS
+    *
+'''
+
+
+def assign_reviews():
+
+    #  Review Round 1
+    for s in Course.students('bacs200'):
+        create_review(s, s, 'bacs200/index.html', '2019-10-25', bacs200_1_requirements, bacs200_1_notes)
+    for s in Course.students('bacs350'):
+        create_review(s, s, 'bacs350/index.php', '2019-10-25', bacs350_1_requirements, bacs350_1_notes)
+

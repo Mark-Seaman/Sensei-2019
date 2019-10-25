@@ -3,68 +3,86 @@
 
 {% block content %}
 
-    <h1>Student Design Reviews</h1>
+    <h2>Student Design Review Feedback</h2>
 
-    <h3>Review Details</h3>
-    <p>Reviewed by: <b><a
-            href="/unc/student/{{ review.reviewer.id }}">{{ review.reviewer.email }}</a></b></p>
-    <p>Designer: <b><a href="/unc/student/{{  review.designer.id }}">{{ review.designer.email }}</a></b>
-    </p>
-    <p>Domain: <b>{{  review.designer.domain }}</b></p>
-    <p>Page: <b><a href="http://{{ review.designer.domain }}/{{ review.page }}">{{ review.page }}</a>
-    </b></p>
-    <p>Validator: <b><a
-            href="https://validator.w3.org/">{{ review.designer.domain }}/{{ review.page }}</a>
-    </b></p>
-    <p>Date: <b>{{ review.date }}</b></p>
+    <div class="card">
 
-    <h3>Requirements Met</h3>
-    <p>
-        Select the requirements that are met by this page.
-    </p>
-    <div class="page">
-        <b>Scorecard for {{ review.page }}</b>
-        <br>
-        <br>
-        {{ review.score }} / 10 Requirements met
-        <br>
-        <br>
-        {% if review.requirement_1 %}<b>X</b>{% else %}&nbsp;&nbsp;{% endif %} &nbsp;
-        <label>{{ requirements.0 }}</label>
-        <br>
-        {% if review.requirement_2 %}<b>X</b>{% else %}&nbsp;&nbsp;{% endif %} &nbsp;
-        <label>{{ requirements.1 }}</label>
-        <br>
-        {% if review.requirement_3 %}<b>X</b>{% else %}&nbsp;&nbsp;{% endif %} &nbsp;
-        <label>{{ requirements.2 }}</label>
-        <br>
-        {% if review.requirement_4 %}<b>X</b>{% else %}&nbsp;&nbsp;{% endif %} &nbsp;
-        <label>{{ requirements.3 }}</label>
-        <br>
-        {% if review.requirement_5 %}<b>X</b>{% else %}&nbsp;&nbsp;{% endif %} &nbsp;
-        <label>{{ requirements.4 }}</label>
-        <br>
-        {% if review.requirement_6 %}<b>X</b>{% else %}&nbsp;&nbsp;{% endif %} &nbsp;
-        <label>{{ requirements.5 }}</label>
-        <br>
-        {% if review.requirement_7 %}<b>X</b>{% else %}&nbsp;&nbsp;{% endif %} &nbsp;
-        <label>{{ requirements.6 }}</label>
-        <br>
-        {% if review.requirement_8 %}<b>X</b>{% else %}&nbsp;&nbsp;{% endif %} &nbsp;
-        <label>{{ requirements.7 }}</label>
-        <br>
-        {% if review.requirement_9 %}<b>X</b>{% else %}&nbsp;&nbsp;{% endif %} &nbsp;
-        <label>{{ requirements.8 }}</label>
-        <br>
-        {% if review.requirement_10 %}<b>X</b>{% else %}&nbsp;&nbsp;{% endif %} &nbsp;
-        <label>{{ requirements.9 }}</label>
-        <br>
-        <br><label><b>Summary of Problems</b></label>
-        <br>
-        {{ review.notes }}
-        <br>
+        <div class="card-header">
+            Review Details
+        </div>
+
+        <div class="card-body card-padding">
+            <p>
+                Reviewed by:
+                <b><a href="/unc/student/{{ review.reviewer.id }}">{{ review.reviewer.email }}</a></b>
+            </p>
+            <p>
+                Designer:
+                <b><a href="/unc/student/{{ review.designer.id }}">{{ review.designer.email }}</a></b>
+            </p>
+            <p>
+                Domain: <b>{{ review.designer.domain }}</b>
+            </p>
+            <p>
+                Page: <b><a href="{{ review.designer.domain }}/{{ review.page }}">{{ review.page }}</a></b>
+            </p>
+
+            <p>Validator:
+                <b>
+                    <a href="https://validator.w3.org/nu/?doc={{ review.designer.domain }}/{{ review.page }}">Validate Page</a>
+                </b>
+            </p>
+            <p>Date: <b>{{ review.date }}</b></p>
+        </div>
     </div>
 
-    
+
+    <div class="card">
+
+        <div class="card-header">
+            Requirements Scorecard
+        </div>
+
+        <div class="card-body card-padding">
+            <b>Scorecard for {{ review.page }}</b>
+
+            {% if requirements %}
+                <p>
+                    The following reviews are scheduled to be completed by the due date.
+                    You will only get credit
+                    if the review is done correctly and on time.
+                </p>
+                <ul>
+
+                    {% for r in requirements %}
+                        <li>
+                            {% autoescape off %}
+                                <b>{{ r.1 }}</b> - {{ r.0 }}
+                            {% endautoescape %}
+                        </li>
+                    {% endfor %}
+
+                </ul>
+
+            {% endif %}
+        </div>
+    </div>
+
+
+    <div class="card">
+
+        <div class="card-header">
+            Summary of Problems
+        </div>
+
+        <div class="card-body card-padding">
+            {% autoescape off %}
+                {{ notes }}
+            {% endautoescape %}
+
+        </div>
+    </div>
+
+
 {% endblock %}
 
