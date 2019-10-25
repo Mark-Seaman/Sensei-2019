@@ -56,11 +56,13 @@
     </div>
 
     <div class="card-body card-padding">
+
+        <p>
+            <b>Scorecard for {{ object.designer.domain }}/{{ object.page }}</b>
+        </p>
         <p>
             Select the requirements that are met by this page.
         </p>
-
-        <b>Scorecard for {{ object.designer.domain }}/{{ object.page }}</b>
 
         <form action="/unc/review/{{ object.pk }}" method="post">{% csrf_token %}
             {# <label>Total Score</label>{{ form.score }}#}
