@@ -119,7 +119,7 @@ pre {
 }
 
 textarea {
-    width: 80%;
+    width: 90%;
     margin: auto;
 }
 
@@ -159,6 +159,10 @@ textarea {
     padding: 10px;
     font-weight: bold;
     background-color: #cccccc;
+}
+
+.card-body {
+    padding: 2em;
 }
 
 .collapse {
