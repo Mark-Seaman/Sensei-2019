@@ -22,7 +22,7 @@ def assign_team_reviews(course, page, due, requirements, notes):
     pairs = review_pairs(review_groups(course))
     for p in pairs:
         print('create review: %s,  %s' % (p[0], p[1]))
-#        create_review(p[0], p[1], page, due, requirements, notes)
+        create_review(p[0], p[1], page, due, requirements, notes)
     return len(pairs)
 
     
