@@ -15,7 +15,7 @@ def reviews_overdue():
     course = 'bacs200'
     print('\nTo Do '+course)
     for r in Review.objects.filter(reviewer__course__name=course, score=-1):
-        print(reviewer.name)
+        print(r.reviewer.name)
     print('\nDone '+course)
     for r in Review.objects.filter(reviewer__course__name=course).exclude(score=-1):
         print(r.reviewer.name)
