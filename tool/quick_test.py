@@ -34,7 +34,7 @@ def show_reviews_overdue(course):
 def review_groups(course):
 
      groups = []
-     num = 8
+     num = 4
      s = [a.pk for a in Course.students(course)]
      shuffle(s)
      x = 0
