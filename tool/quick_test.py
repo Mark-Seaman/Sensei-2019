@@ -1,17 +1,8 @@
-from unc.review import print_reviews, assign_reviews
 from unc.bacs import *
 from unc.projects import *
 from unc.models import *
+from unc.review import *
 from unc.skills import *
-
-from random import shuffle
-
-#    assign_reviews()
-#    print_reviews()
-
-#    show_reviews_overdue('bacs200')    
-#    show_reviews_overdue('bacs350')
-
 
 
 def quick_test():
