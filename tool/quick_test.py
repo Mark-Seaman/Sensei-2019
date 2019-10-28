@@ -7,8 +7,11 @@ from unc.skills import *
 
 def quick_test():
     course = 'bacs200'
-    for s in Course.students(course):
-        print(s.name, s.domain)
+#    for s in Course.students(course):
+#        print(s.name, s.domain)
+    groups = review_groups(course)
+    for g in groups:
+        print(g)
         
 #    assign_reviews()
 #    print_reviews()
@@ -26,18 +29,18 @@ def show_reviews_overdue(course):
         print("    " + r.reviewer.name)
 
         
-# def review_groups(course):
-#
-#     groups = []
-#     num = 8
-#     s = Course.students(course)
-#     shuffle(s)
-#     x = 0
-#     while s[x:x + num]:
-#         groups.append(s[x:x + num])
-#         x += num
-#     # groups = [groups[0] + groups[-1]] + groups[1:-1]
-#     return groups
+ def review_groups(course):
+
+     groups = []
+     num = 8
+     s = Course.students(course)
+     shuffle(s)
+     x = 0
+     while s[x:x + num]:
+         groups.append(s[x:x + num])
+         x += num
+     # groups = [groups[0] + groups[-1]] + groups[1:-1]
+     return groups
 
 
 def init_unc_data():
