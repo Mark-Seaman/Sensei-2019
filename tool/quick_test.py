@@ -6,15 +6,6 @@ from unc.skills import *
 
 from random import shuffle
 
-
-def quick_test():
-    course = 'bacs350'
-#    for s in Course.students(course):
-#        print(s.name, s.domain)
-    groups = review_groups(course)
-    for g in groups:
-        print(g)
-        
 #    assign_reviews()
 #    print_reviews()
 
@@ -22,6 +13,20 @@ def quick_test():
 #    show_reviews_overdue('bacs350')
 
 
+
+def quick_test():
+    show_groups('bacs200')    
+    show_groups('bacs350')
+
+    
+def show_groups(course):
+    show_students(course)
+    groups = review_groups(course)
+    print('Groups - %s' % len(groups))
+    for g in groups:
+        print(g)
+        
+        
 def show_students(course):
     print('Students - %s' % len(Course.students(course)))
     for s in Course.students(course):
@@ -29,8 +34,6 @@ def show_students(course):
 
         
 def show_reviews_overdue(course):
-    show_students(course)
-
     print('\nTo Do '+course)
     for r in Review.objects.filter(reviewer__course__name=course, score=-1):
         print("    " + r.reviewer.name)
