@@ -4,6 +4,8 @@ from unc.projects import *
 from unc.models import *
 from unc.skills import *
 
+from random import shuffle
+
 
 def quick_test():
     course = 'bacs200'
