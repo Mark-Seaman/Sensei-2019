@@ -35,7 +35,7 @@ def review_groups(course):
 
      groups = []
      num = 8
-     s = Course.students(course)
+     s = [a.pk for a in Course.students(course)]
      shuffle(s)
      x = 0
      while s[x:x + num]:
