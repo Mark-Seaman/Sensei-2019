@@ -19,12 +19,24 @@ def quick_test():
     show_groups('bacs350')
 
     
+def review_pairs(groups):
+     x = []
+     for team in groups:
+         for reviewer in team:
+             for designer in team:
+                 if reviewer != designer:
+                     x.append((designer, reviewer))
+     print(len(x))
+     return x
+
+
 def show_groups(course):
     show_students(course)
     groups = review_groups(course)
     print('Groups - %s' % len(groups))
     for g in groups:
         print(g)
+    print(review_pairs(groups))
         
         
 def show_students(course):
