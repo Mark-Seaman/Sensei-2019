@@ -160,7 +160,7 @@ class UncTestResults(UncPage):
         return kwargs
 
 
-class UncEditReview(UpdateView):
+class UncEditReview(UpdateView, UncPage):
     model = Review
     fields = ['requirement_1', 'requirement_2', 'requirement_3', 'requirement_4', 'requirement_5',
               'requirement_6', 'requirement_7', 'requirement_8', 'requirement_9', 'requirement_10', 'notes']
@@ -170,6 +170,8 @@ class UncEditReview(UpdateView):
         pk = self.kwargs.get('pk')
         review = get_review(pk)
         labels = [r.strip() for r in review.requirement_labels.split('\n')]
+#        header = '', kwargs['object'].name, "/static/images/unc/Bear.200.png", 'UNC Bear', '/unc/bacs200'
+#        header = dict(title=header[0], subtitle=header[1], logo=header[2], logo_text=header[3], href=header[4])
         kwargs = dict(title='Design Review', labels=labels)
         return super(UncEditReview, self).get_context_data(**kwargs)
 
