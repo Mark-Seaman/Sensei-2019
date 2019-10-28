@@ -29,7 +29,7 @@ def show_reviews_overdue(course):
         print("    " + r.reviewer.name)
 
         
- def review_groups(course):
+def review_groups(course):
 
      groups = []
      num = 8
