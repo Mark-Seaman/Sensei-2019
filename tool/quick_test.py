@@ -18,7 +18,7 @@ def reviews_overdue():
         print(reviewer.name)
     print('\nDone '+course)
     for r in Review.objects.filter(reviewer__course__name=course).exclude(score=-1):
-        print(reviewer.name)
+        print(r.reviewer.name)
 
 def init_unc_data():
     # x = import_schedule('bacs200')
