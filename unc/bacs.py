@@ -205,7 +205,7 @@ def student_data(course):
 
 def student_projects(course):
     skills = [s.images.split(',')[0] for s in Skill.query(course)[5:]]
-    projects = Project.query(course)[5:9]
+    projects = Project.query(course)[5:10]
     return [(s, projects, skills) for s in Course.students(course)]
 
 
@@ -269,7 +269,7 @@ def weekly_agenda(course, week):
 
 
 def weekly_lessons(course):
-    return [weekly_agenda(course, week + 1) for week in range(9)]
+    return [weekly_agenda(course, week + 1) for week in range(10)]
 
 
 def zybooks_link(course, reading):
