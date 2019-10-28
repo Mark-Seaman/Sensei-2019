@@ -12,7 +12,7 @@ def quick_test():
     reviews_overdue()
 
 def reviews_overdue():
-    course = 'bacs200'
+    course = 'bacs350'
     print('\nTo Do '+course)
     for r in Review.objects.filter(reviewer__course__name=course, score=-1):
         print(r.reviewer.name)
