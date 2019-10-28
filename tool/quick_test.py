@@ -6,10 +6,19 @@ from unc.skills import *
 
 
 def quick_test():
-    assign_reviews()
+#    assign_reviews()
     # reviewer = Student.lookup('Sensei 200')
-    print_reviews()
+#    print_reviews()
+    reviews_overdue()
 
+def reviews_overdue():
+    course = 'bacs200'
+    print('\nTo Do '+course)
+    for r in Review.objects.filter(reviewer__course__name=course, score=-1):
+        print(reviewer.name)
+    print('\nDone '+course)
+    for r in Review.objects.filter(reviewer__course__name=course).exclude(score=-1):
+        print(reviewer.name)
 
 def init_unc_data():
     # x = import_schedule('bacs200')
