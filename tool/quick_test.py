@@ -22,7 +22,15 @@ def quick_test():
 #    show_reviews_overdue('bacs350')
 
 
+def show_students(course):
+    print('Students - %s' % len(Course.students(course)))
+    for s in Course.students(course):
+        print('%s. %s' % (s.pk, s.name))
+
+        
 def show_reviews_overdue(course):
+    show_students(course)
+
     print('\nTo Do '+course)
     for r in Review.objects.filter(reviewer__course__name=course, score=-1):
         print("    " + r.reviewer.name)
@@ -32,7 +40,7 @@ def show_reviews_overdue(course):
 
         
 def review_groups(course):
-
+     show_students(course)
      groups = []
      num = 4
      s = [a.pk for a in Course.students(course)]
