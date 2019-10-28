@@ -5,12 +5,76 @@ from random import shuffle
 from unc.models import Course, Review, Student
 
 
-# def assign_reviews(course, page, due, requirements):
-#     pairs = review_pairs(review_groups(course))
-#     for p in pairs:
-#         create_review(p[0], p[1], page, due, requirements)
-#     return len(pairs)
-#
+def assign_reviews_round1():
+    for s in Course.students('bacs200'):
+        create_review(s, s, 'bacs200/index.html', '2019-10-25', bacs200_1_requirements, bacs200_1_notes)
+    for s in Course.students('bacs350'):
+        create_review(s, s, 'bacs350/index.php', '2019-10-25', bacs350_1_requirements, bacs350_1_notes)
+
+        
+def assign_reviews_round2():
+    assign_team_reviews(course, 'bacs200/index.html', '2019-10-28', bacs200_1_requirements, bacs200_1_notes)
+    assign_team_reviews(course, 'bacs350/index.php', '2019-10-28', bacs350_1_requirements, bacs350_1_notes)
+
+
+def assign_team_reviews(course, page, due, requirements, notes):
+    groups = review_groups(course)
+    pairs = review_pairs(review_groups(course))
+    for p in pairs:
+        print('create review: %s,  %s' % p[0], p[1])
+#        create_review(p[0], p[1], page, due, requirements, notes)
+    return len(pairs)
+
+    
+def review_pairs(groups):
+     x = []
+     for team in groups:
+         for reviewer in team:
+             for designer in team:
+                 if reviewer != designer:
+                     x.append((designer, reviewer))
+     print(len(x))
+     return x
+
+
+def show_groups(course):
+    show_students(course)
+    groups = review_groups(course)
+    print('Groups - %s' % len(groups))
+    for g in groups:
+        print(g)
+    print(review_pairs(groups))
+        
+        
+def show_students(course):
+    print('Students - %s' % len(Course.students(course)))
+    for s in Course.students(course):
+        print('%s. %s' % (s.pk, s.name))
+
+        
+def show_reviews_overdue(course):
+    print('\nTo Do '+course)
+    for r in Review.objects.filter(reviewer__course__name=course, score=-1):
+        print("    " + r.reviewer.name)
+    print('\nDone '+course)
+    for r in Review.objects.filter(reviewer__course__name=course).exclude(score=-1):
+        print("    " + r.reviewer.name)
+
+        
+def review_groups(course):
+     show_students(course)
+     groups = []
+     num = 4
+     s = [a.pk for a in Course.students(course)]
+     shuffle(s)
+     x = 0
+     while s[x:x + num]:
+         groups.append(s[x:x + num])
+         x += num
+     # groups = [groups[0] + groups[-1]] + groups[1:-1]
+     return groups
+
+
 
 def count_score(r):
     requirements = [r.requirement_1, r.requirement_2, r.requirement_3, r.requirement_4, r.requirement_5,
@@ -21,7 +85,7 @@ def count_score(r):
 def create_review(reviewer, designer, page, due, requirements, notes):
     due = '%s 23:59' % due
     due = make_aware(datetime.strptime(due, "%Y-%m-%d %H:%M"))
-    r = Review.objects.get_or_create(reviewer=reviewer, designer=designer, page=page)[0]
+    r = Review.objects.get_or_create(reviewer__id=reviewer, designer__id=designer, page=page)[0]
     r.due = due
     r.requirement_labels = requirements
     r.notes = notes
@@ -186,13 +250,4 @@ bacs350_1_notes = '''* Page exists at bacs350/index.php
 * Valid CSS
     *
 '''
-
-
-def assign_reviews():
-
-    #  Review Round 1
-    for s in Course.students('bacs200'):
-        create_review(s, s, 'bacs200/index.html', '2019-10-25', bacs200_1_requirements, bacs200_1_notes)
-    for s in Course.students('bacs350'):
-        create_review(s, s, 'bacs350/index.php', '2019-10-25', bacs350_1_requirements, bacs350_1_notes)
 
