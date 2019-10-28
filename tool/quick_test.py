@@ -8,7 +8,7 @@ from random import shuffle
 
 
 def quick_test():
-    course = 'bacs200'
+    course = 'bacs350'
 #    for s in Course.students(course):
 #        print(s.name, s.domain)
     groups = review_groups(course)
