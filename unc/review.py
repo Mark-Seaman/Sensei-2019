@@ -13,8 +13,8 @@ def assign_reviews_round1():
 
         
 def assign_reviews_round2():
-    assign_team_reviews(course, 'bacs200/index.html', '2019-10-28', bacs200_1_requirements, bacs200_1_notes)
-    assign_team_reviews(course, 'bacs350/index.php', '2019-10-28', bacs350_1_requirements, bacs350_1_notes)
+    assign_team_reviews('bacs200', 'bacs200/index.html', '2019-10-28', bacs200_1_requirements, bacs200_1_notes)
+    assign_team_reviews('bacs350', 'bacs350/index.php', '2019-10-28', bacs350_1_requirements, bacs350_1_notes)
 
 
 def assign_team_reviews(course, page, due, requirements, notes):
