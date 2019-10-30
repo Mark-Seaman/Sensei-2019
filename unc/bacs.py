@@ -242,6 +242,8 @@ def update_lessons():
     set_lesson_topic(course, '23', 'Version Control', '3.3 Common Widgets')
     set_lesson_topic(course, '24', 'W3Schools', '3.4 HTML5 Widgets')
     set_lesson_topic(course, '25', 'W3Schools Tutorials', '3.5 Audio & Video')
+    set_lesson_topic(course, '26', 'Photoshop', '3.6 Script and Style')
+    set_lesson_topic(course, '27', 'Illustrator', '3.7 HTML Developer Guidelines')
 
     course = 'bacs350'
     set_lesson_topic(course, '11', 'Document Viewer')
@@ -258,8 +260,11 @@ def update_lessons():
     set_lesson_topic(course, '22', 'Edit View', '14.2 SQL')
     set_lesson_topic(course, '23', 'Forms App', '14.3 Tables')
     set_lesson_topic(course, '24', 'Logging', '14.4 Insert Records')
-    set_lesson_topic(course, '25', 'MVC Pattern', '14.5 Selecting Records')
-    set_lesson_topic(course, '26', 'Single Page App', '14.6 SQL Functions')
+    set_lesson_topic(course, '25', 'Review Manager App', '14.5 Selecting Records')
+    set_lesson_topic(course, '26', 'Design Reviews', '14.6 SQL Functions')
+    set_lesson_topic(course, '27', 'Page Caching', '14.7 Joining Tables')
+    set_lesson_topic(course, '28', 'Page Template', '14.8 Modifying Rows')
+    set_lesson_topic(course, '29', 'Component Templates', '14.8 Modifying Rows')
 
 
 def weekly_agenda(course, week):
