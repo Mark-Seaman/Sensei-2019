@@ -6,9 +6,11 @@ from unc.skills import *
 
 
 def quick_test():
-    show_groups('bacs200')    
-    show_groups('bacs350')
-    assign_reviews_round2()
+    grade_reviews('bacs350/index.php')
+    
+    # show_groups('bacs200')
+    # show_groups('bacs350')
+    # assign_reviews_round2()
 
 
 def init_unc_data():

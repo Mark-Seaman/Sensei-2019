@@ -25,6 +25,15 @@ def assign_team_reviews(course, page, due, requirements, notes):
         create_review(p[0], p[1], page, due, requirements, notes)
     return len(pairs)
 
+
+def grade_reviews(page):
+    print('\nTo Do ' + page)
+    for r in Review.objects.filter(page=page, score=-1):
+        print("    " + r.reviewer.name)
+    print('\nDone ' + page)
+    for r in Review.objects.filter(page=page).exclude(score=-1):
+        print("    " + r.reviewer.name)
+
     
 def review_pairs(groups):
      x = []
