@@ -160,7 +160,7 @@ class UncTestResults(UncPage):
         return kwargs
 
 
-class UncEditReview(UpdateView, UncPage):
+class UncEditReview(UpdateView):
     model = Review
     fields = ['requirement_1', 'requirement_2', 'requirement_3', 'requirement_4', 'requirement_5',
               'requirement_6', 'requirement_7', 'requirement_8', 'requirement_9', 'requirement_10', 'notes']
