@@ -6,8 +6,8 @@ from unc.skills import *
 
 
 def quick_test():
-    grade_reviews('bacs350/index.php')
-    
+    grade_reviews('bacs200/index.html')
+
     # show_groups('bacs200')
     # show_groups('bacs350')
     # assign_reviews_round2()
