@@ -24,7 +24,7 @@ def update_skills():
     Skill.create('bacs350', 5, 'Apache', '2019-09-25', 'apache.png')
     Skill.create('bacs350', 6, 'Database', '2019-10-02', 'database.png')
     Skill.create('bacs350', 7, 'Dev Workflow', '2019-10-09', 'workflow.png,crud.png')
-    Skill.create('bacs350', 8, 'Data Views', '2019-10-16', 'list.png,add.png,detail.png,edit.png')
+    Skill.create('bacs350', 8, 'Data Views', '2019-10-16', 'list.png,add.png,edit.png')
     Skill.create('bacs350', 9, 'Logging', '2019-10-21', 'logging.png')
     Skill.create('bacs350', 10, 'Render Templates', '2019-10-28', 'home.png')
 

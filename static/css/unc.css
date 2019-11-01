@@ -96,6 +96,7 @@ input {
 img {
     max-width: 800px;
     margin: 20px;
+    width: 100%;
     /*border: 1px solid #0E3D65;*/
     /*box-shadow: 2px 2px 5px #0E3D65;*/
 }

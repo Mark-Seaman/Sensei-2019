@@ -264,7 +264,7 @@ def update_lessons():
     set_lesson_topic(course, '26', 'Design Reviews', '14.6 SQL Functions')
     set_lesson_topic(course, '27', 'Page Caching', '14.7 Joining Tables')
     set_lesson_topic(course, '28', 'Page Template', '14.8 Modifying Rows')
-    set_lesson_topic(course, '29', 'Component Templates', '14.8 Modifying Rows')
+    set_lesson_topic(course, '29', 'Component Templates', '9.1 jQuery')
 
 
 def weekly_agenda(course, week):
