@@ -196,6 +196,7 @@ def update_projects():
     create_project_record('bacs350', '07', 'bacs350/superhero/index.php',  fake_project_requirements())
     create_project_record('bacs350', '08', 'bacs350/notes/index.php',      fake_project_requirements())
     create_project_record('bacs350', '09', 'bacs350/review/index.php',     fake_project_requirements())
+    create_project_record('bacs350', '10', 'bacs350/review/index.php',     fake_project_requirements())
     create_project_record('bacs350', '11', 'bacs350/slides.php',           fake_project_requirements())
 
 
