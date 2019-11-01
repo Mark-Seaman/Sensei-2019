@@ -17,19 +17,6 @@ def quick_test():
     # show_groups('bacs350')
     # assign_reviews_round2()
 
-    # create_project(course, num, title, page, due, instructions)
-
-
-
-def create_project(course, num, title, page, due, instructions):
-    course = Course.objects.get(name=course)
-    due = due_date(due)
-    project = Project.objects.get_or_create(course=course, num=num)[0]
-    project.title = title
-    project.page = page
-    project.due = due
-    project.instructions = instructions
-
 
 def init_unc_data():
     # x = import_schedule('bacs200')
