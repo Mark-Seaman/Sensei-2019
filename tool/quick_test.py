@@ -8,10 +8,10 @@ from unc.skills import *
 def quick_test():
 
     # update_projects()
-    # init_unc_data()
+    init_unc_data()
 
-    grade_reviews('bacs200/index.html')
-    grade_reviews('bacs350/index.php')
+    # grade_reviews('bacs200/index.html')
+    # grade_reviews('bacs350/index.php')
 
     # show_groups('bacs200')
     # show_groups('bacs350')
