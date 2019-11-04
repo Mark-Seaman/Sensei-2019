@@ -13,7 +13,7 @@ def quick_test():
 
     # show_groups('bacs200')
     # show_groups('bacs350')
-    assign_reviews_round3()
+    # assign_reviews_round3()
 
 
 def init_unc_data():
