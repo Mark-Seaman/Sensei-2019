@@ -15,7 +15,8 @@ def update_skills():
     Skill.create('bacs200', 7, 'New Page Template', '2019-10-09', 'newpage.png,article.png')
     Skill.create('bacs200', 8, 'Using Bootstrap', '2019-10-16', 'bootstrap.png,tabs.png,accordion.png')
     Skill.create('bacs200', 9, 'Version Control', '2019-10-21', 'git-files.png,git-changes.png,git-push.png')
-    Skill.create('bacs200', 10,'Create Images', '2019-10-30', 'me.png,logo.svg')
+    Skill.create('bacs200', 10, 'Create Images', '2019-10-30', 'me.png,logo.svg')
+    Skill.create('bacs200', 11, 'Teach a Skill', '2019-11-04', 'teach.png')
 
     Skill.create('bacs350', 1, 'Web Hosting', '2019-09-16', 'bluehost.png,wordpress.png')
     Skill.create('bacs350', 2, 'FTP', '2019-09-16', 'ftp-site-manager.png,ftp-dirs.png,ftp-files.png')
@@ -27,5 +28,6 @@ def update_skills():
     Skill.create('bacs350', 8, 'Data Views', '2019-10-16', 'list.png,add.png,edit.png')
     Skill.create('bacs350', 9, 'Logging', '2019-10-21', 'logging.png')
     Skill.create('bacs350', 10, 'Render Templates', '2019-10-28', 'home.png')
+    Skill.create('bacs350', 11, 'MVC Design Pattern', '2019-11-04', 'mvc.png')
 
     return print_skills('bacs350') + '\n' + print_skills('bacs200')

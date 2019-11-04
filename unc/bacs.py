@@ -46,44 +46,44 @@ def add_student(first, last, email, domain, course):
     return s
 
 
-def add_teacher():
-    course_name = 'bacs200'
-    name = 'MarkSeaman'
-    email = 'mark.b.seaman@gmail.com'
-    domain = r'https://unco-bacs.org'
-    c = Course.lookup(course_name)
-    u = User.objects.get(username=name)
-    s = Student.objects.get_or_create(name=name, email=email, course=c, user=u)[0]
-    s.user = u
-    s.domain = domain
-    s.save()
+# def add_teacher():
+#     course_name = 'bacs200'
+#     name = 'MarkSeaman'
+#     email = 'mark.b.seaman@gmail.com'
+#     domain = r'https://unco-bacs.org'
+#     c = Course.lookup(course_name)
+#     u = User.objects.get(username=name)
+#     s = Student.objects.get_or_create(name=name, email=email, course=c, user=u)[0]
+#     s.user = u
+#     s.domain = domain
+#     s.save()
 
 
-def create_course(name, title, teacher, description):
-    return Course.objects.get_or_create(name=name, title=title, teacher=teacher, description=description)[0]
+# def create_course(name, title, teacher, description):
+#     return Course.objects.get_or_create(name=name, title=title, teacher=teacher, description=description)[0]
+#
+# '''
+# from unc.bacs import *
+# drop_students()
+# '''
 
-'''
-from unc.bacs import *
-drop_students()
-'''
-
-def drop_students():
-    for f in ['Max Lloyd', 'Michael Koval', 'Deisy Guzman', 'Shalom Ekumbo']:
-        try:
-            s = Student.lookup(f)
-            print(s)
-            s.user.delete()
-            s.delete()
-        except:
-            print("No student: "+f)
+# def drop_students():
+#     for f in ['Max Lloyd', 'Michael Koval', 'Deisy Guzman', 'Shalom Ekumbo']:
+#         try:
+#             s = Student.lookup(f)
+#             print(s)
+#             s.user.delete()
+#             s.delete()
+#         except:
+#             print("No student: "+f)
 
 
-def fix_domain_protocols():
-    for s in Student.objects.all():
-        if s.domain != 'No Domain Configured' and not s.domain.startswith('http'):
-            s.domain = 'http://' + s.domain
-            s.save()
-            print(s.domain)
+# def fix_domain_protocols():
+#     for s in Student.objects.all():
+#         if s.domain != 'No Domain Configured' and not s.domain.startswith('http'):
+#             s.domain = 'http://' + s.domain
+#             s.save()
+#             print(s.domain)
 
 
 def get_student(request):
@@ -244,6 +244,9 @@ def update_lessons():
     set_lesson_topic(course, '25', 'W3Schools Tutorials', '3.5 Audio & Video')
     set_lesson_topic(course, '26', 'Photoshop', '3.6 Script and Style')
     set_lesson_topic(course, '27', 'Illustrator', '3.7 HTML Developer Guidelines')
+    set_lesson_topic(course, '28', '', '')
+    set_lesson_topic(course, '29', '', '')
+    set_lesson_topic(course, '30', '', '')
 
     course = 'bacs350'
     set_lesson_topic(course, '11', 'Document Viewer')
@@ -265,6 +268,9 @@ def update_lessons():
     set_lesson_topic(course, '27', 'Page Caching', '14.7 Joining Tables')
     set_lesson_topic(course, '28', 'Page Template', '14.8 Modifying Rows')
     set_lesson_topic(course, '29', 'Component Templates', '9.1 jQuery')
+    set_lesson_topic(course, '30', 'MVC Design Pattern', '9.2 Selectors')
+    set_lesson_topic(course, '31', 'Reveal JS', '9.3 Events')
+    set_lesson_topic(course, '32', 'Slide Show App', '9.4 Styles')
 
 
 def weekly_agenda(course, week):
@@ -274,7 +280,7 @@ def weekly_agenda(course, week):
 
 
 def weekly_lessons(course):
-    return [weekly_agenda(course, week + 1) for week in range(10)]
+    return [weekly_agenda(course, week + 1) for week in range(11)]
 
 
 def zybooks_link(course, reading):
