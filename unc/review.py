@@ -17,6 +17,11 @@ def assign_reviews_round2():
     assign_team_reviews('bacs350', 'bacs350/index.php', '2019-10-28', bacs350_1_requirements, bacs350_1_notes)
 
 
+def assign_reviews_round3():
+    assign_team_reviews('bacs200', 'bacs200/teach.html', '2019-11-04', bacs200_3_requirements, bacs200_3_notes)
+    assign_team_reviews('bacs350', 'bacs350/superhero.php', '2019-11-04', bacs350_3_requirements, bacs350_3_notes)
+
+
 def assign_team_reviews(course, page, due, requirements, notes):
     groups = review_groups(course)
     pairs = review_pairs(review_groups(course))
@@ -226,6 +231,17 @@ bacs200_1_notes = '''* Page exists at bacs200/index.html
 * Valid CSS
     *
 '''
+bacs200_3_requirements = '''Page exists at bacs200/teach.html
+Teaches a skill from W3Schools
+Contains example code
+Good "how to" explanation
+Easy to apply to your "demo" page
+Shows running demonstration 
+Page looks visually appealing
+CSS Stylesheet (in separate file)
+Valid HTML
+Valid CSS'''
+bacs200_3_notes = '''Write a summary of all the problems and how to fix them.   Must be 100 characters.'''
 bacs350_1_requirements = '''Page exists at bacs350/index.php
 Title, Author
 Link to class website 
@@ -259,4 +275,14 @@ bacs350_1_notes = '''* Page exists at bacs350/index.php
 * Valid CSS
     *
 '''
-
+bacs350_3_requirements = '''Page exists at bacs350/superhero.php
+Displays existing superheroes
+Links to home page
+Home page has link to Github repo for code review
+Banner with site title and tag line
+Can add new superhero
+Can remove a superhero
+Can edit superhero
+Valid HTML
+Valid CSS'''
+bacs350_3_notes = '''Write a summary of all the problems and how to fix them.   Must be 100 characters.'''
