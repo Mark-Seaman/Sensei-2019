@@ -244,9 +244,9 @@ def update_lessons():
     set_lesson_topic(course, '25', 'W3Schools Tutorials', '3.5 Audio & Video')
     set_lesson_topic(course, '26', 'Photoshop', '3.6 Script and Style')
     set_lesson_topic(course, '27', 'Illustrator', '3.7 HTML Developer Guidelines')
-    set_lesson_topic(course, '28', '', '')
-    set_lesson_topic(course, '29', '', '')
-    set_lesson_topic(course, '30', '', '')
+    set_lesson_topic(course, '28', 'Website Usability', '3.8 Restaurant Reviews')
+    set_lesson_topic(course, '29', 'Design Guidelines', '3.9 Lab Practice')
+    set_lesson_topic(course, '30', 'Requirements', '2.9 Band Page')
 
     course = 'bacs350'
     set_lesson_topic(course, '11', 'Document Viewer')

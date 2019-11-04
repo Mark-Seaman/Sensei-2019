@@ -8,7 +8,7 @@ from unc.skills import *
 def quick_test():
 
     # update_projects()
-#    init_unc_data()
+   init_unc_data()
 
      grade_reviews('bacs200/index.html')
      grade_reviews('bacs350/index.php')
@@ -24,8 +24,8 @@ def init_unc_data():
     update_lessons()
     update_projects()
     update_skills()
-    x = list_course_content()
-    print(x)
+    # x = list_course_content()
+    # print(x)
 
 
 def show_course_content():
