@@ -187,7 +187,7 @@ class Review(models.Model):
     score     = models.IntegerField(default=-1)
     date      = models.DateTimeField(null=True, editable=False)
     due       = models.DateTimeField(null=True, editable=False)
-    notes     = models.TextField(validators=[MinLengthValidator(100)])
+    notes     = models.TextField(validators=[MinLengthValidator(10)])
     requirement_labels = models.TextField(default='NONE')
     requirement_1 = models.BooleanField(default=False)
     requirement_2 = models.BooleanField(default=False)
