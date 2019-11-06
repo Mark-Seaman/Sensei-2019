@@ -124,20 +124,40 @@ class UncStudents(UncPage):
         return kwargs
 
 
-class UncStudent(UpdateView):
+class UncStudent(UncPage):
     model = Student
     fields = ['domain']
-    template_name = 'unc_student.html'
+    template_name = 'unc_homework.html'
     success_url = '/unc/bacs200'
 
     def get_context_data(self, **kwargs):
         log_page(self.request)
         kwargs = super(UncStudent, self).get_context_data(**kwargs)
-        header = 'UNC Student Profile', kwargs[
-            'object'].name, "/static/images/unc/Bear.200.png", 'UNC Bear', '/unc/bacs200'
-        kwargs['header'] = dict(title=header[0], subtitle=header[1], logo=header[2], logo_text=header[3],
-                                href=header[4])
+        student = Student.get(kwargs['pk'])
+        kwargs['weeks'] = render_course_agenda(student.course.name, student)
+        if kwargs['student']:
+            kwargs['student_info'] = render_student_info(student)
+            kwargs['homework'] = render_homework_scorecard(student)
+            kwargs['skills'] = render_skills(student)
+            kwargs['reviews'] = render_reviews(student)
+            kwargs['projects'] = Project.query(student.course.name)[:11]
         return kwargs
+
+
+# class UncStudentEdit(UpdateView):
+#     model = Student
+#     fields = ['domain']
+#     template_name = 'unc_student.html'
+#     success_url = '/unc/bacs200'
+#
+#     def get_context_data(self, **kwargs):
+#         log_page(self.request)
+#         kwargs = super(UncStudent, self).get_context_data(**kwargs)
+#         header = 'UNC Student Profile', kwargs[
+#             'object'].name, "/static/images/unc/Bear.200.png", 'UNC Bear', '/unc/bacs200'
+#         kwargs['header'] = dict(title=header[0], subtitle=header[1], logo=header[2], logo_text=header[3],
+#                                 href=header[4])
+#         return kwargs
 
 
 class UncSlides(UncPage):
