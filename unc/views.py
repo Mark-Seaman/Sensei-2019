@@ -124,6 +124,16 @@ class UncStudents(UncPage):
         return kwargs
 
 
+def homework_data(student, **kwargs):
+    kwargs['weeks'] = render_course_agenda(student.course.name, student)
+    kwargs['student_info'] = render_student_info(student)
+    kwargs['homework'] = render_homework_scorecard(student)
+    kwargs['skills'] = render_skills(student)
+    kwargs['reviews'] = render_reviews(student)
+    kwargs['projects'] = Project.query(student.course.name)[:11]
+    return kwargs
+
+
 class UncStudent(UncPage):
     model = Student
     fields = ['domain']
@@ -134,14 +144,8 @@ class UncStudent(UncPage):
         log_page(self.request)
         kwargs = super(UncStudent, self).get_context_data(**kwargs)
         student = Student.get(kwargs['pk'])
-        kwargs['weeks'] = render_course_agenda(student.course.name, student)
-        if kwargs['student']:
-            kwargs['student_info'] = render_student_info(student)
-            kwargs['homework'] = render_homework_scorecard(student)
-            kwargs['skills'] = render_skills(student)
-            kwargs['reviews'] = render_reviews(student)
-            kwargs['projects'] = Project.query(student.course.name)[:11]
-        return kwargs
+        return homework_data(student)
+
 
 
 # class UncStudentEdit(UpdateView):
