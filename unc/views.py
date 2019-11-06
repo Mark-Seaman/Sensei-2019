@@ -125,6 +125,7 @@ class UncStudents(UncPage):
 
 
 def homework_data(student, **kwargs):
+    kwargs['student'] = student
     kwargs['weeks'] = render_course_agenda(student.course.name, student)
     kwargs['student_info'] = render_student_info(student)
     kwargs['homework'] = render_homework_scorecard(student)
