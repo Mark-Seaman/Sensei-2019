@@ -3,14 +3,25 @@ from django.template.loader import render_to_string
 from mybook.mybook import document_text
 from tool.document import text_to_html
 from unc.bacs import weekly_lessons
-from unc.projects import get_readings, get_assignments, get_lesson
-from unc.models import Skill
+from unc.projects import get_readings, get_assignments
+from unc.models import Skill, Project
 from unc.review import review_feedback, student_reviews, student_reviews_done, get_review
 
 
 def render_course_agenda(course, student):
     weeks = weekly_lessons(course)
     return [(w['week'], render_weekly_agenda(w, student)) for w in weeks]
+
+
+def render_homework_data(student, **kwargs):
+    kwargs['student'] = student
+    kwargs['weeks'] = render_course_agenda(student.course.name, student)
+    kwargs['student_info'] = render_student_info(student)
+    kwargs['homework'] = render_homework_scorecard(student)
+    kwargs['skills'] = render_skills(student)
+    kwargs['reviews'] = render_reviews(student)
+    kwargs['projects'] = Project.query(student.course.name)[:11]
+    return kwargs
 
 
 def render_homework_scorecard(student):

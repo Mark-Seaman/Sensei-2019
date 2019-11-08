@@ -5,10 +5,10 @@ from django.utils.timezone import now
 
 from tool.log import log_page
 from unc.bacs import schedule_data, slides_markdown, student_projects, weekly_agenda, get_student
-from unc.models import Project, Student
+from unc.models import Project
 from unc.projects import test_project_page
 from unc.render import *
-from unc.render import render_review
+from unc.render import render_review, render_homework_data
 from unc.review import *
 
 
@@ -78,7 +78,7 @@ class UncHomework(UncPage):
         kwargs['weeks'] = render_course_agenda(kwargs['course'], student)
         if kwargs['student']:
             kwargs['student_info'] = render_student_info(student)
-            kwargs['homework'] = render_homework_scorecard(student)
+            # kwargs['homework'] = render_homework_scorecard(student)
             kwargs['skills'] = render_skills(student)
             kwargs['reviews'] = render_reviews(student)
             kwargs['projects'] = Project.query(student.course.name)[:11]
@@ -124,17 +124,6 @@ class UncStudents(UncPage):
         return kwargs
 
 
-def homework_data(student, **kwargs):
-    kwargs['student'] = student
-    kwargs['weeks'] = render_course_agenda(student.course.name, student)
-    kwargs['student_info'] = render_student_info(student)
-    kwargs['homework'] = render_homework_scorecard(student)
-    kwargs['skills'] = render_skills(student)
-    kwargs['reviews'] = render_reviews(student)
-    kwargs['projects'] = Project.query(student.course.name)[:11]
-    return kwargs
-
-
 class UncStudent(UncPage):
     model = Student
     fields = ['domain']
@@ -145,7 +134,7 @@ class UncStudent(UncPage):
         log_page(self.request)
         kwargs = super(UncStudent, self).get_context_data(**kwargs)
         student = Student.get(kwargs['pk'])
-        return homework_data(student)
+        return render_homework_data(student)
 
 
 

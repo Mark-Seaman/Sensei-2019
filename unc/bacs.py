@@ -1,8 +1,5 @@
 from csv import reader
-from django.contrib.auth.models import User
 from django.utils.timezone import make_aware
-from os import environ
-from os.path import exists, join
 from re import compile
 
 from tool.days import parse_date
@@ -44,46 +41,6 @@ def add_student(first, last, email, domain, course):
     s.domain = domain
     s.save()
     return s
-
-
-# def add_teacher():
-#     course_name = 'bacs200'
-#     name = 'MarkSeaman'
-#     email = 'mark.b.seaman@gmail.com'
-#     domain = r'https://unco-bacs.org'
-#     c = Course.lookup(course_name)
-#     u = User.objects.get(username=name)
-#     s = Student.objects.get_or_create(name=name, email=email, course=c, user=u)[0]
-#     s.user = u
-#     s.domain = domain
-#     s.save()
-
-
-# def create_course(name, title, teacher, description):
-#     return Course.objects.get_or_create(name=name, title=title, teacher=teacher, description=description)[0]
-#
-# '''
-# from unc.bacs import *
-# drop_students()
-# '''
-
-# def drop_students():
-#     for f in ['Max Lloyd', 'Michael Koval', 'Deisy Guzman', 'Shalom Ekumbo']:
-#         try:
-#             s = Student.lookup(f)
-#             print(s)
-#             s.user.delete()
-#             s.delete()
-#         except:
-#             print("No student: "+f)
-
-
-# def fix_domain_protocols():
-#     for s in Student.objects.all():
-#         if s.domain != 'No Domain Configured' and not s.domain.startswith('http'):
-#             s.domain = 'http://' + s.domain
-#             s.save()
-#             print(s.domain)
 
 
 def get_student(request):
@@ -133,30 +90,19 @@ def import_schedule(course):
     return text_join(Lesson.list(course))
 
 
-def import_test_students():
-    course = 'cs350'
-    add_student('Tony', 'Stark', 'mark.b.seaman+iron_man@gmail.com', r'https://unco-bacs.org/iron_man', course)
-    add_student('Natasha', 'Romanov ', 'mark.b.seaman+black_widow@gmail.com', r'https://unco-bacs.org/black_widow',
-                course)
-    add_student('Bruce', 'Banner', 'mark.b.seaman+hulk@gmail.com', r'https://unco-bacs.org/hulk', course)
-    add_student('Steve', 'Rogers', 'mark.b.seaman+cap@gmail.com', r'https://unco-bacs.org/cap_america', course)
-    add_student('Carol', 'Danvers', 'mark.b.seaman+marvel@gmail.com', r'https://unco-bacs.org/cap_marvel', course)
-    add_student('Wanda', 'Maximoff', 'mark.b.seaman+witch@gmail.com', r'https://unco-bacs.org/scarlet_witch', course)
-    add_student('Sensei', '200', 'mark.b.seaman+200@gmail.com', r'https://unco-bacs.org', 'bacs200')
-    add_student('Sensei', '350', 'mark.b.seaman+350@gmail.com', r'https://unco-bacs.org', 'bacs350')
-
-
-# def initialize_data():
-#     create_course('cs350', 'Software Engineering (under development)', 'Mark Seaman',
-#                   'This class is for test purposes only')
-#     create_course('bacs200', 'Web Development Intro (Fall 2019)', 'Mark Seaman',
-#                   'Web Design and Development for Small Business')
-#     create_course('bacs350', 'Web Development Intermediate (Fall 2019)', 'Mark Seaman',
-#                   'Intermediate Web Development with PHP/MySQL')
-#     # import_schedule('bacs200')
-#     # import_schedule('bacs350')
+# def import_test_students():
+#     course = 'cs350'
+#     add_student('Tony', 'Stark', 'mark.b.seaman+iron_man@gmail.com', r'https://unco-bacs.org/iron_man', course)
+#     add_student('Natasha', 'Romanov ', 'mark.b.seaman+black_widow@gmail.com', r'https://unco-bacs.org/black_widow',
+#                 course)
+#     add_student('Bruce', 'Banner', 'mark.b.seaman+hulk@gmail.com', r'https://unco-bacs.org/hulk', course)
+#     add_student('Steve', 'Rogers', 'mark.b.seaman+cap@gmail.com', r'https://unco-bacs.org/cap_america', course)
+#     add_student('Carol', 'Danvers', 'mark.b.seaman+marvel@gmail.com', r'https://unco-bacs.org/cap_marvel', course)
+#     add_student('Wanda', 'Maximoff', 'mark.b.seaman+witch@gmail.com', r'https://unco-bacs.org/scarlet_witch', course)
+#     add_student('Sensei', '200', 'mark.b.seaman+200@gmail.com', r'https://unco-bacs.org', 'bacs200')
+#     add_student('Sensei', '350', 'mark.b.seaman+350@gmail.com', r'https://unco-bacs.org', 'bacs350')
 #
-#
+
 def list_course_content():
     data = [banner('Course Content Data')]
     data += Course.list()
@@ -289,3 +235,5 @@ def zybooks_link(course, reading):
     replace_pattern = r'<a href="%s/chapter/\1/section/\2">\1.\2 - \3</a>' % url
     link = compile(match_pattern).sub(replace_pattern, reading)
     return link
+
+
