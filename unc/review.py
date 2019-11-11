@@ -19,7 +19,12 @@ def assign_reviews_round2():
 
 def assign_reviews_round3():
     assign_team_reviews('bacs200', 'bacs200/teach.html', '2019-11-04', bacs200_3_requirements, bacs200_3_notes)
-    assign_team_reviews('bacs350', 'bacs350/superhero.php', '2019-11-04', bacs350_3_requirements, bacs350_3_notes)
+    assign_team_reviews('bacs350', 'bacs350/superhero/index.php', '2019-11-04', bacs350_3_requirements, bacs350_3_notes)
+
+
+def assign_reviews_round4():
+    assign_team_reviews('bacs200', 'bacs200/travel/index.html', '2019-11-11', bacs200_4_requirements, bacs200_4_notes)
+    assign_team_reviews('bacs350', 'bacs350/slides/index.php',  '2019-11-11', bacs350_4_requirements, bacs350_4_notes)
 
 
 def assign_team_reviews(course, page, due, requirements, notes):
@@ -198,6 +203,8 @@ def print_reviews(reviewer=None):
             # print('NOTES:\n%s\n' % r.notes)
 
 
+# BACS 200 Reviews
+
 bacs200_1_requirements = '''Page exists at bacs200/index.html
 Title, Author
 Link to class website 
@@ -209,28 +216,17 @@ Skills table with links to skills
 Valid HTML
 Valid CSS'''
 bacs200_1_notes = '''* Page exists at bacs200/index.html
-    *
-    *
 * Title, Author
-    *
-    *
 * Link to class website 
-    *
 * Profile Photo
-    *
 * CSS Stylesheet (in separate file)
-    *
 * Banner with site title and tag line
-    *
 * Project table with page and validation links
-    *
 * Skills table with links to skills
-    *
 * Valid HTML
-    *
 * Valid CSS
-    *
 '''
+
 bacs200_3_requirements = '''Page exists at bacs200/teach.html
 Teaches a skill from W3Schools
 Contains example code
@@ -242,6 +238,22 @@ CSS Stylesheet (in separate file)
 Valid HTML
 Valid CSS'''
 bacs200_3_notes = '''Write a summary of all the problems and how to fix them.   Must be 100 characters.'''
+
+bacs200_4_requirements = '''Page is located at correct URL (bacs200/travel/index.html)
+All pages validate HTML and CSS and links
+All JavaScript widgets work
+All links work properly
+Other pages are working properly
+Page is beautiful
+Marketing message is clear and compelling
+Page shows marketing carousel with photos
+Page shows products
+Page shows activities'''
+bacs200_4_notes = '''Write a summary of all the problems and how to fix them.   Must not be blank.'''
+
+
+# BACS 350 Reviews
+
 bacs350_1_requirements = '''Page exists at bacs350/index.php
 Title, Author
 Link to class website 
@@ -253,28 +265,17 @@ Skills table with links to skills
 Valid HTML
 Valid CSS'''
 bacs350_1_notes = '''* Page exists at bacs350/index.php
-    *
-    *
 * Title, Author
-    *
-    *
 * Link to class website 
-    *
 * Profile Photo
-    *
 * CSS Stylesheet (in separate file)
-    *
 * Banner with site title and tag line
-    *
 * Links to project pages (planner, project, docman, superhero, subscriber, notes)
-    *
 * Skills table with links to skills
-    *
 * Valid HTML
-    *
 * Valid CSS
-    *
 '''
+
 bacs350_3_requirements = '''Page exists at bacs350/superhero.php
 Displays existing superheroes
 Links to home page
@@ -286,3 +287,15 @@ Can edit superhero
 Valid HTML
 Valid CSS'''
 bacs350_3_notes = '''Write a summary of all the problems and how to fix them.   Must be 100 characters.'''
+
+bacs350_4_requirements = '''Main page is "bacs350/slides/index.php"
+Data Views (list, detail, add, edit, delete)
+Create and modify markdown content
+Run slide show in new browser tab
+Custom styles for your app
+Log all pages loaded and CRUD events
+Use design patterns to avoid duplication
+Page HTML and CSS validate
+Several slide shows created with Markdown
+Show presentation records'''
+bacs350_4_notes = '''Write a summary of all the problems and how to fix them.   Must not be blank.'''

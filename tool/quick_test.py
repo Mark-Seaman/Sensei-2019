@@ -7,21 +7,20 @@ from unc.skills import *
 
 def quick_test():
     init_unc_data()
-    # fix_reviews()
 
     # grade_reviews('bacs200/index.html')
     # grade_reviews('bacs350/index.php')
 
     # show_groups('bacs200')
     # show_groups('bacs350')
-    # assign_reviews_round3()
+    assign_reviews_round4()
 
 
-def fix_reviews():
-    for r in Review.objects.filter(page='bacs350/superhero.php'):
-        print(r.reviewer.name, r.page)
-        r.page = 'bacs350/superhero/index.php'
-        r.save()
+# def fix_reviews():
+#     for r in Review.objects.filter(page='bacs350/superhero.php'):
+#         print(r.reviewer.name, r.page)
+#         r.page = 'bacs350/superhero/index.php'
+#         r.save()
 
 
 def init_unc_data():
