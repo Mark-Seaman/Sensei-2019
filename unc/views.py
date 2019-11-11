@@ -81,7 +81,7 @@ class UncHomework(UncPage):
             # kwargs['homework'] = render_homework_scorecard(student)
             kwargs['skills'] = render_skills(student)
             kwargs['reviews'] = render_reviews(student)
-            kwargs['projects'] = Project.query(student.course.name)[:11]
+            kwargs['projects'] = Project.query(student.course.name)[:12]
         return kwargs
 
 
