@@ -29,5 +29,6 @@ def update_skills():
     Skill.create('bacs350', 9, 'Logging', '2019-10-21', 'logging.png')
     Skill.create('bacs350', 10, 'Render Templates', '2019-10-28', 'home.png')
     Skill.create('bacs350', 11, 'MVC Design Pattern', '2019-11-04', 'mvc.png')
+    Skill.create('bacs350', 12, 'Users', '2019-11-11', 'users.png')
 
     return print_skills('bacs350') + '\n' + print_skills('bacs200')
