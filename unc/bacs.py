@@ -193,6 +193,9 @@ def update_lessons():
     set_lesson_topic(course, '28', 'Website Usability', '3.8 Restaurant Reviews')
     set_lesson_topic(course, '29', 'Design', '3.9 Lab Practice')
     set_lesson_topic(course, '30', 'Brackets Extensions', '2.9 Band Page')
+    set_lesson_topic(course, '31', 'Design Diagrams', '2.10 - News Article Lab')
+    set_lesson_topic(course, '32', 'Project Planning', '4.7 - Band Example')
+    set_lesson_topic(course, '33', 'Learning', '4.8 - News Article Lab')
 
     course = 'bacs350'
     set_lesson_topic(course, '11', 'Document Viewer')
@@ -217,6 +220,10 @@ def update_lessons():
     set_lesson_topic(course, '30', 'MVC Design Pattern', '9.2 Selectors')
     set_lesson_topic(course, '31', 'Reveal JS', '9.3 Events')
     set_lesson_topic(course, '32', 'Slide Show App', '9.4 Styles')
+    set_lesson_topic(course, '33', 'Documentation', '9.5 DOM')
+    set_lesson_topic(course, '34', 'Code Reuse', '9.6 Ajax')
+    set_lesson_topic(course, '35', 'Users', '9.7 Plugins')
+
 
 
 def weekly_agenda(course, week):
@@ -226,7 +233,7 @@ def weekly_agenda(course, week):
 
 
 def weekly_lessons(course):
-    return [weekly_agenda(course, week + 1) for week in range(11)]
+    return [weekly_agenda(course, week + 1) for week in range(12)]
 
 
 def zybooks_link(course, reading):
