@@ -187,6 +187,7 @@ def update_projects():
     create_project_record('bacs200', '09', 'bacs200/teach.html',           fake_project_requirements())
     create_project_record('bacs200', '10', 'bacs200/index.html',           fake_project_requirements())
     create_project_record('bacs200', '11', 'bacs200/travel/index.html',    fake_project_requirements())
+    create_project_record('bacs200', '12', 'docs/ProjectPlan.md',          fake_project_requirements())
 
     create_project_record('bacs350', '01', 'index.php',                    fake_project_requirements())
     create_project_record('bacs350', '02', 'bacs350/index.php',            fake_project_requirements())
