@@ -221,9 +221,8 @@ def update_lessons():
     set_lesson_topic(course, '31', 'Reveal JS', '9.3 Events')
     set_lesson_topic(course, '32', 'Slide Show App', '9.4 Styles')
     set_lesson_topic(course, '33', 'Documentation', '9.5 DOM')
-    set_lesson_topic(course, '34', 'Code Reuse', '9.6 Ajax')
+    set_lesson_topic(course, '34', 'Technical Debt', '9.6 Ajax')
     set_lesson_topic(course, '35', 'Users', '9.7 Plugins')
-
 
 
 def weekly_agenda(course, week):
