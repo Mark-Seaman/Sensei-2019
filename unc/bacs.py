@@ -145,6 +145,13 @@ def slides_markdown(course, lesson):
     return bear + text + bear
 
 
+def slides_django_markdown(lesson):
+    doc = 'Documents/unc/django/%s.md' % lesson
+    text = fix_images(read_markdown(doc), '/static/images/unc/django')
+    bear = '\n\n---\n\n<img src="/static/images/unc/bacs200/Bear.200.png">\n\n---\n\n'
+    return bear + text + bear
+
+
 def student_data(course):
     return Course.students(course)
 

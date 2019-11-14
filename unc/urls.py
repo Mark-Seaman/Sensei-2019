@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'^logout', UncLogout.as_view()),
     url(r'^', include('django.contrib.auth.urls')),
 
+    url(r'^django/(?P<lesson>\d\d)/slides$',                UncDjangoSlides.as_view()),
     url(r'^django/(?P<title>[\w/\-_.]+)$',                  UncLessonDisplay.as_view()),
 
     url(r'^(?P<course>[-_ \w]+)/week/(?P<week>\d\d)$',      UncWeek.as_view()),

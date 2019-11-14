@@ -4,7 +4,7 @@ from django.views.generic import RedirectView, TemplateView, UpdateView
 from django.utils.timezone import now
 
 from tool.log import log_page
-from unc.bacs import schedule_data, slides_markdown, student_projects, weekly_agenda, get_student
+from unc.bacs import schedule_data, slides_markdown, slides_django_markdown, student_projects, weekly_agenda, get_student
 from unc.models import Project
 from unc.projects import test_project_page
 from unc.render import *
@@ -40,6 +40,14 @@ class UncDocDisplay(UncPage):
         doc_path = self.request.path[1:]
         image_path = '/static/images/unc/bacs200' if 'bacs200' == kwargs['course'] else '/static/images/unc/bacs350'
         kwargs['text'] = document_text(doc_path, image_path)
+        return kwargs
+
+
+class UncDjangoSlides(TemplateView):
+    template_name = 'unc_slides.html'
+
+    def get_context_data(self, **kwargs):
+        kwargs['markdown'] = slides_django_markdown(self.kwargs['lesson'])
         return kwargs
 
 
