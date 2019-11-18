@@ -229,7 +229,7 @@ def update_lessons():
     set_lesson_topic(course, '32', 'Slide Show App', '9.4 Styles')
     set_lesson_topic(course, '33', 'Documentation', '9.5 DOM')
     set_lesson_topic(course, '34', 'Technical Debt', '9.6 Ajax')
-    set_lesson_topic(course, '35', 'Users', '9.7 Plugins')
+    set_lesson_topic(course, '35', 'Requirements', '9.8 Weather App')
 
 
 def weekly_agenda(course, week):
@@ -239,7 +239,11 @@ def weekly_agenda(course, week):
 
 
 def weekly_lessons(course):
-    return [weekly_agenda(course, week + 1) for week in range(13)]
+    if course == 'bacs350':
+        weeks = 12
+    else:
+        weeks = 13
+    return [weekly_agenda(course, week + 1) for week in range(weeks)]
 
 
 def zybooks_link(course, reading):
