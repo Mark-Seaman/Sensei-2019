@@ -7,6 +7,7 @@ from unc.skills import *
 
 def quick_test():
     init_unc_data()
+    fix_lessons()
 
     # grade_reviews('bacs200/index.html')
     # grade_reviews('bacs350/index.php')
@@ -21,6 +22,18 @@ def quick_test():
 #         print(r.reviewer.name, r.page)
 #         r.page = 'bacs350/superhero/index.php'
 #         r.save()
+
+
+def fix_lessons():
+    x = Lesson.lookup('bacs350', 35)
+    x.date = '2019-11-18'
+    x.week = 12
+    x.save()
+
+    x = Lesson.lookup('bacs200', 33)
+    x.date = '2019-11-18'
+    x.week = 13
+    x.save()
 
 
 def init_unc_data():
