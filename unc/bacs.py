@@ -239,7 +239,7 @@ def weekly_agenda(course, week):
 
 
 def weekly_lessons(course):
-    return [weekly_agenda(course, week + 1) for week in range(12)]
+    return [weekly_agenda(course, week + 1) for week in range(13)]
 
 
 def zybooks_link(course, reading):
