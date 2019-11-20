@@ -204,6 +204,8 @@ def update_lessons():
     set_lesson_topic(course, '32', 'Project Planning', '4.7 - Band Example')
     set_lesson_topic(course, '33', 'Learning', '4.8 - News Article Lab')
     set_lesson_topic(course, '34', 'Teamwork', '9.1 Mobile websites (optional)')
+    set_lesson_topic(course, '35', 'Contribution', '9.2 Mobile tools (optional)')
+    set_lesson_topic(course, '36', 'Study Time', 'None assigned')
 
     course = 'bacs350'
     set_lesson_topic(course, '11', 'Document Viewer')
@@ -232,6 +234,8 @@ def update_lessons():
     set_lesson_topic(course, '34', 'Technical Debt', '9.6 Ajax')
     set_lesson_topic(course, '35', 'Requirements', '9.8 Weather App')
     set_lesson_topic(course, '36', 'User Authentication', '9.9 Currency')
+    set_lesson_topic(course, '37', 'Design', '')
+    set_lesson_topic(course, '38', 'Code', '')
 
 
 def weekly_agenda(course, week):
