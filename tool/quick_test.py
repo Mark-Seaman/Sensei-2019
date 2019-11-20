@@ -25,15 +25,22 @@ def quick_test():
 
 
 def fix_lessons():
-    x = Lesson.lookup('bacs350', 35)
-    x.date = '2019-11-18'
-    x.week = 12
-    x.save()
+    def change_date(course, lesson, date):
+        x = Lesson.lookup(course, lesson)
+        x.date = date
+        x.save()
 
-    x = Lesson.lookup('bacs200', 33)
-    x.date = '2019-11-18'
-    x.week = 13
-    x.save()
+    date = '2019-11-20'
+    change_date('bacs350', 36, date)
+    change_date('bacs200', 34, date)
+
+    date = '2019-11-22'
+    change_date('bacs350', 37, date)
+    change_date('bacs200', 35, date)
+
+    date = '2019-11-25'
+    change_date('bacs350', 38, date)
+    change_date('bacs200', 36, date)
 
 
 def init_unc_data():
