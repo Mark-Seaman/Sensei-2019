@@ -55,15 +55,32 @@ def render_review(review_id):
                 notes=render_notes(review))
 
 
+def render_review_list(text, reviews):
+    data = dict(description=text, reviews=reviews)
+    return render_to_string('review.html', data)
+
+
 def render_reviews(student):
-    reviews_to_do = student_reviews(student.pk)
-    reviews_done = student_reviews_done(student.pk)
-    feedback = review_feedback(student.pk)
-    return render_to_string('review.html',
-                            dict(student=student,
-                                 reviews_to_do=reviews_to_do,
-                                 reviews_done=reviews_done,
-                                 review_feedback=feedback))
+    to_do_text = '''
+         The following reviews are scheduled to be completed by the due date. You will only 
+         get credit if the review is done correctly and on time.
+         '''
+    done_text = '''
+         The following reviews are scheduled to be completed by the due date. You will only get credit
+                 if the review is done correctly and on time.
+         '''
+    feedback_text = '''
+         These reviews are for feedback on your design work.
+         '''
+    reviews_to_do = render_review_list(to_do_text, student_reviews(student.pk))
+    reviews_done = render_review_list(done_text, student_reviews_done(student.pk))
+    feedback = render_review_list(feedback_text, review_feedback(student.pk))
+
+    todo_data = [0, 'Reviews To Do', reviews_to_do, 'active']
+    done_data = [1, 'Reviews Done', reviews_done, '']
+    feedback_data = [2, 'Design Feedback', feedback, '']
+
+    return render_to_string('reviews.html', dict(student=student, reviews=[todo_data, done_data, feedback_data]))
 
 
 def render_skills(student):
@@ -108,5 +125,3 @@ def requirements_met(review):
               status(review.requirement_10)]
     labels = [r.strip() for r in review.requirement_labels.split('\n')]
     return zip(labels, status)
-
-
