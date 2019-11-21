@@ -4,6 +4,7 @@ from os import listdir, mkdir
 from os.path import exists, join
 
 from tasks.models import Task
+from tool.days import to_date
 
 
 def activity_summary(activity):
@@ -200,6 +201,7 @@ def work_types():
     return 'Hire,Aspire,Business,Family,Teach,Tools,WAM,Sign,Write,Hammer'.split(',')
 
 
+
 def task_export():
 
     def export_file(date, tasks):
@@ -211,7 +213,10 @@ def task_export():
         if not exists(path):
             mkdir(path)
         path = join(path, day)
-        open(path, 'w').write(tasks + '\n')
+        with open(path, 'w') as f:
+            date_label = to_date(date).strftime("%a, %B %d,%Y")
+            f.write(date_label + '\n\n')
+            f.write(tasks + '\n')
 
     tlist = task_list('all')
     for t in tlist:

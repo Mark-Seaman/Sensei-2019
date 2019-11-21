@@ -7,7 +7,7 @@ from unc.skills import *
 
 def quick_test():
     init_unc_data()
-    fix_lessons()
+    # fix_lessons()
 
     # grade_reviews('bacs200/index.html')
     # grade_reviews('bacs350/index.php')
