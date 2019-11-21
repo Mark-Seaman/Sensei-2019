@@ -139,7 +139,7 @@ def today():
 
 # Show a list of dates for the last month
 def print_recent_dates():
-    for d in enumerate_days(to_date(today()), 30):
+    for d in enumerate_days(to_date(today()), 90):
         print('* [%s](/info/history/%s) - Write - ' % (d, d.replace('-', '/')))
 
 
