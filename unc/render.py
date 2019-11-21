@@ -55,8 +55,9 @@ def render_review(review_id):
                 notes=render_notes(review))
 
 
-def render_review_list(text, reviews):
+def render_review_list(text, reviews, **options):
     data = dict(description=text, reviews=reviews)
+    data.update(options)
     return render_to_string('review.html', data)
 
 
@@ -66,21 +67,21 @@ def render_reviews(student):
          get credit if the review is done correctly and on time.
          '''
     done_text = '''
-         The following reviews are scheduled to be completed by the due date. You will only get credit
-                 if the review is done correctly and on time.
+         You have completed these reviews.  You can updated them at any time with new information
          '''
     feedback_text = '''
          These reviews are for feedback on your design work.
          '''
-    reviews_to_do = render_review_list(to_do_text, student_reviews(student.pk))
-    reviews_done = render_review_list(done_text, student_reviews_done(student.pk))
-    feedback = render_review_list(feedback_text, review_feedback(student.pk))
+    reviews_to_do = render_review_list(to_do_text, student_reviews(student.pk), edit=True)
+    reviews_done = render_review_list(done_text, student_reviews_done(student.pk), edit=True, score=True)
+    feedback = render_review_list(feedback_text, review_feedback(student.pk), show=True, score=True)
 
     todo_data = [0, 'Reviews To Do', reviews_to_do, 'active']
     done_data = [1, 'Reviews Done', reviews_done, '']
     feedback_data = [2, 'Design Feedback', feedback, '']
 
-    return render_to_string('reviews.html', dict(student=student, reviews=[todo_data, done_data, feedback_data]))
+    data = dict(student=student, reviews=[todo_data, done_data, feedback_data])
+    return render_to_string('reviews.html', data)
 
 
 def render_skills(student):

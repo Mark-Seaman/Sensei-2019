@@ -20,8 +20,11 @@
                 <td>{{ r.page }}</td>
                 <td>{{ r.reviewer.name }}</td>
                 <td>{{ r.designer.name }}</td>
-                <td>{{ r.score }}</td>
-                <td><a href="/unc/review/{{ r.pk }}">Perform Review</a></td>
+
+                <td>{% if score %}{{ r.score }}{% endif %}</td>
+                <td>
+                    {% if edit %}<a href="/unc/review/{{ r.pk }}">Perform Review</a>{% endif %}
+                    {% if show %}<a href="/unc/feedback/{{ r.pk }}">Show Review</a>{% endif %}</td>
                 <td>{{ r.date }}</td>
             </tr>
 
