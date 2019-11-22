@@ -207,6 +207,16 @@ class UncEditReview(UpdateView):
         return '/unc/%s' % student.course.name
 
 
+class UncReviews(UncPage):
+    template_name = 'reviewer.html'
+
+    def get_context_data(self, **kwargs):
+        kwargs = super(UncReviews, self).get_context_data(**kwargs)
+        student = Student.lookup('Sensei 350')
+        kwargs['reviews'] = render_reviews(student)
+        return kwargs
+
+
 class UncReviewFeedback(UncPage):
     template_name = 'unc_feedback.html'
 

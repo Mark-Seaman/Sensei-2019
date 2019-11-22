@@ -6,15 +6,22 @@
 
             <div class="panel-heading">
                 <h3 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#review-accordion" href="#collapse{{ t.0 }}">
-                        {{ t.1 }}</a>
+                    <a data-toggle="collapse" data-parent="#review-accordion" href="#review{{ t.0 }}">
+                        {{ t.1 }}
+                    </a>
                 </h3>
             </div>
 
-            <div id="collapse{{ t.0 }}" class="panel-collapse collapse">
-                <div class="panel-body">
-                    {{ t.2 }}
+            <div id="review{{ t.0 }}" class="panel-collapse collapse">
+                <div class="card">
+                    <div class="card-header">
+                        {{ t.1 }}
+                    </div>
+                    <div class="card-body card-padding">
+                        {{ t.2 }}
+                    </div>
                 </div>
+
             </div>
         </div>
 
@@ -22,42 +29,38 @@
 
 </div>
 
-{#        <div role="tabpanel">#}
+
+{#<ul class="nav nav-tabs" role="tablist" id="review-tab">#}
+{#    {% for t in reviews %}#}
 {##}
-{#            <div class="nav nav-tabs">#}
-{#                <ul>#}
-{#                    {% for t in reviews %}#}
+{#        <li class="nav-item">#}
+{#            <a class="nav-link {{ t.3 }}" href="#review-{{ t.0 }}">#}
+{#                {{ t.1 }}#}
+{#            </a>#}
+{#        </li>#}
 {##}
-{#                        <li>#}
-{#                            <a class="nav-item nav-link {{ t.3 }}" href="#review-{{ t.0 }}" data-toggle="tab">#}
-{#                                {{ t.1 }}#}
-{#                            </a>#}
-{#                        </li>#}
-{##}
-{#                    {% endfor %}#}
-{#                </ul>#}
-{#            </div>#}
+{#    {% endfor %}#}
+{#</ul>#}
 {##}
 {##}
-{#            <div class="tab-content">#}
+{#<div class="tab-content" id="review-tabContent">#}
 {##}
-{#                {% for t in reviews %}#}
+{#    {% for t in reviews %}#}
 {##}
-{#                    <div class="tab-pane {{ t.3 }}" id="review-{{ t.0 }}">#}
+{#        <div class="tab-pane {{ t.3 }}" id="review-{{ t.0 }}" role="tabpanel" data-toggle="tab">#}
 {##}
-{#                        <h2>{{ t.1 }}</h2>#}
+{#            <h2>{{ t.1 }}</h2>#}
 {##}
-{#                        {% autoescape off %}#}
-{#                            {{ t.2 }}#}
-{#                        {% endautoescape %}#}
-{##}
-{#                    </div>#}
-{##}
-{#                {% endfor %}#}
-{##}
-{#            </div>#}
+{#            {% autoescape off %}#}
+{#                {{ t.2 }}#}
+{#            {% endautoescape %}#}
 {##}
 {#        </div>#}
 {##}
+{#    {% endfor %}#}
+{##}
+{#</div>#}
+{##}
+
 
 

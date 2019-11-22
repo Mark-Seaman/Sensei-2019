@@ -1,48 +1,92 @@
-<h3>Design Reviews</h3>
-
-<p>
-    Web designers are responsible for their own work but also for giving
-    accurate, timely, and helpful feedback.
-</p>
-<p>
-    Check out the pages for other students to improve your own design skills.
-</p>
-<p>
-    <a href="/unc/{{ student.course.name }}/students">View All Student Pages</a>
-</p>
+{% extends "unc_theme.html" %}
 
 
-<div class="card">
+{% block content %}
+    <h3>Design Reviews</h3>
 
-    <div class="card-header">
-        Design Reviews To Do
-    </div>
-
-    <div class="card-body card-padding">
-        {{ reviews_to_do }}
-    </div>
-</div>
-
-
-<div class="card">
-
-    <div class="card-header">
-        Design Reviews Done
-    </div>
-
-    <div class="card-body card-padding">
-        {{ reviews_done }}
-    </div>
-</div>
+    <p>
+        Web designers are responsible for their own work but also for giving
+        accurate, timely, and helpful feedback.
+    </p>
+    <p>
+        Check out the pages for other students to improve your own design skills.
+    </p>
+    <p>
+        <a href="/unc/{{ student.course.name }}/students">View All Student Pages</a>
+    </p>
 
 
-<div class="card">
+    {{ reviews }}
 
-    <div class="card-header">
-        Design Review Feedback
-    </div>
 
-    <div class="card-body card-padding">
-        {{ review_feedback }}
-    </div>
-</div>
+{#    <ul class="nav nav-tabs" role="tablist" id="review-tab">#}
+{#        {% for t in reviews %}#}
+{##}
+{#            <li class="nav-item">#}
+{#                <a class="nav-link {{ t.3 }}" href="#review-{{ t.0 }}">#}
+{#                    {{ t.1 }}#}
+{#                </a>#}
+{#            </li>#}
+{##}
+{#        {% endfor %}#}
+{#    </ul>#}
+{##}
+{##}
+{#    <div class="tab-content" id="review-tabContent">#}
+{##}
+{#        {% for t in reviews %}#}
+{##}
+{#            <div class="tab-pane {{ t.3 }}" id="review-{{ t.0 }}" role="tabpanel" data-toggle="tab">#}
+{##}
+{#                <h2>{{ t.1 }}</h2>#}
+{##}
+{#                {% autoescape off %}#}
+{#                    {{ t.2 }}#}
+{#                {% endautoescape %}#}
+{##}
+{#            </div>#}
+{##}
+{#        {% endfor %}#}
+{##}
+{#    </div>#}
+
+
+{#    <div class="card">#}
+{##}
+{#        <div class="card-header">#}
+{#            Design Reviews To Do#}
+{#        </div>#}
+{##}
+{#        <div class="card-body card-padding">#}
+{#            {{ reviews_to_do }}#}
+{#        </div>#}
+{#    </div>#}
+{##}
+{##}
+{#    <div class="card">#}
+{##}
+{#        <div class="card-header">#}
+{#            Design Reviews Done#}
+{#        </div>#}
+{##}
+{#        <div class="card-body card-padding">#}
+{#            {{ reviews_done }}#}
+{#        </div>#}
+{#    </div>#}
+{##}
+{##}
+{#    <div class="card">#}
+{##}
+{#        <div class="card-header">#}
+{#            Design Review Feedback#}
+{#        </div>#}
+{##}
+{#        <div class="card-body card-padding">#}
+{#            {{ review_feedback }}#}
+{#        </div>#}
+{#    </div>#}
+
+
+
+
+{% endblock %}

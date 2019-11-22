@@ -1,0 +1,37 @@
+{% extends "unc_theme.html" %}
+
+
+{% block content %}
+
+<ul class="nav nav-tabs" role="tablist" id="review-tab">
+    {% for t in reviews %}
+
+        <li class="nav-item">
+            <a class="nav-link {{ t.3 }}" href="#review-{{ t.0 }}">
+                {{ t.1 }}
+            </a>
+        </li>
+
+    {% endfor %}
+</ul>
+
+
+<div class="tab-content" id="review-tabContent">
+
+    {% for t in reviews %}
+
+        <div class="tab-pane {{ t.3 }}" id="review-{{ t.0 }}" role="tabpanel" data-toggle="tab">
+
+            <h2>{{ t.1 }}</h2>
+
+            {% autoescape off %}
+                {{ t.2 }}
+            {% endautoescape %}
+
+        </div>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}
