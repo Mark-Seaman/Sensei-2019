@@ -139,6 +139,7 @@ def update_projects():
     create_project_record('bacs200', '11', 'bacs200/travel/index.html',    fake_project_requirements())
     create_project_record('bacs200', '12', 'docs/ProjectPlan.md',          fake_project_requirements())
     create_project_record('bacs200', '13', 'bacs200/nonprofit/index.html', fake_project_requirements())
+    create_project_record('bacs200', '14', 'index.php',                    fake_project_requirements())
     # Project.objects.get(course__name='bacs200', num='14').delete()
     # Project.objects.get(course__name='bacs200', num='15').delete()
 
