@@ -1,31 +1,17 @@
-from tool.page import close_browser_dom, open_browser_dom
-from tool.shell import is_server
 from tool.text import text_lines
 from tool.user import list_users
 from unc.bacs import *
-from unc.projects import list_projects, update_projects
-from unc.models import Student
+from unc.projects import list_projects, import_projects
 from unc.skills import print_skills, update_skills
-
-
-# def unc_assignment_test():
-#     add_test_assignments()
-#     return "%s lines in output" % len(text_lines(show_assignments()))
 
 
 def unc_course_files_test():
     return text_join([show_course_files(course) for course in unc_courses()])
 
 
-# def unc_data_test():
-#     initialize_data()
-#     return "%s lines in output" % len(text_lines(list_course_content()))
-
-
 def unc_project_test():
-    # course = 'cs350'
-    # output = import_schedule(course)
-    update_projects()
+    import_projects('bacs350')
+    import_projects('bacs200')
     projects = list_projects('bacs200') + list_projects('bacs350')
     return text_join(projects)  # "%s lines in output" % len(projects)
 
@@ -52,6 +38,15 @@ def unc_student_test():
         students = list_students(course)
         output.append(students)
     return '%s Student Records' % len(text_lines(text_join(output)))
+
+
+# def unc_assignment_test():
+#     add_test_assignments()
+#     return "%s lines in output" % len(text_lines(show_assignments()))
+
+# def unc_data_test():
+#     initialize_data()
+#     return "%s lines in output" % len(text_lines(list_course_content()))
 
 
 # def unc_views_test():
