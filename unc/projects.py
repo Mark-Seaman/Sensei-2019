@@ -8,22 +8,6 @@ from tool.text import text_join
 from unc.models import Assignment, Course, Lesson, Project, Requirement, Student
 
 
-# def add_assignment(course, student, project, due):
-#     p = Project.lookup(course, project)
-#     a = Assignment.objects.get_or_create(project=p, student=student, score=0, due=due_date(due), status=0)[0]
-#     a.date = now()
-#     a.save()
-#
-#
-# def assignment_due(course, student, project, due):
-#     p = Project.lookup(course, project)
-#     a = Assignment.objects.get(project=p, student=student)
-#     a.due = due_date(due)
-#     a.score = 0
-#     a.status = 0
-#     a.save()
-
-
 def add_project(course, row):
     def create_project(course, num, title, page, due, instructions):
         course = Course.objects.get(name=course)
@@ -53,34 +37,11 @@ def add_requirement(project, id, selector, transform):
     return r
 
 
-# def add_test_assignments():
-#     course = 'cs350'
-#     assign_homework(course, '01', '2019-08-30')
-#     assign_homework(course, '02', '2019-09-06')
-#     # clear_assignments()
-#
-
 def approve_requirements(course, id):
     project = Project.lookup(course, id)
     for i, r in enumerate(project.requirements):
         r.correct = r.actual
         r.save()
-
-
-# def assign_homework(course, project, due):
-#     for s in Course.students(course):
-#         add_assignment(course, s, project, due)
-#
-
-# def build_projects(course):
-#     create_project_record(course, '01', 'index.php', fake_project_requirements())
-#     create_project_record(course, '02', 'bacs350/index.html', fake_project_requirements())
-#     # create_project_record(course, '03', 'bacs350/profile.html', bacs200_project1_requirements())
-#     return list_project_details(course)
-#
-#
-# def clear_assignments():
-#     Assignment.objects.all().delete()
 
 
 def create_project_record(course, project_num, page, requirements):
@@ -109,17 +70,6 @@ def fake_project_requirements():
     ]
 
 
-# from unc.models import *
-
-def fix_domains():
-    for s in Student.objects.filter():
-        if s.domain != 'No Domain Configured':
-            if not s.domain.startswith('http'):
-                s.domain = 'http://'+s.domain
-                s.save()
-                print(s.domain)
-
-# fix_domains()
 
 
 def get_assignments(student):
@@ -206,7 +156,6 @@ def update_projects():
     create_project_record('bacs350', '14', 'bacs350/index.php',            fake_project_requirements())
 
 
-
 def validate_project_page(dom, student, project):
     p = Project.lookup(student.course.name, project)
     url = join(student.domain, p.page)
@@ -220,3 +169,48 @@ def validate_unc_project(dom, student, project):
     return banner('PROJECT %s' % project) + display_test_results(validate_project_page(dom, student, project))
 
 
+# def add_assignment(course, student, project, due):
+#     p = Project.lookup(course, project)
+#     a = Assignment.objects.get_or_create(project=p, student=student, score=0, due=due_date(due), status=0)[0]
+#     a.date = now()
+#     a.save()
+#
+#
+# def assignment_due(course, student, project, due):
+#     p = Project.lookup(course, project)
+#     a = Assignment.objects.get(project=p, student=student)
+#     a.due = due_date(due)
+#     a.score = 0
+#     a.status = 0
+#     a.save()
+
+
+# def assign_homework(course, project, due):
+#     for s in Course.students(course):
+#         add_assignment(course, s, project, due)
+#
+
+# def build_projects(course):
+#     create_project_record(course, '01', 'index.php', fake_project_requirements())
+#     create_project_record(course, '02', 'bacs350/index.html', fake_project_requirements())
+#     # create_project_record(course, '03', 'bacs350/profile.html', bacs200_project1_requirements())
+#     return list_project_details(course)
+#
+#
+# def clear_assignments():
+#     Assignment.objects.all().delete()
+
+# def add_test_assignments():
+#     course = 'cs350'
+#     assign_homework(course, '01', '2019-08-30')
+#     assign_homework(course, '02', '2019-09-06')
+#     # clear_assignments()
+#
+
+# def fix_domains():
+#     for s in Student.objects.filter():
+#         if s.domain != 'No Domain Configured':
+#             if not s.domain.startswith('http'):
+#                 s.domain = 'http://'+s.domain
+#                 s.save()
+#                 print(s.domain)

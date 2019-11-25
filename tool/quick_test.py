@@ -3,25 +3,33 @@ from unc.projects import *
 from unc.models import *
 from unc.review import *
 from unc.skills import *
+from insight.models import *
 
 
 def quick_test():
     init_unc_data()
-    # fix_lessons()
 
+
+def assign_reviews():
+    show_groups('bacs200')
+    show_groups('bacs350')
+    assign_reviews_round4()
     # grade_reviews('bacs200/index.html')
     # grade_reviews('bacs350/index.php')
 
-    # show_groups('bacs200')
-    # show_groups('bacs350')
-    # assign_reviews_round4()
+
+def setup_insights():
+    Insight.import_data('insights.csv')
+    Insight.export_data('insights2.csv')
+
+    Insight.print_insights()
 
 
-# def fix_reviews():
-#     for r in Review.objects.filter(page='bacs350/superhero.php'):
-#         print(r.reviewer.name, r.page)
-#         r.page = 'bacs350/superhero/index.php'
-#         r.save()
+def fix_reviews():
+    for r in Review.objects.filter(page='bacs350/superhero.php'):
+        print(r.reviewer.name, r.page)
+        r.page = 'bacs350/superhero/index.php'
+        r.save()
 
 
 def fix_lessons():
@@ -49,6 +57,7 @@ def init_unc_data():
     update_lessons()
     update_projects()
     update_skills()
+    # fix_lessons()
     # x = list_course_content()
     # print(x)
 
