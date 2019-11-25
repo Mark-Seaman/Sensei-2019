@@ -67,7 +67,7 @@ class Project(models.Model):
     num = models.IntegerField()
     title = models.CharField(null=True, max_length=100)
     page = models.CharField(null=True, max_length=100)
-    due = models.DateTimeField(null=True)
+    due = models.DateTimeField(default='2019-12-26', null=True)
     instructions = models.URLField(null=True)
 
     def __str__(self):
