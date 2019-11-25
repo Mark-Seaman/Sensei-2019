@@ -35,17 +35,17 @@ def fix_reviews():
 def fix_lessons():
     def change_date(course, lesson, date):
         x = Lesson.lookup(course, lesson)
-        x.date = date
+        x.week = 13
         x.save()
 
-    date = '2019-11-20'
-    change_date('bacs350', 36, date)
-    change_date('bacs200', 34, date)
-
-    date = '2019-11-22'
-    change_date('bacs350', 37, date)
-    change_date('bacs200', 35, date)
-
+    # date = '2019-11-20'
+    # change_date('bacs350', 36, date)
+    # change_date('bacs200', 34, date)
+    #
+    # date = '2019-11-22'
+    # change_date('bacs350', 37, date)
+    # change_date('bacs200', 35, date)
+    #
     date = '2019-11-25'
     change_date('bacs350', 38, date)
     change_date('bacs200', 36, date)
@@ -57,7 +57,7 @@ def init_unc_data():
     update_lessons()
     update_projects()
     update_skills()
-    # fix_lessons()
+    fix_lessons()
     # x = list_course_content()
     # print(x)
 
