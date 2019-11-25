@@ -7,7 +7,10 @@ from insight.models import *
 
 
 def quick_test():
-    init_unc_data()
+    # init_unc_data()
+    print(print_projects())
+    export_projects('bacs350')
+    export_projects('bacs200')
 
 
 def assign_reviews():

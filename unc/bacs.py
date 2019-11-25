@@ -94,7 +94,7 @@ def list_course_content():
     for c in unc_courses():
         data.append(banner(c))
         data.append('\nPROJECTS:\n')
-        data += Project.list(c)
+        data += [str(p) for p in Project.list(c)]
         data.append('\nLESSONS:\n')
         data += Lesson.list(c)
         data.append('\nSTUDENTS:')

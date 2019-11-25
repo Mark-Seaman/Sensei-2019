@@ -1,11 +1,9 @@
 from django.utils.timezone import make_aware, now
-from os.path import join
+from csv import reader, writer
 
-from tool.days import parse_date, date_str, due_date
-from tool.page import open_browser_dom, close_browser_dom, capture_page, capture_page_features, display_test_results
-from tool.shell import banner
+from tool.days import due_date, date_str
 from tool.text import text_join
-from unc.models import Assignment, Course, Lesson, Project, Requirement
+from unc.models import Assignment, Lesson, Project
 
 
 def create_project(course, num, page=None, due=None):
@@ -46,12 +44,39 @@ def get_lesson(course, lesson_num):
 
 
 def list_projects(course):
-    results = []
-    for p in Project.objects.filter(course__name=course).order_by('due'):
-        results.append('\nProject %s' % p)
-        for r in p.requirements:
-            results.append('    selector=%s, transform=%s' % (r.selector, r.transform))
-    return text_join(results)
+    return Project.list(course)
+
+
+def project_csv(course):
+    return 'Documents/unc/%s/projects.csv' % course
+
+
+def import_projects(course):
+    with open(project_csv(course)) as f:
+        for row in reader(f):
+            create_project(row[0], row[1], row[2], row[3])
+
+
+def export_projects(course):
+    with open(project_csv(course), 'w') as f:
+        for project in list_projects(course):
+            f.write("%s,%s,%s,%s\n" % (course, project.num, project.page, date_str(project.due)))
+
+
+def print_projects():
+    for c in ['bacs200', 'bacs350']:
+        print("\n%s" % c)
+        for p in list_projects(c):
+            print("    %s - due %s - %s" % (p.title, date_str(p.due), p.page))
+
+
+# def list_projects(course):
+#     results = []
+#     for p in Project.objects.filter(course__name=course).order_by('due'):
+#         results.append('\nProject %s' % p)
+#         for r in p.requirements:
+#             results.append('    selector=%s, transform=%s' % (r.selector, r.transform))
+#     return text_join(results)
 
 
 def update_projects():
@@ -69,9 +94,6 @@ def update_projects():
     create_project(course, '11', 'bacs200/travel/index.html')
     create_project(course, '12', 'docs/ProjectPlan.md')
     create_project(course, '13', 'bacs200/nonprofit/index.html')
-    project = Project.objects.filter(course__name=course, num='14')
-    print(project)
-    create_project(course, '14', 'index.php')
 
     course = 'bacs350'
     create_project(course, '01', 'index.php')

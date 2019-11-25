@@ -67,11 +67,11 @@ class Project(models.Model):
     num = models.IntegerField()
     title = models.CharField(null=True, max_length=100)
     page = models.CharField(null=True, max_length=100)
-    due = models.DateTimeField(default='2019-12-26', null=True)
+    due = models.DateTimeField(default=due_date('2019-12-26'), null=True)
     instructions = models.URLField(null=True)
 
     def __str__(self):
-        return '%s/project/%02d   %-30s  %-30s %s' % (self.course.name, self.num, self.title, self.page, self.due.strftime("%Y-%m-%d"))
+        return '%s/project/%02d   %-30s  %-30s %s' % (self.course.name, self.num, self.title, self.page, date_str(self.due))
 
     @property
     def due_date(self):
@@ -83,11 +83,11 @@ class Project(models.Model):
 
     @staticmethod
     def lookup(course, id):
-        return Project.objects.get_or_create(course__name=course, num=id)[0]
+        return Project.objects.get_or_create(course=Course.lookup(course), num=id)[0]
 
     @staticmethod
     def list(course):
-        return [str(o) for o in Project.objects.filter(course__name=course).order_by('due')]
+        return Project.objects.filter(course__name=course).order_by('due')
 
     @staticmethod
     def query(course):

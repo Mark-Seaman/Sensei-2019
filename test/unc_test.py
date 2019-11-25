@@ -27,7 +27,7 @@ def unc_project_test():
     # output = import_schedule(course)
     update_projects()
     projects = list_projects('bacs200') + list_projects('bacs350')
-    return projects  # "%s lines in output" % len(projects)
+    return text_join(projects)  # "%s lines in output" % len(projects)
 
 
 def unc_lesson_test():
