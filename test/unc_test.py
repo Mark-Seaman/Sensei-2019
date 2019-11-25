@@ -9,11 +9,15 @@ def unc_course_files_test():
     return text_join([show_course_files(course) for course in unc_courses()])
 
 
+def as_text(query):
+    return text_join([str(x) for x in query])
+
+
 def unc_project_test():
     import_projects('bacs350')
     import_projects('bacs200')
-    projects = list_projects('bacs200') + list_projects('bacs350')
-    return text_join(projects)  # "%s lines in output" % len(projects)
+    projects = as_text(list_projects('bacs200')) + '\n\nu' + as_text(list_projects('bacs350'))
+    return projects  # "%s lines in output" % len(projects)
 
 
 def unc_lesson_test():
