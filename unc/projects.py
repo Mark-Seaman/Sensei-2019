@@ -5,7 +5,7 @@ from tool.days import parse_date, date_str, due_date
 from tool.page import open_browser_dom, close_browser_dom, capture_page, capture_page_features, display_test_results
 from tool.shell import banner
 from tool.text import text_join
-from unc.models import Assignment, Course, Lesson, Project, Requirement, Student
+from unc.models import Assignment, Course, Lesson, Project, Requirement
 
 
 def add_project(course, row):
@@ -139,6 +139,8 @@ def update_projects():
     create_project_record('bacs200', '11', 'bacs200/travel/index.html',    fake_project_requirements())
     create_project_record('bacs200', '12', 'docs/ProjectPlan.md',          fake_project_requirements())
     create_project_record('bacs200', '13', 'bacs200/nonprofit/index.html', fake_project_requirements())
+    Project.objects.get(course__name='bacs200', num='14').delete()
+    Project.objects.get(course__name='bacs200', num='15').delete()
 
     create_project_record('bacs350', '01', 'index.php',                    fake_project_requirements())
     create_project_record('bacs350', '02', 'bacs350/index.php',            fake_project_requirements())

@@ -57,9 +57,9 @@ def init_unc_data():
     update_lessons()
     update_projects()
     update_skills()
-    fix_lessons()
-    # x = list_course_content()
-    # print(x)
+    # fix_lessons()
+    x = list_course_content()
+    print(x)
 
 
 def show_course_content():
