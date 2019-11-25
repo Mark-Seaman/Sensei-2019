@@ -10,13 +10,12 @@ from tool.shell import banner
 from tool.text import text_join
 from tool.user import add_user_login
 from unc.models import Course, Project, Lesson, Skill, Student
-from unc.projects import add_project, list_assignments
+# from unc.projects import list_assignments
 
 
 def add_lesson(course, row):
     # CSV Data -- Week, Day, Date, Lesson, Topic, Reading, Projects, Process, Parts
     # print(row)
-    project = add_project(course, row)
     date = make_aware(parse_date(row[2]))
     num = row[3] if row[3] != '' else '-1'
     x = Lesson.objects.filter(course=project.course, date=date)
@@ -25,7 +24,6 @@ def add_lesson(course, row):
     lesson = Lesson.objects.get_or_create(course=project.course, date=date)[0]
     lesson.week = row[0]
     lesson.lesson = num
-    lesson.project = project
     lesson.topic = row[4]
     lesson.reading = zybooks_link(course[-3:], row[5])
     lesson.save()
@@ -101,8 +99,8 @@ def list_course_content():
         data += Lesson.list(c)
         data.append('\nSTUDENTS:')
         data.append(list_students(c))
-        data.append('\nASSIGNMENTS:')
-        data.append(list_assignments(c))
+        # data.append('\nASSIGNMENTS:')
+        # data.append(list_assignments(c))
     return text_join(data)
 
 

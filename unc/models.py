@@ -65,10 +65,10 @@ class Student(models.Model):
 class Project(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     num = models.IntegerField()
-    title = models.CharField(max_length=100)
-    page = models.CharField(max_length=100, editable=False)
-    due = models.DateTimeField(null=True, editable=False)
-    instructions = models.URLField()
+    title = models.CharField(null=True, max_length=100)
+    page = models.CharField(null=True, max_length=100)
+    due = models.DateTimeField(null=True)
+    instructions = models.URLField(null=True)
 
     def __str__(self):
         return '%s/project/%02d   %-30s  %-30s %s' % (self.course.name, self.num, self.title, self.page, self.due.strftime("%Y-%m-%d"))
@@ -156,7 +156,6 @@ class Assignment(models.Model):
 
 class Lesson(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE, default=1)
-    project = models.ForeignKey(Project, null=True, on_delete=models.CASCADE)
     week = models.IntegerField(default=1)
     date = models.DateTimeField(default=None, null=True, editable=False)
     lesson = models.IntegerField(default=1)

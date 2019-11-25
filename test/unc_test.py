@@ -3,7 +3,7 @@ from tool.shell import is_server
 from tool.text import text_lines
 from tool.user import list_users
 from unc.bacs import *
-from unc.projects import list_projects, update_projects, validate_unc_project
+from unc.projects import list_projects, update_projects
 from unc.models import Student
 from unc.skills import print_skills, update_skills
 
@@ -54,16 +54,16 @@ def unc_student_test():
     return '%s Student Records' % len(text_lines(text_join(output)))
 
 
-def unc_views_test():
-    if is_server():
-        return 'No Selenium on Sensei Server'
-    else:
-        dom = open_browser_dom()
-        student = Student.objects.get(user__username='iron_man')
-        summary = validate_unc_project(dom, student, '01')
-        summary += validate_unc_project(dom, student, '02')
-        summary += validate_unc_project(dom, student, '03')
-        close_browser_dom(dom)
-        return summary
-
-
+# def unc_views_test():
+#     if is_server():
+#         return 'No Selenium on Sensei Server'
+#     else:
+#         dom = open_browser_dom()
+#         student = Student.objects.get(user__username='iron_man')
+#         summary = validate_unc_project(dom, student, '01')
+#         summary += validate_unc_project(dom, student, '02')
+#         summary += validate_unc_project(dom, student, '03')
+#         close_browser_dom(dom)
+#         return summary
+#
+#

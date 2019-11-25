@@ -5,8 +5,8 @@ from django.utils.timezone import now
 
 from tool.log import log_page
 from unc.bacs import schedule_data, slides_markdown, slides_django_markdown, student_projects, weekly_agenda, get_student
-from unc.models import Project
-from unc.projects import test_project_page
+# from unc.models import Project
+# from unc.projects import test_project_page
 from unc.render import *
 from unc.render import render_review, render_homework_data
 from unc.review import *
