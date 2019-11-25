@@ -16,7 +16,7 @@ def as_text(query):
 def unc_project_test():
     import_projects('bacs350')
     import_projects('bacs200')
-    projects = as_text(list_projects('bacs200')) + '\n\nu' + as_text(list_projects('bacs350'))
+    projects = as_text(list_projects('bacs200')) + '\n\n' + as_text(list_projects('bacs350'))
     return projects  # "%s lines in output" % len(projects)
 
 
