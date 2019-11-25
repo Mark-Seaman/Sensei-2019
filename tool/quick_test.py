@@ -7,10 +7,11 @@ from insight.models import *
 
 
 def quick_test():
-    # init_unc_data()
+    init_unc_data()
     print(print_projects())
-    export_projects('bacs350')
-    export_projects('bacs200')
+
+    # export_projects('bacs350')
+    # export_projects('bacs200')
 
 
 def assign_reviews():
@@ -51,8 +52,10 @@ def init_unc_data():
     # x = import_schedule('bacs200')
     # x = import_schedule('bacs350')
     update_lessons()
-    update_projects()
+    # update_projects()
     update_skills()
+    import_projects('bacs350')
+    import_projects('bacs200')
     # fix_lessons()
     x = list_course_content()
     print(x)

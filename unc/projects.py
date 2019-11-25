@@ -1,14 +1,14 @@
-from django.utils.timezone import make_aware, now
-from csv import reader, writer
+from csv import reader
 
 from tool.days import due_date, date_str
-from tool.text import text_join
 from unc.models import Assignment, Lesson, Project
 
 
-def create_project(course, num, page=None, due=None):
+def create_project(course, num, title=None, page=None, due=None):
     project = Project.lookup(course, num)
     project.title = "Project #%s" % num
+    if title:
+        project.title += ' - ' + title
     if page:
         project.page = page
     if due:
@@ -54,20 +54,28 @@ def project_csv(course):
 def import_projects(course):
     with open(project_csv(course)) as f:
         for row in reader(f):
-            create_project(row[0], row[1], row[2], row[3])
+            if len(row) > 4:
+                create_project(row[0], row[1], row[2], row[3], row[4])
 
 
 def export_projects(course):
     with open(project_csv(course), 'w') as f:
         for project in list_projects(course):
-            f.write("%s,%s,%s,%s\n" % (course, project.num, project.page, date_str(project.due)))
+            f.write("%s,%s,%s,%s,%s\n" % (course, project.num, project.title, project.page, date_str(project.due)))
 
 
 def print_projects():
     for c in ['bacs200', 'bacs350']:
         print("\n%s" % c)
         for p in list_projects(c):
-            print("    %s - due %s - %s" % (p.title, date_str(p.due), p.page))
+            print("    [%d] %s - due %s - %s" % (p.pk, p.title, date_str(p.due), p.page))
+
+
+
+# --------------------------------
+#       D E A D   C O D E
+# --------------------------------
+
 
 
 # def list_projects(course):
@@ -79,43 +87,39 @@ def print_projects():
 #     return text_join(results)
 
 
-def update_projects():
-    course = 'bacs200'
-    create_project(course, '01', 'index.php')
-    create_project(course, '02', 'bacs200/inspire.html')
-    create_project(course, '03', 'bacs200/amuse.html')
-    create_project(course, '04', 'bacs200/project/index.html')    
-    create_project(course, '05', 'bacs200/study_guide.html')
-    create_project(course, '06', 'bacs200/index.html')
-    create_project(course, '07', 'bacs200/wanted.html')
-    create_project(course, '08', 'bacs200/learn.html')
-    create_project(course, '09', 'bacs200/teach.html')
-    create_project(course, '10', 'bacs200/index.html')
-    create_project(course, '11', 'bacs200/travel/index.html')
-    create_project(course, '12', 'docs/ProjectPlan.md')
-    create_project(course, '13', 'bacs200/nonprofit/index.html')
+# def update_projects():
+#     course = 'bacs200'
+#     create_project(course, '01', 'index.php')
+#     create_project(course, '02', 'bacs200/inspire.html')
+#     create_project(course, '03', 'bacs200/amuse.html')
+#     create_project(course, '04', 'bacs200/project/index.html')
+#     create_project(course, '05', 'bacs200/study_guide.html')
+#     create_project(course, '06', 'bacs200/index.html')
+#     create_project(course, '07', 'bacs200/wanted.html')
+#     create_project(course, '08', 'bacs200/learn.html')
+#     create_project(course, '09', 'bacs200/teach.html')
+#     create_project(course, '10', 'bacs200/index.html')
+#     create_project(course, '11', 'bacs200/travel/index.html')
+#     create_project(course, '12', 'docs/ProjectPlan.md')
+#     create_project(course, '13', 'bacs200/nonprofit/index.html')
+#
+#     course = 'bacs350'
+#     create_project(course, '01', 'index.php')
+#     create_project(course, '02', 'bacs350/index.php')
+#     create_project(course, '03', 'bacs350/superhero/index.php')
+#     create_project(course, '04', 'bacs350/planner/index.php')
+#     create_project(course, '05', 'bacs350/docman/index.php')
+#     create_project(course, '06', 'bacs350/subscriber/index.php')
+#     create_project(course, '07', 'bacs350/superhero/index.php')
+#     create_project(course, '08', 'bacs350/notes/index.php')
+#     create_project(course, '09', 'bacs350/review/index.php')
+#     create_project(course, '10', 'bacs350/review/index.php')
+#     create_project(course, '11', 'bacs350/slides/index.php')
+#     create_project(course, '12', 'bacs350/index.php')
+#     create_project(course, '13', 'bacs350/index.php')
+#     create_project(course, '14', 'bacs350/index.php')
 
-    course = 'bacs350'
-    create_project(course, '01', 'index.php')
-    create_project(course, '02', 'bacs350/index.php')
-    create_project(course, '03', 'bacs350/superhero/index.php')
-    create_project(course, '04', 'bacs350/planner/index.php')    
-    create_project(course, '05', 'bacs350/docman/index.php')
-    create_project(course, '06', 'bacs350/subscriber/index.php')
-    create_project(course, '07', 'bacs350/superhero/index.php')
-    create_project(course, '08', 'bacs350/notes/index.php')
-    create_project(course, '09', 'bacs350/review/index.php')
-    create_project(course, '10', 'bacs350/review/index.php')
-    create_project(course, '11', 'bacs350/slides/index.php')
-    create_project(course, '12', 'bacs350/index.php')
-    create_project(course, '13', 'bacs350/index.php')   
-    create_project(course, '14', 'bacs350/index.php')
 
-
-
-# --------------------------------
-#       D E A D   C O D E
-# --------------------------------
 
 # def list_assignments(course):
 #     assigned = ['\n\nAssignments for %s:           project          due            status         last update\n' % course]
