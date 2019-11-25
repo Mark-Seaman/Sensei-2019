@@ -8,28 +8,13 @@ from tool.text import text_join
 from unc.models import Assignment, Course, Lesson, Project, Requirement
 
 
-# def add_requirement(project, id, selector, transform):
-#     r = Requirement.objects.get_or_create(project=project, selector=selector)[0]
-#     r.num = id
-#     r.label = selector
-#     r.transform = transform
-#     r.save()
-#     return r
-#
-#
-# def approve_requirements(course, id):
-#     project = Project.lookup(course, id)
-#     for i, r in enumerate(project.requirements):
-#         r.correct = r.actual
-#         r.save()
-#
-
-
-def create_project(course, num, page, due='2019-12-06'):
-    project = Project.objects.get_or_create(course__name=course, num=num)[0]
+def create_project(course, num, page=None, due=None):
+    project = Project.lookup(course, num)
     project.title = "Project #%s" % num
-    project.page = page
-    # project.due = due_date(due)
+    if page:
+        project.page = page
+    if due:
+        project.due = due_date(due)
     project.instructions = '/unc/%s/project/%s' % (course, num)
     project.save()
     return project
@@ -60,13 +45,6 @@ def get_lesson(course, lesson_num):
         return x[0]
 
 
-# def list_assignments(course):
-#     assigned = ['\n\nAssignments for %s:           project          due            status         last update\n' % course]
-#     for h in Assignment.objects.filter(project__course__name=course):
-#         assigned.append(str(h))
-#     return text_join(assigned)
-#
-
 def list_projects(course):
     results = []
     for p in Project.objects.filter(course__name=course).order_by('due'):
@@ -74,18 +52,6 @@ def list_projects(course):
         for r in p.requirements:
             results.append('    selector=%s, transform=%s' % (r.selector, r.transform))
     return text_join(results)
-
-
-# def show_assignments():
-#     return text_join([list_assignments(c) for c in Course.all()])
-
-
-# def test_project_page(student, project):
-#     if student:
-#         dom = open_browser_dom()
-#         data = validate_project_page(dom, student, project)
-#         close_browser_dom(dom)
-#         return data
 
 
 def update_projects():
@@ -105,8 +71,7 @@ def update_projects():
     create_project(course, '13', 'bacs200/nonprofit/index.html')
     project = Project.objects.filter(course__name=course, num='14')
     print(project)
-    # create_project(course, '14', 'index.php')
-
+    create_project(course, '14', 'index.php')
 
     course = 'bacs350'
     create_project(course, '01', 'index.php')
@@ -125,6 +90,45 @@ def update_projects():
     create_project(course, '14', 'bacs350/index.php')
 
 
+
+# --------------------------------
+#       D E A D   C O D E
+# --------------------------------
+
+# def list_assignments(course):
+#     assigned = ['\n\nAssignments for %s:           project          due            status         last update\n' % course]
+#     for h in Assignment.objects.filter(project__course__name=course):
+#         assigned.append(str(h))
+#     return text_join(assigned)
+#
+# def show_assignments():
+#     return text_join([list_assignments(c) for c in Course.all()])
+
+# def test_project_page(student, project):
+#     if student:
+#         dom = open_browser_dom()
+#         data = validate_project_page(dom, student, project)
+#         close_browser_dom(dom)
+#         return data
+
+
+
+
+# def add_requirement(project, id, selector, transform):
+#     r = Requirement.objects.get_or_create(project=project, selector=selector)[0]
+#     r.num = id
+#     r.label = selector
+#     r.transform = transform
+#     r.save()
+#     return r
+#
+#
+# def approve_requirements(course, id):
+#     project = Project.lookup(course, id)
+#     for i, r in enumerate(project.requirements):
+#         r.correct = r.actual
+#         r.save()
+#
 # def validate_project_page(dom, student, project):
 #     p = Project.lookup(student.course.name, project)
 #     url = join(student.domain, p.page)
@@ -138,9 +142,7 @@ def update_projects():
 #     return banner('PROJECT %s' % project) + display_test_results(validate_project_page(dom, student, project))
 
 
-# --------------------------------
-#       D E A D   C O D E
-# --------------------------------
+
 
 # def add_assignment(course, student, project, due):
 #     p = Project.lookup(course, project)

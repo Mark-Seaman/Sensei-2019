@@ -83,7 +83,7 @@ class Project(models.Model):
 
     @staticmethod
     def lookup(course, id):
-        return Project.objects.get(course__name=course, num=id)
+        return Project.objects.get_or_create(course__name=course, num=id)[0]
 
     @staticmethod
     def list(course):
