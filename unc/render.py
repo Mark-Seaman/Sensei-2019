@@ -8,14 +8,9 @@ from unc.models import Lesson, Skill, Project
 from unc.review import review_feedback, student_reviews, student_reviews_done, get_review
 
 
-def render_course_agenda(course, student):
-    weeks = weekly_lessons(course)
-    return [(w['week'], render_weekly_agenda(w, student)) for w in weeks]
-
-
 def render_homework_data(student, **kwargs):
     kwargs['student'] = student
-    kwargs['weeks'] = render_course_agenda(student.course.name, student)
+    kwargs['weeks'] = render_weekly_views(student)
     kwargs['student_info'] = render_student_info(student)
     kwargs['homework'] = render_homework_scorecard(student)
     kwargs['skills'] = render_skills(student)
@@ -122,7 +117,13 @@ def render_student_info(student):
     return render_to_string('student.html', dict(student=student))
 
 
-def render_weekly_agenda(plan, student):
+def render_weekly_views(student):
+    course = student.course.name
+    weeks = weekly_lessons(course)
+    return [(w['week'], render_week(w, student)) for w in weeks]
+
+
+def render_week(plan, student):
     project = render_project(student, plan['project'])
     lessons = render_lessons(plan['lessons'])
     weekly_plan = dict(week=plan['week'], project=project, lessons=lessons)

@@ -83,7 +83,7 @@ class UncHomework(UncPage):
         kwargs = super(UncHomework, self).get_context_data(**kwargs)
         student = kwargs['student']
         # kwargs['card'] = render_to_string('card.html', dict(title='Card Title', body='Card Body'))
-        kwargs['weeks'] = render_course_agenda(kwargs['course'], student)
+        kwargs['weeks'] = render_weekly_views(kwargs['course'], student)
         if kwargs['student']:
             kwargs['student_info'] = render_student_info(student)
             # kwargs['homework'] = render_homework_scorecard(student)
@@ -111,7 +111,7 @@ class UncWeek(UncPage):
     def get_context_data(self, **kwargs):
         kwargs = super(UncWeek, self).get_context_data(**kwargs)
         plan = weekly_agenda(kwargs['course'], int(kwargs['week']))
-        kwargs['plan'] = render_weekly_agenda(plan, kwargs['student'])
+        kwargs['plan'] = render_week(plan, kwargs['student'])
         return kwargs
 
 
