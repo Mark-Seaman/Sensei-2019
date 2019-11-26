@@ -1,8 +1,7 @@
 from tool.text import as_text, text_lines
 from tool.user import list_users
 from unc.bacs import *
-from unc.projects import import_projects
-from unc.dead import list_projects
+from unc.projects import import_projects, list_projects
 from unc.skills import list_skills, import_skills
 
 
