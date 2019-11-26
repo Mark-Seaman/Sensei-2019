@@ -5,7 +5,7 @@ from django.utils.timezone import now
 
 from tool.log import log_page
 from unc.bacs import schedule_data, slides_markdown, slides_django_markdown, student_projects, weekly_agenda, get_student
-# from unc.models import Project
+from unc.models import Project, Student
 # from unc.projects import test_project_page
 from unc.render import *
 from unc.render import render_review, render_homework_data
@@ -89,7 +89,7 @@ class UncHomework(UncPage):
             # kwargs['homework'] = render_homework_scorecard(student)
             kwargs['skills'] = render_skills(student)
             kwargs['reviews'] = render_reviews(student)
-            kwargs['projects'] = Project.query(student.course.name)
+            kwargs['projects'] = render_projects(student)
             kwargs['overview'] = render_overview(student.course.name)
         return kwargs
 
@@ -144,23 +144,6 @@ class UncStudent(UncPage):
         kwargs = super(UncStudent, self).get_context_data(**kwargs)
         student = Student.get(kwargs['pk'])
         return render_homework_data(student)
-
-
-
-# class UncStudentEdit(UpdateView):
-#     model = Student
-#     fields = ['domain']
-#     template_name = 'unc_student.html'
-#     success_url = '/unc/bacs200'
-#
-#     def get_context_data(self, **kwargs):
-#         log_page(self.request)
-#         kwargs = super(UncStudent, self).get_context_data(**kwargs)
-#         header = 'UNC Student Profile', kwargs[
-#             'object'].name, "/static/images/unc/Bear.200.png", 'UNC Bear', '/unc/bacs200'
-#         kwargs['header'] = dict(title=header[0], subtitle=header[1], logo=header[2], logo_text=header[3],
-#                                 href=header[4])
-#         return kwargs
 
 
 class UncSlides(UncPage):
@@ -226,16 +209,3 @@ class UncReviewFeedback(UncPage):
         kwargs = render_review(pk)
         kwargs = super(UncReviewFeedback, self).get_context_data(**kwargs)
         return kwargs
-#
-# class UncReviews(TemplateView):
-#     template_name = 'unc_reviews.html'
-#
-#     def get_context_data(self, **kwargs):
-#         course = '1'
-#         reviews = query_reviewers(course)
-#         designers = query_designers(course)
-#         return site_settings(student_active='active', title='Design Reviews', reviews=reviews, designers=designers)
-#
-
-
-

@@ -1,5 +1,4 @@
 from csv import reader
-from django.utils.timezone import make_aware
 from re import compile
 
 from tool.days import date_str, due_date
@@ -165,74 +164,6 @@ def show_course_files(course):
 
 def unc_courses():
     return Course.all()
-
-
-# def update_lessons():
-#
-#     def set_lesson_topic(course, lesson_id, name, zybooks=None):
-#         x = Lesson.lookup(course, lesson_id)
-#         x.topic = name
-#         if zybooks:
-#             x.reading = zybooks_link(course[-3:], zybooks)
-#         x.save()
-#
-#     course = 'bacs200'
-#     set_lesson_topic(course, '11', 'Forming URLs')
-#     set_lesson_topic(course, '12', 'Development Workflow')
-#     set_lesson_topic(course, '13', 'Test and Debug')
-#     set_lesson_topic(course, '14', 'Using Stylesheets')
-#     set_lesson_topic(course, '15', 'Text & Color')
-#     set_lesson_topic(course, '16', 'Spacing & Borders')
-#     set_lesson_topic(course, '17', 'Page Layout')
-#     set_lesson_topic(course, '18', 'Page Structure')
-#     set_lesson_topic(course, '19', 'Menus', '4.5 Font & Text Properties')
-#     set_lesson_topic(course, '20', 'Bootstrap', '4.6 Box Model')
-#     set_lesson_topic(course, '21', 'Tab View', '3.1 HTML Containers')
-#     set_lesson_topic(course, '22', 'Accordion', '3.2 Forms')
-#     set_lesson_topic(course, '23', 'Version Control', '3.3 Common Widgets')
-#     set_lesson_topic(course, '24', 'W3Schools', '3.4 HTML5 Widgets')
-#     set_lesson_topic(course, '25', 'W3Schools Tutorials', '3.5 Audio & Video')
-#     set_lesson_topic(course, '26', 'Photoshop', '3.6 Script and Style')
-#     set_lesson_topic(course, '27', 'Illustrator', '3.7 HTML Developer Guidelines')
-#     set_lesson_topic(course, '28', 'Website Usability', '3.8 Restaurant Reviews')
-#     set_lesson_topic(course, '29', 'Design', '3.9 Lab Practice')
-#     set_lesson_topic(course, '30', 'Brackets Extensions', '2.9 Band Page')
-#     set_lesson_topic(course, '31', 'Design Diagrams', '2.10 - News Article Lab')
-#     set_lesson_topic(course, '32', 'Project Planning', '4.7 - Band Example')
-#     set_lesson_topic(course, '33', 'Learning', '4.8 - News Article Lab')
-#     set_lesson_topic(course, '34', 'Teamwork', '9.1 Mobile websites (optional)')
-#     set_lesson_topic(course, '35', 'Contribution', '9.2 Mobile tools (optional)')
-#     set_lesson_topic(course, '36', 'Project Management', '')
-#
-#     course = 'bacs350'
-#     set_lesson_topic(course, '11', 'Document Viewer')
-#     set_lesson_topic(course, '12', 'Document Manager')
-#     set_lesson_topic(course, '13', 'Directory Listing')
-#     set_lesson_topic(course, '14', 'Document Select')
-#     set_lesson_topic(course, '15', 'SQL Tables')
-#     set_lesson_topic(course, '16', 'Database Connect')
-#     set_lesson_topic(course, '17', 'List Rows ')
-#     set_lesson_topic(course, '18', 'CRUD Operations')
-#     set_lesson_topic(course, '19', 'Add Records')
-#     set_lesson_topic(course, '20', 'Update Records')
-#     set_lesson_topic(course, '21', 'Data Form Views', '14.1 Relational Databases')
-#     set_lesson_topic(course, '22', 'Edit View', '14.2 SQL')
-#     set_lesson_topic(course, '23', 'Forms App', '14.3 Tables')
-#     set_lesson_topic(course, '24', 'Logging', '14.4 Insert Records')
-#     set_lesson_topic(course, '25', 'Review Manager App', '14.5 Selecting Records')
-#     set_lesson_topic(course, '26', 'Design Reviews', '14.6 SQL Functions')
-#     set_lesson_topic(course, '27', 'Page Caching', '14.7 Joining Tables')
-#     set_lesson_topic(course, '28', 'Page Template', '14.8 Modifying Rows')
-#     set_lesson_topic(course, '29', 'Component Templates', '9.1 jQuery')
-#     set_lesson_topic(course, '30', 'MVC Design Pattern', '9.2 Selectors')
-#     set_lesson_topic(course, '31', 'Reveal JS', '9.3 Events')
-#     set_lesson_topic(course, '32', 'Slide Show App', '9.4 Styles')
-#     set_lesson_topic(course, '33', 'Documentation', '9.5 DOM')
-#     set_lesson_topic(course, '34', 'Technical Debt', '9.6 Ajax')
-#     set_lesson_topic(course, '35', 'Requirements', '9.8 Weather App')
-#     set_lesson_topic(course, '36', 'User Authentication', '9.9 Currency')
-#     set_lesson_topic(course, '37', 'Design', '')
-#     set_lesson_topic(course, '38', 'Code', '')
 
 
 def weekly_agenda(course, week):

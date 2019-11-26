@@ -89,10 +89,6 @@ class Project(models.Model):
     def list(course):
         return Project.objects.filter(course__name=course).order_by('due')
 
-    @staticmethod
-    def query(course):
-        return Project.objects.filter(course__name=course).order_by('due')
-
     @property
     def requirements(self):
         return Requirement.objects.filter(project=self).order_by('num')

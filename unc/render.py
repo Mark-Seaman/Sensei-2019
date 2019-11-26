@@ -20,7 +20,7 @@ def render_homework_data(student, **kwargs):
     kwargs['homework'] = render_homework_scorecard(student)
     kwargs['skills'] = render_skills(student)
     kwargs['reviews'] = render_reviews(student)
-    kwargs['projects'] = Project.query(student.course.name)[:11]
+    kwargs['projects'] = render_projects(Project.list(student.course.name))
     return kwargs
 
 
@@ -50,9 +50,14 @@ def render_overview(course):
     return render_to_string('overview.html', data)
 
 
-def render_project(project, student):
+def render_project(student, project):
     skills = render_skills(student)
     return render_to_string('project.html', dict(project=project, skills=skills, student=student))
+
+
+def render_projects(student):
+    projects = Project.list(student.course.name)
+    return render_to_string('projects.html', dict(projects=projects, student=student))
 
 
 def render_review(review_id):
@@ -118,7 +123,7 @@ def render_student_info(student):
 
 
 def render_weekly_agenda(plan, student):
-    project = render_project(plan['project'], student)
+    project = render_project(student, plan['project'])
     lessons = render_lessons(plan['lessons'])
     weekly_plan = dict(week=plan['week'], project=project, lessons=lessons)
     return render_to_string('week.html', weekly_plan)

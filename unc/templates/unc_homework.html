@@ -99,7 +99,6 @@
                                     data-target="#pane-projects"
                                     aria-expanded="true" aria-controls="pane-projects">
                                 <b>Projects</b>
-
                             </button>
 
                         </div>
@@ -108,37 +107,7 @@
                              data-parent="#my-accordion">
 
                             <div class="card-body">
-
-                                <table class="table table-hover">
-                                    <th>Project</th>
-                                    <th>Title</th>
-                                    <th>Instructions</th>
-                                    <th>Page</th>
-                                    <th>Due</th>
-
-                                    {% for p in projects %}
-                                        <tr>
-                                            <td>
-                                                {{ p.num }}
-                                            </td>
-                                             <td>
-                                                {{ p.title }}
-                                            </td>
-                                            <td>
-                                                <a href="{{ p.directions }}" target="project">{{ p.directions }}</a>
-                                            </td>
-                                            <td>
-                                                <a href="{{ student.domain }}/{{ p.page }}"
-                                                   target="project">{{ p.page }}</a>
-                                            </td>
-                                            <td>
-                                                {{ p.due_date }}
-                                            </td>
-                                        </tr>
-                                    {% endfor %}
-                                </table>
-
-
+                                {{ projects }}
                             </div>
 
                         </div>

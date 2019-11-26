@@ -1,4 +1,5 @@
 from unc.bacs import *
+from unc.dead import update_lessons
 from unc.projects import *
 from unc.models import *
 from unc.review import *
