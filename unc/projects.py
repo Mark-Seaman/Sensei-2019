@@ -1,6 +1,7 @@
 from csv import reader
 
 from tool.days import due_date, date_str
+from tool.text import as_text
 from unc.models import Assignment, Lesson, Project
 
 
@@ -37,14 +38,12 @@ def get_readings(student):
     return [assigned(a) for a in lessons(student.course.name, '2019-08-30')]
 
 
-def get_lesson(course, lesson_num):
-    x = Lesson.query(course).filter(lesson=lesson_num)
-    if x:
-        return x[0]
-
+# def get_lesson(course, lesson_num):
+#     return Lesson.lookup(course, lesson_num)
+#
 
 def list_projects(course):
-    return Project.list(course)
+    return as_text(Project.list(course))
 
 
 def project_csv(course):
@@ -60,14 +59,14 @@ def import_projects(course):
 
 def export_projects(course):
     with open(project_csv(course), 'w') as f:
-        for project in list_projects(course):
+        for project in Project.list(course):
             f.write("%s,%s,%s,%s,%s\n" % (course, project.num, project.title, project.page, date_str(project.due)))
 
 
 def print_projects():
-    for c in ['bacs200', 'bacs350']:
+    for course in ['bacs200', 'bacs350']:
         print("\n%s" % c)
-        for p in list_projects(c):
+        for p in Project.list(course):
             print("    [%d] %s - due %s - %s" % (p.pk, p.title, date_str(p.due), p.page))
 
 

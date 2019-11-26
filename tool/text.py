@@ -44,6 +44,10 @@ def text_help(args=None):
 # ------------------------------
 # Functions
 
+def as_text(query):
+    return text_join([str(x) for x in query])
+
+
 def count_lines(text):
     return len(text_lines(text))
 

@@ -156,11 +156,12 @@ class Assignment(models.Model):
 
 class Lesson(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE, default=1)
-    week = models.IntegerField(default=1)
-    date = models.DateTimeField(default=None, null=True, editable=False)
-    lesson = models.IntegerField(default=1)
-    topic = models.CharField(default='none', max_length=100)
-    reading = models.CharField(default='none', max_length=200)
+    week = models.IntegerField(default=-1)
+    date = models.DateTimeField(null=True, editable=False)
+    lesson = models.IntegerField()
+    topic = models.CharField(null=True, max_length=100)
+    reading = models.CharField(null=True, max_length=200)
+    zybooks = models.CharField(null=True, max_length=200)
 
     # CSV Data -- Week, Day, Date, Lesson, Topic, Reading, Projects, Process, Parts
     def __str__(self):
@@ -168,15 +169,19 @@ class Lesson(models.Model):
 
     @staticmethod
     def lookup(course, id):
-        return Lesson.objects.get(course__name=course, lesson=id)
+        return Lesson.objects.get_or_create(course=Course.lookup(course), lesson=id)[0]
 
-    @staticmethod
-    def query(course):
-        return Lesson.objects.filter(course__name=course).order_by('date')
+    # @staticmethod
+    # def lookup(course, id):
+    #     return Lesson.objects.get(course__name=course, lesson=id)
 
     @staticmethod
     def list(course):
-        return [str(c) for c in Lesson.query(course)]
+        return Lesson.objects.filter(course__name=course).order_by('date')
+
+    # @staticmethod
+    # def list(course):
+    #     return [str(c) for c in Lesson.query(course)]
 
 
 class Review(models.Model):

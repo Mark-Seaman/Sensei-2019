@@ -7,8 +7,19 @@ from insight.models import *
 
 
 def quick_test():
-    init_unc_data()
-    print(print_projects())
+    import_lessons('bacs200')
+    import_lessons('bacs350')
+
+    # Lesson.objects.filter(lesson=-1).delete()
+    # init_unc_data()
+    # print(print_projects())
+
+    #
+    # for p in Lesson.objects.all():
+    #     p.zybooks = p.reading
+    #     p.save()
+    #     print('zybooks', p.zybooks)
+    #     print('reading', p.reading)
 
     # export_projects('bacs350')
     # export_projects('bacs200')
