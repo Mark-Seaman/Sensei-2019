@@ -5,7 +5,7 @@ from tool.text import as_text
 from unc.models import Assignment, Lesson, Project
 
 
-def create_project(course, num, title=None, page=None, due=None):
+def add_project(course, num, title=None, page=None, due=None):
     project = Project.lookup(course, num)
     project.title = "Project #%s" % num
     if title:
@@ -54,7 +54,7 @@ def import_projects(course):
     with open(project_csv(course)) as f:
         for row in reader(f):
             if len(row) > 4:
-                create_project(row[0], row[1], row[2], row[3], row[4])
+                add_project(row[0], row[1], row[2], row[3], row[4])
 
 
 def export_projects(course):

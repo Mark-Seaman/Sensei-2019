@@ -4,7 +4,7 @@ from mybook.mybook import document_text
 from tool.document import text_to_html
 from unc.bacs import weekly_lessons
 from unc.projects import get_readings, get_assignments
-from unc.models import Skill, Project
+from unc.models import Lesson, Skill, Project
 from unc.review import review_feedback, student_reviews, student_reviews_done, get_review
 
 
@@ -40,6 +40,14 @@ def render_lessons(lessons):
 
 def render_notes(review):
     return text_to_html(review.notes)
+
+
+def render_overview(course):
+    lessons = Lesson.list(course)
+    projects = Project.list(course)
+    skills = Skill.list(course)
+    data = dict(course=course, lessons=lessons, projects=projects, skills=skills)
+    return render_to_string('overview.html', data)
 
 
 def render_project(project, student):
@@ -85,7 +93,7 @@ def render_reviews(student):
 
 
 def render_skills(student):
-    skills = Skill.query(student.course.name)
+    skills = Skill.list(student.course.name)
     skills = [dict(num="%02d" % s.num, skill=s, images=s.images.split(',')) for s in skills]
     return render_to_string('skills.html', dict(skills=skills, student=student))
 

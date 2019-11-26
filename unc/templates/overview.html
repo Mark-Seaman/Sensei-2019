@@ -1,0 +1,56 @@
+<div class="card">
+
+    <div class="card-header">
+        {{ course }} Lessons
+    </div>
+
+    <div class="card-body card-padding">
+        <ul>
+            {% for lesson in lessons %}
+                <li>
+                    <b>{{ lesson.lesson }}. {{ lesson.topic }}</b>
+                    - {{ lesson.date|date:"D, M d, Y" }}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+</div>
+
+<div class="card">
+
+    <div class="card-header">
+        {{ course }} Projects
+    </div>
+
+    <div class="card-body card-padding">
+        <ul>
+            {% for project in projects %}
+                <li>
+                    <b>{{ project.num }}. {{ project.title }}</b>
+                    - {{ project.due|date:"D, M d, Y" }}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+</div>
+
+<div class="card">
+
+    <div class="card-header">
+        {{ course }} Skills
+    </div>
+
+    <div class="card-body card-padding">
+        <ul>
+            {% for skill in skills %}
+                <li>
+                    <b>{{ skill.num }}. {{ skill.topic }}</b>
+                    - {{ skill.due|date:"D, M d, Y" }}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+</div>

@@ -90,6 +90,7 @@ class UncHomework(UncPage):
             kwargs['skills'] = render_skills(student)
             kwargs['reviews'] = render_reviews(student)
             kwargs['projects'] = Project.query(student.course.name)
+            kwargs['overview'] = render_overview(student.course.name)
         return kwargs
 
 

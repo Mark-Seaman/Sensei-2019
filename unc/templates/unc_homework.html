@@ -3,10 +3,15 @@
 
 {% block content %}
 
+
     <div class="page2">
 
         <nav>
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <a class="nav-item nav-link" id="tab-0" href="#nav-0" aria-controls="nav-0" aria-selected="true"
+                   role="tab" data-toggle="tab">
+                    Course Contents
+                </a>
                 <a class="nav-item nav-link active" id="tab-1" href="#nav-1" aria-controls="nav-1" aria-selected="true"
                    role="tab" data-toggle="tab">
                     Student Assignments
@@ -17,10 +22,15 @@
                     Lessons
                 </a>
 
+
             </div>
         </nav>
 
         <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show" id="nav-0" aria-labelledby="tab-0" role="tabpanel">
+                <h2>Course Content Index</h2>
+                {{ overview }}
+            </div>
             <div class="tab-pane fade show active" id="nav-1" aria-labelledby="tab-1" role="tabpanel">
                 <h2>Student Projects</h2>
 

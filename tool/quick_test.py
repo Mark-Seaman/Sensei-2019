@@ -7,8 +7,14 @@ from insight.models import *
 
 
 def quick_test():
-    import_lessons('bacs200')
-    import_lessons('bacs350')
+    import_skills('bacs200')
+    import_skills('bacs350')
+    export_lessons('bacs200')
+    export_lessons('bacs350')
+    # export_skills('bacs200')
+    # export_skills('bacs350')
+    # export_lessons('bacs200')
+    # export_lessons('bacs350')
 
     # Lesson.objects.filter(lesson=-1).delete()
     # init_unc_data()

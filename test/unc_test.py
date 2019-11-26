@@ -2,7 +2,7 @@ from tool.text import as_text, text_lines
 from tool.user import list_users
 from unc.bacs import *
 from unc.projects import list_projects, import_projects
-from unc.skills import print_skills, update_skills
+from unc.skills import list_skills, import_skills
 
 
 def unc_course_files_test():
@@ -27,8 +27,9 @@ def unc_review_test():
 
 
 def unc_skills_test():
-    update_skills()
-    return print_skills('bacs350') + '\n' + print_skills('bacs200')
+    import_skills('bacs200')
+    import_skills('bacs350')
+    return list_skills('bacs350') + '\n\n' + list_skills('bacs200')
 
 
 def unc_student_test():

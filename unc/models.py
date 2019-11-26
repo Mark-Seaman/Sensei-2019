@@ -220,26 +220,12 @@ class Skill(models.Model):
         return '%s - Skill #%s - %-20s - due %s - %s' % (self.course.name, self.num, self.topic, date_str(self.due), self.images)
 
     @staticmethod
-    def create(course, num, topic, due, images):
-        course = Course.lookup(course)
-        s = Skill.objects.get_or_create(course=course, num=num)[0]
-        s.topic = topic
-        s.due = due_date(due)
-        s.images = images
-        s.save()
-        return s
-
-    @staticmethod
-    def get(course, num):
-        return Skill.objects.get(course__name=course, num=num)
-
-    @staticmethod
-    def query(course):
-        return Skill.objects.filter(course__name=course).order_by('num')
+    def lookup(course, num):
+        return Skill.objects.get_or_create(course=Course.lookup(course), num=num)[0]
 
     @staticmethod
     def list(course):
-        return [str(c) for c in Skill.query(course)]
+        return Skill.objects.filter(course__name=course).order_by('num')
 
 
 class UrlGame(models.Model):
