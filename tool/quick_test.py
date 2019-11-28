@@ -8,6 +8,7 @@ from insight.models import *
 
 
 def quick_test():
+    # print(Insight.objects.filter(date=None).delete())
     setup_insights()
 
     # import_skills('bacs200')
