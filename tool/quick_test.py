@@ -8,10 +8,12 @@ from insight.models import *
 
 
 def quick_test():
-    import_skills('bacs200')
-    import_skills('bacs350')
-    export_lessons('bacs200')
-    export_lessons('bacs350')
+    setup_insights()
+
+    # import_skills('bacs200')
+    # import_skills('bacs350')
+    # export_lessons('bacs200')
+    # export_lessons('bacs350')
     # export_skills('bacs200')
     # export_skills('bacs350')
     # export_lessons('bacs200')
