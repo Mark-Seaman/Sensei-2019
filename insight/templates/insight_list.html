@@ -1,0 +1,39 @@
+{% extends "insight_theme.html" %}
+
+{% block content %}
+
+    <h3>Insight List</h3>
+
+
+    {% if object_list %}
+
+
+        {% for x in object_list %}
+
+            <div class="card">
+                <div class="card-header">
+                    Experience #{{ x.pk }}. <a href="{{ x.pk }}/">{{ x.name }}</a>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li>{{ x.name }} </li>
+                        <li>Topic: {{ x.topic }}</li>
+                        <li>{{ x.date|date:"D, M d, Y" }}</li>
+                    </ul>
+
+                </div>
+            </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <p>No notes available</p>
+
+    {% endif %}
+
+
+    <p><a href="add" class="button"> Add Note</a></p>
+
+
+{% endblock %}

@@ -1,8 +1,9 @@
-from csv import reader, writer
+from csv import reader
 from datetime import datetime
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.timezone import make_aware
+from django.urls import reverse
 
 
 def date_str(date):
@@ -12,16 +13,23 @@ def date_str(date):
 class Insight(models.Model):
     name = models.CharField(max_length=100)
     topic = models.CharField(max_length=20)
-    date = models.DateTimeField()
+    date = models.DateTimeField(null=True)
+
+    def get_absolute_url(self):
+        return reverse('insight-list')
 
     def __str__(self):
         return '%s - %s - %s' % (date_str(self.date), self.topic, self.name)
 
     @staticmethod
+    def lookup(date):
+        return Insight.objects.get_or_create(date=date)[0]
+
+    @staticmethod
     def list():
         insights = {}
         for topic in Insight.topics():
-            insights[topic] = [(date_str(i.date),i.name) for i in Insight.objects.filter(topic=topic)]
+            insights[topic] = [(date_str(i.date), i.name) for i in Insight.objects.filter(topic=topic)]
         return insights
 
     @staticmethod

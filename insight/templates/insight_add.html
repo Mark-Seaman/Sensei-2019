@@ -1,0 +1,17 @@
+{% extends "insight_theme.html" %}
+
+
+{% block content %}
+
+<h3>Add Insight</h3>
+
+
+<form action="" method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Save Note" class="button" />
+    <a href=".." class="button">Cancel</a>
+
+</form>
+
+
+{% endblock %}

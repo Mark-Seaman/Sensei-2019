@@ -1,0 +1,33 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    padding: 1em;
+}
+
+header {
+    padding: 2em;
+    margin: 2em;
+    background-color: purple;
+    color: yellow;
+    border-radius: 20px;
+}
+
+header img {
+    border-radius: 20px;
+    text-align: right;
+}
+
+h1 {
+
+}
+
+.card {
+    margin: 2em;
+}
+
+.card-body {
+    padding: 2em;
+}

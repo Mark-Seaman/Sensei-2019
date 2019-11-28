@@ -1,0 +1,33 @@
+{% extends "insight_theme.html" %}
+
+{% block content %}
+
+    <h3>Insight Day</h3>
+
+
+    <div class="card">
+        <div class="card-header">
+            Log file:  {{ doc }}
+        </div>
+        <div class="card-body">
+            <pre>{{ log }}</pre>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h3>Edit Insight Experience</h3>
+
+            Log for {{ insight.date|date:"D, M d, Y" }}
+        </div>
+        <div class="card-body">
+            <form action="" method="post">{% csrf_token %}
+
+                {{ form.as_p }}
+
+                <button class="btn btn-primary">Update Insight</button>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
