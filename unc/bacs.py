@@ -131,7 +131,7 @@ def read_schedule(course):
 
 def schedule_data(course):
     title = Course.objects.get(name=course).title
-    return [title, 'Class Schedule'], Lesson.query(course)
+    return [title, 'Class Schedule'], Lesson.list(course)
 
 
 def slides_markdown(course, lesson):
@@ -153,8 +153,8 @@ def student_data(course):
 
 
 def student_projects(course):
-    skills = [s.images.split(',')[0] for s in Skill.query(course)[5:]]
-    projects = Project.query(course)[5:10]
+    skills = [s.images.split(',')[0] for s in Skill.list(course)[5:]]
+    projects = Project.list(course)[5:10]
     return [(s, projects, skills) for s in Course.students(course)]
 
 
