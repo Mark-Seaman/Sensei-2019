@@ -94,7 +94,6 @@ def review_groups(course):
      return groups
 
 
-
 def count_score(r):
     requirements = [r.requirement_1, r.requirement_2, r.requirement_3, r.requirement_4, r.requirement_5,
                     r.requirement_6, r.requirement_7, r.requirement_8, r.requirement_9, r.requirement_10]
@@ -116,10 +115,12 @@ def get_review(id):
     return Review.objects.get(pk=id)
 
 
+def reviewer_scores(student_id):
+    return [r.score for r in Review.objects.filter(designer=student_id)]
 
 
-def review_feedback(student_id):
-    return Review.objects.filter(designer=student_id).exclude(score=-1)
+def designer_scores(student_id):
+    return [r.score for r in Review.objects.filter(reviewer=student_id)]
 
 
 def student_reviews(student_id):
@@ -242,4 +243,8 @@ Show presentation records'''
 bacs350_4_notes = '''Write a summary of all the problems and how to fix them.   Must not be blank.'''
 
 
-
+def student_project_data(course):
+    data = []
+    for s in Course.students(course):
+        data.append(dict(student=s, designer=designer_scores(s.pk), reviewer=reviewer_scores(s.pk)))
+    return data

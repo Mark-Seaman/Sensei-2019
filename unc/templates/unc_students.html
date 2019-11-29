@@ -14,27 +14,29 @@
                     <th>Id</th>
                     <th>Student</th>
                     <th>Email</th>
-                    <th>Project 9</th>
-                    <th>Project 11</th>
+                    <th>Designer</th>
+                    <th>Reviewer</th>
                 </tr>
                 {% for student in students %}
 
                     <tr>
                         <td>
-                            {{ student.0.pk }}.
+                            {{ student.student.pk }}.
                         </td>
                         <td>
-                            <a href="/unc/student/{{ student.0.pk }}" target="student">{{ student.0.name }}</a>
+                            <a href="/unc/student/{{ student.student.pk }}" target="student">{{ student.student.name }}</a>
                         </td>
                         <td>
-                            {{ student.0.email }}
+                            {{ student.student.email }}
                         </td>
-                        <td>
-                            <a href="{{ student.0.domain }}/bacs350/review/index.php" target="student">bacs350/review/index.php</a>
-                        </td>
-                        <td>
-                            <a href="{{ student.0.domain }}/bacs350/slides/index.php" target="student">bacs350/slides/index.php</a>
-                        </td>
+{#                        <td>#}
+{#                            <a href="{{ student.0.domain }}/bacs350/review/index.php" target="student">bacs350/review/index.php</a>#}
+{#                        </td>#}
+{#                        <td>#}
+{#                            <a href="{{ student.0.domain }}/bacs350/slides/index.php" target="student">bacs350/slides/index.php</a>#}
+{#                        </td>#}
+                        <td>Designer: {{ student.designer }}</td>
+                        <td>Reviewer: {{ student.reviewer }}</td>
                     </tr>
 
                 {% endfor %}

@@ -5,7 +5,7 @@ from tool.document import text_to_html
 from unc.bacs import weekly_lessons
 from unc.projects import get_readings, get_assignments
 from unc.models import Lesson, Skill, Project
-from unc.review import review_feedback, student_reviews, student_reviews_done, get_review
+from unc.review import student_reviews, student_reviews_done, get_review
 
 
 def render_homework_data(student, **kwargs):

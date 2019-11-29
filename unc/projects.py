@@ -2,7 +2,6 @@ from csv import reader
 
 from tool.days import due_date, date_str
 from tool.text import as_text
-from unc.dead import add_project
 from unc.models import Assignment, Lesson, Project
 
 

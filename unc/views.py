@@ -4,9 +4,8 @@ from django.views.generic import RedirectView, TemplateView, UpdateView
 from django.utils.timezone import now
 
 from tool.log import log_page
-from unc.bacs import schedule_data, slides_markdown, slides_django_markdown, student_projects, weekly_agenda, get_student
-from unc.models import Project, Student
-# from unc.projects import test_project_page
+from unc.bacs import schedule_data, slides_markdown, slides_django_markdown, weekly_agenda, get_student
+from unc.models import Student
 from unc.render import *
 from unc.render import render_review, render_homework_data
 from unc.review import *
@@ -129,7 +128,7 @@ class UncStudents(UncPage):
 
     def get_context_data(self, **kwargs):
         kwargs = super(UncStudents, self).get_context_data(**kwargs)
-        kwargs['students'] = student_projects(kwargs['course'])
+        kwargs['students'] = student_project_data(kwargs['course'])
         return kwargs
 
 

@@ -8,7 +8,7 @@ from tool.log import log_exception
 from tool.shell import banner
 from tool.text import as_text, text_join
 from tool.user import add_user_login
-from unc.models import Course, Project, Lesson, Skill, Student
+from unc.models import Course, Project, Lesson, Student
 
 
 def add_student(first, last, email, domain, course):
@@ -111,12 +111,6 @@ def slides_django_markdown(lesson):
 
 def student_data(course):
     return Course.students(course)
-
-
-def student_projects(course):
-    skills = [s.images.split(',')[0] for s in Skill.list(course)[5:]]
-    projects = Project.list(course)[5:10]
-    return [(s, projects, skills) for s in Course.students(course)]
 
 
 def show_course_files(course):
