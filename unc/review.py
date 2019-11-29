@@ -123,6 +123,10 @@ def designer_scores(student_id):
     return [r.score for r in Review.objects.filter(reviewer=student_id)]
 
 
+def review_feedback(student_id):
+    return Review.objects.filter(designer=student_id).exclude(score=-1)
+
+
 def student_reviews(student_id):
     return Review.objects.filter(reviewer=student_id, score=-1)
 
