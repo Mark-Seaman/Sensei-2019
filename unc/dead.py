@@ -6,7 +6,7 @@ from tool.days import due_date, date_str
 from tool.text import text_join
 from unc.bacs import zybooks_link, list_students, unc_courses, add_student, read_schedule, add_lesson
 from unc.models import Student, Lesson, Project, Assignment, Course, Review
-from unc.review import student_reviews_done, student_reviews, review_feedback
+from unc.review import student_reviews_done, student_reviews
 
 
 # --------------------------------
