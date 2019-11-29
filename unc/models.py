@@ -50,7 +50,7 @@ class Student(models.Model):
         return '%d. %-40s %-40s %s' % (self.pk, self.email, self.name, self.domain)
 
     @staticmethod
-    def get(id):
+    def get_record(id):
         return Student.objects.get(pk=id)
 
     @staticmethod
