@@ -142,7 +142,7 @@ class UncStudent(UncPage):
     def get_context_data(self, **kwargs):
         log_page(self.request)
         kwargs = super(UncStudent, self).get_context_data(**kwargs)
-        student = Student.get(kwargs['pk'])
+        student = Student.get(pk=kwargs['pk'])
         return render_homework_data(student)
 
 
