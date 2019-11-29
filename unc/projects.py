@@ -34,7 +34,7 @@ def get_readings(student):
         return dict(title="Reading - %s" % a.reading, due=date_str(a.date), state='Not Completed')
 
     def lessons(course, date):
-        return Lesson.query(course).filter(date__lte=due_date(date))
+        return Lesson.list(course).filter(date__lte=due_date(date))
 
     return [assigned(a) for a in lessons(student.course.name, '2019-08-30')]
 

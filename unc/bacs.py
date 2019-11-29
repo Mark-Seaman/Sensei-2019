@@ -30,45 +30,6 @@ def get_student(request):
         log_exception('Cannot find student record, %s' % str(request.user))
 
 
-# def import_all_students():
-#     import_students('bacs350')
-#     import_students('bacs200')
-#     print(text_join([list_students(c) for c in unc_courses()]))
-#
-#
-# def import_students(course):
-#     def read_students(course):
-#         data_file = 'Documents/unc/%s/students.csv' % course
-#         with open(data_file) as f:
-#             return [row for row in reader(f)]
-#
-#     def display_student(course, first, last, email):
-#         print('%s, "%s_%s", %s' % (course, first, last, email))
-#
-#     table = read_students(course)
-#     if course == 'bacs200':
-#         for row in table[2:]:
-#             # print(row)
-#             name = row[0].split(' ')
-#             first, last, email = name[0], ' '.join(name[1:]), row[3]
-#             display_student(course, first, last, email)
-#             add_student(first, last, email, 'No Domain Configured', course)
-#     else:
-#         for row in table[2:-1]:
-#             # print(row)
-#             name = row[0].split(' ')
-#             first, last, email = name[0], ' '.join(name[1:]), row[3]
-#             display_student(course, first, last, email)
-#             add_student(first, last, email, 'No Domain Configured', course)
-
-
-# def import_schedule(course):
-#     table = read_schedule(course)
-#     for row in table[2:]:
-#         add_lesson(course, row)
-#     return text_join(Lesson.list(course))
-
-
 def list_course_content():
     data = [banner('Course Content Data')]
     data += Course.list()
@@ -184,5 +145,4 @@ def zybooks_link(course, reading):
         replace_pattern = r'<a href="%s/chapter/\1/section/\2">\1.\2 - \3</a>' % url
         link = compile(match_pattern).sub(replace_pattern, reading)
         return link
-
 

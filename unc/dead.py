@@ -1,7 +1,10 @@
+from _csv import reader
 from random import shuffle
+from django.views.generic import TemplateView, UpdateView
 
 from tool.days import due_date, date_str
-from unc.bacs import zybooks_link
+from tool.text import text_join
+from unc.bacs import zybooks_link, list_students, unc_courses, add_student, read_schedule, add_lesson
 from unc.models import Student, Lesson, Project, Assignment, Course, Review
 from unc.review import student_reviews_done, student_reviews, review_feedback
 
@@ -9,9 +12,6 @@ from unc.review import student_reviews_done, student_reviews, review_feedback
 # --------------------------------
 #       D E A D   C O D E
 # --------------------------------
-
-
-from django.views.generic import RedirectView, TemplateView, UpdateView
 
 class UncReviews(TemplateView):
     template_name = 'unc_reviews.html'
@@ -345,3 +345,42 @@ def url_feedback(answer, correct):
         return 'smiley1.jpg'
     else:
         return 'sad1.jpg'
+
+
+def import_all_students():
+    import_students('bacs350')
+    import_students('bacs200')
+    print(text_join([list_students(c) for c in unc_courses()]))
+
+
+def import_students(course):
+    def read_students(course):
+        data_file = 'Documents/unc/%s/students.csv' % course
+        with open(data_file) as f:
+            return [row for row in reader(f)]
+
+    def display_student(course, first, last, email):
+        print('%s, "%s_%s", %s' % (course, first, last, email))
+
+    table = read_students(course)
+    if course == 'bacs200':
+        for row in table[2:]:
+            # print(row)
+            name = row[0].split(' ')
+            first, last, email = name[0], ' '.join(name[1:]), row[3]
+            display_student(course, first, last, email)
+            add_student(first, last, email, 'No Domain Configured', course)
+    else:
+        for row in table[2:-1]:
+            # print(row)
+            name = row[0].split(' ')
+            first, last, email = name[0], ' '.join(name[1:]), row[3]
+            display_student(course, first, last, email)
+            add_student(first, last, email, 'No Domain Configured', course)
+
+
+def import_schedule(course):
+    table = read_schedule(course)
+    for row in table[2:]:
+        add_lesson(course, row)
+    return text_join(Lesson.list(course))

@@ -14,8 +14,8 @@
             <th>Id</th>
             <th>Student</th>
             <th>Email</th>
-           
-
+            <th>Project 9</th>
+            <th>Project 11</th>
         </tr>
         {% for student in students %}
 
@@ -29,7 +29,12 @@
             <td>
                 {{ student.0.email }}
             </td>
-
+            <td>
+                {{ student.0.domain }}/bacs350/review/index.php
+            </td>
+            <td>
+                {{ student.0.domain }}bacs350/slides/index.php
+            </td>
         </tr>
 
         {% endfor %}
