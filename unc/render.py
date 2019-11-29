@@ -15,7 +15,7 @@ def render_homework_data(student, **kwargs):
     kwargs['homework'] = render_homework_scorecard(student)
     kwargs['skills'] = render_skills(student)
     kwargs['reviews'] = render_reviews(student)
-    kwargs['projects'] = render_projects(Project.list(student.course.name))
+    kwargs['projects'] = render_projects(student)
     return kwargs
 
 
