@@ -45,8 +45,7 @@ def assign_reviews():
 
 def setup_insights():
     Insight.import_data('insights.csv')
-    Insight.export_data('insights2.csv')
-
+    Insight.export_data('insights.csv')
     Insight.print_insights()
 
 
@@ -74,7 +73,6 @@ def init_unc_data():
     # x = import_schedule('bacs350')
     update_lessons()
     # update_projects()
-    update_skills()
     import_projects('bacs350')
     import_projects('bacs200')
     # fix_lessons()

@@ -1,5 +1,5 @@
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, DeleteView, ListView, TemplateView, UpdateView
+from django.views.generic import CreateView, DeleteView, ListView, RedirectView, TemplateView, UpdateView
 
 
 from .models import Insight
@@ -16,18 +16,18 @@ class InsightHome(TemplateView):
         return dict(days=days)
 
 
-# Show the default view
-class InsightDay(UpdateView):
-    model = Insight
-    template_name = 'insight_day.html'
-    fields = ['name', 'topic']
-
-    def get_context_data(self, **kwargs):
-        date = '%4d-%02d-%02d' % (kwargs['year'], kwargs['month'], kwargs['day'])
-        doc = 'Documents/info/history/%s' % (date.replace("-",'/'))
-        kwargs['log'] = open(doc).read()
-        kwargs['insight'] = Insight.lookup(date)
-        return kwargs
+# # Show the default view
+# class InsightDay(UpdateView):
+#     model = Insight
+#     template_name = 'insight_day.html'
+#     fields = ['name', 'topic']
+#
+#     def get_context_data(self, **kwargs):
+#         date = '%4d-%02d-%02d' % (kwargs['year'], kwargs['month'], kwargs['day'])
+#         doc = 'Documents/info/history/%s' % (date.replace("-",'/'))
+#         kwargs['log'] = open(doc).read()
+#         kwargs['insight'] = Insight.lookup(date)
+#         return kwargs
 
 
 # Show the list of insights
@@ -47,7 +47,6 @@ class InsightCreate(CreateView):
 class InsightUpdate(UpdateView):
     model = Insight
     template_name = 'insight_edit.html'
-    # template_name = 'insight_day.html'
     fields = ['name', 'topic']
 
     def get_context_data(self, **kwargs):
@@ -56,12 +55,30 @@ class InsightUpdate(UpdateView):
         doc = 'Documents/info/history/%s' % date_str(insight.date).replace('-','/')
         kwargs['doc'] = doc
         kwargs['log'] = open(doc).read()
-        # kwargs['insight'] = Insight.lookup(date)
         return kwargs
+
 
 # Delete a insight
 class InsightDelete(DeleteView):
     model = Insight
     template_name = 'insight_delete.html'
     success_url = reverse_lazy('insight-list')
+
+
+# Import all insights
+class InsightImport(RedirectView):
+    permanent = False
+
+    def get_redirect_url(self, *args, **kwargs):
+        Insight.import_data('insights.csv')
+        return '/insight/'
+
+
+# Export all insights
+class InsightExport(RedirectView):
+    permanent = False
+
+    def get_redirect_url(self, *args, **kwargs):
+        Insight.export_data('insights.csv')
+        return '/insight/'
 
