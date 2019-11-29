@@ -4,46 +4,46 @@
 {% block content %}
 
 
-{% if students %}
-<div class="page">
-    <h2>Student Domains</h2>
+    {% if students %}
+        <div class="page">
+            <h2>Student Domains</h2>
 
-    <table class="table table-hover">
+            <table class="table table-hover">
 
-        <tr>
-            <th>Id</th>
-            <th>Student</th>
-            <th>Email</th>
-            <th>Project 9</th>
-            <th>Project 11</th>
-        </tr>
-        {% for student in students %}
+                <tr>
+                    <th>Id</th>
+                    <th>Student</th>
+                    <th>Email</th>
+                    <th>Project 9</th>
+                    <th>Project 11</th>
+                </tr>
+                {% for student in students %}
 
-        <tr>
-            <td>
-                {{ student.0.pk }}.
-            </td>
-            <td>
-                 <a href="/unc/student/{{ student.0.pk }}" target="student">{{ student.0.name }}</a>
-            </td>
-            <td>
-                {{ student.0.email }}
-            </td>
-            <td>
-                {{ student.0.domain }}/bacs350/review/index.php
-            </td>
-            <td>
-                {{ student.0.domain }}bacs350/slides/index.php
-            </td>
-        </tr>
+                    <tr>
+                        <td>
+                            {{ student.0.pk }}.
+                        </td>
+                        <td>
+                            <a href="/unc/student/{{ student.0.pk }}" target="student">{{ student.0.name }}</a>
+                        </td>
+                        <td>
+                            {{ student.0.email }}
+                        </td>
+                        <td>
+                            <a href="{{ student.0.domain }}/bacs350/review/index.php" target="student">bacs350/review/index.php</a>
+                        </td>
+                        <td>
+                            <a href="{{ student.0.domain }}/bacs350/slides/index.php" target="student">bacs350/slides/index.php</a>
+                        </td>
+                    </tr>
 
-        {% endfor %}
+                {% endfor %}
 
-    </table>
-</div>
+            </table>
+        </div>
 
-{% else %}
-<h1>No Student Domains registered</h1>
-{% endif %}
+    {% else %}
+        <h1>No Student Domains registered</h1>
+    {% endif %}
 
 {% endblock %}
