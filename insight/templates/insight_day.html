@@ -2,12 +2,10 @@
 
 {% block content %}
 
-    <h3>Insight Day</h3>
-
-
     <div class="card">
         <div class="card-header">
-            Log file:  {{ doc }}
+            <h3>Daily Log</h3>
+            {{ doc }}
         </div>
         <div class="card-body">
             <pre>{{ log }}</pre>
@@ -16,8 +14,7 @@
 
     <div class="card">
         <div class="card-header">
-            <h3>Edit Insight Experience</h3>
-
+            <h3>Capture Insight</h3>
             Log for {{ insight.date|date:"D, M d, Y" }}
         </div>
         <div class="card-body">

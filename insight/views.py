@@ -1,8 +1,8 @@
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, DeleteView, ListView, RedirectView, TemplateView, UpdateView
-
+from django.views.generic import CreateView, DeleteView, RedirectView, TemplateView, UpdateView
 
 from .models import Insight
+from .insight import export_data, group_insights, import_data
 from tool.days import date_str
 
 
@@ -16,24 +16,14 @@ class InsightHome(TemplateView):
         return dict(days=days)
 
 
-# # Show the default view
-# class InsightDay(UpdateView):
-#     model = Insight
-#     template_name = 'insight_day.html'
-#     fields = ['name', 'topic']
-#
-#     def get_context_data(self, **kwargs):
-#         date = '%4d-%02d-%02d' % (kwargs['year'], kwargs['month'], kwargs['day'])
-#         doc = 'Documents/info/history/%s' % (date.replace("-",'/'))
-#         kwargs['log'] = open(doc).read()
-#         kwargs['insight'] = Insight.lookup(date)
-#         return kwargs
-
-
 # Show the list of insights
-class InsightList(ListView):
-    model = Insight
+class InsightList(TemplateView):
     template_name = 'insight_list.html'
+
+    def get_context_data(self, **kwargs):
+        kwargs = super(InsightList, self).get_context_data(**kwargs)
+        kwargs['insights'] = group_insights()
+        return kwargs
 
 
 # Add one insight
@@ -70,7 +60,7 @@ class InsightImport(RedirectView):
     permanent = False
 
     def get_redirect_url(self, *args, **kwargs):
-        Insight.import_data('insights.csv')
+        import_data('insights.csv')
         return '/insight/'
 
 
@@ -79,6 +69,6 @@ class InsightExport(RedirectView):
     permanent = False
 
     def get_redirect_url(self, *args, **kwargs):
-        Insight.export_data('insights.csv')
+        export_data('insights.csv')
         return '/insight/'
 
