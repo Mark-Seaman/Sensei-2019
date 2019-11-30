@@ -9,7 +9,7 @@
             {% for lesson in lessons %}
                 <li>
                     <b>{{ lesson.lesson }}. {{ lesson.topic }}</b>
-                    - {{ lesson.date|date:"D, M d, Y" }}
+{#                    - {{ lesson.date|date:"D, M d, Y" }}#}
                 </li>
             {% endfor %}
         </ul>
@@ -28,7 +28,7 @@
             {% for project in projects %}
                 <li>
                     <b>{{ project.num }}. {{ project.title }}</b>
-                    - {{ project.due|date:"D, M d, Y" }}
+{#                    - {{ project.due|date:"D, M d, Y" }}#}
                 </li>
             {% endfor %}
         </ul>
@@ -47,7 +47,7 @@
             {% for skill in skills %}
                 <li>
                     <b>{{ skill.num }}. {{ skill.topic }}</b>
-                    - {{ skill.due|date:"D, M d, Y" }}
+{#                    - {{ skill.due|date:"D, M d, Y" }}#}
                 </li>
             {% endfor %}
         </ul>

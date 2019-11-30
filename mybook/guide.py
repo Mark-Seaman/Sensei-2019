@@ -44,7 +44,7 @@ def guide_settings(title):
         menu =  lifecycle_menu(title, "HTML Apps")
         return site_title, menu,logo
     else:
-        site_title = "Seaman's Guides", 'Software Development Training'
+        site_title = 'Practical Software Engineering', "Seaman's Guides"
         menu =  guide_menu(title, "Seaman's Guides")
         return site_title,menu,logo
 
