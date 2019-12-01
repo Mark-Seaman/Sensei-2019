@@ -12,7 +12,7 @@ class InsightHome(TemplateView):
 
     def get_context_data(self, **kwargs):
         days = ['2019-11-%02d' % (d+1) for d in range(30)]
-        days = [(d, Insight.lookup(d).name, Insight.lookup(d).pk) for d in days]
+        days = [(d, Insight.lookup(d).name, Insight.lookup(d).pk, Insight.lookup(d).topic) for d in days]
         return dict(days=days)
 
 
@@ -61,7 +61,7 @@ class InsightImport(RedirectView):
 
     def get_redirect_url(self, *args, **kwargs):
         import_data('insights.csv')
-        return '/insight/'
+        return reverse_lazy('insight-list')
 
 
 # Export all insights
@@ -70,5 +70,5 @@ class InsightExport(RedirectView):
 
     def get_redirect_url(self, *args, **kwargs):
         export_data('insights.csv')
-        return '/insight/'
+        return reverse_lazy('insight-list')
 
