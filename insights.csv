@@ -1,18 +1,16 @@
-2019-04-15,Teach,UNC Github training
-2019-04-16,Grow,Spiritual Walkabout
 2019-04-17,Grow,Dark Drive
 2019-04-18,Grow,Understand & Embrace Reality
 2019-04-19,Teach,Sensei UNC Presentation
 2019-04-20,Grow,Enneagram Test
-2019-04-21,Write,Thinking Patterns Guide
 2019-04-22,Tools,Mail Chimp
+2019-04-21,Write,Thinking Patterns Guide
 2019-04-23,Grow,I am always right
-2019-04-24,Learn,Payment for O’Reilly Learning
 2019-04-25,Learn,Sign up for O'Reilly 
 2019-04-26,Grow,RSA Animate Videos
 2019-04-27,Grow,Right/Left Brain
-2019-04-29,Tools,Investigate Selenium on Mac
 2019-04-30,Teach,Software Engineering in 15 Projects
+2019-04-29,Tools,Investigate Selenium on Mac
+2019-06-06,Write,Outline for PythonApps course
 2019-05-01,Plan,Develop Roles and Goals
 2019-05-02,Tools,Project Plans for Sensei
 2019-05-03,Teach,Outline of Software Engineering Course
@@ -49,7 +47,6 @@
 2019-06-03,Teach,Build detailed course outline for BACS 350 topics
 2019-06-04,Tools,Create recipe for SSL setup
 2019-06-05,Write,PythonApps Views
-2019-06-06,Write,Outline for PythonApps course
 2019-06-07,Tools,Create simple Doc Viewer App
 2019-06-08,Tools,Export full time history
 2019-06-09,People,Play cards with neighbors
@@ -82,40 +79,28 @@
 2019-07-06,People,Travel to Boise
 2019-07-07,Learn,Last Lecture
 2019-07-08,People,Downtown Boise with Hunts
-2019-07-09,People,Barbacoa Fire Rock for Stacie's birthday
-2019-07-10,People,Drive through Yellowstone
-2019-07-11,People,Drive home
-2019-07-12,Tools,Turn off old server
-2019-07-13,Tools,Experiment with Selenium
-2019-07-14,Tools,Test Master prototype
-2019-07-15,Grow,Vineyard conference
-2019-07-16,People,Stacie's birthday celebration
-2019-07-17,Grow,Vineyard Justice Network
-2019-07-18,Grow,Putty Putnam and Cowboy Preacher
-2019-07-19,People,Fields and Stokes
-2019-07-20,People,Stokes
-2019-07-21,People,Gabe Quintana
-2019-07-22,Grow,Enneagram and my brokenness
-2019-07-23,Tools,Prototype page tester
-2019-07-24,Grow,Process insights from Enneagram
-2019-07-25,Write,Write about Meaning of Life
-2019-07-26,Grow,Setup Spotify
-2019-07-27,Grow,Ride bikes with Stacie
-2019-07-28,Tools,Debug Selenium on server
-2019-07-29,Tools,Prototype page tester with Selenium
-2019-07-30,People,Potters leave church
-2019-07-31,Tools,Manage processes on server
-2019-08-01,Tools,Use Selenium to find page features
-2019-08-02,Teach,Build import for schedule data
-2019-08-03,Tools,Implement system log
-2019-08-04,Write,My True Self
-2019-08-05,Teach,Build Schedule and Homework views
-2019-08-06,Write,My True Self
-2019-08-07,Grow,My Church Involvement
-2019-08-08,Grow,Global Leadership Summit
-2019-08-09,Grow,Global Leadership Summit
-2019-08-10,People,visit with Cassie
-2019-08-11,People,Attend Windsor Vineyard to hear Rick Knable
+2019-11-01,Teach,Grade exams
+2019-11-02,Church,Email from Todd about discouragement
+2019-11-04,Teach,MVC pattern in PHP
+2019-04-16,Grow,Spiritual Walkabout
+2019-11-06,Fun,Grapic novels from Hoopla (Murena
+2019-11-08,Fun,Victoria
+2019-11-09,Fun,Lone Survivor
+2019-11-11,Grow,Stacie ill
+2019-11-13,Church,Thanksgiving dinner at church
+2019-11-14,Grow,Sick
+2019-11-16,Teach,Django Workshop
+2019-11-17,Grow,Accidental Creatives
+2019-11-20,People,Rachel's car accident
+2019-11-21,Grow,Day
+2019-11-25,Tools,Refactor Sensei Views
+2019-11-22,People,Ruby first steps
+2019-04-15,Teach,UNC Github training
+2019-11-28,,
+2019-11-29,,
+2019-11-30,,
+2019-11-27,Write,Course outlines for Practical Engineering Guides
+2019-11-03,Teach,Django Workshop example code
 2019-08-12,Grow,Read Rejection Proof
 2019-08-13,Teach,Build class content onto website
 2019-08-14,People,Tour Sparrow's Landing
@@ -127,64 +112,51 @@
 2019-08-20,People,Lake Day
 2019-08-21,Tools,Refactor and refine Sensei Views
 2019-08-22,Tools,Add test students to Sensei
-2019-11-01,Teach,Grade exams
-2019-11-02,Church,Email from Todd about discouragement
-2019-11-03,Teach,Django Workshop example code
-2019-11-04,Teach,MVC pattern in PHP
 2019-11-05,Write,Running on Empty
-2019-11-06,Fun,Grapic novels from Hoopla (Murena
 2019-11-07,Church,Small group with 3 guitars and a drum
-2019-11-08,Fun,Victoria
-2019-11-09,Fun,Lone Survivor
 2019-11-10,Grow,Personality attributes OCEAN
-2019-11-11,Grow,Stacie ill
 2019-11-12,Teach,Create content for Django Workshop
-2019-11-13,Church,Thanksgiving dinner at church
-2019-11-14,Grow,Sick
 2019-11-15,Teach,User Auth
-2019-11-16,Teach,Django Workshop
-2019-11-17,Grow,Accidental Creatives
 2019-11-18,People,Cacciatore restaurant
 2019-11-19,People,Close Shrinking World Solutions
-2019-11-20,People,Rachel's car accident
-2019-11-21,Grow,Day
-2019-11-22,People,Ruby first steps
 2019-11-23,Teach,Reusable PHP code
 2019-11-24,Tools,Build insight app
+2019-11-26,Tools,create Import/Export design pattern
+2019-04-24,Learn,Payment for O’Reilly Learning
+2019-07-09,People,Barbacoa Fire Rock for Stacie's birthday
+2019-07-10,People,Drive through Yellowstone
+2019-07-11,People,Drive home
+2019-07-12,Tools,Turn off old server
+2019-07-13,Tools,Experiment with Selenium
+2019-07-28,Tools,Debug Selenium on server
+2019-07-29,Tools,Prototype page tester with Selenium
+2019-07-30,People,Potters leave church
+2019-07-31,Tools,Manage processes on server
+2019-08-01,Tools,Use Selenium to find page features
+2019-07-14,Tools,Test Master prototype
+2019-08-02,Teach,Build import for schedule data
+2019-08-03,Tools,Implement system log
+2019-08-04,Write,My True Self
+2019-08-05,Teach,Build Schedule and Homework views
+2019-08-06,Write,My True Self
+2019-08-07,Grow,My Church Involvement
+2019-08-08,Grow,Global Leadership Summit
+2019-08-09,Grow,Global Leadership Summit
+2019-08-10,People,visit with Cassie
+2019-07-15,Grow,Vineyard conference
+2019-07-16,People,Stacie's birthday celebration
+2019-07-17,Grow,Vineyard Justice Network
+2019-07-18,Grow,Putty Putnam and Cowboy Preacher
+2019-08-11,People,Attend Windsor Vineyard to hear Rick Knable
+2019-07-19,People,Fields and Stokes
+2019-07-20,People,Stokes
+2019-07-21,People,Gabe Quintana
+2019-07-22,Grow,Enneagram and my brokenness
+2019-07-23,Tools,Prototype page tester
+2019-07-24,Grow,Process insights from Enneagram
+2019-07-25,Write,Write about Meaning of Life
+2019-07-26,Grow,Setup Spotify
+2019-07-27,Grow,Ride bikes with Stacie
 2019-11-25,Tools,Refactor Sensei Views
 2019-11-26,Tools,create Import/Export design pattern
-2019-11-27,,
-2019-11-28,,
-2019-11-29,,
-2019-11-30,,
 2019-10-01,Teach,Demo code for MySQL databases in PHP
-2019-10-02,,
-2019-10-03,,
-2019-10-04,,
-2019-10-05,,
-2019-10-06,,
-2019-10-07,,
-2019-10-08,,
-2019-10-09,,
-2019-10-10,,
-2019-10-11,,
-2019-10-12,,
-2019-10-13,,
-2019-10-14,,
-2019-10-15,,
-2019-10-16,,
-2019-10-17,,
-2019-10-18,,
-2019-10-19,,
-2019-10-20,,
-2019-10-21,,
-2019-10-22,,
-2019-10-23,,
-2019-10-24,,
-2019-10-25,,
-2019-10-26,,
-2019-10-27,,
-2019-10-28,,
-2019-10-29,,
-2019-10-30,,
-2019-10-31,,
