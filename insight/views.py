@@ -1,9 +1,9 @@
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView, RedirectView, TemplateView, UpdateView
 
+from insight.insight import monthly_insights, task_history
 from .models import Insight
 from .insight import export_data, group_insights, import_data
-from tool.days import date_str
 
 
 # Show the default view
@@ -11,9 +11,9 @@ class InsightHome(TemplateView):
     template_name = 'insight_home.html'
 
     def get_context_data(self, **kwargs):
-        days = ['2019-11-%02d' % (d+1) for d in range(30)]
-        days = [(d, Insight.lookup(d).name, Insight.lookup(d).pk, Insight.lookup(d).topic) for d in days]
-        return dict(days=days)
+        months = ['10', '11']
+        months = monthly_insights(months)
+        return dict(months=months)
 
 
 # Show the list of insights
@@ -42,10 +42,12 @@ class InsightUpdate(UpdateView):
     def get_context_data(self, **kwargs):
         kwargs = super(InsightUpdate, self).get_context_data(**kwargs)
         insight = kwargs['object']
-        doc = 'Documents/info/history/%s' % date_str(insight.date).replace('-','/')
+        doc = task_history(insight)
         kwargs['doc'] = doc
         kwargs['log'] = open(doc).read()
         return kwargs
+
+
 
 
 # Delete a insight

@@ -3,9 +3,7 @@ from django.utils.timezone import make_aware
 from csv import reader
 from datetime import datetime
 
-
-def date_str(date):
-    return date.strftime("%a %Y-%m-%d")
+from tool.days import date_str
 
 
 def export_data(path):
@@ -31,6 +29,16 @@ def group_insights():
         insights.append([topic, [(date_str(i.date), i.name) for i in Insight.objects.filter(topic=topic)]])
     return insights
 
+def daily_insights(days):
+    days = [(d, Insight.lookup(d).name, Insight.lookup(d).pk, Insight.lookup(d).topic) for d in days]
+    return days
+
+def monthly_insights(months):
+    days1 = ['2019-10-%02d' % (d + 1) for d in range(31)]
+    days2 = ['2019-11-%02d' % (d + 1) for d in range(30)]
+    monthly = [daily_insights(days1), daily_insights(days2)]
+    return monthly
+
 
 def print_insights():
     for topic in group_insights():
@@ -44,6 +52,11 @@ def sync_insights():
     export_data('insights.csv')
 
 
+def task_history(insight):
+    return 'Documents/info/history/%s' % date_str(insight.date).replace('-', '/')
+
+
 def topics():
     return [i[0] for i in Insight.objects.all().order_by('topic').values_list('topic').distinct()]
+
 
