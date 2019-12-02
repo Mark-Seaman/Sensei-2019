@@ -21,6 +21,7 @@ class Command(BaseCommand):
                     x.write('* ' +  ' '.join(options['command'][1:]) + '\n\n')
             elif options['command'] and options['command'][0] == 'days':
                 print_recent_dates()
+            system('e Documents/info/Index.md Documents/info/Week.md')
             for d in recent_dates():
                 edit_task_file(d)
         except:
@@ -57,5 +58,5 @@ def edit_task_file(date):
     if not exists(f):
         day = datetime.now().strftime("%A")
         open(f, 'w').write(task_default % day)
-    system('e %s Documents/info/Index.md Documents/info/Week.md' % f)
+    system('e %s' % f)
 
