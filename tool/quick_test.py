@@ -16,8 +16,13 @@ def quick_test():
 
 def new_350_reviews():
     revs = Review.objects.filter(page='bacs350/slides/index.php')
+    print(bacs350_5_requirements)
     for r in revs:
-        print(r)
+        page = 'bacs350/index.php'
+        reviewer, designer = r.reviewer, r.designer
+        due = due_date('2019-12-02')
+        print('create review: %s,  %s, %s' % (reviewer, designer, due))
+        # create_review(reviewer, designer, page, due, bacs350_5_requirements, bacs350_5_notes)
 
 
 def show_course_content():

@@ -36,6 +36,27 @@ def assign_team_reviews(course, page, due, requirements, notes):
     return len(pairs)
 
 
+def count_score(r):
+    requirements = [r.requirement_1, r.requirement_2, r.requirement_3, r.requirement_4, r.requirement_5,
+                    r.requirement_6, r.requirement_7, r.requirement_8, r.requirement_9, r.requirement_10]
+    return len([x for x in requirements if x])
+
+
+def create_review(reviewer, designer, page, due, requirements, notes):
+    due = '%s 23:59' % due
+    due = make_aware(datetime.strptime(due, "%Y-%m-%d %H:%M"))
+    r = Review.objects.get_or_create(reviewer_id=reviewer, designer_id=designer, page=page)[0]
+    r.due = due
+    r.requirement_labels = requirements
+    r.notes = notes
+    r.save()
+    return r
+
+
+def get_review(id):
+    return Review.objects.get(pk=id)
+
+
 def grade_reviews(page):
     print('\nTo Do ' + page)
     for r in Review.objects.filter(page=page, score=-1):
@@ -92,27 +113,6 @@ def review_groups(course):
          x += num
      # groups = [groups[0] + groups[-1]] + groups[1:-1]
      return groups
-
-
-def count_score(r):
-    requirements = [r.requirement_1, r.requirement_2, r.requirement_3, r.requirement_4, r.requirement_5,
-                    r.requirement_6, r.requirement_7, r.requirement_8, r.requirement_9, r.requirement_10]
-    return len([x for x in requirements if x])
-
-
-def create_review(reviewer, designer, page, due, requirements, notes):
-    due = '%s 23:59' % due
-    due = make_aware(datetime.strptime(due, "%Y-%m-%d %H:%M"))
-    r = Review.objects.get_or_create(reviewer_id=reviewer, designer_id=designer, page=page)[0]
-    r.due = due
-    r.requirement_labels = requirements
-    r.notes = notes
-    r.save()
-    return r
-
-
-def get_review(id):
-    return Review.objects.get(pk=id)
 
 
 def reviewer_scores(student_id):
