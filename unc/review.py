@@ -197,6 +197,18 @@ Page shows products
 Page shows activities'''
 bacs200_4_notes = '''Write a summary of all the problems and how to fix them.   Must not be blank.'''
 
+bacs200_5_requirements = '''Page Exists at correct URL (your domain/index.php)
+Page can be used in your marketing efforts
+Clear professional identity
+Business article
+Clear navigation
+Include a link to another website to learn more
+Great images
+Titles, favicon, supporting text
+Good page layout
+Valid HTML & CSS'''
+bacs200_5_notes = '''Write a summary of all the problems and how to fix them.   Must not be blank.'''
+
 
 # BACS 350 Reviews
 
@@ -245,6 +257,18 @@ Page HTML and CSS validate
 Several slide shows created with Markdown
 Show presentation records'''
 bacs350_4_notes = '''Write a summary of all the problems and how to fix them.   Must not be blank.'''
+
+bacs350_5_requirements = '''* Top app is located at "bacs350/index.php"
+* Brain contains links to each component: Documents, Notes, Slides, Planner, Reviewer, Subscribers, Superhero
+* Each app component works properly
+* Each app component has valid HTML and CSS
+* Design is consistent with the code
+* All code is updated in Github account
+* All outstanding issues are logged in database
+* Visual appearance and behavior (look and feel)
+* Add User Auth
+* Reusable code eliminates duplication'''
+bacs350_5_notes = '''Write a summary of all the problems and how to fix them.   Must not be blank.'''
 
 
 def student_project_data(course):
