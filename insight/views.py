@@ -1,5 +1,6 @@
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView, RedirectView, TemplateView, UpdateView
+from django.template.loader import render_to_string
 
 from insight.insight import monthly_insights, task_history
 from .models import Insight
@@ -13,7 +14,11 @@ class InsightHome(TemplateView):
     def get_context_data(self, **kwargs):
         months = ['10', '11']
         months = monthly_insights(months)
-        return dict(months=months)
+        return dict(months=months, accordion=render_to_string('accordion.html', dict(panes=accordion_data())))
+
+
+def accordion_data():
+    return [('0', 'Home', '<h1>Home</h1>'), ('1', 'Edit', '<h1>Edit</h1>')]
 
 
 # Show the list of insights
@@ -48,13 +53,11 @@ class InsightUpdate(UpdateView):
         return kwargs
 
 
-
-
-# Delete a insight
-class InsightDelete(DeleteView):
-    model = Insight
-    template_name = 'insight_delete.html'
-    success_url = reverse_lazy('insight-list')
+# # Delete a insight
+# class InsightDelete(DeleteView):
+#     model = Insight
+#     template_name = 'insight_delete.html'
+#     success_url = reverse_lazy('insight-list')
 
 
 # Import all insights

@@ -29,14 +29,16 @@ def group_insights():
         insights.append([topic, [(date_str(i.date), i.name) for i in Insight.objects.filter(topic=topic)]])
     return insights
 
-def daily_insights(days):
+
+def daily_insights(month, days):
     days = [(d, Insight.lookup(d).name, Insight.lookup(d).pk, Insight.lookup(d).topic) for d in days]
-    return days
+    return dict(month=month, days=days)
+
 
 def monthly_insights(months):
     days1 = ['2019-10-%02d' % (d + 1) for d in range(31)]
     days2 = ['2019-11-%02d' % (d + 1) for d in range(30)]
-    monthly = [daily_insights(days1), daily_insights(days2)]
+    monthly = [daily_insights('October', days1), daily_insights('November', days2)]
     return monthly
 
 
