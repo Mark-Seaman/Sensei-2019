@@ -8,7 +8,7 @@ from insight.insight import *
 
 
 def quick_test():
-    assign_team_reviews('bacs200', 'bacs200/nonprofit/index.html', '2019-12-02', bacs200_5_requirements, bacs200_5_notes)
+    # assign_team_reviews('bacs200', 'bacs200/nonprofit/index.html', '2019-12-02', bacs200_5_requirements, bacs200_5_notes)
     new_350_reviews()
     # sync_insights()
     # print_insights()
