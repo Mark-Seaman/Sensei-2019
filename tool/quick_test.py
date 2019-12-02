@@ -20,9 +20,9 @@ def new_350_reviews():
     for r in revs:
         page = 'bacs350/index.php'
         reviewer, designer = r.reviewer, r.designer
-        due = due_date('2019-12-02')
+        due = '2019-12-02'
         print('create review: %s,  %s, %s' % (reviewer, designer, due))
-        # create_review(reviewer, designer, page, due, bacs350_5_requirements, bacs350_5_notes)
+        create_review(reviewer, designer, page, due, bacs350_5_requirements, bacs350_5_notes)
 
 
 def show_course_content():
