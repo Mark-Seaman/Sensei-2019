@@ -22,7 +22,7 @@ def new_350_reviews():
         reviewer, designer = r.reviewer, r.designer
         due = '2019-12-02'
         print('create review: %s,  %s, %s' % (reviewer, designer, due))
-        create_review(reviewer, designer, page, due, bacs350_5_requirements, bacs350_5_notes)
+        create_review(reviewer.pk, designer.pk, page, due, bacs350_5_requirements, bacs350_5_notes)
 
 
 def show_course_content():
