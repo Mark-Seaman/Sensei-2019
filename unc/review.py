@@ -45,8 +45,8 @@ def count_score(r):
 def create_review(reviewer, designer, page, due, requirements, notes):
     due = '%s 23:59' % due
     due = make_aware(datetime.strptime(due, "%Y-%m-%d %H:%M"))
-    r = Review.objects.get_or_create(reviewer_id=reviewer, designer_id=designer, page=page)[0]
-    r.due = due
+    r = Review.objects.get_or_create(reviewer_id=reviewer, designer_id=designer, page=page, due=due)[0]
+    # r.due = due
     r.requirement_labels = requirements
     r.notes = notes
     r.save()
