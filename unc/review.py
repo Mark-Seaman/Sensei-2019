@@ -2,7 +2,7 @@ from django.utils.timezone import make_aware
 from datetime import datetime
 from random import shuffle
 
-from unc.models import Course, Review
+from unc.models import Course, Review, Student
 
 
 def assign_reviews_round1():
@@ -116,11 +116,15 @@ def review_groups(course):
 
 
 def reviewer_scores(student_id):
-    return [r.score for r in Review.objects.filter(designer=student_id)]
+    course = Student.get_record(student_id).course.name
+    page = 'bacs200/nonprofit/index.html' if course == 'bacs200' else 'bacs350/index.php'
+    return [r.score for r in Review.objects.filter(designer=student_id, page=page)]
 
 
 def designer_scores(student_id):
-    return [r.score for r in Review.objects.filter(reviewer=student_id)]
+    course = Student.get_record(student_id).course.name
+    page = 'bacs200/nonprofit/index.html' if course == 'bacs200' else 'bacs350/index.php'
+    return [r.score for r in Review.objects.filter(reviewer=student_id, page=page)]
 
 
 def review_feedback(student_id):
