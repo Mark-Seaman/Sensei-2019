@@ -2,7 +2,7 @@ from django.utils.timezone import make_aware
 from datetime import datetime
 from random import shuffle
 
-from unc.models import Course, Review, Student
+from unc.models import Course, Project, Review, Student
 
 
 def assign_reviews_round1():
@@ -115,28 +115,34 @@ def review_groups(course):
      return groups
 
 
+def current_project(student_id):
+    course = Student.get_record(student_id).course
+    return Project.objects.get(course=course, num=13).page, '2019-12-02'
+
+
 def reviewer_scores(student_id):
-    course = Student.get_record(student_id).course.name
-    page = 'bacs200/nonprofit/index.html' if course == 'bacs200' else 'bacs350/index.php'
-    return [r.score for r in Review.objects.filter(designer=student_id, page=page)]
+    page, date = current_project(student_id)
+    return [r.score for r in Review.objects.filter(reviewer=student_id, page=page, due=date)]
 
 
 def designer_scores(student_id):
-    course = Student.get_record(student_id).course.name
-    page = 'bacs200/nonprofit/index.html' if course == 'bacs200' else 'bacs350/index.php'
-    return [r.score for r in Review.objects.filter(reviewer=student_id, page=page)]
+    page, date = current_project(student_id)
+    return [r.score for r in Review.objects.filter(designer=student_id, page=page, due=date)]
 
 
 def review_feedback(student_id):
-    return Review.objects.filter(designer=student_id).exclude(score=-1)
+    page, date = current_project(student_id)
+    return Review.objects.filter(designer=student_id, page=page, due=date).exclude(score=-1)
 
 
 def student_reviews(student_id):
-    return Review.objects.filter(reviewer=student_id, score=-1)
+    page, date = current_project(student_id)
+    return Review.objects.filter(reviewer=student_id, page=page, due=date, score=-1)
 
 
 def student_reviews_done(student_id):
-    return Review.objects.filter(reviewer=student_id).exclude(score=-1)
+    page, date = current_project(student_id)
+    return Review.objects.filter(reviewer=student_id, page=page, due=date).exclude(score=-1)
 
 
 def print_reviews(reviewer=None):
