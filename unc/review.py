@@ -77,13 +77,13 @@ def review_pairs(groups):
      return x
 
 
-def show_groups(course):
-    show_students(course)
-    groups = review_groups(course)
-    print('Groups - %s' % len(groups))
-    for g in groups:
-        print(g)
-    print(review_pairs(groups))
+# def show_groups(course):
+#     show_students(course)
+#     groups = review_groups(course)
+#     print('Groups - %s' % len(groups))
+#     for g in groups:
+#         print(g)
+#     print(review_pairs(groups))
         
         
 def show_students(course):
@@ -92,14 +92,14 @@ def show_students(course):
         print('%s. %s' % (s.pk, s.name))
 
         
-def show_reviews_overdue(course):
-    print('\nTo Do '+course)
-    for r in Review.objects.filter(reviewer__course__name=course, score=-1):
-        print("    " + r.reviewer.name)
-    print('\nDone '+course)
-    for r in Review.objects.filter(reviewer__course__name=course).exclude(score=-1):
-        print("    " + r.reviewer.name)
-
+# def show_reviews_overdue(course):
+#     print('\nTo Do '+course)
+#     for r in Review.objects.filter(reviewer__course__name=course, score=-1):
+#         print("    " + r.reviewer.name)
+#     print('\nDone '+course)
+#     for r in Review.objects.filter(reviewer__course__name=course).exclude(score=-1):
+#         print("    " + r.reviewer.name)
+#
         
 def review_groups(course):
      show_students(course)
