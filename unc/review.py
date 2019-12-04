@@ -115,34 +115,33 @@ def review_groups(course):
      return groups
 
 
-def current_project(student_id):
-    course = Student.get_record(student_id).course
-    return Project.objects.get(course=course, num=13).page, '2019-12-02'
+def query_current_reviews(student_id):
+    student = Student.get_record(student_id)
+    page = Project.objects.get(course=student.course, num=13).page
+    reviews = Review.objects.filter(page=page, due__gte='2019-12-02')
+    return reviews
 
 
 def reviewer_scores(student_id):
-    page, date = current_project(student_id)
-    return [r.score for r in Review.objects.filter(reviewer=student_id, page=page, due=date)]
+    reviews = student_reviews_done(student_id)
+    return [r.score for r in reviews]
 
 
 def designer_scores(student_id):
-    page, date = current_project(student_id)
-    return [r.score for r in Review.objects.filter(designer=student_id, page=page, due=date)]
+    reviews = review_feedback(student_id)
+    return [r.score for r in reviews]
 
 
 def review_feedback(student_id):
-    page, date = current_project(student_id)
-    return Review.objects.filter(designer=student_id, page=page, due=date).exclude(score=-1)
+    return query_current_reviews(student_id).filter(designer=student_id).exclude(score=-1)
 
 
 def student_reviews(student_id):
-    page, date = current_project(student_id)
-    return Review.objects.filter(reviewer=student_id, page=page, due=date, score=-1)
+    return query_current_reviews(student_id).filter(reviewer=student_id, score=-1)
 
 
 def student_reviews_done(student_id):
-    page, date = current_project(student_id)
-    return Review.objects.filter(reviewer=student_id, page=page, due=date).exclude(score=-1)
+    return query_current_reviews(student_id).filter(reviewer=student_id).exclude(score=-1)
 
 
 def print_reviews(reviewer=None):
