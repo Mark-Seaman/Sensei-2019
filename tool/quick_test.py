@@ -8,13 +8,13 @@ from insight.insight import *
 
 
 def quick_test():
-    import_lessons('bacs350')
-    new_350_reviews()
+    # import_lessons('bacs350')
+    # new_350_reviews()
 
     # assign_team_reviews('bacs200', 'bacs200/nonprofit/index.html', '2019-12-02', bacs200_5_requirements, bacs200_5_notes)
 
-    # sync_insights()
-    # print_insights()
+    sync_insights()
+    print_insights()
 
 
 def new_350_reviews():
