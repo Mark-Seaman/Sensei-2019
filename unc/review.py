@@ -118,7 +118,7 @@ def review_groups(course):
 def query_current_reviews(student_id):
     student = Student.get_record(student_id)
     page = Project.objects.get(course=student.course, num=13).page
-    reviews = Review.objects.filter(page=page, due__gte='2019-12-02')
+    reviews = Review.objects.filter(page=page, due__gte='2019-12-04')
     return reviews
 
 
@@ -134,6 +134,13 @@ def designer_scores(student_id):
 
 def review_feedback(student_id):
     return query_current_reviews(student_id).filter(designer=student_id).exclude(score=-1)
+
+
+def student_project_data(course):
+    data = []
+    for s in Course.students(course):
+        data.append(dict(student=s, designer=designer_scores(s.pk), reviewer=reviewer_scores(s.pk)))
+    return data
 
 
 def student_reviews(student_id):
@@ -280,8 +287,3 @@ bacs350_5_requirements = '''* Top app is located at "bacs350/index.php"
 bacs350_5_notes = '''Write a summary of all the problems and how to fix them.   Must not be blank.'''
 
 
-def student_project_data(course):
-    data = []
-    for s in Course.students(course):
-        data.append(dict(student=s, designer=designer_scores(s.pk), reviewer=reviewer_scores(s.pk)))
-    return data
