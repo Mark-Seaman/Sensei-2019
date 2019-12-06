@@ -6,7 +6,7 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
-django = "==2.2.4"
+django = "==3.0"
 selenium = "*"
 pytest = "*"
 pillow = "==6.2.1"
