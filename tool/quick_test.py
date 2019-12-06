@@ -8,7 +8,7 @@ from insight.insight import *
 
 
 def quick_test():
-    show_reviews()
+    # show_reviews()
 
 
     # import_lessons('bacs350')
