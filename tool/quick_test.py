@@ -8,12 +8,20 @@ from insight.insight import *
 
 
 def quick_test():
-    # import_lessons('bacs350')
-    new_350_reviews()
-    assign_team_reviews('bacs200', 'bacs200/index.php', '2019-12-06', bacs200_5_requirements, bacs200_5_notes)
+    show_reviews()
 
-    sync_insights()
-    print_insights()
+    
+    # import_lessons('bacs350')
+    # new_350_reviews()
+    # assign_team_reviews('bacs200', 'bacs200/index.php', '2019-12-06', bacs200_5_requirements, bacs200_5_notes)
+
+    # sync_insights()
+    # print_insights()
+
+
+def show_reviews():
+    for r in Review.objects.filter(page='bacs200/index.php'):
+        print(r.due, r.reviewer.name, r.designer.name, r.page)
 
 
 def new_350_reviews():
