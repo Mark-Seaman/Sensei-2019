@@ -8,6 +8,8 @@ from insight.insight import *
 
 
 def quick_test():
+    pass
+    
     # show_reviews()
 
 
