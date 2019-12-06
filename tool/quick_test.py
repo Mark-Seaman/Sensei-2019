@@ -21,6 +21,9 @@ def quick_test():
 
 def show_reviews():
     for r in Review.objects.filter(page='bacs200/index.php'):
+        r.page = 'index.php'
+        r.due = '2019-12-06'
+        r.save()
         print(r.due, r.reviewer.name, r.designer.name, r.page)
 
 
