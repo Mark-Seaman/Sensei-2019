@@ -1,6 +1,4 @@
-2019-04-20,Grow,Enneagram Test
 2019-04-22,Tools,Mail Chimp
-2019-04-21,Write,Thinking Patterns Guide
 2019-04-23,Grow,I am always right
 2019-04-25,Learn,Sign up for O'Reilly 
 2019-04-26,Grow,RSA Animate Videos
@@ -97,8 +95,16 @@
 2019-11-30,Write,Publish outlines for Practical Engineering Guides
 2019-11-27,Write,Course outlines for Practical Engineering Guides
 2019-11-03,Teach,Django Workshop example code
+2019-04-20,Grow,Enneagram Test
 2019-11-25,Tools,Refactor Sensei Views
 2019-04-17,Grow,Dark Drive
+2019-07-28,Tools,Debug Selenium on server
+2019-07-29,Tools,Prototype page tester with Selenium
+2019-07-30,People,Potters leave church
+2019-07-31,Tools,Manage processes on server
+2019-08-01,Tools,Use Selenium to find page features
+2019-07-14,Tools,Test Master prototype
+2019-08-02,Teach,Build import for schedule data
 2019-08-10,People,visit with Cassie
 2019-07-15,Grow,Vineyard conference
 2019-07-16,People,Stacie's birthday celebration
@@ -115,28 +121,12 @@
 2019-10-10,,
 2019-04-24,Learn,Payment for O’Reilly Learning
 2019-07-09,People,Barbacoa Fire Rock for Stacie's birthday
-2019-07-10,People,Drive through Yellowstone
-2019-07-11,People,Drive home
-2019-07-12,Tools,Turn off old server
-2019-07-13,Tools,Experiment with Selenium
-2019-07-28,Tools,Debug Selenium on server
-2019-07-29,Tools,Prototype page tester with Selenium
-2019-07-30,People,Potters leave church
-2019-07-31,Tools,Manage processes on server
-2019-08-01,Tools,Use Selenium to find page features
-2019-07-14,Tools,Test Master prototype
-2019-08-02,Teach,Build import for schedule data
 2019-10-11,,
 2019-08-03,Tools,Implement system log
 2019-10-12,,
 2019-10-31,,
 2019-04-18,Grow,Understand & Embrace Reality
 2019-08-12,Grow,Read Rejection Proof
-2019-08-13,Teach,Build class content onto website
-2019-08-14,People,Tour Sparrow's Landing
-2019-08-15,Grow,Ride bike to County Road 13
-2019-08-16,Write,Create WordPress Blog
-2019-08-17,Write,Church needs vs. my needs
 2019-08-18,Grow,Read Reckless Mercy
 2019-08-19,People,Life Words Challenge
 2019-08-20,People,Lake Day
@@ -152,9 +142,6 @@
 2019-07-23,Tools,Prototype page tester
 2019-07-24,Grow,Process insights from Enneagram
 2019-07-25,Write,Write about Meaning of Life
-2019-07-26,Grow,Setup Spotify
-2019-07-27,Grow,Ride bikes with Stacie
-2019-11-26,Tools,create Import/Export design pattern
 2019-10-01,Teach,Demo code for MySQL databases in PHP
 2019-10-02,Teach,Plagiarism misunderstanding in BACS 200
 2019-10-03,Business,Plan payoff of mortgage
@@ -176,6 +163,7 @@
 2019-11-23,Teach,Reusable PHP code
 2019-11-24,Tools,Build insight app
 2019-10-19,,
+2019-04-21,Write,Thinking Patterns Guide
 2019-10-20,,
 2019-10-21,,
 2019-10-22,,
@@ -184,6 +172,18 @@
 2019-10-25,,
 2019-10-26,,
 2019-10-27,,
+2019-07-10,People,Drive through Yellowstone
+2019-07-11,People,Drive home
+2019-07-12,Tools,Turn off old server
+2019-07-13,Tools,Experiment with Selenium
+2019-08-13,Teach,Build class content onto website
+2019-08-14,People,Tour Sparrow's Landing
+2019-08-15,Grow,Ride bike to County Road 13
+2019-08-16,Write,Create WordPress Blog
+2019-08-17,Write,Church needs vs. my needs
+2019-07-26,Grow,Setup Spotify
+2019-07-27,Grow,Ride bikes with Stacie
+2019-11-26,Tools,create Import/Export design pattern
 2019-10-28,,
 2019-10-29,,
 2019-10-30,,
