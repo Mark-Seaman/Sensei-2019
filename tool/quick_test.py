@@ -8,13 +8,13 @@ from insight.insight import *
 
 
 def quick_test():
-    pass
+    # pass
 
     # show_reviews()
 
 
     # import_lessons('bacs350')
-    # new_350_reviews()
+    new_350_reviews()
     # assign_team_reviews('bacs200', 'bacs200/index.php', '2019-12-06', bacs200_5_requirements, bacs200_5_notes)
 
     # sync_insights()
@@ -35,7 +35,7 @@ def new_350_reviews():
     for r in revs:
         page = 'bacs350/index.php'
         reviewer, designer = r.reviewer, r.designer
-        due = '2019-12-06'
+        due = '2019-12-11'
         print('create review: %s,  %s, %s' % (reviewer, designer, due))
         create_review(reviewer.pk, designer.pk, page, due, bacs350_5_requirements, bacs350_5_notes)
 

@@ -118,7 +118,7 @@ def review_groups(course):
 def query_current_reviews(student_id):
     student = Student.get_record(student_id)
     page = Project.objects.get(course=student.course, num=14).page
-    reviews = Review.objects.filter(page=page, due__gte='2019-12-04')
+    reviews = Review.objects.filter(page=page, due__gte='2019-12-06')
     return reviews
 
 
