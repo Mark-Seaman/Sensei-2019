@@ -1,0 +1,34 @@
+<div class="accordion" id="my-accordion">
+
+    {% for group in insights %}
+
+        <div class="card">
+
+            <div class="card-header" id="heading-{{ group.0 }}">
+
+                <button class="btn btn-selector" type="button" data-toggle="collapse"
+                        data-target="#pane-{{ group.0 }}"
+                        aria-expanded="true" aria-controls="pane-{{ group.0 }}">
+                    <b>{{ group.0 }}</b>
+                </button>
+
+            </div>
+            <div id="pane-{{ group.0 }}" class="collapse"
+                 aria-labelledby="heading-{{ group.0 }}"
+                 data-parent="#my-accordion">
+
+                <div class="card-body">
+                    <ul>
+                        {% for entry in group.1 %}
+                            <li>{{ entry.0 }} - {{ entry.1 }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+
+    {% endfor %}
+
+</div>

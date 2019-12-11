@@ -7,18 +7,14 @@ from .models import Insight
 from .insight import export_data, group_insights, import_data
 
 
-# Show the default view
+# Show the insights for each category
 class InsightHome(TemplateView):
     template_name = 'insight_home.html'
 
     def get_context_data(self, **kwargs):
         months = ['10', '11']
         months = monthly_insights(months)
-        return dict(months=months, accordion=render_to_string('accordion.html', dict(panes=accordion_data())))
-
-
-def accordion_data():
-    return [('0', 'Home', '<h1>Home</h1>'), ('1', 'Edit', '<h1>Edit</h1>')]
+        return dict(months=months, insights=render_to_string('insight_groups.html', dict(insights=group_insights())))
 
 
 # Show the list of insights

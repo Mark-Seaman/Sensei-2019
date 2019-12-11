@@ -27,7 +27,7 @@ def group_insights():
     insights = []
     for topic in topics():
         insights.append([topic, [(date_str(i.date), i.name) for i in Insight.objects.filter(topic=topic)]])
-    return insights
+    return insights[1:]
 
 
 def daily_insights(month, days):
