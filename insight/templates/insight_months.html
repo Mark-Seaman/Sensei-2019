@@ -10,30 +10,30 @@
         <a href="export" class="btn btn-primary">Export Insight</a>
     </div>
 
-{#   -{#    {% for days in months %}#}
-{#-{#        <div class="card">#}
-{#-{#            <div class="card-header">#}
-{#-{#                <h3>Monthly Insights - {{ days.month }}</h3>#}
-{#-{#            </div>#}
-{#-{#            <div class="card-body">#}
-{#-{#                <table class="table table-hover">#}
-{#-{#                    <th>Date</th>#}
-{#-{#                    <th>Topic</th>#}
-{#-{#                    <th>Creative Experience</th>#}
-{#-{#                    {% for i in days.days %}#}
-{#-{#                        <tr>#}
-{#-{##}
-{#-{#                            <td>#}
-{#-{#                                <a href="/insight/{{ i.2 }}/">{{ i.0 }}</a>#}
-{#-{#                            </td>#}
-{#-{#                            <td><b>{{ i.3 }}</b></td>#}
-{#-{#                            <td>{{ i.1 }}</td>#}
-{#-{#                        </tr>#}
-{#-{#                    {% endfor %}#}
-{#-{#                </table>#}
-{#-{#            </div>#}
-{#-{#        </div>#}
-{#-{#    {% endfor %}#}
+       {% for days in months %}
+        <div class="card">
+            <div class="card-header">
+                <h3>Monthly Insights - {{ days.month }}</h3>
+            </div>
+            <div class="card-body">
+                <table class="table table-hover">
+                    <th>Date</th>
+                    <th>Topic</th>
+                    <th>Creative Experience</th>
+                    {% for i in days.days %}
+                        <tr>
+
+                            <td>
+                                <a href="/insight/{{ i.2 }}/">{{ i.0 }}</a>
+                            </td>
+                            <td><b>{{ i.3 }}</b></td>
+                            <td>{{ i.1 }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    {% endfor %}
 
 
 {% endblock %}

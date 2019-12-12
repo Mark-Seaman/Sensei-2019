@@ -9,7 +9,7 @@ from .insight import export_data, group_insights, import_data
 
 # Show the insights for each category
 class InsightHome(TemplateView):
-    template_name = 'insight_home.html'
+    template_name = 'insight_months.html'
 
     def get_context_data(self, **kwargs):
         months = ['10', '11']
