@@ -1,8 +1,9 @@
-from insight.models import Insight
-from django.utils.timezone import make_aware
 from csv import reader
 from datetime import datetime
+from django.template.loader import render_to_string
+from django.utils.timezone import make_aware
 
+from insight.models import Insight
 from tool.days import date_str
 
 
@@ -30,16 +31,21 @@ def group_insights():
     return insights[1:]
 
 
+def render_panel(header, rows):
+    return render_to_string('table.html', dict(header=header, rows=rows))
+
+
 def daily_insights(month, days):
-    days = [(d, Insight.lookup(d).name, Insight.lookup(d).pk, Insight.lookup(d).topic) for d in days]
-    return dict(month=month, days=days)
+    rows = [(d, Insight.lookup(d).name, Insight.lookup(d).pk, Insight.lookup(d).topic) for d in days]
+    table = render_panel(month, rows)
+    return [month, table]
 
 
 def monthly_insights(months):
     days1 = ['2019-10-%02d' % (d + 1) for d in range(31)]
     days2 = ['2019-11-%02d' % (d + 1) for d in range(30)]
     monthly = [daily_insights('October', days1), daily_insights('November', days2)]
-    return monthly
+    return dict(months=monthly)
 
 
 def print_insights():

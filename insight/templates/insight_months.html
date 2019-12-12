@@ -2,38 +2,64 @@
 
 {% block content %}
 
-    <h3>Insight Home</h3>
+    <h3>Monthly Insights</h3>
+    <div class="accordion" id="my-accordion">
 
-    <div class="toolbar">
-        <a href="/tasks/time" class="btn btn-primary">Time Accounting</a>
-        <a href="import" class="btn btn-primary">Import Insight</a>
-        <a href="export" class="btn btn-primary">Export Insight</a>
+        {% for group in months %}
+
+            <div class="card">
+
+                <div class="card-header" id="heading-{{ group.0 }}">
+
+                    <button class="btn btn-selector" type="button" data-toggle="collapse"
+                            data-target="#pane-{{ group.0 }}"
+                            aria-expanded="true" aria-controls="pane-{{ group.0 }}">
+                        <b>{{ group.0 }}</b>
+                    </button>
+
+                </div>
+                <div id="pane-{{ group.0 }}" class="collapse"
+                     aria-labelledby="heading-{{ group.0 }}"
+                     data-parent="#my-accordion">
+
+                    <div class="card-body">
+                        {{ group.1 }}
+                    </div>
+
+                </div>
+
+            </div>
+
+        {% endfor %}
+
     </div>
+    
 
-       {% for days in months %}
-        <div class="card">
-            <div class="card-header">
-                <h3>Monthly Insights - {{ days.month }}</h3>
-            </div>
-            <div class="card-body">
-                <table class="table table-hover">
-                    <th>Date</th>
-                    <th>Topic</th>
-                    <th>Creative Experience</th>
-                    {% for i in days.days %}
-                        <tr>
-
-                            <td>
-                                <a href="/insight/{{ i.2 }}/">{{ i.0 }}</a>
-                            </td>
-                            <td><b>{{ i.3 }}</b></td>
-                            <td>{{ i.1 }}</td>
-                        </tr>
-                    {% endfor %}
-                </table>
-            </div>
-        </div>
-    {% endfor %}
-
+{#    {% for days in months %}#}
+    {#        <div class="card">#}
+    {#            <div class="card-header">#}
+    {#                <h3>{{ days.month }}</h3>#}
+    {#            </div>#}
+    {#            <div class="card-body">#}
+    {#                {{ days.table }}#}
+    {##}
+    {#                <table class="table table-hover">#}
+    {#                    <th>Date</th>#}
+    {#                    <th>Topic</th>#}
+    {#                    <th>Creative Experience</th>#}
+    {#                    {% for i in days.days %}#}
+    {#                        <tr>#}
+    {##}
+    {#                            <td>#}
+    {#                                <a href="/insight/{{ i.2 }}/">{{ i.0 }}</a>#}
+    {#                            </td>#}
+    {#                            <td><b>{{ i.3 }}</b></td>#}
+    {#                            <td>{{ i.1 }}</td>#}
+    {#                        </tr>#}
+    {#                    {% endfor %}#}
+    {#                </table>#}
+    {#            </div>#}
+    {#        </div>#}
+    {#    {% endfor %}#}
 
 {% endblock %}

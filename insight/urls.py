@@ -1,6 +1,6 @@
 from django.urls import path
 
-from insight.views import InsightExport, InsightImport, InsightHome, InsightList, InsightUpdate
+from insight.views import InsightExport, InsightImport, InsightHome, InsightList, InsightMonths, InsightUpdate
 
 urlpatterns = [
 
@@ -18,6 +18,9 @@ urlpatterns = [
 
     # Home View
     path('', InsightHome.as_view(), name='insight-home'),
+
+    # Months View
+    path('months', InsightMonths.as_view()),
 
     # Add View
     # path('add', InsightCreate.as_view(), name='insight-add'),

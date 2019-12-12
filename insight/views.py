@@ -9,12 +9,20 @@ from .insight import export_data, group_insights, import_data
 
 # Show the insights for each category
 class InsightHome(TemplateView):
+    template_name = 'insight_home.html'
+
+    def get_context_data(self, **kwargs):
+        insights = render_to_string('insight_groups.html', dict(insights=group_insights()))
+        return dict(insights=insights)
+
+
+# Show the insights for each category
+class InsightMonths(TemplateView):
     template_name = 'insight_months.html'
 
     def get_context_data(self, **kwargs):
         months = ['10', '11']
-        months = monthly_insights(months)
-        return dict(months=months, insights=render_to_string('insight_groups.html', dict(insights=group_insights())))
+        return monthly_insights(months)
 
 
 # Show the list of insights
