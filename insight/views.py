@@ -7,13 +7,13 @@ from .models import Insight
 from .insight import export_data, group_insights, import_data
 
 
-# Show the insights for each category
-class InsightHome(TemplateView):
-    template_name = 'insight_home.html'
-
-    def get_context_data(self, **kwargs):
-        insights = render_to_string('insight_groups.html', dict(insights=group_insights()))
-        return dict(insights=insights)
+# # Show the insights for each category
+# class InsightHome(TemplateView):
+#     template_name = 'insight_home.html'
+#
+#     def get_context_data(self, **kwargs):
+#         insights = render_to_string('insight_groups.html', dict(insights=group_insights()))
+#         return dict(insights=insights)
 
 
 # Show the insights for each category
@@ -27,12 +27,11 @@ class InsightMonths(TemplateView):
 
 # Show the list of insights
 class InsightList(TemplateView):
-    template_name = 'insight_list.html'
+    template_name = 'insight_home.html'
 
     def get_context_data(self, **kwargs):
-        kwargs = super(InsightList, self).get_context_data(**kwargs)
-        kwargs['insights'] = group_insights()
-        return kwargs
+        insights = render_to_string('insight_groups.html', dict(insights=group_insights()))
+        return dict(insights=insights)
 
 
 # Add one insight
