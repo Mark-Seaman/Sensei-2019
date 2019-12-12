@@ -1,27 +1,26 @@
 from django.urls import path
 
-from insight.views import InsightExport, InsightImport, InsightHome, InsightList, InsightMonths, InsightUpdate
+from insight.views import InsightExport, InsightImport, InsightList, InsightMonths, InsightUpdate
 
 urlpatterns = [
 
-     # Edit View
+    # Edit View
     path('<int:pk>/', InsightUpdate.as_view(), name='insight-update'),
 
     # List View
-    path('list', InsightList.as_view(), name='insight-list'),
+    path('', InsightList.as_view(), name='insight-list'),
 
     # Import View
     path('import', InsightImport.as_view(), name='insight-import'),
 
-    # List View
+    # Export View
     path('export', InsightExport.as_view(), name='insight-export'),
-
-    # Home View
-    path('', InsightHome.as_view(), name='insight-home'),
 
     # Months View
     path('months', InsightMonths.as_view()),
 
+    # Home View
+    # path('', InsightHome.as_view(), name='insight-home'),
     # Add View
     # path('add', InsightCreate.as_view(), name='insight-add'),
     # Delete View
