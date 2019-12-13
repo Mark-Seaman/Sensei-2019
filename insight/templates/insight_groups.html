@@ -18,11 +18,12 @@
                  data-parent="#my-accordion">
 
                 <div class="card-body">
-                    <ul>
-                        {% for entry in group.1 %}
-                            <li>{{ entry.0 }} - {{ entry.1 }}</li>
-                        {% endfor %}
-                    </ul>
+                    {{ group.1 }}
+{#                    <ul>#}
+{#                        {% for entry in group.1 %}#}
+{#                            <li>{{ entry.0 }} - {{ entry.1 }}</li>#}
+{#                        {% endfor %}#}
+{#                    </ul>#}
                 </div>
 
             </div>

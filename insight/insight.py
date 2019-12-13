@@ -27,17 +27,21 @@ def import_data(path):
 def group_insights():
     insights = []
     for topic in topics():
-        insights.append([topic, [(date_str(i.date), i.name) for i in Insight.objects.filter(topic=topic)]])
+        title = "Insight Category: %s" % topic
+        table = [(date_str(i.date), i.name) for i in Insight.objects.filter(topic=topic)]
+        insights.append([topic, render_panel(title, ['Date', 'Insight'], table)])
     return insights[1:]
 
 
-def render_panel(header, rows):
-    return render_to_string('table.html', dict(header=header, rows=rows))
+def render_panel(title, headers, rows):
+    return render_to_string('table.html', dict(title=title, headers=headers, rows=rows))
 
 
 def daily_insights(month, days):
+    title = "Monthly Insights: %s" % month
+    headers = ['Date', 'Topic', 'Creative Experience']
     rows = [(d, Insight.lookup(d).name, Insight.lookup(d).pk, Insight.lookup(d).topic) for d in days]
-    table = render_panel(month, rows)
+    table = render_panel(title, headers, rows)
     return [month, table]
 
 
@@ -68,3 +72,5 @@ def topics():
     return [i[0] for i in Insight.objects.all().order_by('topic').values_list('topic').distinct()]
 
 
+def render_insights(insights):
+    return render_to_string('insight_groups.html', dict(insights=insights))

@@ -1,19 +1,9 @@
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, DeleteView, RedirectView, TemplateView, UpdateView
-from django.template.loader import render_to_string
+from django.views.generic import CreateView, RedirectView, TemplateView, UpdateView
 
-from insight.insight import monthly_insights, task_history
+from insight.insight import monthly_insights, task_history, render_insights
 from .models import Insight
 from .insight import export_data, group_insights, import_data
-
-
-# # Show the insights for each category
-# class InsightHome(TemplateView):
-#     template_name = 'insight_home.html'
-#
-#     def get_context_data(self, **kwargs):
-#         insights = render_to_string('insight_groups.html', dict(insights=group_insights()))
-#         return dict(insights=insights)
 
 
 # Show the insights for each category
@@ -30,8 +20,7 @@ class InsightList(TemplateView):
     template_name = 'insight_home.html'
 
     def get_context_data(self, **kwargs):
-        insights = render_to_string('insight_groups.html', dict(insights=group_insights()))
-        return dict(insights=insights)
+        return dict(insights=render_insights(group_insights()))
 
 
 # Add one insight
