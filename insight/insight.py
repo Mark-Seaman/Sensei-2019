@@ -24,11 +24,15 @@ def import_data(path):
             i.save()
 
 
+def find_topics(topic):
+    return Insight.objects.filter(topic=topic).order_by('date')
+
+
 def group_insights():
     insights = []
     for topic in topics():
         title = "Insight Category: %s" % topic
-        table = [(date_str(i.date), i.name) for i in Insight.objects.filter(topic=topic)]
+        table = [(date_str(i.date), i.name) for i in find_topics(topic)]
         insights.append([topic, render_panel(title, ['Date', 'Insight'], table)])
     return insights[1:]
 
