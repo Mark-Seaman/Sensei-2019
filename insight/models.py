@@ -12,14 +12,14 @@ def date_str(date):
 class Insight(models.Model):
     name = models.CharField(max_length=100)
     topic = models.CharField(max_length=20)
-    date = models.DateTimeField(null=True)
+    # date = models.DateTimeField(null=True)
     day = models.DateField(null=True)
 
     def get_absolute_url(self):
         return reverse('insight-list')
 
     def __str__(self):
-        return '%s - %s - %s' % (date_str(self.date), self.topic, self.name)
+        return '%s - %s - %s' % (date_str(self.day), self.topic, self.name)
 
     @staticmethod
     def lookup(date):
