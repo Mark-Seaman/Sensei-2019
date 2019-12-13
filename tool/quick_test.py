@@ -5,71 +5,19 @@ from unc.projects import *
 from unc.models import *
 from unc.review import *
 from insight.insight import *
+from tool.days import enumerate_month
 
 
 def quick_test():
-    # pass
+    print('\n'.join(enumerate_month(2019, 10)))
+    print('\n'.join(enumerate_month(2019, 11)))
+    print('\n'.join(enumerate_month(2019, 12)))
 
-    # show_reviews()
-
-
-    # import_lessons('bacs350')
-    new_350_reviews()
-    # assign_team_reviews('bacs200', 'bacs200/index.php', '2019-12-06', bacs200_5_requirements, bacs200_5_notes)
-
-    # sync_insights()
-    # print_insights()
-
-
-def show_reviews():
-    for r in Review.objects.filter(page='bacs200/index.php'):
-        r.page = 'index.php'
-        r.due = '2019-12-06'
-        r.save()
-        print(r.due, r.reviewer.name, r.designer.name, r.page)
-
-
-def new_350_reviews():
-    revs = Review.objects.filter(page='bacs350/slides/index.php')
-    print(bacs350_5_requirements)
-    for r in revs:
-        page = 'bacs350/index.php'
-        reviewer, designer = r.reviewer, r.designer
-        due = '2019-12-11'
-        print('create review: %s,  %s, %s' % (reviewer, designer, due))
-        create_review(reviewer.pk, designer.pk, page, due, bacs350_5_requirements, bacs350_5_notes)
 
 
 def show_course_content():
     x = list_course_content()
     print(x)
-
-
-# def assign_reviews():
-#     show_groups('bacs200')
-#     show_groups('bacs350')
-#     assign_reviews_round4()
-#     # grade_reviews('bacs200/index.html')
-#     # grade_reviews('bacs350/index.php')
-
-
-# def fix_reviews():
-#     for r in Review.objects.filter(page='bacs350/superhero.php'):
-#         print(r.reviewer.name, r.page)
-#         r.page = 'bacs350/superhero/index.php'
-#         r.save()
-#
-#
-# def fix_lessons():
-#     def change_date(course, lesson, date, week):
-#         x = Lesson.lookup(course, lesson)
-#         x.date = date
-#         x.week = week
-#         x.save()
-#
-#     date = '2019-12-02'
-#     change_date('bacs350', 38, date, 14)
-#     change_date('bacs200', 36, date, 14)
 
 
 def init_unc_data():

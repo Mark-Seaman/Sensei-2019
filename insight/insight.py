@@ -1,3 +1,4 @@
+from calendar import monthrange, month_name
 from csv import reader
 from datetime import datetime
 from django.template.loader import render_to_string
@@ -28,37 +29,39 @@ def find_topics(topic):
     return Insight.objects.filter(topic=topic).order_by('date')
 
 
+def find_monthly_insights(year, month):
+    return Insight.objects.filter(date__year=year, date__month=month).order_by('date')
+
+
+def topic_insights_panel(title, topic):
+    headers = ['Date', 'Insight']
+    return [topic, render_panel(title, headers, find_topics(topic))]
+
+
 def group_insights():
     insights = []
     for topic in topics():
         title = "Insight Category: %s" % topic
-        table = [(date_str(i.date), i.name) for i in find_topics(topic)]
-        insights.append([topic, render_panel(title, ['Date', 'Insight'], table)])
-    return insights[1:]
+        insights.append(topic_insights_panel(title, topic))
+    return insights
 
 
-def render_panel(title, headers, rows):
-    return render_to_string('table.html', dict(title=title, headers=headers, rows=rows))
-
-
-def daily_insights(month, days, active):
+def monthly_insights_panel(year, month, active):
     title = "Monthly Insights: %s" % month
     headers = ['Date', 'Topic', 'Creative Experience']
-    rows = [(d, Insight.lookup(d).name, Insight.lookup(d).pk, Insight.lookup(d).topic) for d in days]
+    rows = find_monthly_insights(year, month)
     table = render_panel(title, headers, rows)
-    return [month, table, active, not active]
+    title = '%s %s' % (month_name[month], year)
+    return [month_name[month], table, active, not active]
 
 
-def monthly_insights(months):
-    days10 = ['2019-10-%02d' % (d + 1) for d in range(31)]
-    days11 = ['2019-11-%02d' % (d + 1) for d in range(30)]
-    days12 = ['2019-12-%02d' % (d + 1) for d in range(31)]
+def monthly_insights():
     monthly = [
-        daily_insights('October',  days10, False),
-        daily_insights('November', days11, False),
-        daily_insights('December', days12, True),
+        monthly_insights_panel(2019, 10, False),
+        monthly_insights_panel(2019, 11, True),
+        monthly_insights_panel(2019, 12, False),
     ]
-    return dict(months=monthly)
+    return monthly
 
 
 def print_insights():
@@ -66,6 +69,14 @@ def print_insights():
         print("\n%s" % topic[0])
         for i in topic[1]:
             print("    %s - %s" % (i[0], i[1]))
+
+
+def render_insights(insights):
+    return dict(insights=render_to_string('insight_groups.html', dict(groups=insights)))
+
+
+def render_panel(title, headers, rows):
+    return render_to_string('table.html', dict(title=title, headers=headers, rows=rows))
 
 
 def sync_insights():
@@ -81,5 +92,3 @@ def topics():
     return [i[0] for i in Insight.objects.all().order_by('topic').values_list('topic').distinct()]
 
 
-def render_insights(insights):
-    return render_to_string('insight_groups.html', dict(insights=insights))

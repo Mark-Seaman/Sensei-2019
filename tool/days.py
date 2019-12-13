@@ -1,4 +1,5 @@
-from datetime import datetime, date, timedelta
+from calendar import day_abbr, monthrange, month_name, weekday
+from datetime import datetime, timedelta
 
 
 # ------------------------------
@@ -55,6 +56,11 @@ def day_str(t):
 # Return a date from 48 hours ago
 def days_ago(date,days):
     return  date_str(date-timedelta(days=days))
+
+
+# Day of the week
+def day_name(year, month, day):
+    return day_abbr[weekday(year, month, day)]
 
 
 # Calculate the days I've lived
@@ -117,6 +123,21 @@ def enumerate_days(today, days):
     return [days_ago(today, days-d-1) for d in range(days)]
 
 
+# List all the days in the month
+def enumerate_month(year, month):
+    # print("\n\n%s %s\n" % (month_name[month], year))
+    num_days = monthrange(year, month)[1]
+    return ['%04d-%02d-%02d' % (year, month, d + 1) for d in range(num_days)]
+
+
+# # List all the days in the month
+# def enumerate_month_days(year, month):
+#     num_days = monthrange(year, month)[1]
+#     return [for d in range(num_days)]
+#         x = ' %s, %04d-%02d-%02d' % (day_name(year, month, d + 1), year, month, d + 1)
+#         print(x)
+
+
 # Convert from string to ctime object  (example format 1959-09-01)
 def to_date(s):
     return datetime.strptime(s, "%Y-%m-%d")
@@ -143,12 +164,7 @@ def print_recent_dates():
         print('* [%s](/info/history/%s) - Write - ' % (d, d.replace('-', '/')))
 
 
-if __name__ == '__main__':
-    # start = '2019-04-29'
-    # num_weeks = 17
-    # days_weeks(start, num_weeks)
-    print_recent_dates()
-
-
+# Convert a string to a timezone aware date
 def due_date(due):
     return make_aware(datetime.strptime(due, "%Y-%m-%d"))
+

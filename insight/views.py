@@ -8,11 +8,10 @@ from .insight import export_data, group_insights, import_data
 
 # Show the insights for each category
 class InsightMonths(TemplateView):
-    template_name = 'insight_months.html'
+    template_name = 'insight_home.html'
 
     def get_context_data(self, **kwargs):
-        months = ['10', '11', '12']
-        return monthly_insights(months)
+        return render_insights(monthly_insights())
 
 
 # Show the list of insights
@@ -20,14 +19,7 @@ class InsightList(TemplateView):
     template_name = 'insight_home.html'
 
     def get_context_data(self, **kwargs):
-        return dict(insights=render_insights(group_insights()))
-
-
-# Add one insight
-class InsightCreate(CreateView):
-    model = Insight
-    template_name = 'insight_add.html'
-    fields = ['name', 'topic']
+        return render_insights(group_insights())
 
 
 # Edit a insight
@@ -64,6 +56,12 @@ class InsightExport(RedirectView):
         return reverse_lazy('insight-list')
 
 
+# # Add one insight
+# class InsightCreate(CreateView):
+#     model = Insight
+#     template_name = 'insight_add.html'
+#     fields = ['name', 'topic']
+#
 # # Delete a insight
 # class InsightDelete(DeleteView):
 #     model = Insight

@@ -9,10 +9,10 @@
     {% for i in rows %}
         <tr>
             <td>
-                <a href="/insight/{{ i.2 }}/">{{ i.0 }}</a>
+                <a href="/insight/{{ i.pk }}/">{{ i.date|date:"D M d, Y" }}</a>
             </td>
-            <td><b>{{ i.3 }}</b></td>
-            <td>{{ i.1 }}</td>
+            <td>{{ i.topic }}</td>
+            <td>{{ i.name }}</td>
         </tr>
     {% endfor %}
 </table>
