@@ -11,7 +11,7 @@ class InsightMonths(TemplateView):
     template_name = 'insight_months.html'
 
     def get_context_data(self, **kwargs):
-        months = ['10', '11']
+        months = ['10', '11', '12']
         return monthly_insights(months)
 
 

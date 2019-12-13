@@ -9,7 +9,7 @@ from tool.days import date_str
 
 def export_data(path):
     with open(path, 'w') as f:
-        for row in Insight.objects.all():
+        for row in Insight.objects.all().order_by('date'):
             f.write("%s,%s,%s\n" % (row.date.strftime("%Y-%m-%d"), row.topic, row.name))
 
 
@@ -41,19 +41,23 @@ def render_panel(title, headers, rows):
     return render_to_string('table.html', dict(title=title, headers=headers, rows=rows))
 
 
-def daily_insights(month, days):
+def daily_insights(month, days, active):
     title = "Monthly Insights: %s" % month
     headers = ['Date', 'Topic', 'Creative Experience']
     rows = [(d, Insight.lookup(d).name, Insight.lookup(d).pk, Insight.lookup(d).topic) for d in days]
     table = render_panel(title, headers, rows)
-    active = (month=='October')
     return [month, table, active, not active]
 
 
 def monthly_insights(months):
-    days1 = ['2019-10-%02d' % (d + 1) for d in range(31)]
-    days2 = ['2019-11-%02d' % (d + 1) for d in range(30)]
-    monthly = [daily_insights('October', days1), daily_insights('November', days2)]
+    days10 = ['2019-10-%02d' % (d + 1) for d in range(31)]
+    days11 = ['2019-11-%02d' % (d + 1) for d in range(30)]
+    days12 = ['2019-12-%02d' % (d + 1) for d in range(31)]
+    monthly = [
+        daily_insights('October',  days10, False),
+        daily_insights('November', days11, False),
+        daily_insights('December', days12, True),
+    ]
     return dict(months=monthly)
 
 
