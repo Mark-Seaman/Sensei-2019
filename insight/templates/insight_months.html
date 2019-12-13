@@ -10,14 +10,14 @@
 
                 <div class="card-header" id="heading-{{ group.0 }}">
 
-                    <button class="btn btn-selector" type="button" data-toggle="collapse"
+                    <button class="btn btn-selector {% if group.3 %}collapsed{% endif %}" type="button" data-toggle="collapse"
                             data-target="#pane-{{ group.0 }}"
                             aria-expanded="true" aria-controls="pane-{{ group.0 }}">
                         <b>{{ group.0 }}</b>
                     </button>
 
                 </div>
-                <div id="pane-{{ group.0 }}" class="collapse"
+                <div id="pane-{{ group.0 }}" class="collapse {% if group.2 %}show{% endif %}"
                      aria-labelledby="heading-{{ group.0 }}"
                      data-parent="#my-accordion">
 

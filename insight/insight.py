@@ -46,7 +46,8 @@ def daily_insights(month, days):
     headers = ['Date', 'Topic', 'Creative Experience']
     rows = [(d, Insight.lookup(d).name, Insight.lookup(d).pk, Insight.lookup(d).topic) for d in days]
     table = render_panel(title, headers, rows)
-    return [month, table]
+    active = (month=='October')
+    return [month, table, active, not active]
 
 
 def monthly_insights(months):

@@ -35,10 +35,15 @@ li {
     margin: 1em;
 }
 
+
 .card {
     margin: 2em;
 }
 
 .card-body {
     padding: 2em;
+}
+
+.table-hover input {
+    width: 90%;
 }

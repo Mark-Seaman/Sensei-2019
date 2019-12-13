@@ -35,6 +35,7 @@ class InsightUpdate(UpdateView):
     model = Insight
     template_name = 'insight_edit.html'
     fields = ['name', 'topic']
+    success_url = '/insight/months'
 
     def get_context_data(self, **kwargs):
         kwargs = super(InsightUpdate, self).get_context_data(**kwargs)
@@ -43,13 +44,6 @@ class InsightUpdate(UpdateView):
         kwargs['doc'] = doc
         kwargs['log'] = open(doc).read()
         return kwargs
-
-
-# # Delete a insight
-# class InsightDelete(DeleteView):
-#     model = Insight
-#     template_name = 'insight_delete.html'
-#     success_url = reverse_lazy('insight-list')
 
 
 # Import all insights
@@ -68,4 +62,12 @@ class InsightExport(RedirectView):
     def get_redirect_url(self, *args, **kwargs):
         export_data('insights.csv')
         return reverse_lazy('insight-list')
+
+
+# # Delete a insight
+# class InsightDelete(DeleteView):
+#     model = Insight
+#     template_name = 'insight_delete.html'
+#     success_url = reverse_lazy('insight-list')
+
 
