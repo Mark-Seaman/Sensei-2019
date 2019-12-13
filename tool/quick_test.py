@@ -5,14 +5,18 @@ from unc.projects import *
 from unc.models import *
 from unc.review import *
 from insight.insight import *
-from tool.days import enumerate_month
+from insight.models import *
+from tool.days import date_str
 
 
 def quick_test():
-    print('\n'.join(enumerate_month(2019, 10)))
-    print('\n'.join(enumerate_month(2019, 11)))
-    print('\n'.join(enumerate_month(2019, 12)))
-
+    # print('\n'.join(enumerate_month(2019, 10)))
+    # print('\n'.join(enumerate_month(2019, 11)))
+    # print('\n'.join(enumerate_month(2019, 12)))
+    for i in Insight.objects.all():
+        i.day = date_str(i.date)
+        i.save()
+        print(i.pk, i.day, i.topic, i.name)
 
 
 def show_course_content():

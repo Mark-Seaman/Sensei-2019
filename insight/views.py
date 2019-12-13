@@ -3,7 +3,7 @@ from django.views.generic import CreateView, RedirectView, TemplateView, UpdateV
 
 from insight.insight import monthly_insights, task_history, render_insights
 from .models import Insight
-from .insight import export_data, group_insights, import_data
+from .insight import export_data, topic_insights, import_data
 
 
 # Show the insights for each category
@@ -19,7 +19,7 @@ class InsightList(TemplateView):
     template_name = 'insight_home.html'
 
     def get_context_data(self, **kwargs):
-        return render_insights(group_insights())
+        return render_insights(topic_insights())
 
 
 # Edit a insight

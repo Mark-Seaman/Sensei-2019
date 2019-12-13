@@ -38,7 +38,7 @@ def topic_insights_panel(title, topic):
     return [topic, render_panel(title, headers, find_topics(topic))]
 
 
-def group_insights():
+def topic_insights():
     insights = []
     for topic in topics():
         title = "Insight Category: %s" % topic
@@ -47,28 +47,28 @@ def group_insights():
 
 
 def monthly_insights_panel(year, month, active):
-    title = "Monthly Insights: %s" % month
+    title = 'Monthly Insights: %s %s' % (month_name[month], year)
     headers = ['Date', 'Topic', 'Creative Experience']
     rows = find_monthly_insights(year, month)
     table = render_panel(title, headers, rows)
-    title = '%s %s' % (month_name[month], year)
     return [month_name[month], table, active, not active]
 
 
 def monthly_insights():
     monthly = [
+        monthly_insights_panel(2019, 9,  False),
         monthly_insights_panel(2019, 10, False),
-        monthly_insights_panel(2019, 11, True),
-        monthly_insights_panel(2019, 12, False),
+        monthly_insights_panel(2019, 11, False),
+        monthly_insights_panel(2019, 12, True),
     ]
     return monthly
 
 
-def print_insights():
-    for topic in group_insights():
-        print("\n%s" % topic[0])
-        for i in topic[1]:
-            print("    %s - %s" % (i[0], i[1]))
+# def print_insights():
+#     for topic in topic_insights():
+#         print("\n%s" % topic[0])
+#         for i in topic[1]:
+#             print("    %s - %s" % (i[0], i[1]))
 
 
 def render_insights(insights):
