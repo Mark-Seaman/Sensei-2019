@@ -13,7 +13,7 @@ class Insight(models.Model):
     name = models.CharField(max_length=100)
     topic = models.CharField(max_length=20)
     # date = models.DateTimeField(null=True)
-    day = models.DateField(null=True)
+    date = models.DateField(null=True)
 
     def get_absolute_url(self):
         return reverse('insight-list')
