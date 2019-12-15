@@ -18,7 +18,7 @@ class Insight(models.Model):
         return reverse('insight-list')
 
     def __str__(self):
-        return '%s - %s - %s' % (date_str(self.day), self.topic, self.name)
+        return '%s - %s - %s' % (date_str(self.date), self.topic, self.name)
 
     @staticmethod
     def lookup(date):

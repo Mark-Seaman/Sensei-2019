@@ -6,17 +6,16 @@ from unc.models import *
 from unc.review import *
 from insight.insight import *
 from insight.models import *
-from tool.days import date_str
+from tool.days import *
 
 
 def quick_test():
-    # print('\n'.join(enumerate_month(2019, 10)))
-    # print('\n'.join(enumerate_month(2019, 11)))
-    # print('\n'.join(enumerate_month(2019, 12)))
-    for i in Insight.objects.all():
-        i.day = date_str(i.date)
+    for day in enumerate_month(2019, 9):
+        # date = make_aware(datetime.strptime(row[0], "%Y-%m-%d"))
+        date = datetime.strptime(day, "%Y-%m-%d")
+        i = Insight.objects.get_or_create(date=date)[0]
         i.save()
-        print(i.pk, i.day, i.topic, i.name)
+        print(i)
 
 
 def show_course_content():
