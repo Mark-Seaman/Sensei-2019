@@ -1,7 +1,7 @@
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, RedirectView, TemplateView, UpdateView
+from django.views.generic import RedirectView, TemplateView, UpdateView
 
-from insight.insight import monthly_insights, task_history, render_insights
+from insight.insight import monthly_insights, task_history
 from .models import Insight
 from .insight import export_data, topic_insights, import_data
 
@@ -11,7 +11,7 @@ class InsightMonths(TemplateView):
     template_name = 'insight_home.html'
 
     def get_context_data(self, **kwargs):
-        return render_insights(monthly_insights())
+        return monthly_insights()
 
 
 # Show the list of insights
@@ -19,7 +19,7 @@ class InsightList(TemplateView):
     template_name = 'insight_home.html'
 
     def get_context_data(self, **kwargs):
-        return render_insights(topic_insights())
+        return topic_insights()
 
 
 # Edit a insight
@@ -54,18 +54,4 @@ class InsightExport(RedirectView):
     def get_redirect_url(self, *args, **kwargs):
         export_data('insights.csv')
         return reverse_lazy('insight-list')
-
-
-# # Add one insight
-# class InsightCreate(CreateView):
-#     model = Insight
-#     template_name = 'insight_add.html'
-#     fields = ['name', 'topic']
-#
-# # Delete a insight
-# class InsightDelete(DeleteView):
-#     model = Insight
-#     template_name = 'insight_delete.html'
-#     success_url = reverse_lazy('insight-list')
-
 

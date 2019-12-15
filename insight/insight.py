@@ -43,7 +43,7 @@ def topic_insights():
     for topic in topics():
         title = "Insight Category: %s" % topic
         insights.append(topic_insights_panel(title, topic))
-    return insights
+    return dict(groups=insights[1:])
 
 
 def monthly_insights_panel(year, month, active):
@@ -61,7 +61,7 @@ def monthly_insights():
         monthly_insights_panel(2019, 11, False),
         monthly_insights_panel(2019, 12, True),
     ]
-    return monthly
+    return dict(groups=monthly)
 
 
 # def print_insights():
@@ -69,10 +69,6 @@ def monthly_insights():
 #         print("\n%s" % topic[0])
 #         for i in topic[1]:
 #             print("    %s - %s" % (i[0], i[1]))
-
-
-def render_insights(insights):
-    return dict(insights=render_to_string('insight_groups.html', dict(groups=insights)))
 
 
 def render_panel(title, headers, rows):
