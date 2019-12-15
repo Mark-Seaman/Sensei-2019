@@ -56,10 +56,10 @@ def monthly_insights_panel(year, month, active):
 
 def monthly_insights():
     monthly = [
-        monthly_insights_panel(2019, 9,  False),
+        monthly_insights_panel(2019, 9,  True),
         monthly_insights_panel(2019, 10, False),
         monthly_insights_panel(2019, 11, False),
-        monthly_insights_panel(2019, 12, True),
+        monthly_insights_panel(2019, 12, False),
     ]
     return dict(groups=monthly)
 
