@@ -42,9 +42,9 @@ Grow 0
     1, 1, 1, 1
     weight: 20
 
-Tools 0
-
 Teach 0
+
+Tools 0
 
 People 0
 
@@ -54,7 +54,7 @@ Fun 0
 
 
 def edit_task_file(date):
-    f = 'Documents/info/days/%s' % date
+    f = 'Documents/info/history/%s' % (date.replace ('-', '/'))
     if not exists(f):
         day = datetime.now().strftime("%A")
         open(f, 'w').write(task_default % day)

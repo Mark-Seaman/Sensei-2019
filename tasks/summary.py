@@ -260,4 +260,4 @@ def task_import_files():
         t.save()
         return t
 
-    return [task_details(f) for f in listdir('Documents/info/days')]
+    return [task_details(f) for f in listdir('Documents/info/history/2019/12')]
