@@ -27,7 +27,7 @@ class UncPage(LoginRequiredMixin, TemplateView):
         header = 'UNC %s' % course, name, "/static/images/unc/Bear.200.png", 'UNC Bear', href
         kwargs['header'] = dict(title=header[0], subtitle=header[1], logo=header[2], logo_text=header[3],
                                 href=header[4])
-        kwargs['student'] = student
+        kwargs['student'] = student if student else Student.lookup('Sensei 200')
         return kwargs
 
 
