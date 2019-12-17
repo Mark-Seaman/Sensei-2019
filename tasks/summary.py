@@ -237,7 +237,7 @@ def task_import_files():
         for line in text.split('\n'):
             if line and not line.startswith(' '):
                 if notes:
-                    t = new_task(f, activity, hours, notes)
+                    t = new_task('2019-12-%s' % f, activity, hours, notes)
                     tasks.append('%s -- %s hours' % (t.name, t.hours))
                 words = line.split(' ')
                 activity = words[0]
