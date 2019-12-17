@@ -229,7 +229,7 @@ def task_import_files():
         return [f, read_task_file(d, f)]
 
     def read_task_file(d, f):
-        text = open(d + f).read()
+        text = open(join(d, f)).read()
         notes = []
         tasks = []
         activity = ''
