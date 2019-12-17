@@ -249,7 +249,7 @@ def task_import_files():
             elif line:
                 notes.append(line)
         if notes:
-            t = new_task(f, activity, hours, notes)
+            t = new_task('2019-12-%s' % f, activity, hours, notes)
             tasks.append('%s -- %s hours' % (t.name, t.hours))
         return '\n\n'.join(tasks)
 
