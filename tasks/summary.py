@@ -225,11 +225,11 @@ def task_export():
 
 
 def task_import_files():
-    def task_details(f):
-        return [f, read_task_file(f)]
+    def task_details(d, f):
+        return [f, read_task_file(d, f)]
 
-    def read_task_file(f):
-        text = open('Documents/info/days/' + f).read()
+    def read_task_file(d, f):
+        text = open(d + f).read()
         notes = []
         tasks = []
         activity = ''
@@ -260,4 +260,5 @@ def task_import_files():
         t.save()
         return t
 
-    return [task_details(f) for f in listdir('Documents/info/history/2019/12')]
+    d = 'Documents/info/history/2019/12'
+    return [task_details(d, f) for f in listdir(d)]
