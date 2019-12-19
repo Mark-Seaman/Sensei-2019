@@ -1,6 +1,6 @@
 
 from tool.page import close_browser_dom, open_browser_dom
-from tool.shell import curl_get, is_server
+from tool.shell import curl_get, is_macbook, is_server
 
 
 def page_curl_test():
@@ -16,6 +16,8 @@ https://MarkSeaman.info/info/Index
 def page_features_test():
     if is_server():
         return 'No Selenium on Sensei Server'
+    if is_macbook():
+        return 'This test does not run on Macbook'
     else:
         dom = open_browser_dom()
         domains = ['https://MarkSeaman.org', 'https://shrinking-world.com', 'https://SeamansLog.com',
