@@ -10,7 +10,7 @@ from tool.days import *
 
 
 def quick_test():
-    for day in enumerate_month(2019, 9):
+    for day in enumerate_month(2019, 8):
         # date = make_aware(datetime.strptime(row[0], "%Y-%m-%d"))
         date = datetime.strptime(day, "%Y-%m-%d")
         i = Insight.objects.get_or_create(date=date)[0]

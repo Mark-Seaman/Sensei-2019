@@ -56,6 +56,7 @@ def monthly_insights_panel(year, month, active):
 
 def monthly_insights():
     monthly = [
+        monthly_insights_panel(2019, 7,  True),
         monthly_insights_panel(2019, 8,  True),
         monthly_insights_panel(2019, 9,  False),
         monthly_insights_panel(2019, 10, False),
