@@ -10,7 +10,7 @@ from tool.days import date_str
 
 def export_data(path):
     with open(path, 'w') as f:
-        for row in Insight.objects.all().order_by('date'):
+        for row in Insight.objects.filter(date__gte='2019-12-01').order_by('date'):
             f.write("%s,%s,%s\n" % (row.date.strftime("%Y-%m-%d"), row.topic, row.name))
 
 
@@ -56,10 +56,10 @@ def monthly_insights_panel(year, month, active):
 
 def monthly_insights():
     monthly = [
-        monthly_insights_panel(2019, 9,  True),
+        monthly_insights_panel(2019, 9,  False),
         monthly_insights_panel(2019, 10, False),
         monthly_insights_panel(2019, 11, False),
-        monthly_insights_panel(2019, 12, False),
+        monthly_insights_panel(2019, 12, True),
     ]
     return dict(groups=monthly)
 
