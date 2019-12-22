@@ -1,17 +1,14 @@
-from insight.insight import sync_insights
-from unc.bacs import *
-from unc.dead import update_lessons
-from unc.projects import *
-from unc.models import *
-from unc.review import *
 from insight.insight import *
 from insight.models import *
 from tool.days import *
+from unc.bacs import *
+from unc.projects import *
+from unc.models import *
+from unc.review import *
 
 
 def quick_test():
-    for day in enumerate_month(2019, 8):
-        # date = make_aware(datetime.strptime(row[0], "%Y-%m-%d"))
+    for day in enumerate_month(2019, 4):
         date = datetime.strptime(day, "%Y-%m-%d")
         i = Insight.objects.get_or_create(date=date)[0]
         i.save()
