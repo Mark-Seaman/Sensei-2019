@@ -87,7 +87,7 @@ def console(args):
 
 
 def deploy(args):
-    system('bluepush')
+    # system('bluepush')
     console(['bin/commit SENSEI_AUTO_COMMIT'])
     restart()
     web()
