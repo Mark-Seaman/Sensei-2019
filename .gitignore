@@ -1,6 +1,6 @@
 # Sensei Files
 
-Documents/
+Documents*
 .*
 !.gitignore
 
