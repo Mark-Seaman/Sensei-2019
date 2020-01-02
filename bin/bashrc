@@ -13,7 +13,7 @@ then
 else
     export p=$HOME/Sensei
     export u=$HOME/UNC
-    figlet 'Sensei Dev'
+    figlet 'Sensei Dev 2019'
 fi
 
 echo "p = $p"

@@ -58,6 +58,13 @@ alias r=reset
 alias s='code search .'
 alias serve='web localhost:8000; dj runserver'
 alias sys='dj system'
+s18=~/Archive/Sensei-2018
+s19=~/Archive/Sensei-2019
+s20=~/Sensei-2020
+alias s18='cd $s18; rm ../Sensei && ln -s . Sensei; pipenv shell; echo closing pipenv shell'
+alias s19='cd $s19; rm ../Sensei && ln -s . Sensei; pipenv shell; echo closing pipenv shell'
+alias s20='cd $s20; rm ../Sensei && ln -s . Sensei; pipenv shell; echo closing pipenv shell'
+
 
 alias tlike='tst like'
 alias tlist='tst list'
