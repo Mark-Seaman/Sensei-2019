@@ -2,6 +2,9 @@
 
 figlet .profile
 
+cd ~/Sensei
+pipenv shell
+
 echo 'Pipenv Shell Closed'
 echo Select Python Context
 
@@ -9,11 +12,10 @@ s18=~/Archive/Sensei-2018
 s19=~/Archive/Sensei-2019
 s20=~/Sensei-2020
 
+alias s18='cd $s18; rm ~/Sensei; ln -s `pwd` ~/Sensei; pipenv shell; echo closing pipenv shell'
+alias s19='cd $s19; rm ~/Sensei; ln -s `pwd` ~/Sensei; pipenv shell; echo closing pipenv shell'
+alias s20='cd $s20; rm ~/Sensei; ln -s `pwd` ~/Sensei; pipenv shell; echo closing pipenv shell'
+
 echo "   s18=$s18"
 echo "   s19=$s19"
 echo "   s20=$s20"
-
-alias s18='cd $s18; rm ../Sensei && ln -s . Sensei; pipenv shell; echo closing pipenv shell'
-alias s19='cd $s19; rm ../Sensei && ln -s . Sensei; pipenv shell; echo closing pipenv shell'
-alias s20='cd $s20; rm ../Sensei && ln -s . Sensei; pipenv shell; echo closing pipenv shell'
-
